@@ -16,7 +16,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "AksjeApp1": {
+    "AksjeApp2": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "index.html",

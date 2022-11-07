@@ -6,7 +6,6 @@
     <AssemblyName>AksjeApp2</AssemblyName>
   </PropertyGroup>
 
-  <PropertyGroup Condition=" '$(RunConfiguration)' == 'AksjeApp1' " />
   <ItemGroup>
     <None Remove="Models\" />
     <None Remove="Microsoft.EntityFrameworkCore.Sqlite" />
