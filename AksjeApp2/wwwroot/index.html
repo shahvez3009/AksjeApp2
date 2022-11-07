@@ -2,16 +2,17 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>JustInvest</title>
+    <title>JustInvest 2</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="Js/portfolio.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <script src="Js/index.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
     <link rel="stylesheet" href="Style/style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap" rel="stylesheet" />
     <link rel="shortcut icon" type="image/x-icon" href="Images/logoX.png" />
 </head>
 <body>
@@ -40,21 +41,11 @@
                 </div>
             </div>
         </section>
-        <section class="right-bar">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col text-center">
-                        <!--Denne skal være tom-->
-                    </div>
-                    <div class="col-7 text-center">
-                        <h1 id="portfolioEier"></h1>
-                    </div>
-                    <div class="col">
-                        <p class="text-right" id="brukerSaldo"></p>
-                    </div>
-                </div>
-                <div id="portfolio"></div>
-            </div>
+        <section class="right-bar text-center">
+            <h2 id="grafNavn">Velg en graf</h2>
+            <canvas class="dashboard"></canvas>
+            <h2>Aksjer som kan kjøpes</h2>
+            <div id="aksjer"></div>
         </section>
     </main>
 </body>

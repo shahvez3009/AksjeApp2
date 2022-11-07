@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace AksjeApp1.Models
+namespace AksjeApp2.Models
 {
     public class Portfolio
     {

@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Reflection;
-using AksjeApp1.Controllers;
+using AksjeApp2.Controllers;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json.Linq;
 
-namespace AksjeApp1.Models
+namespace AksjeApp2.Models
 {
 
     public class Aksjer

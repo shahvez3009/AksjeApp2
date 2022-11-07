@@ -1,19 +1,19 @@
 ﻿using System.Net.Http;
 using System;
-using AksjeApp1.Models;
+using AksjeApp2.Models;
 using TwelveDataSharp;
 using TwelveDataSharp.Interfaces;
 using TwelveDataSharp.Library.ResponseModels;
 using System.Threading.Tasks;
-using AksjeApp1.Controllers;
+using AksjeApp2.Controllers;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
-using AksjeApp1.DAL;
+using AksjeApp2.DAL;
 using Microsoft.AspNetCore.Mvc;
 using System.Text;
 
-namespace AksjeApp1.Controllers
+namespace AksjeApp2.Controllers
 {
     [Route("[controller]/[action]")]
     public class AksjeController : ControllerBase

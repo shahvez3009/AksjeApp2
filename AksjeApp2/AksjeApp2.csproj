@@ -2,8 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <Platforms>AnyCPU;x86</Platforms>
+    <AssemblyName>AksjeApp2</AssemblyName>
   </PropertyGroup>
 
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'AksjeApp1' " />
   <ItemGroup>
     <None Remove="Models\" />
     <None Remove="Microsoft.EntityFrameworkCore.Sqlite" />
@@ -14,6 +17,10 @@
     <None Remove="AksjeApp.db-shm" />
     <None Remove="AksjeApp.db-shm" />
     <None Remove="DAL\" />
+    <None Remove="AksjeApp.db-wal" />
+    <None Remove="AksjeApp.db-shm" />
+    <None Remove="AksjeApp.db-shm" />
+    <None Remove="AksjeApp.db-wal" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />

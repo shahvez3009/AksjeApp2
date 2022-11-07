@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace AksjeApp1.Models
+namespace AksjeApp2.Models
 {
     public class DBInit
     {
