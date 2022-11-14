@@ -1,0 +1,27 @@
+﻿<div class="container">
+    <table class='table table-striped'>
+        <thead>
+            <tr>
+                <th>Stock Name</th>
+                <th>Price</th>
+                <th>Max Amount</th>
+                <th>Available shares</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let aksje of alleAksjer">
+            <tr>
+                <td>{{aksje.navn}}</td>
+                <td>{{aksje.pris}}</td>
+                <td>{{aksje.maxAntall}}</td>
+                <td>{{aksje.antalLedige}}</td>
+                <td><button class="btn btn-danger" (click)="visGraf(aksje.id)">Vis Graf</button></td>
+                <td> <a class="btn btn-secondary" [routerLink]="['/kjop',aksje.id]">Kjop</a></td>
+            </tr>
+        </tbody>
+        </table>
+
+
+
+</div>
