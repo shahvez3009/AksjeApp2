@@ -1,0 +1,31 @@
+﻿<div class="container">
+    <h2>   Portfolio </h2>
+    <div>
+        <div class="col-md-12">
+            <div *ngIf="laster">Laster kunder.....</div>
+            <table class="table table-bordered table-condensed">
+                <thead>
+                    <tr>
+                        <th>Aksjenavn</th>
+                        <th>Pris pr Aksje</th>
+                        <th>Beholdning</th>
+                        <th>sum</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let kunde of alleKunder">
+                    <tr>
+                        <td>{{portfolio.aksjenavn}}</td>
+                        <td>{{portfolio.aksjepris}}</td>
+                        <td>{{portfolio.antall}}</td>
+                        <td>{{portfolio.antall * portfolio.aksjepris}}</td>
+                        <td><button class="btn btn-danger" (click)="sletteKunde(kunde.id)">Selg</button></td>
+                        <td><button class="btn btn-success" [routerLink]="['/endre',kunde.id]">Kjop mer</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
