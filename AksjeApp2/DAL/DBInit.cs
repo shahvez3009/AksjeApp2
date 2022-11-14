@@ -16,7 +16,7 @@ namespace AksjeApp1.Models
                 context.Database.EnsureCreated();
 
                 //Bruker
-                var enes = new Brukere { Fornavn = "Enes", Etternavn = "Ergin", Saldo = 500000, Mail = "enesergin1204@hotmail.com", Mobilnummer = 90057976 };
+                var per = new Brukere { Fornavn = "Per", Etternavn = "Johansen", Saldo = 500000, Mail = "perjohansen@hotmail.com", Mobilnummer = 12345678 };
 
                 //Aksje
                 var microsoft = new Aksjer { Navn = "Microsoft", Pris = 300, AntallLedige = 1200, MaxAntall = 1200 };
@@ -26,7 +26,7 @@ namespace AksjeApp1.Models
                 var netflix = new Aksjer { Navn = "Netflix", Pris = 12, AntallLedige = 1500, MaxAntall = 1500 };
 
 
-                context.Brukere.Add(enes);
+                context.Brukere.Add(per);
 
                 context.Aksjer.Add(microsoft);
                 context.Aksjer.Add(apple);
