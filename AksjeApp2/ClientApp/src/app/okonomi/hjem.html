@@ -17,11 +17,8 @@
                 <td>{{aksje.maxAntall}}</td>
                 <td>{{aksje.antalLedige}}</td>
                 <td><button class="btn btn-danger" (click)="visGraf(aksje.id)">Vis Graf</button></td>
-                <td> <a class="btn btn-secondary" [routerLink]="['/kjop',aksje.id]">Kjop</a></td>
+                <td><button class="btn btn-success" [routerLink]="['/kjop',aksje.id]">Kjop</button></td>
             </tr>
         </tbody>
         </table>
-
-
-
 </div>
