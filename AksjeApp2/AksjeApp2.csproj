@@ -25,6 +25,7 @@
     <None Remove="ClientApp\src\app\portfolio\" />
     <None Remove="ClientApp\src\app\kjop\" />
     <None Remove="Controllers\" />
+    <None Remove="ClientApp\src\app\logginn\bilder\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -32,6 +33,7 @@
     <Folder Include="ClientApp\src\app\portfolio\" />
     <Folder Include="ClientApp\src\app\kjop\" />
     <Folder Include="Controllers\" />
+    <Folder Include="ClientApp\src\app\logginn\bilder\" />
   </ItemGroup>
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
     <!-- Ensure Node.js is installed -->

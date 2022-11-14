@@ -1,0 +1,22 @@
+﻿
+
+.loggInnContainer {
+    display: flex;
+    width: 100%;
+    height: 100vh; 
+}
+
+.valideringContainer {
+    flex-basis: 40%; 
+
+}
+
+.bildeContainer {
+    flex-basis: 60%; 
+}
+
+.bildeContainer img {
+    width: 100%;
+    height: 100%; 
+}
+
