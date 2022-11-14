@@ -8,3 +8,18 @@ import { Aksje } from "../Aksje";
     templateUrl: "hjem.html"
 })
 
+
+ngOnInit() {
+    this.laster = true;
+    this.hentAlleAksjer();
+}
+
+hentAlleAksjer() {
+    this.http.get<Aksje[]>("api/aksje/")
+        .subscribe(aksjene => {
+            this.alleAksjer = aksjene;
+            this.laster = false;
+        },
+            error => console.log(error)
+        );
+};
