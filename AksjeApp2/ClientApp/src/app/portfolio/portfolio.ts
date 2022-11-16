@@ -9,7 +9,8 @@ import { Portfolio } from "../Portfolio";
     templateUrl: "portfolio.html"
 })
 
-export class Portfolioo {
+/*
+export class Portfolio {
     laster: boolean;
     helePortfolio: Array<Portfolio>;
 
@@ -23,7 +24,7 @@ export class Portfolioo {
 
     //S
     hentPortfolio() {
-        this._http.get<Portfolio[]>("api/portfolio/") //Skjønner ikke hva "api/portfolio betyr"
+        this.http.get<Portfolio[]>("api/portfolio/") //Skjønner ikke hva "api/portfolio betyr"
             .subscribe(portfolioene => {
                 this.helePortfolio = portfolioene;
                 this.laster = false;
@@ -32,6 +33,7 @@ export class Portfolioo {
             );
     };
 }
+*/
 
 
 

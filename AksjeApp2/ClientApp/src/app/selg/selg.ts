@@ -1,7 +1,7 @@
 ﻿import { Component, OnInit } from "@angular/core";
-import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { HttpClient } from "@angular/common/http";
+import { Router } from "@angular/router";
+import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { Portfolio } from "../Portfolio";
 import { Bruker } from "../Bruker";
 /*
@@ -9,6 +9,9 @@ import { Bruker } from "../Bruker";
     templateUrl: "selg.html"
 })
 
+export class 
+
+/*
 ngOnInit() {
     this.laster = true;
     this.hentAlleAksjer();
@@ -16,8 +19,8 @@ ngOnInit() {
 
 bekreftSalg(){
     h
-
 }
+
 HentenPortfolioRad() {
     this.http.get<Portfolio[]>("api/portfolio/" + id)
         .subscribe(portfolioene => {
