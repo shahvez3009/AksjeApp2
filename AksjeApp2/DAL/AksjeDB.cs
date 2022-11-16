@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Reflection;
+using System.Threading.Tasks;
 using AksjeApp1.Controllers;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json.Linq;
@@ -64,6 +65,10 @@ namespace AksjeApp1.Models
             optionsBuilder.UseLazyLoadingProxies();
         }
 
+        internal Task SaveChangesAsync()
+        {
+            throw new NotImplementedException();
+        }
     }
 
 }
