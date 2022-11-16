@@ -48,7 +48,7 @@ namespace AksjeApp2.Controllers
 
         }
 
-        [HttpGet]
+        [HttpGet("{id}")]
         public async Task<ActionResult> HentEnBruker()
         {
             Bruker brukeren = await _db.HentEnBruker();
@@ -58,7 +58,7 @@ namespace AksjeApp2.Controllers
             }
             return Ok(brukeren);
         }
-
+        
         [HttpGet("{id}")]
         public async Task<ActionResult> HentEnAksje(int id)
         {
@@ -88,7 +88,7 @@ namespace AksjeApp2.Controllers
             return Ok(alleAksjer);
         }
 
-        [HttpGet]
+        [HttpGet("{id}")]
         public async Task <ActionResult> HentPortfolio()
         {
             List<PortfolioRad> allePortfolio = await _db.HentPortfolio();
@@ -96,7 +96,7 @@ namespace AksjeApp2.Controllers
         
         }
 
-        [HttpGet]
+        [HttpGet("{id}")]
         public async Task<ActionResult> HentTransaksjoner()
         {
             List <Transaksjon> alleTransaksjoner = await _db.HentTransaksjoner();

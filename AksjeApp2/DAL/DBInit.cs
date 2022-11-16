@@ -6,7 +6,7 @@ namespace AksjeApp2.Models
 {
     public class DBInit
     {
-        public static void Init(IApplicationBuilder app)
+        public static void Seed(IApplicationBuilder app)
         {
             using (var serviceScope = app.ApplicationServices.CreateScope())
             {
