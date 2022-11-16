@@ -4,7 +4,8 @@
   selector: 'app-root',
   templateUrl: './app.component.html'
 })
+
 export class AppComponent {
-  title = 'app';
+  title = 'Aksje App 2';
 }
 
