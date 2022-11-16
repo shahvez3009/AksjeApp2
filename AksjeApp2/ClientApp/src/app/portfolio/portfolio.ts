@@ -4,35 +4,35 @@ import { Router } from '@angular/router';
 import { PortfolioRad } from "../PortfolioRad"; 
 
 @Component({
-    //Selector: Må legge inn hvilken component den skal erstatte
-    templateUrl: "portfolio.html"
+	//Selector: Må legge inn hvilken component den skal erstatte
+	templateUrl: "portfolio.html"
 })
 export class Portfolio {
 
 }
 /*
 export class Portfolio {
-    laster: boolean;
-    helePortfolio: Array<Portfolio>;
+	laster: boolean;
+	helePortfolio: Array<Portfolio>;
 
-    constructor(private _http: HttpClient) { }
+	constructor(private _http: HttpClient) { }
 
-    //Blir kjørt når vi kaller på denne komponenten
-    ngOnInit() {
-        this.laster = true;
-        this.hentPortfolio();
-    }
+	//Blir kjørt når vi kaller på denne komponenten
+	ngOnInit() {
+		this.laster = true;
+		this.hentPortfolio();
+	}
 
-    //S
-    hentPortfolio() {
-        this.http.get<Portfolio[]>("api/portfolio/") //Skjønner ikke hva "api/portfolio betyr"
-            .subscribe(portfolioene => {
-                this.helePortfolio = portfolioene;
-                this.laster = false;
-            },
-                error => console.log(error)
-            );
-    };
+	//S
+	hentPortfolio() {
+		this.http.get<Portfolio[]>("api/portfolio/") //Skjønner ikke hva "api/portfolio betyr"
+			.subscribe(portfolioene => {
+				this.helePortfolio = portfolioene;
+				this.laster = false;
+			},
+				error => console.log(error)
+			);
+	};
 }
 */
 
