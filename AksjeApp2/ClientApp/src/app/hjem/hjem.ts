@@ -26,6 +26,8 @@ hentAlleAksjer() {
         .subscribe(aksjene => {
             this.alleAksjer = aksjene;
             this.laster = false;
+            console.log("Hentet Aksjer");
+            console.log(aksjene);
         },
             error => console.log(error)
         );

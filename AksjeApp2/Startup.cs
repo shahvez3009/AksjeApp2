@@ -43,7 +43,8 @@ namespace AksjeApp2
 			if (env.IsDevelopment())
 			{
 				app.UseDeveloperExceptionPage();
-			}
+                DBInit.Seed(app);
+            }
 			else
 			{
 				app.UseExceptionHandler("/Error");
