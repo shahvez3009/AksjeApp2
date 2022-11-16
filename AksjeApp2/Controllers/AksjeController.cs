@@ -1,18 +1,22 @@
 ﻿using System.Net.Http;
 using System;
-using AksjeApp1.Models;
+using AksjeApp2.Models;
 using System.Threading.Tasks;
-using AksjeApp1.Controllers;
+using AksjeApp2.Controllers;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
-using AksjeApp1.DAL;
+using AksjeApp2.DAL;
 using Microsoft.AspNetCore.Mvc;
 using System.Text;
 
-namespace AksjeApp1.Controllers
+namespace AksjeApp2.Controllers
 {
-    [Route("[controller]/[action]")]
+
+    [ApiController]
+
+    [Route("api/[controller]")]
+
     public class AksjeController : ControllerBase
     {
         private readonly AksjeRepositoryInterface _db;
@@ -33,30 +37,32 @@ namespace AksjeApp1.Controllers
             return await _db.Kjop(id, innPortfolio);
         }
 
-        public async Task<Bruker> HentEnBruker()
+        public async Task<ActionResult> HentEnBruker()
         {
             return await _db.HentEnBruker();
         }
 
-        public async Task<Aksje> HentEnAksje(int id)
+        public async Task<ActionResult> HentEnAksje(int id)
         {
             return await _db.HentEnAksje(id);
         }
         
-        public async Task<Portfolio> HentEtPortfolioRad(int id)
+        public async Task<ActionResult> HentEtPortfolioRad(int id)
         {
             return await _db.HentEtPortfolioRad(id);
         }
-        
 
-        public async Task<List<Aksje>> HentAksjer()
+        [HttpGet]
+        public async Task<ActionResult> HentAksjer()
         {
-            return await _db.HentAksjer();
+            List<Aksje> alleAksjer =  await _db.HentAksjer();
+            return Ok(alleAksjer);
         }
 
-        public async Task<List<Portfolio>> HentPortfolio()
+        public async Task<List<ActionResult> HentPortfolio()
         {
-            return await _db.HentPortfolio();
+            List<Portfolio> allePortfolio = await _db.HentPortfolio();
+        
         }
 
         public async Task<List<Transaksjon>> HentTransaksjoner()

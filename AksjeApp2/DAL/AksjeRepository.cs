@@ -1,5 +1,5 @@
 ﻿using System;
-using AksjeApp1.Models;
+using AksjeApp2.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Linq;
@@ -8,7 +8,7 @@ using System.Reflection;
 using System.Text;
 using System.Reflection.Metadata;
 
-namespace AksjeApp1.DAL
+namespace AksjeApp2.DAL
 {
     public class AksjeRepository : AksjeRepositoryInterface
     {

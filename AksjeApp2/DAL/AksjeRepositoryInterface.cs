@@ -1,10 +1,10 @@
 ﻿using System;
-using AksjeApp1.Models;
+using AksjeApp2.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Text;
 
-namespace AksjeApp1.DAL
+namespace AksjeApp2.DAL
 {
     public interface AksjeRepositoryInterface
     {

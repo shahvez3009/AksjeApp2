@@ -1,5 +1,5 @@
 ﻿using System;
-namespace AksjeApp1.Models
+namespace AksjeApp2.Models
 {
     public class Aksje
     {
