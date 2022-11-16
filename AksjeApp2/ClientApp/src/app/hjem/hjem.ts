@@ -29,7 +29,7 @@ hentAlleAksjer() {
             console.log("Hentet Aksjer");
             console.log(aksjene);
         },
-            error => console.log(error)
+            (error) => console.log(error)
         );
 };
 }
