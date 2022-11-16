@@ -9,6 +9,7 @@ import { Hjem } from './hjem/hjem';
 import { Portfolio } from './portfolio/portfolio';
 import { Kjop } from './kjop/kjop';
 import { Selg } from './selg/selg';
+import { Logginn } from './logginn/logginn'; 
 
 import { AppRoutingModule } from './app-routing.module';
 //import { Modal } from './liste/sletteModal';
@@ -16,6 +17,7 @@ import { AppRoutingModule } from './app-routing.module';
 @NgModule({
     declarations: [
         AppComponent,
+        Logginn, 
         Meny,
         Hjem,
         Portfolio,
