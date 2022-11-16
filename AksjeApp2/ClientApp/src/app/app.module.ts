@@ -4,23 +4,24 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { Hjem } from './hjem/hjem'; //!!
-import { Kjop } from './kjop/kjop'; //!!
-import { Selg } from './selg/selg'; //!!
-
-import { Portfolioo } from './portfolio/portfolio';
+import { Meny } from './meny/meny';
+import { Hjem } from './hjem/hjem';
+import { Portfolio } from './portfolio/portfolio';
+import { Kjop } from './kjop/kjop';
+import { Selg } from './selg/selg';
 
 import { AppRoutingModule } from './app-routing.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { Modal } from './liste/sletteModal';
+//import { Modal } from './liste/sletteModal';
 
 @NgModule({
     declarations: [
         AppComponent,
+        Meny,
         Hjem,
+        Portfolio,
         Kjop,
-        Selg,
-        Portfolio
+        Selg
     ],
     imports: [
         BrowserModule,
@@ -31,6 +32,6 @@ import { Modal } from './liste/sletteModal';
     ],
     providers: [],
     bootstrap: [AppComponent],
-    entryComponents: [Modal] // merk!  
+    //entryComponents: [Modal]
 })
 export class AppModule { }
