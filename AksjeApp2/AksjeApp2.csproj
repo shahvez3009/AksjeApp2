@@ -20,6 +20,7 @@
     <!-- Don't publish the SPA source files, but do show them in the project files list -->
     <Content Remove="$(SpaRoot)**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
+    <None Remove="ClientApp\src\app\portfolio\portfolio.ts" />
     <None Remove="ClientApp\src\app\selg\" />
     <None Remove="ClientApp\src\app\portfolio\" />
     <None Remove="ClientApp\src\app\kjop\" />
@@ -32,6 +33,10 @@
     <Folder Include="ClientApp\src\app\kjop\" />
     <Folder Include="Controllers\" />
     <Folder Include="ClientApp\src\app\logginn\bilder\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app\portfolio\portfolio.ts" />
   </ItemGroup>
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
     <!-- Ensure Node.js is installed -->
