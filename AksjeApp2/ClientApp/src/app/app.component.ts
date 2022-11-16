@@ -8,4 +8,3 @@
 export class AppComponent {
   title = 'Aksje App 2';
 }
-
