@@ -1,23 +1,25 @@
 ﻿<div class="container">
-    <h1>Selg aksje</h1>
+    <h1>Kjøp</h1>
     <table class='table table-striped'>
         <thead>
             <tr>
                 <th>Aksjenavn</th>
                 <th>Aksjepris</th>
-                <th>Antall aksjer</th>
+                <th>Antall ledige aksjer</th>
+                <th>Max antall i markedet</th>
                 <th></th>
                 <th></th>
             </tr>
         </thead>
-        <tbody *ngFor="let aksje of Portfolio">
+        <tbody *ngFor="let aksje of hentAlleAksjer">
             <tr>
                 <td>{{aksje.navn}}</td>
                 <td>{{aksje.pris}}</td>
                 <td>{{aksje.antall}}</td>
+                <td>{{aksje.maxantall}}</td>
                 <td><button data-target="#myModal">Vis graf</button></td>
-                <td><button data-target="#Selg">Selg aksje</button></td>
-            </tr>   
-        </tbody> 
+                <td><button data-target="#Kjop">Kjøp aksje</button></td>
+            </tr>
+        </tbody>
     </table>
 </div>
