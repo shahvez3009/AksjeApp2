@@ -27,7 +27,7 @@ hentAlleAksjer() {
             this.alleAksjer = aksjene;
             this.laster = false;
         },
-            error => console.log(error)
+            (error) => console.log(error)
         );
 };
 }
