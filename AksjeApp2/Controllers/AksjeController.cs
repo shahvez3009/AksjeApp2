@@ -26,30 +26,59 @@ namespace AksjeApp2.Controllers
             _db = db;
         }
 
-        public async Task<bool> Selg(int id, Portfolios innPortfolio)
+        [HttpPost]
+        public async Task<ActionResult> Selg(int id, Portfolios innPortfolio)
         {
-            return await _db.Selg(id,innPortfolio);
+            bool returOk = await _db.Selg(id,innPortfolio);
+            if (!returOk) {
+                return BadRequest();
+            }
+            return Ok();
         }
-       
 
-        public async Task<bool> Kjop(int id, Portfolios innPortfolio)
+        [HttpPost]
+        public async Task<ActionResult> Kjop(int id, Portfolios innPortfolio)
         {
-            return await _db.Kjop(id, innPortfolio);
+            bool returOk = await _db.Kjop(id, innPortfolio);
+            if (!returOk)
+            {
+                return BadRequest();
+            }
+            return Ok();
+
         }
 
+        [HttpGet]
         public async Task<ActionResult> HentEnBruker()
         {
-            return await _db.HentEnBruker();
+            Bruker brukeren = await _db.HentEnBruker();
+            if (brukeren == null)
+            {
+                return NotFound();
+            }
+            return Ok(brukeren);
         }
 
+        [HttpGet("{id}")]
         public async Task<ActionResult> HentEnAksje(int id)
         {
-            return await _db.HentEnAksje(id);
+            Aksje aksjen = await _db.HentEnAksje(id);
+            if (aksjen == null)
+            {     
+                return NotFound();
+            }
+            return Ok(aksjen);
         }
-        
+
+        [HttpGet("{id}")]
         public async Task<ActionResult> HentEtPortfolioRad(int id)
         {
-            return await _db.HentEtPortfolioRad(id);
+            Portfolio portfolioRad = await _db.HentEtPortfolioRad(id);
+            if (portfolioRad == null)
+            {
+                return NotFound();
+            }
+            return Ok(portfolioRad);
         }
 
         [HttpGet]
@@ -59,15 +88,20 @@ namespace AksjeApp2.Controllers
             return Ok(alleAksjer);
         }
 
-        public async Task<List<ActionResult> HentPortfolio()
+        [HttpGet]
+        public async Task <ActionResult> HentPortfolio()
         {
             List<Portfolio> allePortfolio = await _db.HentPortfolio();
+            return Ok(allePortfolio);
         
         }
 
-        public async Task<List<Transaksjon>> HentTransaksjoner()
+        [HttpGet]
+        public async Task<ActionResult> HentTransaksjoner()
         {
-            return await _db.HentTransaksjoner();
+            List <Transaksjon> alleTransaksjoner = await _db.HentTransaksjoner();
+            return Ok(alleTransaksjoner);
         }
+
     }
 }
