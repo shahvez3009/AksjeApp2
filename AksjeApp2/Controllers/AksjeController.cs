@@ -1,9 +1,6 @@
 ﻿using System.Net.Http;
 using System;
 using AksjeApp1.Models;
-using TwelveDataSharp;
-using TwelveDataSharp.Interfaces;
-using TwelveDataSharp.Library.ResponseModels;
 using System.Threading.Tasks;
 using AksjeApp1.Controllers;
 using System.Linq;
