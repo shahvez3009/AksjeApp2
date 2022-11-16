@@ -15,7 +15,7 @@ namespace AksjeApp2.Controllers
 
     [ApiController]
 
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
 
     public class AksjeController : ControllerBase
     {
@@ -88,7 +88,7 @@ namespace AksjeApp2.Controllers
             return Ok(alleAksjer);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet]
         public async Task <ActionResult> HentPortfolio()
         {
             List<PortfolioRad> allePortfolio = await _db.HentPortfolio();
@@ -96,7 +96,7 @@ namespace AksjeApp2.Controllers
         
         }
 
-        [HttpGet("{id}")]
+        [HttpGet]
         public async Task<ActionResult> HentTransaksjoner()
         {
             List <Transaksjon> alleTransaksjoner = await _db.HentTransaksjoner();

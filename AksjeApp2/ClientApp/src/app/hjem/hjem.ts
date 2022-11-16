@@ -22,7 +22,7 @@ ngOnInit() {
 }
 
 hentAlleAksjer() {
-    this.http.get<Aksje[]>("api/aksje/")
+    this.http.get<Aksje[]>("api/aksje/hentaksjer")
         .subscribe(aksjene => {
             this.alleAksjer = aksjene;
             this.laster = false;

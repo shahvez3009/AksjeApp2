@@ -25,6 +25,7 @@ namespace AksjeApp2.Models
                 var google = new Aksjer { Navn = "Google", Pris = 130, AntallLedige = 1000, MaxAntall = 1000 };
                 var netflix = new Aksjer { Navn = "Netflix", Pris = 12, AntallLedige = 1500, MaxAntall = 1500 };
 
+             
 
                 context.Brukere.Add(per);
 

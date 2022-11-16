@@ -7,34 +7,33 @@ import { PortfolioRad } from "../PortfolioRad";
 	//Selector: Må legge inn hvilken component den skal erstatte
 	templateUrl: "portfolio.html"
 })
-export class Portfolio {
 
-}
-/*
+
 export class Portfolio {
 	laster: boolean;
-	helePortfolio: Array<Portfolio>;
+	hentPortfolio: Array<PortfolioRad>;
 
-	constructor(private _http: HttpClient) { }
+	constructor(private http: HttpClient) { }
 
 	//Blir kjørt når vi kaller på denne komponenten
 	ngOnInit() {
 		this.laster = true;
-		this.hentPortfolio();
+		this.hentPortfolio1();
 	}
 
 	//S
-	hentPortfolio() {
-		this.http.get<Portfolio[]>("api/portfolio/") //Skjønner ikke hva "api/portfolio betyr"
+	hentPortfolio1() {
+		this.http.get<PortfolioRad[]>("api/portfolio/hentportfolio") 
 			.subscribe(portfolioene => {
-				this.helePortfolio = portfolioene;
+				console.log("Inne i portfolio")
+				this.hentPortfolio1 = portfolioene;
 				this.laster = false;
 			},
 				error => console.log(error)
 			);
 	};
 }
-*/
+
 
 
 
