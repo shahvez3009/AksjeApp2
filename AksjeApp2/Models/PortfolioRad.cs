@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace AksjeApp2.Models
 {
-    public class Portfolio
+    public class PortfolioRad
     {
         public int Id { get; set; }
         public int Antall { get; set; }

@@ -27,7 +27,7 @@ namespace AksjeApp2.Models
         public int Mobilnummer { get; set; }
     }
 
-    public class Portfolios
+    public class PortfolioRader
     {
         public int Id { get; set; }
         public int Antall { get; set; }
@@ -57,7 +57,7 @@ namespace AksjeApp2.Models
 
         public DbSet<Aksjer> Aksjer { get; set; }
         public DbSet<Brukere> Brukere { get; set; }
-        public DbSet<Portfolios> Portfolios { get; set; }
+        public DbSet<PortfolioRader> PortfolioRader { get; set; }
         public DbSet<Transaksjoner> Transaksjoner { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

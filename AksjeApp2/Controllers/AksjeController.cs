@@ -27,9 +27,9 @@ namespace AksjeApp2.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Selg(int id, Portfolios innPortfolio)
+        public async Task<ActionResult> Selg(int id, PortfolioRader innPortfolio)
         {
-            bool returOk = await _db.Selg(id,innPortfolio);
+            bool returOk = await _db.Selg(id, innPortfolio);
             if (!returOk) {
                 return BadRequest();
             }
@@ -37,7 +37,7 @@ namespace AksjeApp2.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Kjop(int id, Portfolios innPortfolio)
+        public async Task<ActionResult> Kjop(int id, PortfolioRader innPortfolio)
         {
             bool returOk = await _db.Kjop(id, innPortfolio);
             if (!returOk)
@@ -73,7 +73,7 @@ namespace AksjeApp2.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult> HentEtPortfolioRad(int id)
         {
-            Portfolio portfolioRad = await _db.HentEtPortfolioRad(id);
+            PortfolioRad portfolioRad = await _db.HentEtPortfolioRad(id);
             if (portfolioRad == null)
             {
                 return NotFound();
@@ -91,7 +91,7 @@ namespace AksjeApp2.Controllers
         [HttpGet]
         public async Task <ActionResult> HentPortfolio()
         {
-            List<Portfolio> allePortfolio = await _db.HentPortfolio();
+            List<PortfolioRad> allePortfolio = await _db.HentPortfolio();
             return Ok(allePortfolio);
         
         }

@@ -20,7 +20,7 @@ namespace AksjeApp2.DAL
         }
 
         // denne funksjonen calles på av kjøp og selg funksjonene
-        public async Task<bool> lagTransaksjon(string status, int id, Portfolios portfolio, int antall)
+        public async Task<bool> lagTransaksjon(string status, int id, PortfolioRader portfolio, int antall)
         {
             try
             {
@@ -42,11 +42,11 @@ namespace AksjeApp2.DAL
         }
 
         // Denne funksjonen vil kjøres når brukeren selger aksjer fra portføljen
-        public async Task<bool> Selg(int id, Portfolios innPortfolio)
+        public async Task<bool> Selg(int id, PortfolioRader innPortfolio)
         {
             try
             {
-                Portfolios[] etPortfolioRad = _db.Portfolios.Where(p => p.Aksje.Id == id).ToArray();
+                PortfolioRader[] etPortfolioRad = _db.PortfolioRader.Where(p => p.Aksje.Id == id).ToArray();
 
                 // Sjekker om antallet brukeren prøver å selge er mindre enn det brukeren eier. Hvis dette er sann vil den utføre transaksjonen
                 if (etPortfolioRad[0].Antall > innPortfolio.Antall && innPortfolio.Antall != 0)
@@ -80,27 +80,27 @@ namespace AksjeApp2.DAL
 
 
 
-        public async Task<bool> Kjop(int id, Portfolios innPortfolio)
+        public async Task<bool> Kjop(int id, PortfolioRader innPortfolio)
         {
             try
             {
-                Portfolios[] portfolioss = _db.Portfolios.Where(p => p.Aksje.Id == id && p.Bruker.Id == 1).ToArray();
+                PortfolioRader[] etPortfolioRad = _db.PortfolioRader.Where(p => p.Aksje.Id == id && p.Bruker.Id == 1).ToArray();
                 Brukere enBruker = await _db.Brukere.FindAsync(1);
                 Aksjer enAksje = await _db.Aksjer.FindAsync(id);
                 if (enBruker.Saldo >= enAksje.Pris * innPortfolio.Antall && enAksje.AntallLedige >= innPortfolio.Antall && innPortfolio.Antall >= 1)
                 {
-                    if (portfolioss.Length == 1)
+                    if (etPortfolioRad.Length == 1)
                     {
-                        portfolioss[0].Antall += innPortfolio.Antall;
-                        await lagTransaksjon("Kjøp", id, portfolioss[0], innPortfolio.Antall);
+                        etPortfolioRad[0].Antall += innPortfolio.Antall;
+                        await lagTransaksjon("Kjøp", id, etPortfolioRad[0], innPortfolio.Antall);
                     }
                     else
                     {
-                        var nyPortfolio = new Portfolios();
+                        var nyPortfolio = new PortfolioRader();
                         nyPortfolio.Antall = innPortfolio.Antall;
                         nyPortfolio.Aksje = enAksje;
                         nyPortfolio.Bruker = enBruker;
-                        _db.Portfolios.Add(nyPortfolio);
+                        _db.PortfolioRader.Add(nyPortfolio);
                         await lagTransaksjon("Kjøp", id, nyPortfolio, innPortfolio.Antall);
                     }
                     enBruker.Saldo -= enAksje.Pris * innPortfolio.Antall;
@@ -146,14 +146,14 @@ namespace AksjeApp2.DAL
             return hentetAksje;
         }
 
-        public async Task<Portfolio> HentEtPortfolioRad(int id)
+        public async Task<PortfolioRad> HentEtPortfolioRad(int id)
         {
             try
             {
-                Portfolios etPortfolioRad = _db.Portfolios.First(p => p.Aksje.Id == id);
+                PortfolioRader etPortfolioRad = _db.PortfolioRader.First(p => p.Aksje.Id == id);
                 Brukere enBruker = await _db.Brukere.FindAsync(1);
                 Aksjer enAksje = await _db.Aksjer.FindAsync(id);
-                var hentetPortfolioRad = new Portfolio()
+                var hentetPortfolioRad = new PortfolioRad()
                 {
                     Id = etPortfolioRad.Id,
                     Antall = etPortfolioRad.Antall,
@@ -169,7 +169,7 @@ namespace AksjeApp2.DAL
                 Brukere enBruker = await _db.Brukere.FindAsync(1);
                 Aksjer enAksje = await _db.Aksjer.FindAsync(id);
 
-                var nyPortfolioRad = new Portfolio()
+                var nyPortfolioRad = new PortfolioRad()
                 {
                     Id = 999999,
                     Antall = 0,
@@ -202,11 +202,11 @@ namespace AksjeApp2.DAL
             }
         }
 
-        public async Task<List<Portfolio>> HentPortfolio()
+        public async Task<List<PortfolioRad>> HentPortfolio()
         {
             try
             {
-                List<Portfolio> helePortfolio = await _db.Portfolios.Select(p => new Portfolio
+                List<PortfolioRad> helePortfolio = await _db.PortfolioRader.Select(p => new PortfolioRad
                 {
                     Id = p.Id,
                     Antall = p.Antall,
