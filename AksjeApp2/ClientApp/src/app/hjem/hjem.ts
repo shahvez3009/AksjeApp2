@@ -8,6 +8,15 @@ import { Aksje } from "../Aksje";
     templateUrl: "hjem.html"
 })
 
+export class Hjem {
+    alleAksjer: Array<Aksje>;
+    laster: boolean;
+
+    constructor(
+        private http: HttpClient,
+        private router: Router,
+        private modalService: NgbModal
+    ) { }
 
 ngOnInit() {
     this.laster = true;
@@ -15,7 +24,7 @@ ngOnInit() {
 }
 
 hentAlleAksjer() {
-    this.http.get<Aksje[]>("api/aksje/")
+    this.http.get<Aksje[]>("api/HentAksjer/")
         .subscribe(aksjene => {
             this.alleAksjer = aksjene;
             this.laster = false;
@@ -23,3 +32,4 @@ hentAlleAksjer() {
             error => console.log(error)
         );
 };
+}
