@@ -1,4 +1,4 @@
-﻿export class Portfolio {
+﻿export class PortfolioRad {
     id: number;
     antall: number;
     aksjeid: number;

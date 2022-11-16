@@ -1,7 +1,6 @@
 ﻿import { Component, OnInit } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Aksje } from "../Aksje";
 
 @Component({
@@ -14,8 +13,7 @@ export class Hjem {
 
     constructor(
         private http: HttpClient,
-        private router: Router,
-        private modalService: NgbModal
+        private router: Router
     ) { }
 
 ngOnInit() {

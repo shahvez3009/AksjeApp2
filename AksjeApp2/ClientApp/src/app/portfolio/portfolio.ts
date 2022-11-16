@@ -1,14 +1,15 @@
 ﻿import { Component, OnInit } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { Portfolio } from "../Portfolio"; 
+import { PortfolioRad } from "../PortfolioRad"; 
 
 @Component({
     //Selector: Må legge inn hvilken component den skal erstatte
     templateUrl: "portfolio.html"
 })
+export class Portfolio {
 
+}
 /*
 export class Portfolio {
     laster: boolean;

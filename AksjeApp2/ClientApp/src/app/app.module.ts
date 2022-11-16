@@ -11,7 +11,6 @@ import { Kjop } from './kjop/kjop';
 import { Selg } from './selg/selg';
 
 import { AppRoutingModule } from './app-routing.module';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 //import { Modal } from './liste/sletteModal';
 
 @NgModule({
@@ -27,8 +26,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
         BrowserModule,
         ReactiveFormsModule,
         HttpClientModule,
-        AppRoutingModule,
-        NgbModule
+        AppRoutingModule
     ],
     providers: [],
     bootstrap: [AppComponent]

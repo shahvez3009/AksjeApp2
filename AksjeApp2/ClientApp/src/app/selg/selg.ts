@@ -1,15 +1,16 @@
 ﻿import { Component, OnInit } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { Portfolio } from "../Portfolio";
+import { PortfolioRad } from "../PortfolioRad";
 import { Bruker } from "../Bruker";
 
 @Component({
     templateUrl: "selg.html"
 })
 
-export class 
+export class Selg {
+
+}
 
 /*
 ngOnInit() {
