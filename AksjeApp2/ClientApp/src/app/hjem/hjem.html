@@ -1,29 +1,29 @@
 ﻿<div class="container">
-    <div>
-        <div>
-    <div *ngIf="laster">Laster aksjer.....</div>
-    <table class='table table-striped'>
-        <thead>
-            <tr>
-                <th>Aksje</th>
-                <th>Pris</th>
-                <th>Antall Aksjer</th>
-                <th>Ledige Aksjer</th>
-                <th></th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody *ngFor="let aksje of alleAksjer">
-            <tr>
-                <td>{{aksje.navn}}</td>
-                <td>{{aksje.pris}}</td>
-                <td>{{aksje.maxAntall}}</td>
-                <td>{{aksje.antalLedige}}</td>
-                <td><button class="btn btn-danger" (click)="visGraf(aksje.id)">Vis Graf</button></td>
-                <td><button class="btn btn-success" [routerLink]="['/kjop',aksje.id]">Kjop</button></td>
-            </tr>
-        </tbody>
-        </table>
-        </div>
-    </div>
+	<div>
+		<div>
+	<div *ngIf="laster">Laster Aksjer...</div>
+	<table class='table table-striped'>
+		<thead>
+			<tr>
+				<th>Aksje</th>
+				<th>Pris</th>
+				<th>Antall Aksjer</th>
+				<th>Ledige Aksjer</th>
+				<th></th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody *ngFor="let aksje of alleAksjer">
+			<tr>
+				<td>{{aksje.navn}}</td>
+				<td>{{aksje.pris}}</td>
+				<td>{{aksje.maxAntall}}</td>
+				<td>{{aksje.antalLedige}}</td>
+				<td><button class="btn btn-danger" (click)="visGraf(aksje.id)">Vis Graf</button></td>
+				<td><button class="btn btn-success" [routerLink]="['/kjop',aksje.id]">Kjop</button></td>
+			</tr>
+		</tbody>
+		</table>
+		</div>
+	</div>
 </div>

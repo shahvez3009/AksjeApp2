@@ -23,13 +23,13 @@ export class Portfolio {
 	}
 
 	hentPortfolio() {
-		this.http.get<PortfolioRad[]>("api/portfolio/hentportfolio") 
-			.subscribe(portfolioene => {
-				this.helePortfolio = portfolioene;
+		this.http.get<PortfolioRad[]>("api/aksje/hentportfolio") 
+			.subscribe(portfolioRadene => {
+				this.helePortfolio = portfolioRadene;
 				this.laster = false;
 				console.log("Hentet portfolio")
 			},
-			error => console.log(error)
+			(error) => console.log(error)
 		);
 	};
 }
