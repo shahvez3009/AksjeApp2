@@ -13,8 +13,6 @@ import { PortfolioRad } from "../PortfolioRad";
 export class Portfolio {
 	laster: boolean;
 	helePortfolio: Array<PortfolioRad>;
-	testbrukerId: number;
-	testportfolioId: number;
 
 	constructor(
 		private http: HttpClient,

@@ -11,7 +11,7 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 export class SelgModal {
 	constructor(public modal: NgbActiveModal) { }
 	ngOnInit() {
-		console.log(this.brukerId);
+		
 	}
 }
 
