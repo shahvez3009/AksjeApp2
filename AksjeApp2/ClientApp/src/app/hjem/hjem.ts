@@ -1,7 +1,8 @@
 ﻿import { Component, OnInit } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { Aksje } from "../Aksje";
+import { KjopModal } from './kjopModal/kjopModal';
+import { Aksje } from '../Aksje';
 
 @Component({
     templateUrl: "hjem.html"

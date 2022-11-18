@@ -7,9 +7,9 @@ import { AppComponent } from './app.component';
 import { Meny } from './meny/meny';
 import { Hjem } from './hjem/hjem';
 import { Portfolio } from './portfolio/portfolio';
-import { Kjop } from './kjop/kjop';
+import { KjopModal } from './kjopModal/kjopModal';
 import { Selg } from './selg/selg';
-import { Logginn } from './logginn/logginn'; 
+import { Logginn } from './logginn/logginn';
 
 import { AppRoutingModule } from './app-routing.module';
 //import { Modal } from './liste/sletteModal';
@@ -21,7 +21,7 @@ import { AppRoutingModule } from './app-routing.module';
         Meny,
         Hjem,
         Portfolio,
-        Kjop,
+        KjopModal,
         Selg
     ],
     imports: [
@@ -31,7 +31,7 @@ import { AppRoutingModule } from './app-routing.module';
         AppRoutingModule
     ],
     providers: [],
-    bootstrap: [AppComponent]
-    //entryComponents: [Modal]
+    bootstrap: [AppComponent],
+    entryComponents: [KjopModal]
 })
 export class AppModule { }

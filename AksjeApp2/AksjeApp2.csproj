@@ -27,7 +27,6 @@
     <None Remove="ClientApp\src\app\portfolio\portfolio.ts" />
     <None Remove="ClientApp\src\app\selg\" />
     <None Remove="ClientApp\src\app\portfolio\" />
-    <None Remove="ClientApp\src\app\kjop\" />
     <None Remove="Controllers\" />
     <None Remove="Microsoft.EntityFrameworkCore" />
     <None Remove="Microsoft.EntityFrameworkCore.Proxies" />
@@ -38,7 +37,6 @@
 
   <ItemGroup>
     <Folder Include="ClientApp\src\app\selg\" />
-    <Folder Include="ClientApp\src\app\kjop\" />
     <Folder Include="Controllers\" />
     <Folder Include="ClientApp\src\app\logginn\bilder\" />
   </ItemGroup>
