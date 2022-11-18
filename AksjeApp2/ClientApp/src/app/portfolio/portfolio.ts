@@ -18,7 +18,7 @@ export class Portfolio {
 		private router: Router
 	){}
 
-	//Blir kjørt når vi kaller på denne komponenten
+	//Blir kjørt når vi kaller på denne komponenten  
 	ngOnInit() {
 		this.laster = true;
 		this.hentPortfolio();
