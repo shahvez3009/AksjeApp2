@@ -14,11 +14,16 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.5" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="3.1.5" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.4" />
+    <PackageReference Include="Moq.EntityFrameworkCore" Version="3.1.2.1" />
   </ItemGroup>
 
   <ItemGroup>
     <None Remove="Microsoft.EntityFrameworkCore" />
     <None Remove="Microsoft.EntityFrameworkCore.Proxies" />
     <None Remove="Microsoft.EntityFrameworkCore.Sqlite" />
+    <None Remove="Moq.EntityFrameworkCore" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AksjeApp2\AksjeApp2.csproj" />
   </ItemGroup>
 </Project>
