@@ -7,12 +7,14 @@ import { PortfolioRad } from "../PortfolioRad";
 	templateUrl: "portfolio.html"
 })
 
-
 export class Portfolio {
 	laster: boolean;
-	hentPortfolio: Array<PortfolioRad>;
+	helePortfolio: Array<PortfolioRad>;
 
-	constructor(private http: HttpClient) { }
+	constructor(
+		private http: HttpClient,
+		private router: Router
+	){}
 
 	//Blir kjørt når vi kaller på denne komponenten
 	ngOnInit() {
@@ -20,16 +22,15 @@ export class Portfolio {
 		this.hentPortfolio();
 	}
 
-	//S
 	hentPortfolio() {
 		this.http.get<PortfolioRad[]>("api/portfolio/hentportfolio") 
 			.subscribe(portfolioene => {
-				console.log("Inne i portfolio")
-				this.hentPortfolio = portfolioene;
+				this.helePortfolio = portfolioene;
 				this.laster = false;
+				console.log("Hentet portfolio")
 			},
-				error => console.log(error)
-			);
+			error => console.log(error)
+		);
 	};
 }
 

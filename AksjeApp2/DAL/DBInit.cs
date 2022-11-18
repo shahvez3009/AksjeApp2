@@ -25,15 +25,19 @@ namespace AksjeApp2.Models
                 var google = new Aksjer { Navn = "Google", Pris = 130, AntallLedige = 1000, MaxAntall = 1000 };
                 var netflix = new Aksjer { Navn = "Netflix", Pris = 12, AntallLedige = 1500, MaxAntall = 1500 };
 
-             
+				//PortfolioRad
+				var rad1 = new PortfolioRader { Antall = 10, Bruker = per, Aksje = microsoft };
 
-                context.Brukere.Add(per);
+                
+				context.Brukere.Add(per);
 
                 context.Aksjer.Add(microsoft);
                 context.Aksjer.Add(apple);
                 context.Aksjer.Add(blizzard);
                 context.Aksjer.Add(google);
                 context.Aksjer.Add(netflix);
+
+                context.PortfolioRader.Add(rad1);
 
                 context.SaveChanges();
             }
