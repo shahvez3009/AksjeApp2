@@ -3,5 +3,5 @@
     navn: string;
     pris: number;
     maxantall: number;
-    antallledige: number;
+    antallLedige: number;
 }

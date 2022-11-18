@@ -38,11 +38,11 @@ export class Portfolio {
 	};
 
 	
-	visKjopModal(brukerId: number, portfolioId: number) {
+	visKjopModal(brukerId: number, aksjeId: number) {
 		const modalRef = this.modalService.open(KjopModal);
 
 		modalRef.componentInstance.brukerId = brukerId;
-		modalRef.componentInstance.portfolioId = portfolioId;
+		modalRef.componentInstance.aksjeId = aksjeId;
 	}
 	
 	visSelgModal(brukerId: number, portfolioId: number) {
