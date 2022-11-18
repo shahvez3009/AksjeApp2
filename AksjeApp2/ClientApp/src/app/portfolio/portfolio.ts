@@ -2,6 +2,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { KjopModal } from '../kjopModal/kjopModal';
+import { SelgModal } from '../selgModal/selgModal';
 import { PortfolioRad } from "../PortfolioRad"; 
 
 @Component({

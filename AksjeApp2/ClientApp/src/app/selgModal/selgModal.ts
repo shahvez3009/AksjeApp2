@@ -5,9 +5,10 @@ import { PortfolioRad } from "../PortfolioRad";
 import { Bruker } from "../Bruker";
 
 @Component({
-    templateUrl: "kjopModal.html"
+	templateUrl: "selgModal.html"
 })
 
-export class KjopModal {
+export class SelgModal {
 
-} 
+}
+

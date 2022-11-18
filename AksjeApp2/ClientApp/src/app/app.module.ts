@@ -8,7 +8,7 @@ import { Meny } from './meny/meny';
 import { Hjem } from './hjem/hjem';
 import { Portfolio } from './portfolio/portfolio';
 import { KjopModal } from './kjopModal/kjopModal';
-import { Selg } from './selg/selg';
+import { SelgModal } from './selgModal/selgModal';
 import { Logginn } from './logginn/logginn';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -22,7 +22,7 @@ import { AppRoutingModule } from './app-routing.module';
         Hjem,
         Portfolio,
         KjopModal,
-        Selg
+        SelgModal
     ],
     imports: [
         BrowserModule,
@@ -32,6 +32,6 @@ import { AppRoutingModule } from './app-routing.module';
     ],
     providers: [],
     bootstrap: [AppComponent],
-    entryComponents: [KjopModal]
+    entryComponents: [KjopModal, SelgModal]
 })
 export class AppModule { }

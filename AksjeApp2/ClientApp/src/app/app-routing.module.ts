@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { Hjem } from './hjem/hjem';
 import { Portfolio } from './portfolio/portfolio';
 import { KjopModal } from './kjopModal/kjopModal';
-import { Selg } from './selg/selg';
+import { SelgModal } from './selgModal/selgModal';
 import { Logginn } from './logginn/logginn';
 
 const appRoots: Routes = [
@@ -12,7 +12,7 @@ const appRoots: Routes = [
     { path: 'portfolio', component: Portfolio },
     { path: 'logginn', component: Logginn }, 
     { path: 'kjop', component: KjopModal },
-    { path: 'selg', component: Selg },
+    { path: 'selg', component: SelgModal },
     { path: '', redirectTo: 'hjem', pathMatch: 'full' }
 ]
 

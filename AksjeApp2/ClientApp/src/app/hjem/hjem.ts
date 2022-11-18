@@ -33,4 +33,5 @@ export class Hjem {
             (error) => console.log(error)
         );
     }
+
 }
