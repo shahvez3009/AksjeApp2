@@ -1,7 +1,7 @@
 ﻿import { Component, OnInit } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
+import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { KjopModal } from '../kjopModal/kjopModal';
 import { SelgModal } from '../selgModal/selgModal';
 import { PortfolioRad } from "../PortfolioRad"; 
@@ -18,7 +18,7 @@ export class Portfolio {
 	constructor(
 		private http: HttpClient,
 		private router: Router,
-		private modalService: NgbModule
+		private modalService: NgbModal
 	){}
 
 	//Blir kjørt når vi kaller på denne komponenten  
