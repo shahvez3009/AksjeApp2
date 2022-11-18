@@ -27,9 +27,9 @@ namespace AksjeApp2.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Selg(int id, PortfolioRader innPortfolio)
+        public async Task<ActionResult> Selg(int aksjeId, PortfolioRader innPortfolio)
         {
-            bool returOk = await _db.Selg(id, innPortfolio);
+            bool returOk = await _db.Selg(aksjeId, innPortfolio);
             if (!returOk) {
                 return BadRequest();
             }
@@ -37,18 +37,17 @@ namespace AksjeApp2.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Kjop(int id, PortfolioRader innPortfolio)
+        public async Task<ActionResult> Kjop(int aksjeId, PortfolioRader innPortfolio)
         {
-            bool returOk = await _db.Kjop(id, innPortfolio);
+            bool returOk = await _db.Kjop(aksjeId, innPortfolio);
             if (!returOk)
             {
                 return BadRequest();
             }
             return Ok();
-
         }
 
-        [HttpGet("{id}")]
+		[HttpGet("{aksjeId}")]
         public async Task<ActionResult> HentEnBruker()
         {
             Bruker brukeren = await _db.HentEnBruker();
@@ -59,10 +58,10 @@ namespace AksjeApp2.Controllers
             return Ok(brukeren);
         }
         
-        [HttpGet("{id}")]
-        public async Task<ActionResult> HentEnAksje(int id)
+        [HttpGet("{aksjeId}")]
+        public async Task<ActionResult> HentEnAksje(int aksjeId)
         {
-            Aksje aksjen = await _db.HentEnAksje(id);
+            Aksje aksjen = await _db.HentEnAksje(aksjeId);
             if (aksjen == null)
             {     
                 return NotFound();
@@ -70,10 +69,10 @@ namespace AksjeApp2.Controllers
             return Ok(aksjen);
         }
 
-        [HttpGet("{id}")]
-        public async Task<ActionResult> HentEtPortfolioRad(int id)
+        [HttpGet("{aksjeId}")]
+        public async Task<ActionResult> HentEtPortfolioRad(int aksjeId)
         {
-            PortfolioRad portfolioRad = await _db.HentEtPortfolioRad(id);
+            PortfolioRad portfolioRad = await _db.HentEtPortfolioRad(aksjeId);
             if (portfolioRad == null)
             {
                 return NotFound();
