@@ -1,6 +1,7 @@
 ﻿import { Component, OnInit } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { KjopModal } from '../kjopModal/kjopModal';
 import { SelgModal } from '../selgModal/selgModal';
 import { PortfolioRad } from "../PortfolioRad"; 
@@ -12,10 +13,12 @@ import { PortfolioRad } from "../PortfolioRad";
 export class Portfolio {
 	laster: boolean;
 	helePortfolio: Array<PortfolioRad>;
+	modalVerdier: Array<>;
 
 	constructor(
 		private http: HttpClient,
-		private router: Router
+		private router: Router,
+		private modalService: NgbModal
 	){}
 
 	//Blir kjørt når vi kaller på denne komponenten  
@@ -34,6 +37,20 @@ export class Portfolio {
 			(error) => console.log(error)
 		);
 	};
+
+	/*
+	visKjopModal(brukerId: number, portfolioId: number) {
+		const modalRef = this.modalService.open(KjopModal);
+
+		modalVerdier = [brukerId, portfolioId];
+		modalRef.componentInstance.brukerId = this.modalVerdier[0];
+		modalRef.componentInstance.portfolioId = this.modalVerdier[1];
+	}
+	*/
+
+	visKjopModal() {
+		const modalRef = this.modalService.open(KjopModal);
+	}
 }
 
 
