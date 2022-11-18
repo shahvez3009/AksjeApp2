@@ -3,7 +3,7 @@
 	<div>
 		<div class="col-md-12">
 			<div *ngIf="laster">Laster portfolio...</div>
-			<table class="table table-bordered table-condensed">
+			<table class="table table-striped">
 				<thead>
 					<tr>
 						<th>Aksje</th>
@@ -20,7 +20,7 @@
 						<td>{{portfolioRad.aksjePris}}</td>
 						<td>{{portfolioRad.antall}}</td>
 						<td>{{portfolioRad.aksjePris}}</td>
-						<td><button class="btn btn-success">Kjøp Mer</button></td>
+						<td><button class="btn btn-success" (click)="visKjopModal()">Kjøp Mer</button></td>
 						<td><button class="btn btn-danger">Selg</button></td>
 					</tr>
 				</tbody>
