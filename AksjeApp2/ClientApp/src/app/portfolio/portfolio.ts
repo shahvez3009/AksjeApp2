@@ -1,7 +1,7 @@
 ﻿import { Component, OnInit } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { KjopModal } from '../kjopModal/kjopModal';
 import { SelgModal } from '../selgModal/selgModal';
 import { PortfolioRad } from "../PortfolioRad"; 
@@ -13,12 +13,12 @@ import { PortfolioRad } from "../PortfolioRad";
 export class Portfolio {
 	laster: boolean;
 	helePortfolio: Array<PortfolioRad>;
-	modalVerdier: Array<>;
+	//modalVerdier: Array<>;
 
 	constructor(
 		private http: HttpClient,
 		private router: Router,
-		private modalService: NgbModal
+		private modalService: NgbModule
 	){}
 
 	//Blir kjørt når vi kaller på denne komponenten  
