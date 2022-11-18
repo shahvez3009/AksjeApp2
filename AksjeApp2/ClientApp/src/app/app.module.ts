@@ -7,12 +7,11 @@ import { AppComponent } from './app.component';
 import { Meny } from './meny/meny';
 import { Hjem } from './hjem/hjem';
 import { Portfolio } from './portfolio/portfolio';
+import { Logginn } from './logginn/logginn';
 import { KjopModal } from './kjopModal/kjopModal';
 import { SelgModal } from './selgModal/selgModal';
-import { Logginn } from './logginn/logginn';
 
 import { AppRoutingModule } from './app-routing.module';
-//import { Modal } from './liste/sletteModal';
 
 @NgModule({
     declarations: [

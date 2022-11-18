@@ -1,23 +1,11 @@
-﻿<div class="container">
-    <h1>Selg aksje</h1>
-    <table class='table table-striped'>
-        <thead>
-            <tr>
-                <th>Aksjenavn</th>
-                <th>Aksjepris</th>
-                <th>Antall aksjer</th>
-                <th></th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody *ngFor="let aksje of Portfolio">
-            <tr>
-                <td>{{aksje.navn}}</td>
-                <td>{{aksje.pris}}</td>
-                <td>{{aksje.antall}}</td>
-                <td><button data-target="#myModal">Vis graf</button></td>
-                <td><button data-target="#Selg">Selg aksje</button></td>
-            </tr>   
-        </tbody> 
-    </table>
+﻿<div class="modal-content">
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Selg Aksje</h4>
+    </div>
+    <div class="modal-body">
+    </div>
+    <div class="modal-footer">
+        <!-- den første knappen vil bli "default" dvs. kjøres når "enter" trykkes -->
+        <button type="button" class="btn btn-default" (click)="modal.close('Lukk')">Lukk</button>
+    </div>
 </div>
