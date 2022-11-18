@@ -46,7 +46,7 @@ export class Portfolio {
 	}
 	
 	visSelgModal(brukerId: number, portfolioId: number) {
-		const modalRef = this.modalService.open(KjopModal);
+		const modalRef = this.modalService.open(SelgModal);
 
 		modalRef.componentInstance.brukerId = brukerId;
 		modalRef.componentInstance.portfolioId = portfolioId;

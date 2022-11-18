@@ -1,13 +1,39 @@
-﻿<div class="modal-content">
-    <div class="modal-header">
-        <h4 class="modal-title" id="modal-basic-title">Kjøp Aksje</h4>
+﻿<section class="right-bar">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col text-center">
+                <!--Denne skal være tom-->
+            </div>
+            <div class="col-7 text-center">
+                <h1>SELG AKSJER</h1>
+            </div>
+            <div class="col">
+                <p class="text-right innloggetBruker"></p>
+                <p class="text-right" id="brukerSaldo"></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col text-center">
+                <h2>AKSJEINFO</h2>
+                <ul class="list-group list-group-flush form">
+                    <li class="list-group-item form-item" id="aksjeNavn">{{navn}}</li>
+                    <li class="list-group-item form-item" id="aksjePris">{{pris}}</li>
+                    <li class="list-group-item form-item" id="portfolioAntall">{{antall}}</li>
+                </ul>
+            </div>
+            <div class="col">
+                <div class="form-group bekreft">
+                    <p><b> Velg antall aksjer:</b></p>
+                    <input type="number" id="antallAksjer" placeholder="Må være et helt tall" />
+                    <p id="sumForKjop">Total sum for kjøp:</p>
+                    <input type="button" id="reg" value="Bekreft" class="btn btn-primary" />
+                    <div id="feil" style="color: red"></div>
+                    <div class="selg_bekreft_tekst"></div>
+                    <div id="bekreft_ordre">
+                        <a id="link_bekreft_ordre">Se porteføljen din</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="modal-body">
-        {{brukerId}}
-        {{portfolioId}}
-    </div>
-    <div class="modal-footer">
-        <!-- den første knappen vil bli "default" dvs. kjøres når "enter" trykkes -->
-        <button type="button" class="btn btn-default" (click)="modal.close()">Lukk</button>
-    </div>
-</div>
+</section>

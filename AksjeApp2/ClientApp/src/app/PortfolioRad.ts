@@ -2,7 +2,7 @@
     id: number;
     antall: number;
     aksjeid: number;
-    aksjenavn: string;
-    aksjepris: number;
+    aksjeNavn: string;
+    aksjePris: number;
     brukerid: number;
 }
