@@ -13,7 +13,8 @@ import { PortfolioRad } from "../PortfolioRad";
 export class Portfolio {
 	laster: boolean;
 	helePortfolio: Array<PortfolioRad>;
-	//modalVerdier: Array<>;
+	testbrukerId: number;
+	testportfolioId: number;
 
 	constructor(
 		private http: HttpClient,
@@ -38,19 +39,19 @@ export class Portfolio {
 		);
 	};
 
-	/*
+	
 	visKjopModal(brukerId: number, portfolioId: number) {
 		const modalRef = this.modalService.open(KjopModal);
 
-		modalVerdier = [brukerId, portfolioId];
-		modalRef.componentInstance.brukerId = this.modalVerdier[0];
-		modalRef.componentInstance.portfolioId = this.modalVerdier[1];
+		modalRef.componentInstance.brukerId = brukerId;
+		modalRef.componentInstance.portfolioId = portfolioId;
 	}
-	*/
-
+	
+	/*
 	visKjopModal() {
 		const modalRef = this.modalService.open(KjopModal);
 	}
+	*/
 }
 
 

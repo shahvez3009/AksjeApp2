@@ -3,9 +3,11 @@
         <h4 class="modal-title" id="modal-basic-title">Kjøp Aksje</h4>
     </div>
     <div class="modal-body">
+        {{brukerId}}
+        {{portfolioId}}
     </div>
     <div class="modal-footer">
         <!-- den første knappen vil bli "default" dvs. kjøres når "enter" trykkes -->
-        <button type="button" class="btn btn-default" (click)="modal.close('Lukk')">Lukk</button>
+        <button type="button" class="btn btn-default" (click)="modal.close()">Lukk</button>
     </div>
 </div>

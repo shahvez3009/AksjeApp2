@@ -8,4 +8,9 @@ import { HttpClient } from '@angular/common/http';
 
 export class KjopModal {
     constructor(public modal: NgbActiveModal) { }
-} 
+
+    ngOnInit() {
+        
+    }
+}
+
