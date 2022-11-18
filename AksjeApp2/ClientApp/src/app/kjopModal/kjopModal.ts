@@ -10,7 +10,7 @@ export class KjopModal {
     constructor(public modal: NgbActiveModal) { }
 
     ngOnInit() {
-        
+        console.log(this.brukerId);
     }
 }
 

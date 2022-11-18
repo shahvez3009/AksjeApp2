@@ -47,11 +47,12 @@ export class Portfolio {
 		modalRef.componentInstance.portfolioId = portfolioId;
 	}
 	
-	/*
-	visKjopModal() {
+	visSelgModal(brukerId: number, portfolioId: number) {
 		const modalRef = this.modalService.open(KjopModal);
+
+		modalRef.componentInstance.brukerId = brukerId;
+		modalRef.componentInstance.portfolioId = portfolioId;
 	}
-	*/
 }
 
 
