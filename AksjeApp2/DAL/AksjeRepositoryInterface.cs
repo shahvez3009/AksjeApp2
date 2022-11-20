@@ -8,12 +8,12 @@ namespace AksjeApp2.DAL
 {
     public interface AksjeRepositoryInterface
     {
-        Task<bool> Selg(int id, PortfolioRader innPortfolio);
-        Task<bool> Kjop(int id, PortfolioRader innPortfolio);
-        Task<PortfolioRad> HentEtPortfolioRad(int id);
+        Task<bool> Selg(int aksjeId, PortfolioRader innPortfolio);
+        Task<bool> Kjop(int aksjeId, PortfolioRader innPortfolio);
+		Task<PortfolioRad> HentEtPortfolioRad(int aksjeId);
         Task<List<PortfolioRad>> HentPortfolio();
         Task<List<Transaksjon>> HentTransaksjoner();
-        Task<Aksje> HentEnAksje(int id);
+        Task<Aksje> HentEnAksje(int aksjeId);
         Task<List<Aksje>> HentAksjer();
         Task<Bruker> HentEnBruker();
         Task<bool> LoggInn(Bruker bruker);
