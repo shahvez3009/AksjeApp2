@@ -1,4 +1,5 @@
 ﻿using System;
+using AksjeApp2.DAL;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -11,6 +12,8 @@ namespace AksjeApp2.Models
             using (var serviceScope = app.ApplicationServices.CreateScope())
             {
                 var context = serviceScope.ServiceProvider.GetService<AksjeContext>();
+
+                var db = serviceScope.ServiceProvider.GetService<AksjeContext>(); 
 
                 context.Database.EnsureDeleted();
                 context.Database.EnsureCreated();
@@ -38,6 +41,20 @@ namespace AksjeApp2.Models
                 context.Aksjer.Add(netflix);
 
                 context.PortfolioRader.Add(rad1);
+
+                // Lager en påloggingsbruker
+                var bruker = new Brukere();
+                bruker.Brukernavn = "Admin";
+                var passord = "Test11";
+                byte[] salt = AksjeRepository.LagSalt();
+                byte[] hash = AksjeRepository.LagHash(passord, salt);
+                bruker.Passord = hash;
+                bruker.Salt = salt;
+                db.Brukere.Add(bruker);
+
+                db.SaveChanges();
+
+
 
                 context.SaveChanges();
             }

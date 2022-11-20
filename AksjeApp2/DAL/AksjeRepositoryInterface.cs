@@ -16,5 +16,7 @@ namespace AksjeApp2.DAL
         Task<Aksje> HentEnAksje(int id);
         Task<List<Aksje>> HentAksjer();
         Task<Bruker> HentEnBruker();
+        Task<bool> LoggInn(Bruker bruker);
+        //Task<bool> Loggut();
     }
 }

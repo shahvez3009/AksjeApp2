@@ -25,6 +25,10 @@ namespace AksjeApp2.Models
         public int Saldo { get; set; }
         public string Mail { get; set; }
         public int Mobilnummer { get; set; }
+
+        public string Brukernavn { get; set; }
+        public byte[] Passord { get; set;  }
+        public byte[] Salt { get; set; }
     }
 
     public class PortfolioRader

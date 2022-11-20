@@ -30,14 +30,12 @@
     <None Remove="Microsoft.EntityFrameworkCore" />
     <None Remove="Microsoft.EntityFrameworkCore.Proxies" />
     <None Remove="Microsoft.EntityFrameworkCore.Sqlite" />
-    <None Remove="ClientApp\src\app\logginn\bilder\" />
     <None Remove="Microsoft.Data.Sqlite.Core" />
     <Content Remove="wwwroot\" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Controllers\" />
-    <Folder Include="ClientApp\src\app\logginn\bilder\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
 

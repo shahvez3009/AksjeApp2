@@ -7,6 +7,10 @@ using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 using System.Text;
 using System.Reflection.Metadata;
+using Microsoft.AspNetCore.Cryptography.KeyDerivation;
+using Microsoft.Extensions.Logging;
+using System.Security.Cryptography;
+
 
 namespace AksjeApp2.DAL
 {
@@ -14,9 +18,13 @@ namespace AksjeApp2.DAL
     {
         private readonly AksjeContext _db;
 
-        public AksjeRepository(AksjeContext db)
+        private ILogger<AksjeRepository> _log;
+
+        public AksjeRepository(AksjeContext db, ILogger<AksjeRepository> log)
         {
             _db = db;
+            _log = log; 
+
         }
 
         // denne funksjonen calles på av kjøp og selg funksjonene
@@ -246,5 +254,43 @@ namespace AksjeApp2.DAL
             }
         }
 
+        public static byte[] LagHash(string passord, byte[] salt)
+        {
+            return KeyDerivation.Pbkdf2(
+                                password: passord,
+                                salt: salt,
+                                prf: KeyDerivationPrf.HMACSHA512,
+                                iterationCount: 1000,
+                                numBytesRequested: 32);
+        }
+
+        public static byte[] LagSalt()
+        {
+            var csp = new RNGCryptoServiceProvider();
+            var salt = new byte[24];
+            csp.GetBytes(salt);
+            return salt;
+        }
+
+        public async Task<bool> LoggInn(Bruker bruker)
+        {
+            try
+            {
+                Brukere funnetBruker = await _db.Brukere.FirstOrDefaultAsync(b => b.Brukernavn == bruker.Brukernavn);
+                // sjekk passordet
+                byte[] hash = LagHash(bruker.Passord, funnetBruker.Salt);
+                bool ok = hash.SequenceEqual(funnetBruker.Passord);
+                if (ok)
+                {
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception e)
+            {
+                _log.LogInformation(e.Message);
+                return false;
+            }
+        }
     }
 }

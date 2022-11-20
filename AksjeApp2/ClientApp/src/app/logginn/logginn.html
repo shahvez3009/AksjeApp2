@@ -1,38 +1,47 @@
 ﻿<div class="container">
-    <div class="parent-w">
-        <div class="child-w">
-            <h1>1</h1>
-        </div>
-        <div class="child">
-            <h1>2</h1>
-        </div>
-    </div>
-</div>
-
-
-<!--
-<div class="wrapper">
-    <div class="v-wrapper">
-        <h1>Logg inn på JustInvest</h1>
-        <form class="form">
-            <div class="form-group">
-                <label>Brukernavn</label>
-                <input type="text" id="brukernavn" onchange="" />
-                <span id="feilBrukernavn" style="color: red"></span>
-            </div>
-            <div class="form-group">
-                <label>Passord</label>
-                <input type="text" id="passord" onchange="" />
-                <span id="feilPassord" style="color: red"></span>
-            </div>
-            <div class="form-group">
-                <input type="button" value="Logg inn" onclick="loggInn()" class="btn btn-primary" />
-            </div>
-            <div id="feil" style="color: red"></div>
+    <h1>Logg inn hos JustInvest</h1>
+    <div class="wrapper">
+        <form [formGroup]="Skjema" (ngSubmit)="onSubmit()">
+            <table>
+                <tr>
+                    <td>
+                        <label>Brukernavn:</label>
+                    </td>
+                    <td>
+                        <input type="text" formControlName="brukernavn">
+                    </td>
+                    <td *ngIf="this.Skjema.controls.brukernavn.status=='INVALID'">
+                        Obligatorisk
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Passord:</label>
+                    </td>
+                    <td>
+                        <input type="password" formControlName="passord">
+                    </td>
+                    <td *ngIf="this.Skjema.controls.passord.status=='INVALID'">
+                        Mellom 6 og 15 siffer
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button type="submit" [disabled]="!Skjema.valid">Register</button>
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+            </table>
         </form>
-    </div>
-    <div class="img-wrapper">
-        <img src="bilder/hero-image.svg" />
+        <div class="img-wrapper">
+            <div>
+                <img src="../assets/login.png"/>
+            </div>
+        </div>
     </div>
 </div>
--->
+
+
+
+
