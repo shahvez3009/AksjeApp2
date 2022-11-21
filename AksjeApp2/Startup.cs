@@ -9,6 +9,7 @@ using System;
 using AksjeApp2.DAL;
 using Microsoft.EntityFrameworkCore;
 using AksjeApp2.Models;
+using Microsoft.Extensions.Logging;
 
 namespace AksjeApp2
 {
@@ -51,6 +52,7 @@ namespace AksjeApp2
 			if (env.IsDevelopment())
 			{
 				app.UseDeveloperExceptionPage();
+				//loggerFactory.AddFile("Logs/AksjeLog.txt");
                 DBInit.Seed(app);
             }
 			else

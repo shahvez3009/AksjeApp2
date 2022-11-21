@@ -95,6 +95,7 @@ namespace AksjeApp2.DAL
 			}
 		}
 
+		/*
 		public async Task<bool> Kjop(int aksjeId, PortfolioRader innPortfolio)
 		{
 			try
@@ -120,6 +121,42 @@ namespace AksjeApp2.DAL
 					}
 					enBruker.Saldo -= enAksje.Pris * innPortfolio.Antall;
 					enAksje.AntallLedige -= innPortfolio.Antall;
+
+					await _db.SaveChangesAsync();
+					return true;
+				}
+				return false;
+			}
+			catch
+			{
+				return false;
+			}
+		}
+		*/
+		public async Task<bool> Kjop(PortfolioRader innPortfolio)
+		{
+			try
+			{
+				PortfolioRader[] etPortfolioRad = _db.PortfolioRader.Where(p => p.Aksje.Id == innPortfolio.Aksje.Id && p.Bruker.Id == 1).ToArray();
+				Brukere enBruker = await _db.Brukere.FindAsync(1);
+				if (enBruker.Saldo >= innPortfolio.Aksje.Pris * innPortfolio.Antall && innPortfolio.Aksje.AntallLedige >= innPortfolio.Antall && innPortfolio.Antall >= 1)
+				{
+					if (etPortfolioRad.Length == 1)
+					{
+						etPortfolioRad[0].Antall += innPortfolio.Antall;
+						await lagTransaksjon("Kjøp", etPortfolioRad[0], innPortfolio.Antall);
+					}
+					else
+					{
+						var nyPortfolio = new PortfolioRader();
+						nyPortfolio.Antall = innPortfolio.Antall;
+						nyPortfolio.Aksje = innPortfolio.Aksje;
+						nyPortfolio.Bruker = enBruker;
+						_db.PortfolioRader.Add(nyPortfolio);
+						await lagTransaksjon("Kjøp", nyPortfolio, innPortfolio.Antall);
+					}
+					enBruker.Saldo -= innPortfolio.Aksje.Pris * innPortfolio.Antall;
+					innPortfolio.Aksje.AntallLedige -= innPortfolio.Antall;
 
 					await _db.SaveChangesAsync();
 					return true;
@@ -186,7 +223,7 @@ namespace AksjeApp2.DAL
 
 				var nyPortfolioRad = new PortfolioRad()
 				{
-					Id = 999999,
+					Id = 99999,
 					Antall = 0,
 					AksjeId = enAksje.Id,
 					AksjeNavn = enAksje.Navn,

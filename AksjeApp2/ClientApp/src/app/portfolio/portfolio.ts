@@ -31,7 +31,7 @@ export class Portfolio {
 			.subscribe(portfolioRadene => {
 				this.helePortfolio = portfolioRadene;
 				this.laster = false;
-				console.log("Hentet portfolio")
+				console.log("portfolio - hentPortfolio")
 			},
 			(error) => console.log(error)
 		);
