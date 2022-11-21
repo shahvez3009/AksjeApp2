@@ -52,26 +52,6 @@ namespace AksjeApp2.DAL
 				return false;
 			}
 		}
-		public bool SjekkPortfolio(int aksjeId)
-		{
-			PortfolioRader[] etPortfolioRad = _db.PortfolioRader.Where(p => p.Aksje.Id == aksjeId).ToArray();
-
-			try
-			{
-				if (etPortfolioRad.Length == 1)
-				{
-					return true;
-				}
-				else
-				{
-					return false;
-				}
-			}
-			catch
-			{
-				return false;
-			}
-		}
 
 		// Denne funksjonen vil kjøres når brukeren selger aksjer fra portføljen
 		public async Task<bool> Selg(int aksjeId, PortfolioRader innPortfolio)
@@ -170,7 +150,7 @@ namespace AksjeApp2.DAL
 				Navn = enAksje.Navn,
 				Pris = enAksje.Pris,
 				MaxAntall = enAksje.MaxAntall,
-				AntallLedige = enAksje.AntallLedige,
+				AntallLedige = enAksje.AntallLedige
 			};
 			return hentetAksje;
 		}
@@ -195,7 +175,6 @@ namespace AksjeApp2.DAL
 			}
 			catch
 			{
-				/*
 				Brukere enBruker = await _db.Brukere.FindAsync(1);
 				Aksjer enAksje = await _db.Aksjer.FindAsync(aksjeId);
 
@@ -209,8 +188,6 @@ namespace AksjeApp2.DAL
 					BrukerId = enBruker.Id
 				};
 				return nyPortfolioRad;
-				*/
-				return null;
 			}
 		}
 

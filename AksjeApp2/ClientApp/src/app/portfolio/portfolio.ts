@@ -26,30 +26,31 @@ export class Portfolio {
 		this.hentPortfolio();
 	}
 
+	hentPortfolio() {
+		this.http.get<PortfolioRad[]>("api/aksje/hentportfolio") 
+			.subscribe(portfolioRadene => {
+				this.helePortfolio = portfolioRadene;
+				this.laster = false;
+				console.log("Hentet portfolio")
+			},
+			(error) => console.log(error)
+		);
+	};
+
+	
 	visKjopModal(brukerId: number, aksjeId: number) {
 		const modalRef = this.modalService.open(KjopModal);
 
 		modalRef.componentInstance.brukerId = brukerId;
 		modalRef.componentInstance.aksjeId = aksjeId;
 	}
-
+	
 	visSelgModal(brukerId: number, portfolioId: number) {
 		const modalRef = this.modalService.open(SelgModal);
 
 		modalRef.componentInstance.brukerId = brukerId;
 		modalRef.componentInstance.portfolioId = portfolioId;
 	}
-
-	hentPortfolio() {
-		this.http.get<PortfolioRad[]>("api/aksje/hentportfolio") 
-			.subscribe(portfolioRadene => {
-				this.helePortfolio = portfolioRadene;
-				this.laster = false;
-				console.log("hentPortfolio");
-			},
-			(error) => console.log(error)
-		);
-	};
 }
 
 

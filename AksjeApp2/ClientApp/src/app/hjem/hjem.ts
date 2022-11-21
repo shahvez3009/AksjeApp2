@@ -1,7 +1,6 @@
 ﻿import { Component, OnInit } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { KjopModal } from '../kjopModal/kjopModal';
 import { Aksje } from '../Aksje';
 
@@ -15,28 +14,20 @@ export class Hjem {
 
     constructor(
         private http: HttpClient,
-        private router: Router,
-        private modalService: NgbModal
-    ) { }
+        private router: Router
+    ){}
 
     ngOnInit() {
         this.laster = true;
-        this.hentAllInfo();
+        this.hentAlleAksjer();
     }
 
-    visKjopModal(brukerId: number, aksjeId: number) {
-        const modalRef = this.modalService.open(KjopModal);
-
-        modalRef.componentInstance.brukerId = brukerId;
-        modalRef.componentInstance.aksjeId = aksjeId;
-    }
-
-    hentAllInfo() {
+    hentAlleAksjer() {
         this.http.get<Aksje[]>("api/aksje/hentaksjer")
             .subscribe(aksjene => {
                 this.alleAksjer = aksjene;
                 this.laster = false;
-                console.log("hentAksjer");
+                console.log("Hentet Aksjer");
                 console.log(aksjene);
             },
             (error) => console.log(error)

@@ -70,18 +70,7 @@ namespace AksjeApp2.Controllers
             return Ok();
         }
 
-		[HttpGet("{aksjeId}")]
-		public ActionResult SjekkPortfolio(int aksjeId)
-		{
-			bool returOk = _db.SjekkPortfolio(aksjeId);
-			if (!returOk)
-			{
-				return BadRequest();
-			}
-			return Ok();
-		}
-
-		[HttpGet("{aksjeId}")]
+        [HttpGet("{aksjeId}")]
         public async Task<ActionResult> HentEnBruker()
         {
 			/*
@@ -137,8 +126,6 @@ namespace AksjeApp2.Controllers
             _log.LogInformation("Hentet en portfoliorad med aksjeid: " + aksjeId);
             return Ok(portfolioRad);
 		}
-
-
 
 		[HttpGet]
 		public async Task<ActionResult> HentAksjer()
