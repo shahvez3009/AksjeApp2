@@ -1,10 +1,10 @@
 ﻿export class Transaksjon {
     id: number;
     status: string;
-    datotid: string;
+    datoTid: string;
     antall: number;
-    aksjeid: number;
-    akjsenavn: string;
-    aksjepris: number;
-    brukerid: number;
+    aksjeId: number;
+    akjseNavn: string;
+    aksjePris: number;
+    brukerId: number;
 }

@@ -1,8 +1,8 @@
 ﻿export class PortfolioRad {
     id: number;
     antall: number;
-    aksjeid: number;
+    aksjeId: number;
     aksjeNavn: string;
     aksjePris: number;
-    brukerid: number;
+    brukerId: number;
 }

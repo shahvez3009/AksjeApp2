@@ -29,7 +29,7 @@ namespace AksjeApp2.Models
                 var netflix = new Aksjer { Navn = "Netflix", Pris = 12, AntallLedige = 1500, MaxAntall = 1500 };
 
 				//PortfolioRad
-				var rad1 = new PortfolioRader { Antall = 10, Bruker = per, Aksje = microsoft };
+				var rad1 = new PortfolioRader { Antall = 10, Bruker = per, Aksje = netflix };
 
                 
 				context.Brukere.Add(per);

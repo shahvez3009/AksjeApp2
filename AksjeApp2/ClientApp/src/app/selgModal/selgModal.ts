@@ -21,6 +21,7 @@ export class SelgModal {
 		private http: HttpClient,
 		private router: Router
 	) { }
+
 	ngOnInit() {
 		this.laster = true;
 		this.hentPortfolioRad();
