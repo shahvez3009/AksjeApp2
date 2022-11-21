@@ -8,6 +8,7 @@ import { Meny } from './meny/meny';
 import { Hjem } from './hjem/hjem';
 import { Portfolio } from './portfolio/portfolio';
 import { Logginn } from './logginn/logginn';
+import { LagBruker } from './lagBruker/lagBruker';
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { KjopModal } from './kjopModal/kjopModal';
 import { SelgModal } from './selgModal/selgModal';
@@ -17,7 +18,8 @@ import { AppRoutingModule } from './app-routing.module';
 @NgModule({
     declarations: [
         AppComponent,
-        Logginn, 
+        Logginn,
+        LagBruker,
         Meny,
         Hjem,
         Portfolio,

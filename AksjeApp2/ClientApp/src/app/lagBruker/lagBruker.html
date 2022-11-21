@@ -1,0 +1,26 @@
+﻿<div class="container">
+    <div class="col-md-4">
+        <form [formGroup]="skjema" (ngSubmit)="Submit()">
+            <div class="form-group">
+                <label>Fornavn</label>
+                <input class="form-controll" formControlName="fornavn" />
+            </div>
+            <div class="form-group">
+                <label>Etternavn</label>
+                <input class="form-controll" formControlName="etternavn" />
+            </div>
+            <div class="form-group">
+                <label>Mail</label>
+                <input class="form-controll" formControlName="mail" />
+            </div>
+            <div class="form-group">
+                <label>Telefonnunmmer</label>
+                <input class="form-controll" formControlName="telefonnummer" />
+            </div>
+            <div class="form-group">
+                <button type="submit">Registrer</button>
+                <button class="btn-primary btn-default" routerLink="/logginn">Tilbake</button>
+            </div>
+        </form>
+    </div>
+</div>
