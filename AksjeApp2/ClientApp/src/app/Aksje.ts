@@ -2,6 +2,6 @@
     id: number;
     navn: string;
     pris: number;
-    maxantall: number;
+    maxAntall: number;
     antallLedige: number;
 }

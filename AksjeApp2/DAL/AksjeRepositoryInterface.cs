@@ -12,6 +12,7 @@ namespace AksjeApp2.DAL
         Task<bool> Kjop(int aksjeId, PortfolioRader innPortfolio);
 		Task<PortfolioRad> HentEtPortfolioRad(int aksjeId);
         Task<List<PortfolioRad>> HentPortfolio();
+        bool SjekkPortfolio(int aksjeId);
         Task<List<Transaksjon>> HentTransaksjoner();
         Task<Aksje> HentEnAksje(int aksjeId);
         Task<List<Aksje>> HentAksjer();
