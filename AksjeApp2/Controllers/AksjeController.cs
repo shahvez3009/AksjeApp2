@@ -15,25 +15,25 @@ using Microsoft.AspNetCore.Http;
 namespace AksjeApp2.Controllers
 {
 
-    [ApiController]
+	[ApiController]
 
-    [Route("api/[controller]/[action]")]
+	[Route("api/[controller]/[action]")]
 
-    public class AksjeController : ControllerBase
-    {
-        private readonly AksjeRepositoryInterface _db;
-        private ILogger<AksjeController> _log;
+	public class AksjeController : ControllerBase
+	{
+		private readonly AksjeRepositoryInterface _db;
+		private ILogger<AksjeController> _log;
 
-        private const string _LoggetInn = "LoggetInn";
+		private const string _LoggetInn = "LoggetInn";
 
-        public AksjeController(AksjeRepositoryInterface db, ILogger<AksjeController> log)
-        {
-            _db = db;
-            _log = log;
-        }
+		public AksjeController(AksjeRepositoryInterface db, ILogger<AksjeController> log)
+		{
+			_db = db;
+			_log = log;
+		}
 
-        [HttpPost]
-        public async Task<ActionResult> Selg(int aksjeId, PortfolioRader innPortfolio)
+		[HttpPost]
+        public async Task<ActionResult> Selg(PortfolioRader innPortfolio)
         {
 			/*
             if (string.IsNullOrEmpty(HttpContext.Session.GetString(_LoggetInn)))
@@ -42,9 +42,10 @@ namespace AksjeApp2.Controllers
             }
 			*/
 
-            bool returOk = await _db.Selg(aksjeId, innPortfolio);
+            bool returOk = await _db.Selg(innPortfolio);
             if (!returOk) {
-                return BadRequest();
+                _log.LogInformation("Endringen kunne ikke utføres");
+                return NotFound();
             }
             return Ok();
         }

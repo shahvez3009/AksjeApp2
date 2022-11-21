@@ -36,15 +36,15 @@ namespace AksjeApp2
 				configuration.RootPath = "ClientApp/dist";
 			});
 
-            services.AddSession(options =>
+           /* services.AddSession(options =>
             {
                 options.Cookie.Name = ".AdventureWorks.Session";
                 options.IdleTimeout = TimeSpan.FromSeconds(1800); // 30 minutter
                 options.Cookie.IsEssential = true;
             });
-            services.AddDistributedMemoryCache();
+            services.AddDistributedMemoryCache();*/
         }
-
+		   
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
 		public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 		{

@@ -24,9 +24,9 @@
             <div class="col">
                 <div class="form-group bekreft">
                     <p><b> Velg antall aksjer:</b></p>
-                    <input type="number" id="antallAksjer" placeholder="Må være et helt tall" />
+                    <input type="number" [(ngModel)]="selgAntall" id="antallAksjer" placeholder="Må være et helt tall" />
                     <p id="sumForKjop">Total sum for kjøp:</p>
-                    <input type="button" id="reg" value="Bekreft" class="btn btn-primary" />
+                    <input type="button" id="reg" value="Bekreft" (click)="selgAksje(aksjeId)" class="btn btn-primary" />
                     <div id="feil" style="color: red"></div>
                     <div class="selg_bekreft_tekst"></div>
                     <div id="bekreft_ordre">

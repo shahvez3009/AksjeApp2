@@ -45,11 +45,12 @@ export class Portfolio {
 		modalRef.componentInstance.aksjeId = aksjeId;
 	}
 	
-	visSelgModal(brukerId: number, portfolioId: number) {
+	visSelgModal(brukerId: number,aksjeId: number) {
 		const modalRef = this.modalService.open(SelgModal);
 
 		modalRef.componentInstance.brukerId = brukerId;
-		modalRef.componentInstance.portfolioId = portfolioId;
+		//modalRef.componentInstance.portfolioId = portfolioId;
+		modalRef.componentInstance.aksjeId = aksjeId;
 	}
 }
 

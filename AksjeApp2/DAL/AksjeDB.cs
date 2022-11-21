@@ -69,10 +69,7 @@ namespace AksjeApp2.Models
             optionsBuilder.UseLazyLoadingProxies();
         }
 
-        internal Task SaveChangesAsync()
-        {
-            throw new NotImplementedException();
-        }
+      
     }
 
 }
