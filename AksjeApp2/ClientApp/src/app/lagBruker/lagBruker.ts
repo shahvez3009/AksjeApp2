@@ -43,7 +43,7 @@ export class LagBruker {
         nyBruker.mail = this.skjema.value.mail;
         nyBruker.telefonnummer = this.skjema.value.telefonnummer;
 
-        //Skjønner ikke helt hvordan denne fungerer
+        
         this.http.post("api/aksje/lagbruker", nyBruker)
             .subscribe(retur => {
                 this.router.navigate(['/logginn']);

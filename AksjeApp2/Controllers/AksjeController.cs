@@ -46,6 +46,7 @@ namespace AksjeApp2.Controllers
             if (!returOk) {
                 return BadRequest();
             }
+            _log.LogInformation("Et salg har blitt gjort på aksje med id: " + aksjeId);
             return Ok();
         }
 
@@ -65,6 +66,7 @@ namespace AksjeApp2.Controllers
             {
                 return BadRequest();
             }
+			_log.LogInformation("Et kjøp har blitt gjort på aksje med id: " + aksjeId);
             return Ok();
         }
 
@@ -83,6 +85,7 @@ namespace AksjeApp2.Controllers
             {
                 return NotFound();
             }
+            _log.LogInformation("Hentet EN bruker");
             return Ok(brukeren);
         }
 
@@ -101,7 +104,8 @@ namespace AksjeApp2.Controllers
 			{
 				return NotFound();
 			}
-			return Ok(aksjen);
+            _log.LogInformation("Hentet aksje med id: " + aksjeId);
+            return Ok(aksjen);
 		}
 
 		[HttpGet("{aksjeId}")]
@@ -119,7 +123,8 @@ namespace AksjeApp2.Controllers
 			{
 				return NotFound();
 			}
-			return Ok(portfolioRad);
+            _log.LogInformation("Hentet en portfoliorad med aksjeid: " + aksjeId);
+            return Ok(portfolioRad);
 		}
 
 		[HttpGet]
@@ -132,9 +137,13 @@ namespace AksjeApp2.Controllers
 			}
 			*/
 
+			
+
 			List<Aksje> alleAksjer = await _db.HentAksjer();
-			return Ok(alleAksjer);
-		}
+            _log.LogInformation("Akskjer har blitt hentet til 'hjem.html'");
+            return Ok(alleAksjer);
+            
+        }
 
 		[HttpGet]
 		public async Task<ActionResult> HentPortfolio()
@@ -147,7 +156,8 @@ namespace AksjeApp2.Controllers
 			*/
 
 			List<PortfolioRad> allePortfolio = await _db.HentPortfolio();
-			return Ok(allePortfolio);
+            _log.LogInformation("Portfolio har blitt hentet til 'portfolio.html'");
+            return Ok(allePortfolio);
 
 		}
 
@@ -162,7 +172,8 @@ namespace AksjeApp2.Controllers
 			*/
 
 			List<Transaksjon> alleTransaksjoner = await _db.HentTransaksjoner();
-			return Ok(alleTransaksjoner);
+            _log.LogInformation("Transaksjonene har blitt hentet til 'Transaksjoner.html'");
+            return Ok(alleTransaksjoner);
 		}
 
         /*
@@ -199,6 +210,7 @@ namespace AksjeApp2.Controllers
             {
                 return BadRequest();
             }
+            _log.LogInformation("En bruker har blitt lagt");
             return Ok();
         }
 
