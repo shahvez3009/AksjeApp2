@@ -42,6 +42,7 @@ namespace AksjeApp2.Models
 
                 context.PortfolioRader.Add(rad1);
 
+                /*
                 // Lager en påloggingsbruker
                 var bruker = new Brukere();
                 bruker.Brukernavn = "Admin";
@@ -51,6 +52,7 @@ namespace AksjeApp2.Models
                 bruker.Passord = hash;
                 bruker.Salt = salt;
                 db.Brukere.Add(bruker);
+                */
 
                 db.SaveChanges();
 

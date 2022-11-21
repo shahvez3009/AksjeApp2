@@ -254,71 +254,7 @@ namespace AksjeApp2.DAL
 				return null;
 			}
 		}
-
-        public async Task<List<Aksje>> HentAksjer()
-        {
-            try
-            {
-                List<Aksje> alleAksjer = await _db.Aksjer.Select(a => new Aksje
-                {
-                    Id = a.Id,
-                    Navn = a.Navn,
-                    Pris = a.Pris,
-                    AntallLedige = a.AntallLedige,
-                    MaxAntall = a.MaxAntall
-                }).ToListAsync();
-                return alleAksjer;
-            }
-            catch
-            {
-                return null;
-            }
-        }
-
-        public async Task<List<PortfolioRad>> HentPortfolio()
-        {
-            try
-            {
-                List<PortfolioRad> helePortfolio = await _db.PortfolioRader.Select(p => new PortfolioRad
-                {
-                    Id = p.Id,
-                    Antall = p.Antall,
-                    AksjeId = p.Aksje.Id,
-                    AksjeNavn = p.Aksje.Navn,
-                    AksjePris = p.Aksje.Pris,
-                    BrukerId = p.Bruker.Id
-                }).ToListAsync();
-                return helePortfolio;
-            }
-            catch
-            {
-                return null;
-            }
-        }
-
-        public async Task<List<Transaksjon>> HentTransaksjoner()
-        {
-            try
-            {
-                List<Transaksjon> heleTransaksjon = await _db.Transaksjoner.Select(p => new Transaksjon
-                {
-                    Id = p.Id,
-                    Status = p.Status,
-                    DatoTid = p.DatoTid,
-                    Antall = p.Antall,
-                    AksjeId = p.Aksje.Id,
-                    AksjeNavn = p.Aksje.Navn,
-                    AksjePris = p.Aksje.Pris,
-                    BrukerId = p.Bruker.Id
-                }).ToListAsync();
-                return heleTransaksjon;
-            }
-            catch
-            {
-                return null;
-            }
-        }
-
+		/*
         public static byte[] LagHash(string passord, byte[] salt)
         {
             return KeyDerivation.Pbkdf2(
@@ -357,6 +293,6 @@ namespace AksjeApp2.DAL
                 return false;
             }
         }
+		*/
     }
-	}
 }

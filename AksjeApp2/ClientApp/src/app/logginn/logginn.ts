@@ -7,10 +7,10 @@ import { FormBuilder, FormGroup, Validators, FormControl } from "@angular/forms"
 @Component({
     selector: "app-logginn",
     templateUrl: "./logginn.html",
-    styleUrls: ['./logginn.css'],
+    styleUrls: ['./logginn.css']
 })
-
-
+export class Logginn {}
+/*
 
 export class Logginn implements OnInit {
 
@@ -104,7 +104,7 @@ export class Logginn implements OnInit {
 
 }
 
-
+*/
 
 
 
