@@ -26,7 +26,7 @@ namespace AksjeApp2.Models
                 var apple = new Aksjer { Navn = "Apple", Pris = 500, AntallLedige = 3000, MaxAntall = 3000 };
                 var blizzard = new Aksjer { Navn = "Blizzard", Pris = 150, AntallLedige = 900, MaxAntall = 900 };
                 var google = new Aksjer { Navn = "Google", Pris = 130, AntallLedige = 1000, MaxAntall = 1000 };
-                var netflix = new Aksjer { Navn = "Netflix", Pris = 12, AntallLedige = 1500, MaxAntall = 1500 };
+                var netflix = new Aksjer { Navn = "Netflix", Pris = 120, AntallLedige = 1500, MaxAntall = 1500 };
 
 				//PortfolioRad
 				var rad1 = new PortfolioRader { Antall = 10, Bruker = per, Aksje = netflix };

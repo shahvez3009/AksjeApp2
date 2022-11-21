@@ -24,12 +24,12 @@ export class SelgModal {
 
 	ngOnInit() {
 		this.laster = true;
-		this.hentPortfolioRad();
+		this.hentAllInfo();
 	}
 
 
 
-	hentPortfolioRad() {
+	hentAllInfo() {
 		
 		this.http.get<PortfolioRad>("api/aksje/hentetportfoliorad/" + Number(this.portfolioId))
 			.subscribe(portfolioRad => {

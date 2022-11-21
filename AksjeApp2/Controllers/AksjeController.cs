@@ -51,7 +51,7 @@ namespace AksjeApp2.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Kjop(int aksjeId, PortfolioRader innPortfolio)
+        public async Task<ActionResult> Kjop(PortfolioRader innPortfolio)
         {
 			/*
             if (string.IsNullOrEmpty(HttpContext.Session.GetString(_LoggetInn)))
@@ -61,7 +61,7 @@ namespace AksjeApp2.Controllers
 			*/
 
 
-            bool returOk = await _db.Kjop(aksjeId, innPortfolio);
+            bool returOk = await _db.Kjop(innPortfolio);
             if (!returOk)
             {
                 return BadRequest();
@@ -70,7 +70,7 @@ namespace AksjeApp2.Controllers
             return Ok();
         }
 
-        [HttpGet("{aksjeId}")]
+		[HttpGet("{aksjeId}")]
         public async Task<ActionResult> HentEnBruker()
         {
 			/*

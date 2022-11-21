@@ -36,7 +36,7 @@ export class Hjem {
             .subscribe(aksjene => {
                 this.alleAksjer = aksjene;
                 this.laster = false;
-                console.log("Hentet Aksjer");
+                console.log("hjem - hentAksjer");
                 console.log(aksjene);
             },
             (error) => console.log(error)
