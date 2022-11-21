@@ -18,5 +18,9 @@ namespace AksjeApp2.DAL
         Task<Bruker> HentEnBruker();
         //Task<bool> LoggInn(Bruker bruker);
         //Task<bool> Loggut();
+
+
+        //Usikker på om denne skal være her
+        Task<bool> LagreBruker(Bruker innBruker);
     }
 }

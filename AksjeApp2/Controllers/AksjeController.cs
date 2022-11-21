@@ -165,7 +165,7 @@ namespace AksjeApp2.Controllers
 			return Ok(alleTransaksjoner);
 		}
 
-		/*
+        /*
 		[HttpGet("{id}")]
 		public async Task<ActionResult> LoggInn(Bruker bruker)
 		{
@@ -189,5 +189,18 @@ namespace AksjeApp2.Controllers
 			HttpContext.Session.SetString(_LoggetInn, "");
 		}
 		*/
-	}
+
+
+        [HttpPost]
+        public async Task<ActionResult> LagreBruker(Bruker innBruker)
+        {
+            bool returOk = await _db.LagreBruker(innBruker);
+            if (!returOk)
+            {
+                return BadRequest();
+            }
+            return Ok();
+        }
+
+    }
 }

@@ -254,7 +254,7 @@ namespace AksjeApp2.DAL
 				return null;
 			}
 		}
-		/*
+        /*
         public static byte[] LagHash(string passord, byte[] salt)
         {
             return KeyDerivation.Pbkdf2(
@@ -294,5 +294,33 @@ namespace AksjeApp2.DAL
             }
         }
 		*/
+
+        public async Task<bool> LagreBruker(Bruker innBruker)
+        {
+            //Må skjekke om det allerede fins en bruker med sammen Mail eller MobilNummer
+
+            try
+            {
+                var nyBrukerRad = new Brukere();
+
+                nyBrukerRad.Fornavn = innBruker.Fornavn;
+                nyBrukerRad.Etternavn = innBruker.Etternavn;
+                nyBrukerRad.Mail = innBruker.Mail;
+                nyBrukerRad.Mobilnummer = innBruker.Mobilnummer;
+                nyBrukerRad.Saldo = innBruker.Saldo;
+
+                //Skal vi sette en verdi på saldo her?
+                //nyBrukerRad.Saldo = innBruker.Saldo;
+
+                _db.Brukere.Add(nyBrukerRad);
+                await _db.SaveChangesAsync();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
     }
 }
