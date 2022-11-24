@@ -26,10 +26,6 @@ namespace AksjeApp2.DAL
             _log = log; 
 
         }
-		public AksjeRepository(AksjeContext db)
-		{
-			_db = db;
-		}
 
 		// denne funksjonen calles på av kjøp og selg funksjonene
 		public async Task<bool> lagTransaksjon(string status, PortfolioRader portfolio, int antall)
@@ -352,8 +348,8 @@ namespace AksjeApp2.DAL
                 nyBrukerRad.Mobilnummer = innBruker.Mobilnummer;
                 nyBrukerRad.Saldo = innBruker.Saldo;
 
-                //Skal vi sette en verdi på saldo her?
-                //nyBrukerRad.Saldo = innBruker.Saldo;
+                //Alle starter med 500000
+                nyBrukerRad.Saldo = 500000;
 
                 _db.Brukere.Add(nyBrukerRad);
                 await _db.SaveChangesAsync();
