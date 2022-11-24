@@ -26,10 +26,10 @@ export class SelgModal {
     this.hentAllInfo();
   }
 
-  hentAllInfo() {
+    hentAllInfo() {
     this.http
-      .get<PortfolioRad>(
-        "api/aksje/hentetportfoliorad/" + Number(this.portfolioId)
+        .get<PortfolioRad>(
+            "api/aksje/hentetportfoliorad/" + Number(this.aksjeId)
       )
       .subscribe(
         (portfolioRad) => {
@@ -44,16 +44,9 @@ export class SelgModal {
   }
 
   selgAksje() {
-    console.log(Number(this.selgAntall));
-    console.log(Number(this.aksjeId));
     const innPortfolio = new PortfolioRad();
-    //innPortfolio.aksjeid = this.aksjeId;
     innPortfolio.antall = this.selgAntall;
-    //innPortfolio.aksjeNavn = "Hanji";
-    //innPortfolio.brukerid = 1;
-    //innPortfolio.aksjePris = 200;
     innPortfolio.id = 1;
-    console.log(innPortfolio);
     this.http.post("api/aksje/selg/", innPortfolio).subscribe((retur) => {
       this.router.navigate(["/portfolio"]);
     });

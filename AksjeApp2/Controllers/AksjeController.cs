@@ -33,7 +33,7 @@ namespace AksjeApp2.Controllers
 		}
 
 		[HttpPost]
-        public async Task<ActionResult> Selg(PortfolioRader innPortfolio)
+        public async Task<ActionResult> Selg(PortfolioRad innPortfolio)
         {
 			/*
             if (string.IsNullOrEmpty(HttpContext.Session.GetString(_LoggetInn)))
