@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { Aksje } from "../Aksje";
+import { Bruker } from "../Bruker";
 import { PortfolioRad } from '../PortfolioRad';
 
 @Component({
@@ -48,16 +49,18 @@ export class KjopModal {
 	bekreftKjop() {
 		const nyttKjop = new PortfolioRad();
 
-		nyttKjop.antall = this.skjema.value.antall;
+		nyttKjop.id = 1;
+		nyttKjop.antall = Number(this.skjema.value.antall);
 		nyttKjop.aksjeId = this.aksjeId;
 		nyttKjop.aksjeNavn = this.navn;
 		nyttKjop.aksjePris = this.pris;
 		nyttKjop.brukerId = this.brukerId;
 
+		console.log(nyttKjop);
+
 		this.http.post("api/aksje/kjop/", nyttKjop)
 			.subscribe(retur => {
 				console.log("etter subscribe");
-				this.router.navigate(['/portfolio']);
 			},
 				error => console.log(error)
 		);
@@ -68,14 +71,13 @@ export class KjopModal {
 			.subscribe(hentetRad => {
 				if (hentetRad.antall == 0) {
 					this.status = false;
-					console.log("kjopModal - hentEtPortfolioRad");
 					console.log(this.status);
 				}
 				else {
 					this.status = true;
-					console.log("kjopModal - hentEtPortfolioRad");
 					console.log(this.status);
 				}
+				console.log("kjopModal - hentEtPortfolioRad");
 			},
 				(error) => console.log(error)
 			);
