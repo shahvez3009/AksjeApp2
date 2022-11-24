@@ -49,7 +49,6 @@ export class KjopModal {
 	bekreftKjop() {
 		const nyttKjop = new PortfolioRad();
 
-		nyttKjop.id = 1;
 		nyttKjop.antall = Number(this.skjema.value.antall);
 		nyttKjop.aksjeId = this.aksjeId;
 		nyttKjop.aksjeNavn = this.navn;
@@ -58,12 +57,17 @@ export class KjopModal {
 
 		console.log(nyttKjop);
 
-		this.http.post("api/aksje/kjop/", nyttKjop)
-			.subscribe(retur => {
-				console.log("etter subscribe");
-			},
-				error => console.log(error)
-		);
+		if (this.status == false) {
+
+			console.log("Vi gikk inn i this.status == false")
+			this.http.post("api/aksje/kjop/", nyttKjop)
+				.subscribe(retur => {
+					console.log("etter subscribe");
+				},
+					error => console.log(error)
+				);
+		}
+	
 	}
 
 	hentAllInfo() {

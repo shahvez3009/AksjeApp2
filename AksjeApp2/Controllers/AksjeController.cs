@@ -51,7 +51,7 @@ namespace AksjeApp2.Controllers
             return Ok();
         }
 
-        [HttpPost]
+		[HttpPost]
         public async Task<ActionResult> Kjop(PortfolioRad innPortfolio)
         {
 			/*

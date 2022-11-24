@@ -138,7 +138,6 @@ namespace AksjeApp2.DAL
 			try
 			{
 				PortfolioRader[] etPortfolioRad = _db.PortfolioRader.Where(p => p.Aksje.Id == innPortfolio.AksjeId && p.Bruker.Id == 1).ToArray();
-				Console.WriteLine("2");
 				Brukere enBruker = await _db.Brukere.FindAsync(innPortfolio.BrukerId);
 				Console.WriteLine("3");
 				Aksjer enAksje = await _db.Aksjer.FindAsync(innPortfolio.AksjeId);
@@ -219,11 +218,12 @@ namespace AksjeApp2.DAL
 
 		public async Task<PortfolioRad> HentEtPortfolioRad(int aksjeId)
 		{
+			Brukere enBruker = await _db.Brukere.FindAsync(1);
+			Aksjer enAksje = await _db.Aksjer.FindAsync(aksjeId);
+
 			try
 			{
 				PortfolioRader etPortfolioRad = _db.PortfolioRader.First(p => p.Aksje.Id == aksjeId);
-				Brukere enBruker = await _db.Brukere.FindAsync(1);
-				Aksjer enAksje = await _db.Aksjer.FindAsync(aksjeId);
 				var hentetPortfolioRad = new PortfolioRad()
 				{
 					Id = etPortfolioRad.Id,
@@ -236,10 +236,7 @@ namespace AksjeApp2.DAL
 				return hentetPortfolioRad;
 			}
 			catch
-			{
-				Brukere enBruker = await _db.Brukere.FindAsync(1);
-				Aksjer enAksje = await _db.Aksjer.FindAsync(aksjeId);
-
+			{ 
 				var nyPortfolioRad = new PortfolioRad()
 				{
 					Id = 99999,
