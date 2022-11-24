@@ -13,6 +13,8 @@ namespace AksjeApp2.Models
             {
                 var context = serviceScope.ServiceProvider.GetService<AksjeContext>();
 
+                var db = serviceScope.ServiceProvider.GetService<AksjeContext>(); 
+
                 context.Database.EnsureDeleted();
                 context.Database.EnsureCreated();
 
@@ -38,7 +40,7 @@ namespace AksjeApp2.Models
                 context.Aksjer.Add(google);
                 context.Aksjer.Add(netflix);
 
-                //context.PortfolioRader.Add(rad1);
+                context.PortfolioRader.Add(rad1);
 
                 /*
                 // Lager en påloggingsbruker
@@ -49,8 +51,12 @@ namespace AksjeApp2.Models
                 byte[] hash = AksjeRepository.LagHash(passord, salt);
                 bruker.Passord = hash;
                 bruker.Salt = salt;
-                context.Brukere.Add(bruker);
+                db.Brukere.Add(bruker);
                 */
+
+                db.SaveChanges();
+
+
 
                 context.SaveChanges();
             }

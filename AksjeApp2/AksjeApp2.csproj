@@ -34,14 +34,12 @@
     <None Remove="Microsoft.EntityFrameworkCore.Sqlite" />
     <None Remove="Microsoft.Data.Sqlite.Core" />
     <Content Remove="wwwroot\" />
-    <None Remove="ClientApp\src\app\transaksjon\" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Controllers\" />
     <Folder Include="Logs\" />
     <Folder Include="wwwroot\" />
-    <Folder Include="ClientApp\src\app\transaksjon\" />
   </ItemGroup>
 
   <ItemGroup>
