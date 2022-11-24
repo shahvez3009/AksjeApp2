@@ -18,14 +18,14 @@ namespace AksjeApp2.DAL
 	{
 		private readonly AksjeContext _db;
 
-        private ILogger<AksjeRepository> _log;
+        //private ILogger<AksjeRepository> _log;
 
-        public AksjeRepository(AksjeContext db, ILogger<AksjeRepository> log)
+        /*public AksjeRepository(AksjeContext db, ILogger<AksjeRepository> log)
         {
             _db = db;
             _log = log; 
 
-        }
+        }*/
 		public AksjeRepository(AksjeContext db)
 		{
 			_db = db;
@@ -133,38 +133,56 @@ namespace AksjeApp2.DAL
 			}
 		}
 		*/
-		public async Task<bool> Kjop(PortfolioRader innPortfolio)
+		public async Task<bool> Kjop(PortfolioRad innPortfolio)
 		{
 			try
 			{
-				PortfolioRader[] etPortfolioRad = _db.PortfolioRader.Where(p => p.Aksje.Id == innPortfolio.Aksje.Id && p.Bruker.Id == 1).ToArray();
-				Brukere enBruker = await _db.Brukere.FindAsync(1);
-				if (enBruker.Saldo >= innPortfolio.Aksje.Pris * innPortfolio.Antall && innPortfolio.Aksje.AntallLedige >= innPortfolio.Antall && innPortfolio.Antall >= 1)
+				PortfolioRader[] etPortfolioRad = _db.PortfolioRader.Where(p => p.Aksje.Id == innPortfolio.AksjeId && p.Bruker.Id == 1).ToArray();
+				Brukere enBruker = await _db.Brukere.FindAsync(innPortfolio.BrukerId);
+				Console.WriteLine("3");
+				Aksjer enAksje = await _db.Aksjer.FindAsync(innPortfolio.AksjeId);
+				Console.WriteLine("4");
+				if (enBruker.Saldo >= innPortfolio.AksjeId * innPortfolio.Antall && enAksje.AntallLedige >= innPortfolio.Antall && innPortfolio.Antall >= 1)
 				{
+					Console.WriteLine("5");
 					if (etPortfolioRad.Length == 1)
 					{
+						Console.WriteLine("6");
 						etPortfolioRad[0].Antall += innPortfolio.Antall;
+						Console.WriteLine("6.1");
 						await lagTransaksjon("Kjøp", etPortfolioRad[0], innPortfolio.Antall);
 					}
 					else
 					{
+						Console.WriteLine("7");
 						var nyPortfolio = new PortfolioRader();
+						Console.WriteLine("7.1");
 						nyPortfolio.Antall = innPortfolio.Antall;
-						nyPortfolio.Aksje = innPortfolio.Aksje;
+						Console.WriteLine("7.2");
+						nyPortfolio.Aksje = enAksje;
+						Console.WriteLine("7.3");
 						nyPortfolio.Bruker = enBruker;
+						Console.WriteLine("7.4");
 						_db.PortfolioRader.Add(nyPortfolio);
+						Console.WriteLine("7.5");
 						await lagTransaksjon("Kjøp", nyPortfolio, innPortfolio.Antall);
 					}
-					enBruker.Saldo -= innPortfolio.Aksje.Pris * innPortfolio.Antall;
-					innPortfolio.Aksje.AntallLedige -= innPortfolio.Antall;
+					Console.WriteLine("8");
+					enBruker.Saldo -= enAksje.Pris * innPortfolio.Antall;
+					Console.WriteLine("9");
+					enAksje.AntallLedige -= innPortfolio.Antall;
+					Console.WriteLine("10");
 
 					await _db.SaveChangesAsync();
+					Console.WriteLine("11");
 					return true;
 				}
+				Console.WriteLine("12");
 				return false;
 			}
 			catch
 			{
+				Console.WriteLine("16");
 				return false;
 			}
 		}
@@ -200,11 +218,12 @@ namespace AksjeApp2.DAL
 
 		public async Task<PortfolioRad> HentEtPortfolioRad(int aksjeId)
 		{
+			Brukere enBruker = await _db.Brukere.FindAsync(1);
+			Aksjer enAksje = await _db.Aksjer.FindAsync(aksjeId);
+
 			try
 			{
 				PortfolioRader etPortfolioRad = _db.PortfolioRader.First(p => p.Aksje.Id == aksjeId);
-				Brukere enBruker = await _db.Brukere.FindAsync(1);
-				Aksjer enAksje = await _db.Aksjer.FindAsync(aksjeId);
 				var hentetPortfolioRad = new PortfolioRad()
 				{
 					Id = etPortfolioRad.Id,
@@ -217,10 +236,7 @@ namespace AksjeApp2.DAL
 				return hentetPortfolioRad;
 			}
 			catch
-			{
-				Brukere enBruker = await _db.Brukere.FindAsync(1);
-				Aksjer enAksje = await _db.Aksjer.FindAsync(aksjeId);
-
+			{ 
 				var nyPortfolioRad = new PortfolioRad()
 				{
 					Id = 99999,
