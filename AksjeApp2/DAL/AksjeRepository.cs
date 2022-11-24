@@ -50,7 +50,7 @@ namespace AksjeApp2.DAL
 		}
 
 		// Denne funksjonen vil kjøres når brukeren selger aksjer fra portføljen
-		public async Task<bool> Selg(PortfolioRader innPortfolio)
+		public async Task<bool> Selg(PortfolioRad innPortfolio)
 		{
 			try
 			{
