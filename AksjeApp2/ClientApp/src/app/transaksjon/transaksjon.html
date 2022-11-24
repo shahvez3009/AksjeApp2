@@ -1,10 +1,34 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <title></title>
-</head>
-<body>
-
-</body>
-</html>
+﻿<div class="container">
+    <h2>Transaksjonshistorikk</h2>
+    <div>
+        <div class="col-md-12">
+            <div *ngIf="laster">Laster transaksjoner...</div>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Status</th>
+                        <th>Dato/Tid</th>
+                        <th>Aksje</th>
+                        <th>Pris</th>
+                        <th>Antall Aksjer</th>
+                        <th>Sum</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let transaksjon of alleTransaksjoner">
+                    <tr>
+                        <td>{{transaksjon.status}}</td>
+                        <td>{{transaksjon.datoTid}}</td>
+                        <td>{{transaksjon.aksjeNavn}}</td>
+                        <td>{{transaksjon.aksjePris}}</td>
+                        <td>{{transaksjon.antall}}</td>
+                        <td>{{transaksjon.antall*transaksjon.aksjePris}}</td>
+                        <td><button class="btn btn-success" (click)="visKjopModal(1,portfolioRad.aksjeId)">Kjøp Mer</button></td>
+                        <td><button class="btn btn-danger" (click)="visSelgModal(1,portfolioRad.aksjeId)">Selg</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

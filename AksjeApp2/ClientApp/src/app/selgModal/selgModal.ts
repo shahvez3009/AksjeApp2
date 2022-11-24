@@ -28,8 +28,8 @@ export class SelgModal {
 
   hentAllInfo() {
     this.http
-      .get<PortfolioRad>(
-        "api/aksje/hentetportfoliorad/" + Number(this.portfolioId)
+        .get<PortfolioRad>(
+            "api/aksje/hentetportfoliorad/" + Number(this.aksjeId)
       )
       .subscribe(
         (portfolioRad) => {

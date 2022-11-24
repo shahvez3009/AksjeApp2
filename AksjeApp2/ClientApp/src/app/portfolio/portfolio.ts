@@ -49,7 +49,7 @@ export class Portfolio {
 		const modalRef = this.modalService.open(SelgModal);
 
 		modalRef.componentInstance.brukerId = brukerId;
-		//modalRef.componentInstance.portfolioId = portfolioId;
+	//	modalRef.componentInstance.portfolioId = portfolioId;
 		modalRef.componentInstance.aksjeId = aksjeId;
 	}
 }
