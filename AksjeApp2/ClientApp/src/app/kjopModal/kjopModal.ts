@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { Aksje } from "../Aksje";
+import { Bruker } from "../Bruker";
 import { PortfolioRad } from '../PortfolioRad';
 
 @Component({
@@ -48,19 +49,25 @@ export class KjopModal {
 	bekreftKjop() {
 		const nyttKjop = new PortfolioRad();
 
-		nyttKjop.antall = this.skjema.value.antall;
+		nyttKjop.antall = Number(this.skjema.value.antall);
 		nyttKjop.aksjeId = this.aksjeId;
 		nyttKjop.aksjeNavn = this.navn;
 		nyttKjop.aksjePris = this.pris;
 		nyttKjop.brukerId = this.brukerId;
 
-		this.http.post("api/aksje/kjop/", nyttKjop)
-			.subscribe(retur => {
-				console.log("etter subscribe");
-				this.router.navigate(['/portfolio']);
-			},
-				error => console.log(error)
-		);
+		console.log(nyttKjop);
+
+		if (this.status == false) {
+
+			console.log("Vi gikk inn i this.status == false")
+			this.http.post("api/aksje/kjop/", nyttKjop)
+				.subscribe(retur => {
+					console.log("etter subscribe");
+				},
+					error => console.log(error)
+				);
+		}
+	
 	}
 
 	hentAllInfo() {
@@ -68,14 +75,13 @@ export class KjopModal {
 			.subscribe(hentetRad => {
 				if (hentetRad.antall == 0) {
 					this.status = false;
-					console.log("kjopModal - hentEtPortfolioRad");
 					console.log(this.status);
 				}
 				else {
 					this.status = true;
-					console.log("kjopModal - hentEtPortfolioRad");
 					console.log(this.status);
 				}
+				console.log("kjopModal - hentEtPortfolioRad");
 			},
 				(error) => console.log(error)
 			);

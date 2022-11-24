@@ -12,8 +12,6 @@
                         <th>Pris</th>
                         <th>Antall Aksjer</th>
                         <th>Sum</th>
-                        <th></th>
-                        <th></th>
                     </tr>
                 </thead>
                 <tbody *ngFor="let transaksjon of alleTransaksjoner">
@@ -24,8 +22,6 @@
                         <td>{{transaksjon.aksjePris}}</td>
                         <td>{{transaksjon.antall}}</td>
                         <td>{{transaksjon.antall*transaksjon.aksjePris}}</td>
-                        <td><button class="btn btn-success" (click)="visKjopModal(1,portfolioRad.aksjeId)">Kjøp Mer</button></td>
-                        <td><button class="btn btn-danger" (click)="visSelgModal(1,portfolioRad.aksjeId)">Selg</button></td>
                     </tr>
                 </tbody>
             </table>

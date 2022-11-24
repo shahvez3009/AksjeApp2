@@ -33,7 +33,7 @@ namespace AksjeApp2.Controllers
 		}
 
 		[HttpPost]
-        public async Task<ActionResult> Selg(PortfolioRad innPortfolio)
+        public async Task<ActionResult> Selg(PortfolioRader innPortfolio)
         {
 			/*
             if (string.IsNullOrEmpty(HttpContext.Session.GetString(_LoggetInn)))
@@ -51,8 +51,8 @@ namespace AksjeApp2.Controllers
             return Ok();
         }
 
-        [HttpPost]
-        public async Task<ActionResult> Kjop(PortfolioRader innPortfolio)
+		[HttpPost]
+        public async Task<ActionResult> Kjop(PortfolioRad innPortfolio)
         {
 			/*
             if (string.IsNullOrEmpty(HttpContext.Session.GetString(_LoggetInn)))

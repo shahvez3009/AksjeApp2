@@ -44,7 +44,7 @@ export class LagBruker {
         nyBruker.telefonnummer = this.skjema.value.telefonnummer;
 
         
-        this.http.post("api/aksje/lagrebruker/", nyBruker)
+        this.http.post("api/aksje/lagbruker", nyBruker)
             .subscribe(retur => {
                 this.router.navigate(['/logginn']);
             },
