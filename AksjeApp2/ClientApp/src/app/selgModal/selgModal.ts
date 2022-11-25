@@ -53,7 +53,7 @@ export class SelgModal {
     //innPortfolio.aksjeNavn = "Hanji";
     //innPortfolio.brukerid = 1;
     //innPortfolio.aksjePris = 200;
-    innPortfolio.id = 1;
+    innPortfolio.id = this.aksjeId;
     console.log(innPortfolio);
     this.http.post("api/aksje/selg/", innPortfolio).subscribe((retur) => {
       this.router.navigate(["/portfolio"]);

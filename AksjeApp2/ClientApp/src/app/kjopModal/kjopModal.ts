@@ -56,18 +56,12 @@ export class KjopModal {
 		nyttKjop.brukerId = this.brukerId;
 
 		console.log(nyttKjop);
-
-		if (this.status == false) {
-
-			console.log("Vi gikk inn i this.status == false")
-			this.http.post("api/aksje/kjop/", nyttKjop)
-				.subscribe(retur => {
-					console.log("etter subscribe");
-				},
-					error => console.log(error)
-				);
-		}
-	
+		this.http.post("api/aksje/kjop/", nyttKjop)
+			.subscribe(retur => {
+				console.log("etter subscribe");
+			},
+			error => console.log(error)
+		);
 	}
 
 	hentAllInfo() {
@@ -88,7 +82,7 @@ export class KjopModal {
 
 		this.http.get<Aksje>("api/aksje/hentenaksje/" + Number(this.aksjeId))
 			.subscribe(hentetAksje => {
-				console.log(hentetAksje);				
+				console.log(hentetAksje);
 				this.navn = hentetAksje.navn;
 				this.pris = hentetAksje.pris;
 				this.ledige = hentetAksje.antallLedige;
@@ -96,7 +90,6 @@ export class KjopModal {
 				console.log("kjopModal - hentEnAksje");
 			},
 				(error) => console.log(error)
-		);
+			);
 	}
 }
-

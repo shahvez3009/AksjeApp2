@@ -139,50 +139,33 @@ namespace AksjeApp2.DAL
 			{
 				PortfolioRader[] etPortfolioRad = _db.PortfolioRader.Where(p => p.Aksje.Id == innPortfolio.AksjeId && p.Bruker.Id == 1).ToArray();
 				Brukere enBruker = await _db.Brukere.FindAsync(innPortfolio.BrukerId);
-				Console.WriteLine("3");
 				Aksjer enAksje = await _db.Aksjer.FindAsync(innPortfolio.AksjeId);
-				Console.WriteLine("4");
 				if (enBruker.Saldo >= innPortfolio.AksjeId * innPortfolio.Antall && enAksje.AntallLedige >= innPortfolio.Antall && innPortfolio.Antall >= 1)
 				{
-					Console.WriteLine("5");
 					if (etPortfolioRad.Length == 1)
 					{
-						Console.WriteLine("6");
 						etPortfolioRad[0].Antall += innPortfolio.Antall;
-						Console.WriteLine("6.1");
 						await lagTransaksjon("Kjøp", etPortfolioRad[0], innPortfolio.Antall);
 					}
 					else
 					{
-						Console.WriteLine("7");
 						var nyPortfolio = new PortfolioRader();
-						Console.WriteLine("7.1");
 						nyPortfolio.Antall = innPortfolio.Antall;
-						Console.WriteLine("7.2");
 						nyPortfolio.Aksje = enAksje;
-						Console.WriteLine("7.3");
 						nyPortfolio.Bruker = enBruker;
-						Console.WriteLine("7.4");
 						_db.PortfolioRader.Add(nyPortfolio);
-						Console.WriteLine("7.5");
 						await lagTransaksjon("Kjøp", nyPortfolio, innPortfolio.Antall);
 					}
-					Console.WriteLine("8");
 					enBruker.Saldo -= enAksje.Pris * innPortfolio.Antall;
-					Console.WriteLine("9");
 					enAksje.AntallLedige -= innPortfolio.Antall;
-					Console.WriteLine("10");
 
 					await _db.SaveChangesAsync();
-					Console.WriteLine("11");
 					return true;
 				}
-				Console.WriteLine("12");
 				return false;
 			}
 			catch
 			{
-				Console.WriteLine("16");
 				return false;
 			}
 		}
