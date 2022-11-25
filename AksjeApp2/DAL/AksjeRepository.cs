@@ -170,7 +170,7 @@ namespace AksjeApp2.DAL
 				Etternavn = enBruker.Etternavn,
 				Saldo = enBruker.Saldo,
 				Mail = enBruker.Mail,
-				Mobilnummer = enBruker.Mobilnummer
+                telefonnummer = enBruker.telefonnummer
 			};
 			return hentetBruker;
 		}
@@ -375,10 +375,10 @@ namespace AksjeApp2.DAL
                 nyBrukerRad.Fornavn = innBruker.Fornavn;
                 nyBrukerRad.Etternavn = innBruker.Etternavn;
                 nyBrukerRad.Mail = innBruker.Mail;
-                nyBrukerRad.Mobilnummer = innBruker.Mobilnummer;
+                nyBrukerRad.telefonnummer = innBruker.telefonnummer;
 				nyBrukerRad.Saldo = 500000;
 				nyBrukerRad.Brukernavn = innBruker.Brukernavn;
-				nyBrukerRad.Passord = innBruker.Passord;
+				//nyBrukerRad.Passord = innBruker.Passord;
 
                 //Skal vi sette en verdi på saldo her?
                 //nyBrukerRad.Saldo = innBruker.Saldo;

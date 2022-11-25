@@ -57,6 +57,7 @@ export class Logginn {
 
         send.brukernavn = this.Skjema.value.brukernavn;
         send.passord = this.Skjema.value.passord;
+        console.log(send);
 
         this.http.post("api/aksje/UserIn", send)
             .subscribe(retur => {

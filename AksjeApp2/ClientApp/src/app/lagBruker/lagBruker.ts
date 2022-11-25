@@ -22,7 +22,7 @@ export class LagBruker {
         mail: [
             null, Validators.compose([Validators.required, Validators.pattern("[0-9a-zA-ZøæåØÆÅ\\-. ]{2,30}")])
         ],
-        mobilnummer: [
+        telefonnummer: [
             null, Validators.compose([Validators.required, Validators.pattern("[0-9]{8}")])
         ],
         brukernavn: [
@@ -47,7 +47,7 @@ export class LagBruker {
         nyBruker.fornavn = this.skjema.value.fornavn;
         nyBruker.etternavn = this.skjema.value.etternavn;
         nyBruker.mail = this.skjema.value.mail;
-        nyBruker.mobilnummer = this.skjema.value.mobilnummer;
+        nyBruker.telefonnummer = this.skjema.value.telefonnummer;
         nyBruker.brukernavn = this.skjema.value.brukernavn;
         nyBruker.passord = this.skjema.value.passord;
 

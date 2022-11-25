@@ -30,10 +30,10 @@ namespace AksjeApp2.Models
         public string Etternavn { get; set; }
         public int Saldo { get; set; }
         public string Mail { get; set; }
-        public string Mobilnummer { get; set; }
+        public string telefonnummer { get; set; }
 
         public string Brukernavn { get; set; }
-        public string Passord { get; set;  }
+        public byte[] Passord { get; set;  }
         public byte[] Salt { get; set; }
     }
 

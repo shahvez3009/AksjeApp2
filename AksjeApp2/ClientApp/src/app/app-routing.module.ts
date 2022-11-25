@@ -17,7 +17,7 @@ const appRoots: Routes = [
     { path: 'selg', component: Selg },
     { path: 'logginn', component: Logginn },
     { path: 'lagBruker', component: LagBruker },
-    { path: '', redirectTo: 'hjem', pathMatch: 'full' }
+    { path: '', redirectTo: 'logginn', pathMatch: 'full' }
 ]
 
 @NgModule({

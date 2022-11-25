@@ -35,12 +35,12 @@ namespace AksjeApp2.Controllers
 		[HttpPost]
         public async Task<ActionResult> Selg(PortfolioRad innPortfolio)
         {
-			/*
+			
             if (string.IsNullOrEmpty(HttpContext.Session.GetString(_LoggetInn)))
             {
                 return Unauthorized();
             }
-			*/
+			
 
             bool returOk = await _db.Selg(innPortfolio);
             if (!returOk) {
@@ -54,12 +54,12 @@ namespace AksjeApp2.Controllers
 		[HttpPost]
         public async Task<ActionResult> Kjop(PortfolioRad innPortfolio)
         {
-			/*
+			
             if (string.IsNullOrEmpty(HttpContext.Session.GetString(_LoggetInn)))
             {
                 return Unauthorized();
             }
-			*/
+			
 
 
             bool returOk = await _db.Kjop(innPortfolio);
@@ -74,12 +74,12 @@ namespace AksjeApp2.Controllers
 		[HttpGet("{aksjeId}")]
         public async Task<ActionResult> HentEnBruker()
         {
-			/*
+			
             if (string.IsNullOrEmpty(HttpContext.Session.GetString(_LoggetInn)))
             {
                 return Unauthorized();
             }
-			*/
+			
 
             Bruker brukeren = await _db.HentEnBruker();
             if (brukeren == null)
@@ -93,12 +93,12 @@ namespace AksjeApp2.Controllers
 		[HttpGet("{aksjeId}")]
 		public async Task<ActionResult> HentEnAksje(int aksjeId)
 		{
-			/*
+			
 			if (string.IsNullOrEmpty(HttpContext.Session.GetString(_LoggetInn)))
 			{
 				return Unauthorized();
 			}
-			*/
+			
 
 			Aksje aksjen = await _db.HentEnAksje(aksjeId);
 			if (aksjen == null)
@@ -112,12 +112,12 @@ namespace AksjeApp2.Controllers
 		[HttpGet("{aksjeId}")]
 		public async Task<ActionResult> HentEtPortfolioRad(int aksjeId)
 		{
-			/*
+			
 			if (string.IsNullOrEmpty(HttpContext.Session.GetString(_LoggetInn)))
 			{
 				return Unauthorized();
 			}
-			*/
+			
 
 			PortfolioRad portfolioRad = await _db.HentEtPortfolioRad(aksjeId);
 			if (portfolioRad == null)
@@ -131,12 +131,12 @@ namespace AksjeApp2.Controllers
 		[HttpGet]
 		public async Task<ActionResult> HentAksjer()
 		{
-			/*
+			
 			if (string.IsNullOrEmpty(HttpContext.Session.GetString(_LoggetInn)))
 			{
 				return Unauthorized();
 			}
-			*/
+			
 
 			
 
@@ -149,12 +149,12 @@ namespace AksjeApp2.Controllers
 		[HttpGet]
 		public async Task<ActionResult> HentPortfolio()
 		{
-			/*
+			
 			if (string.IsNullOrEmpty(HttpContext.Session.GetString(_LoggetInn)))
 			{
 				return Unauthorized();
 			}
-			*/
+			
 
 			List<PortfolioRad> allePortfolio = await _db.HentPortfolio();
             //_log.LogInformation("Portfolio har blitt hentet til 'portfolio.html'");
@@ -165,12 +165,12 @@ namespace AksjeApp2.Controllers
 		[HttpGet]
 		public async Task<ActionResult> HentTransaksjoner()
 		{
-			/*
+			
 			if (string.IsNullOrEmpty(HttpContext.Session.GetString(_LoggetInn)))
 			{
 				return Unauthorized();
 			}
-			*/
+			
 
 			List<Transaksjon> alleTransaksjoner = await _db.HentTransaksjoner();
             //_log.LogInformation("Transaksjonene har blitt hentet til 'Transaksjoner.html'");
@@ -206,9 +206,11 @@ namespace AksjeApp2.Controllers
 		public async Task<ActionResult> UserIn(Bruker user) {
 			bool returnOk = await _db.UserIn(user);
 			if (!returnOk) {
+				HttpContext.Session.SetString(_LoggetInn, "");
 				return Ok(false);
 			} else {
-				return Ok(true);
+                HttpContext.Session.SetString(_LoggetInn, "LoggetInn");
+                return Ok(true);
 			}
 		}
 
