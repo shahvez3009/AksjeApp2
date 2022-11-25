@@ -52,8 +52,42 @@ namespace AksjeApp2.DAL
 				return false;
 			}
 		}
+		public async Task<bool> Selg(PortfolioRad innPortfolio)
+		{
+			try
+			{
+				PortfolioRader etPortfolioRad = _db.PortfolioRader.First(p => p.Aksje.Id == innPortfolio.AksjeId);
+				// Sjekker om antallet brukeren prøver å selge er mindre enn det brukeren eier. Hvis dette er sann vil den utføre transaksjonen
+				if (etPortfolioRad.Antall > innPortfolio.Antall && innPortfolio.Antall != 0)
+				{
+					etPortfolioRad.Bruker.Saldo += innPortfolio.Antall * etPortfolioRad.Aksje.Pris;
+					etPortfolioRad.Antall -= innPortfolio.Antall;
+					etPortfolioRad.Aksje.AntallLedige += innPortfolio.Antall;
+
+					await lagTransaksjon("Salg", etPortfolioRad, innPortfolio.Antall);
+					return true;
+				}
+				// Sjekker om brukeren vil selge alle aksjene den eier. Hvis dette er sann vil den slette aksje beholdningen fra portføljen.
+				if (etPortfolioRad.Antall == innPortfolio.Antall && innPortfolio.Antall != 0)
+				{
+					etPortfolioRad.Bruker.Saldo += innPortfolio.Antall * etPortfolioRad.Aksje.Pris;
+					etPortfolioRad.Aksje.AntallLedige += innPortfolio.Antall;
+					_db.Remove(etPortfolioRad);
+
+					await lagTransaksjon("Salg", etPortfolioRad, innPortfolio.Antall);
+					return true;
+				}
+
+				return false;
+			}
+			catch
+			{
+				return false;
+			}
+		}
 
 		// Denne funksjonen vil kjøres når brukeren selger aksjer fra portføljen
+		/*
 		public async Task<bool> Selg(PortfolioRad innPortfolio)
 		{
 			try
@@ -81,44 +115,6 @@ namespace AksjeApp2.DAL
 					return true;
 				}
 				
-				return false;
-			}
-			catch
-			{
-				return false;
-			}
-		}
-
-		/*
-		public async Task<bool> Kjop(int aksjeId, PortfolioRader innPortfolio)
-		{
-			try
-			{
-				PortfolioRader[] etPortfolioRad = _db.PortfolioRader.Where(p => p.Aksje.Id == aksjeId && p.Bruker.Id == 1).ToArray();
-				Brukere enBruker = await _db.Brukere.FindAsync(1);
-				Aksjer enAksje = await _db.Aksjer.FindAsync(aksjeId);
-				if (enBruker.Saldo >= enAksje.Pris * innPortfolio.Antall && enAksje.AntallLedige >= innPortfolio.Antall && innPortfolio.Antall >= 1)
-				{
-					if (etPortfolioRad.Length == 1)
-					{
-						etPortfolioRad[0].Antall += innPortfolio.Antall;
-						await lagTransaksjon("Kjøp", etPortfolioRad[0], innPortfolio.Antall);
-					}
-					else
-					{
-						var nyPortfolio = new PortfolioRader();
-						nyPortfolio.Antall = innPortfolio.Antall;
-						nyPortfolio.Aksje = enAksje;
-						nyPortfolio.Bruker = enBruker;
-						_db.PortfolioRader.Add(nyPortfolio);
-						await lagTransaksjon("Kjøp", nyPortfolio, innPortfolio.Antall);
-					}
-					enBruker.Saldo -= enAksje.Pris * innPortfolio.Antall;
-					enAksje.AntallLedige -= innPortfolio.Antall;
-
-					await _db.SaveChangesAsync();
-					return true;
-				}
 				return false;
 			}
 			catch

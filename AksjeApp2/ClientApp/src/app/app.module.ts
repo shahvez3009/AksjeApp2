@@ -9,25 +9,25 @@ import { Meny } from './meny/meny';
 import { Hjem } from './hjem/hjem';
 import { Portfolio } from './portfolio/portfolio';
 import { Transaksjonshistorikk } from './transaksjonshistorikk/transaksjonshistorikk';
+import { Kjop } from './kjop/kjop';
+import { Selg } from './selg/selg';
 import { Logginn } from './logginn/logginn';
 import { LagBruker } from './lagBruker/lagBruker';
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
-import { KjopModal } from './kjopModal/kjopModal';
-import { SelgModal } from './selgModal/selgModal';
 
 import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
     declarations: [
         AppComponent,
-        Logginn,
-        LagBruker,
         Meny,
         Hjem,
         Portfolio,
         Transaksjonshistorikk,
-        KjopModal,
-        SelgModal
+        Kjop,
+        Selg,
+        Logginn,
+        LagBruker,
     ],
     imports: [
         BrowserModule,
@@ -38,7 +38,6 @@ import { AppRoutingModule } from './app-routing.module';
         FormsModule
     ],
     providers: [],
-    bootstrap: [AppComponent],
-    entryComponents: [KjopModal, SelgModal]
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

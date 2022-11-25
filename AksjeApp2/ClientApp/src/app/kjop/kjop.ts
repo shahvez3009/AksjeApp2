@@ -1,25 +1,24 @@
-﻿import { Component } from "@angular/core";
+﻿import { Component, OnInit } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { Aksje } from "../Aksje";
 import { Bruker } from "../Bruker";
 import { PortfolioRad } from '../PortfolioRad';
 
 @Component({
-	templateUrl: "kjopModal.html",
-	styleUrls: ['./kjopModal.css']
+	templateUrl: "kjop.html",
+	styleUrls: ['./kjop.css']
 })
 
-export class KjopModal {
+export class Kjop {
 	laster: boolean;
 	status: boolean;
 	navn: string;
 	pris: number;
 	ledige: number;
-	brukerId: number;
 	aksjeId: number;
+	brukerId: number;
 	skjema: FormGroup;
 
 	constructor(
@@ -39,6 +38,8 @@ export class KjopModal {
 
 	ngOnInit() {
 		this.laster = true;
+		this.aksjeId = 1;
+		this.brukerId = 1;
 		this.hentAllInfo();
 	}
 
@@ -73,6 +74,8 @@ export class KjopModal {
 
 	onSubmit() {
 		this.bekreftKjop();
+		this.hentAllInfo();
+		this.router.navigate(['/portfolio']);
 	}
 
 	bekreftKjop() {
@@ -87,7 +90,7 @@ export class KjopModal {
 
 		this.http.post("api/aksje/kjop/", nyttKjop)
 			.subscribe(retur => {
-				console.log("etter subscribe");
+				console.log("Da har du kjøpt!");
 			},
 			error => console.log(error)
 		);

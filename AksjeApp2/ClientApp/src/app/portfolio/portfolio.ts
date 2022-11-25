@@ -1,9 +1,6 @@
 ﻿import { Component, OnInit } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
-import { KjopModal } from '../kjopModal/kjopModal';
-import { SelgModal } from '../selgModal/selgModal';
 import { PortfolioRad } from "../PortfolioRad"; 
 
 @Component({
@@ -16,8 +13,7 @@ export class Portfolio {
 
 	constructor(
 		private http: HttpClient,
-		private router: Router,
-		private modalService: NgbModal
+		private router: Router
 	){}
 
 	//Blir kjørt når vi kaller på denne komponenten  
@@ -36,27 +32,6 @@ export class Portfolio {
 			(error) => console.log(error)
 		);
 	};
-
-	
-	visKjopModal(brukerId: number, aksjeId: number) {
-		const modalRef = this.modalService.open(KjopModal);
-
-		modalRef.componentInstance.brukerId = brukerId;
-		modalRef.componentInstance.aksjeId = aksjeId;
-	}
-	
-	visSelgModal(brukerId: number,aksjeId: number) {
-		const modalRef = this.modalService.open(SelgModal);
-
-		modalRef.componentInstance.brukerId = brukerId;
-		modalRef.componentInstance.aksjeId = aksjeId;
-
-		
-		modalRef.result.then(retur => {
-			console.log('Lukket med:' + retur);
-			this.router.navigate(['/portfolio']);
-		});
-	}
 }
 
 

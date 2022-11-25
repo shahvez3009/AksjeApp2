@@ -1,27 +1,26 @@
 ﻿import { Component } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Router } from "@angular/router";
-import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { PortfolioRad } from "../PortfolioRad";
 import { Aksje } from "../Aksje";
 
 @Component({
-	templateUrl: "selgModal.html",
-	styleUrls: ["./selgModal.css"],
+	templateUrl: "selg.html",
+	styleUrls: ["./selg.css"],
 })
 
-export class SelgModal {
+export class Selg {
 	laster: boolean;
 	navn: string;
 	pris: number;
 	antall: number;
 	aksjeId: number;
+	brukerId: number;
 	selgAntall: number;
 	skjema: FormGroup;
 
 	constructor(
-		public selgmodal: NgbActiveModal,
 		private http: HttpClient,
 		private router: Router,
 		private fb: FormBuilder
@@ -38,6 +37,8 @@ export class SelgModal {
 
 	ngOnInit() {
 		this.laster = true;
+		this.aksjeId = 1;
+		this.brukerId = 1;
 		this.hentAllInfo();
 	}
 
@@ -56,12 +57,14 @@ export class SelgModal {
 
 	onSubmit() {
 		this.bekreftSalg();
+		this.hentAllInfo();
+		this.router.navigate(['/portfolio']);
 	}
 
 	bekreftSalg() {
 		const innPortfolio = new PortfolioRad();
 		innPortfolio.antall = Number(this.skjema.value.antall);
-		innPortfolio.id = this.aksjeId;
+		innPortfolio.aksjeId = this.aksjeId;
 		console.log(innPortfolio);
 
 		this.http.post("api/aksje/selg/", innPortfolio)
