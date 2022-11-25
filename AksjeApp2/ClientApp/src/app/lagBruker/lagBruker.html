@@ -1,5 +1,5 @@
 ﻿<div class="container">
-    <div class="col-md-4">
+    <div class="col-md-4 mx-auto">
         <form [formGroup]="skjema" (ngSubmit)="Submit()">
             <div class="form-group">
                 <label>Fornavn</label>
@@ -14,8 +14,16 @@
                 <input class="form-control" formControlName="mail" />
             </div>
             <div class="form-group">
-                <label>Telefonnunmmer</label>
-                <input class="form-control" formControlName="telefonnummer" />
+                <label>Mobilnummer</label>
+                <input class="form-control" formControlName="mobilnummer" />
+            </div>
+            <div class="form-group">
+                <label>Velg et brukernavn</label>
+                <input class="form-control" formControlName="brukernavn" />
+            </div>
+            <div class="form-group">
+                <label>Velg et passord</label>
+                <input class="form-control" formControlName="passord" />
             </div>
             <div class="form-group">
                 <button type="submit">Registrer</button>

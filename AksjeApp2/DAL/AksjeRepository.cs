@@ -335,11 +335,15 @@ namespace AksjeApp2.DAL
             {
                 var nyBrukerRad = new Brukere();
 
+                //var brukerNavnFinsALlerede = _db.Brukere.First(p => p.Brukernavn == innBruker.Brukernavn);
+
                 nyBrukerRad.Fornavn = innBruker.Fornavn;
                 nyBrukerRad.Etternavn = innBruker.Etternavn;
                 nyBrukerRad.Mail = innBruker.Mail;
                 nyBrukerRad.Mobilnummer = innBruker.Mobilnummer;
-                nyBrukerRad.Saldo = innBruker.Saldo;
+				nyBrukerRad.Saldo = 500000;
+				nyBrukerRad.Brukernavn = innBruker.Brukernavn;
+				nyBrukerRad.Passord = innBruker.Passord;
 
                 //Skal vi sette en verdi på saldo her?
                 //nyBrukerRad.Saldo = innBruker.Saldo;

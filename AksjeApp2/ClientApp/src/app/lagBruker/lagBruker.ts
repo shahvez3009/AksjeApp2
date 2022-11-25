@@ -22,8 +22,14 @@ export class LagBruker {
         mail: [
             null, Validators.compose([Validators.required, Validators.pattern("[0-9a-zA-ZøæåØÆÅ\\-. ]{2,30}")])
         ],
-        telefonnummer: [
+        mobilnummer: [
             null, Validators.compose([Validators.required, Validators.pattern("[0-9]{8}")])
+        ],
+        brukernavn: [
+            null, Validators.compose([Validators.required, Validators.pattern("[0-9a-zA-ZøæåØÆÅ\\-. ]{2,30}")])
+        ],
+        passord: [
+            null, Validators.compose([Validators.required, Validators.pattern("[0-9a-zA-ZøæåØÆÅ\\-. ]{2,30}")])
         ]
     }
 
@@ -41,10 +47,12 @@ export class LagBruker {
         nyBruker.fornavn = this.skjema.value.fornavn;
         nyBruker.etternavn = this.skjema.value.etternavn;
         nyBruker.mail = this.skjema.value.mail;
-        nyBruker.telefonnummer = this.skjema.value.telefonnummer;
+        nyBruker.mobilnummer = this.skjema.value.mobilnummer;
+        nyBruker.brukernavn = this.skjema.value.brukernavn;
+        nyBruker.passord = this.skjema.value.passord;
 
         
-        this.http.post("api/aksje/lagbruker", nyBruker)
+        this.http.post("api/aksje/lagrebruker/", nyBruker)
             .subscribe(retur => {
                 this.router.navigate(['/logginn']);
             },

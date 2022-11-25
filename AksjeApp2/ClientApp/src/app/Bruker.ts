@@ -4,5 +4,7 @@
     etternavn: string;
     saldo: number;
     mail: string;
-    telefonnummer: number;
+    mobilnummer: string;
+    brukernavn: string;
+    passord: string;
 }

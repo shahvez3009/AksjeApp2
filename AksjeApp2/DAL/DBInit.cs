@@ -17,7 +17,8 @@ namespace AksjeApp2.Models
                 context.Database.EnsureCreated();
 
                 //Bruker
-                var per = new Brukere { Fornavn = "Per", Etternavn = "Johansen", Saldo = 500000, Mail = "perjohansen@hotmail.com", Mobilnummer = 12345678 };
+                var per = new Brukere { Fornavn = "Per", Etternavn = "Johansen", Saldo = 500000, Mail = "perjohansen@hotmail.com", 
+                    Mobilnummer = "12345678", Brukernavn = "PerJohansen", Passord = "Passord123"};
 
                 //Aksje
                 var microsoft = new Aksjer { Navn = "Microsoft", Pris = 300, AntallLedige = 1200, MaxAntall = 1200 };
