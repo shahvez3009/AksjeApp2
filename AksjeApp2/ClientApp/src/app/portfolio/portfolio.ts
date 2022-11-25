@@ -49,8 +49,13 @@ export class Portfolio {
 		const modalRef = this.modalService.open(SelgModal);
 
 		modalRef.componentInstance.brukerId = brukerId;
-	//	modalRef.componentInstance.portfolioId = portfolioId;
 		modalRef.componentInstance.aksjeId = aksjeId;
+
+		
+		modalRef.result.then(retur => {
+			console.log('Lukket med:' + retur);
+			this.router.navigate(['/portfolio']);
+		});
 	}
 }
 

@@ -1,7 +1,7 @@
 ﻿import { Component } from "@angular/core";
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { Aksje } from "../Aksje";
 import { Bruker } from "../Bruker";
@@ -22,13 +22,6 @@ export class KjopModal {
 	aksjeId: number;
 	skjema: FormGroup;
 
-	validering = {
-		id: [""],
-		antall: [
-			null, Validators.compose([Validators.required, Validators.pattern("[0-9]{3}")])
-		]
-	}
-
 	constructor(
 		private http: HttpClient,
 		private router: Router,
@@ -37,31 +30,16 @@ export class KjopModal {
 		this.skjema = fb.group(this.validering);
 	}
 
+	validering = {
+		id: [""],
+		antall: [
+			null, Validators.compose([Validators.required, Validators.pattern("[0-9]{2}")])
+		]
+	}
+
 	ngOnInit() {
 		this.laster = true;
 		this.hentAllInfo();
-	}
-
-	onSubmit() {
-		this.bekreftKjop();
-	}
-
-	bekreftKjop() {
-		const nyttKjop = new PortfolioRad();
-
-		nyttKjop.antall = Number(this.skjema.value.antall);
-		nyttKjop.aksjeId = this.aksjeId;
-		nyttKjop.aksjeNavn = this.navn;
-		nyttKjop.aksjePris = this.pris;
-		nyttKjop.brukerId = this.brukerId;
-
-		console.log(nyttKjop);
-		this.http.post("api/aksje/kjop/", nyttKjop)
-			.subscribe(retur => {
-				console.log("etter subscribe");
-			},
-			error => console.log(error)
-		);
 	}
 
 	hentAllInfo() {
@@ -78,7 +56,7 @@ export class KjopModal {
 				console.log("kjopModal - hentEtPortfolioRad");
 			},
 				(error) => console.log(error)
-			);
+		);
 
 		this.http.get<Aksje>("api/aksje/hentenaksje/" + Number(this.aksjeId))
 			.subscribe(hentetAksje => {
@@ -90,6 +68,28 @@ export class KjopModal {
 				console.log("kjopModal - hentEnAksje");
 			},
 				(error) => console.log(error)
-			);
+		);
+	}
+
+	onSubmit() {
+		this.bekreftKjop();
+	}
+
+	bekreftKjop() {
+		const nyttKjop = new PortfolioRad();
+
+		nyttKjop.antall = Number(this.skjema.value.antall);
+		nyttKjop.aksjeId = this.aksjeId;
+		nyttKjop.aksjeNavn = this.navn;
+		nyttKjop.aksjePris = this.pris;
+		nyttKjop.brukerId = this.brukerId;
+		console.log(nyttKjop);
+
+		this.http.post("api/aksje/kjop/", nyttKjop)
+			.subscribe(retur => {
+				console.log("etter subscribe");
+			},
+			error => console.log(error)
+		);
 	}
 }

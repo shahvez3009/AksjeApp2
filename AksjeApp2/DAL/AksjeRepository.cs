@@ -54,25 +54,19 @@ namespace AksjeApp2.DAL
 		}
 
 		// Denne funksjonen vil kjøres når brukeren selger aksjer fra portføljen
-		public async Task<bool> Selg(PortfolioRader innPortfolio)
+		public async Task<bool> Selg(PortfolioRad innPortfolio)
 		{
 			try
 			{
-				Console.WriteLine("1");
                 var endreObjekt = await _db.PortfolioRader.FindAsync(innPortfolio.Id);
-                Console.WriteLine("2");
                 // Sjekker om antallet brukeren prøver å selge er mindre enn det brukeren eier. Hvis dette er sann vil den utføre transaksjonen
                 if (endreObjekt.Antall > innPortfolio.Antall && innPortfolio.Antall != 0)
 				{
-                    Console.WriteLine("3");
                     endreObjekt.Bruker.Saldo += innPortfolio.Antall * endreObjekt.Aksje.Pris;
-                    Console.WriteLine("4");
                     endreObjekt.Antall -= innPortfolio.Antall;
-                    Console.WriteLine("5");
                     endreObjekt.Aksje.AntallLedige += innPortfolio.Antall;
-                    Console.WriteLine("6");
+
                     await lagTransaksjon("Salg", endreObjekt, innPortfolio.Antall);
-                    Console.WriteLine("7");
                     return true;
 				}
 				// Sjekker om brukeren vil selge alle aksjene den eier. Hvis dette er sann vil den slette aksje beholdningen fra portføljen.

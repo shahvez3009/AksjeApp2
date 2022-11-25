@@ -2,61 +2,73 @@
 import { HttpClient } from "@angular/common/http";
 import { Router } from "@angular/router";
 import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { PortfolioRad } from "../PortfolioRad";
 import { Aksje } from "../Aksje";
 
 @Component({
-  templateUrl: "selgModal.html",
-  styleUrls: ["./selgModal.css"],
+	templateUrl: "selgModal.html",
+	styleUrls: ["./selgModal.css"],
 })
 
 export class SelgModal {
-  laster: boolean;
-  navn: string;
-  pris: number;
-  antall: number;
-  aksjeId: number;
-  portfolioId: number;
-  selgAntall: number;
-  solgtId: number;
+	laster: boolean;
+	navn: string;
+	pris: number;
+	antall: number;
+	aksjeId: number;
+	selgAntall: number;
+	skjema: FormGroup;
 
-  constructor(private http: HttpClient, private router: Router) {}
+	constructor(
+		public selgmodal: NgbActiveModal,
+		private http: HttpClient,
+		private router: Router,
+		private fb: FormBuilder
+	) {
+		this.skjema = fb.group(this.validering);
+	}
 
-  ngOnInit() {
-    this.laster = true;
-    this.hentAllInfo();
-  }
+	validering = {
+		id: [""],
+		antall: [
+			null, Validators.compose([Validators.required, Validators.pattern("[0-9]{2}")])
+		]
+	}
 
-  hentAllInfo() {
-    this.http
-        .get<PortfolioRad>(
-            "api/aksje/hentetportfoliorad/" + Number(this.aksjeId)
-      )
-      .subscribe(
-        (portfolioRad) => {
-          this.navn = portfolioRad.aksjeNavn;
-          this.pris = portfolioRad.aksjePris;
-          this.antall = portfolioRad.antall;
-          this.laster = false;
-          console.log("Hentet rad");
-        },
-        (error) => console.log(error)
-      );
-  }
+	ngOnInit() {
+		this.laster = true;
+		this.hentAllInfo();
+	}
 
-  selgAksje() {
-    console.log(Number(this.selgAntall));
-    console.log(Number(this.aksjeId));
-    const innPortfolio = new PortfolioRad();
-    //innPortfolio.aksjeid = this.aksjeId;
-    innPortfolio.antall = this.selgAntall;
-    //innPortfolio.aksjeNavn = "Hanji";
-    //innPortfolio.brukerid = 1;
-    //innPortfolio.aksjePris = 200;
-    innPortfolio.id = this.aksjeId;
-    console.log(innPortfolio);
-    this.http.post("api/aksje/selg/", innPortfolio).subscribe((retur) => {
-      this.router.navigate(["/portfolio"]);
-    });
-  }
+	hentAllInfo() {
+		this.http.get<PortfolioRad>("api/aksje/hentetportfoliorad/" + Number(this.aksjeId))
+			.subscribe((portfolioRad) => {
+				this.navn = portfolioRad.aksjeNavn;
+				this.pris = portfolioRad.aksjePris;
+				this.antall = portfolioRad.antall;
+				this.laster = false;
+				console.log("Hentet rad");
+			},
+				(error) => console.log(error)
+			);
+	}
+
+	onSubmit() {
+		this.bekreftSalg();
+	}
+
+	bekreftSalg() {
+		const innPortfolio = new PortfolioRad();
+		innPortfolio.antall = Number(this.skjema.value.antall);
+		innPortfolio.id = this.aksjeId;
+		console.log(innPortfolio);
+
+		this.http.post("api/aksje/selg/", innPortfolio)
+			.subscribe((retur) => {
+				console.log("Da har du solgt!");
+			},
+			(error) => console.log(error)
+		);
+	}
 }
