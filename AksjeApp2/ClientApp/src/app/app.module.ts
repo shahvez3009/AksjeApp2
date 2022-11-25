@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 import { Meny } from './meny/meny';
 import { Hjem } from './hjem/hjem';
 import { Portfolio } from './portfolio/portfolio';
-import { Transaksjon } from './transaksjon/transaksjon';
+import { Transaksjonshistorikk } from './transaksjonshistorikk/transaksjonshistorikk';
 import { Logginn } from './logginn/logginn';
 import { LagBruker } from './lagBruker/lagBruker';
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
@@ -25,7 +25,7 @@ import { AppRoutingModule } from './app-routing.module';
         Meny,
         Hjem,
         Portfolio,
-        Transaksjon,
+        Transaksjonshistorikk,
         KjopModal,
         SelgModal
     ],

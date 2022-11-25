@@ -4,10 +4,10 @@ import { Router } from '@angular/router';
 import { Transaksjon } from "../Transaksjon";
 
 @Component({
-	templateUrl: "transaksjon.html"
+	templateUrl: "transaksjonshistorikk.html"
 })
 
-export class Transaksjon {
+export class Transaksjonshistorikk {
 	laster: boolean;
 	alleTransaksjoner: Array<Transaksjon>;
 
