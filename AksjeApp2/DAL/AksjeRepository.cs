@@ -286,7 +286,9 @@ namespace AksjeApp2.DAL
 				return null;
 			}
 		}
-        /*
+
+
+		
         public static byte[] LagHash(string passord, byte[] salt)
         {
             return KeyDerivation.Pbkdf2(
@@ -304,14 +306,14 @@ namespace AksjeApp2.DAL
             csp.GetBytes(salt);
             return salt;
         }
-
-        public async Task<bool> LoggInn(Bruker bruker)
+		 /*
+        public async Task<bool> LoggInn(User bruker)
         {
             try
             {
-                Brukere funnetBruker = await _db.Brukere.FirstOrDefaultAsync(b => b.Brukernavn == bruker.Brukernavn);
+                Brukere funnetBruker = await _db.Brukere.FirstOrDefaultAsync(b => b.Brukernavn == bruker.BrukernavnSend);
                 // sjekk passordet
-                byte[] hash = LagHash(bruker.Passord, funnetBruker.Salt);
+                byte[] hash = LagHash(bruker.BrukernavnSend, funnetBruker.Salt);
                 bool ok = hash.SequenceEqual(funnetBruker.Passord);
                 if (ok)
                 {
@@ -319,13 +321,46 @@ namespace AksjeApp2.DAL
                 }
                 return false;
             }
-            catch (Exception e)
+            catch 
             {
-                _log.LogInformation(e.Message);
+              //  _log.LogInformation(e.Message);
                 return false;
             }
         }
 		*/
+
+		public async Task<bool> UserIn(Bruker user)
+        {
+			try
+			{
+				Brukere funnetUser = await _db.Brukere.FirstOrDefaultAsync(b => b.Brukernavn == user.Brukernavn);
+				Console.WriteLine("1");
+                Console.WriteLine(funnetUser.ToString());
+                byte[] hash = LagHash(user.Passord, funnetUser.Salt);
+                Console.WriteLine("2");
+				Console.WriteLine(hash.ToString());
+                bool ok = hash.SequenceEqual(funnetUser.Passord);
+				Console.WriteLine(ok.ToString());
+                Console.WriteLine("3");
+                if (ok)
+				{
+					Console.WriteLine("4");
+					return true;
+                    
+                }
+				else {
+					Console.WriteLine("5");
+					return false;
+                  
+                }
+				
+			}
+			catch (Exception) {
+                Console.WriteLine("6");
+                return false;
+			}
+
+        }
 
         public async Task<bool> LagreBruker(Bruker innBruker)
         {

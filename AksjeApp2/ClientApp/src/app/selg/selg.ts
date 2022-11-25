@@ -67,6 +67,7 @@ export class Selg {
 		innPortfolio.aksjeId = this.aksjeId;
 		console.log(innPortfolio);
 
+
 		this.http.post("api/aksje/selg/", innPortfolio)
 			.subscribe((retur) => {
 				console.log("Da har du solgt!");

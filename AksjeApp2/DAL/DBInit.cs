@@ -30,6 +30,7 @@ namespace AksjeApp2.Models
 				//PortfolioRad
 				var rad1 = new PortfolioRader { Antall = 10, Bruker = per, Aksje = netflix };
 
+     
                 
 				context.Brukere.Add(per);
 
@@ -41,8 +42,8 @@ namespace AksjeApp2.Models
 
                 //context.PortfolioRader.Add(rad1);
 
-                /*
-                // Lager en påloggingsbruker
+                
+                //Lager en påloggingsbruker
                 var bruker = new Brukere();
                 bruker.Brukernavn = "Admin";
                 var passord = "Test11";
@@ -51,7 +52,7 @@ namespace AksjeApp2.Models
                 bruker.Passord = hash;
                 bruker.Salt = salt;
                 context.Brukere.Add(bruker);
-                */
+                
 
                 context.SaveChanges();
             }

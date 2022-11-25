@@ -8,6 +8,12 @@ using Newtonsoft.Json.Linq;
 namespace AksjeApp2.Models
 {
 
+   /* public class Users {
+        public int Id { get; set; }
+        public string BrukernavnSend { get; set; }
+        public string PassordSend { get; set; }
+    }*/
+
     public class Aksjer
     {
         public int Id { get; set; }

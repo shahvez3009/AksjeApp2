@@ -177,9 +177,9 @@ namespace AksjeApp2.Controllers
             return Ok(alleTransaksjoner);
 		}
 
-        /*
+		/*
 		[HttpGet("{id}")]
-		public async Task<ActionResult> LoggInn(Bruker bruker)
+		public async Task<ActionResult> LoggInn(User bruker)
 		{
 			if (ModelState.IsValid)
 			{
@@ -195,12 +195,22 @@ namespace AksjeApp2.Controllers
 			_log.LogInformation("Feil i inputvalidering");
 			return BadRequest("Feil i inputvalidering på server");
 		}
-
+		/*
 		public void LoggUt()
 		{
 			HttpContext.Session.SetString(_LoggetInn, "");
 		}
 		*/
+
+		[HttpPost]
+		public async Task<ActionResult> UserIn(Bruker user) {
+			bool returnOk = await _db.UserIn(user);
+			if (!returnOk) {
+				return Ok(false);
+			} else {
+				return Ok(true);
+			}
+		}
 
 
         [HttpPost]

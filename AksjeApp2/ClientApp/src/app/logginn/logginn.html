@@ -1,4 +1,4 @@
-﻿<div class="container">
+﻿<div>
     <h1>Logg inn hos JustInvest</h1>
     <div class="wrapper">
         <form [formGroup]="Skjema" (ngSubmit)="onSubmit()">
@@ -9,17 +9,23 @@
                     </td>
                     <td>
                         <input type="text" formControlName="brukernavn">
+                        <!-- <p class="alert alert-warning" [hidden]="Skjema.controls.brukernavn.valid || (Skjema.controls.brukernavn.pristine && !submitted)">
+                            Vennligst fyll ut brukernavn
+                        </p>-->
                     </td>
-                    <td *ngIf="this.Skjema.controls.brukernavn.status=='INVALID'">
+                   
+                        <td *ngIf="this.Skjema.controls.brukernavn.status=='INVALID'">
                         Obligatorisk
                     </td>
+                    
+                    
                 </tr>
                 <tr>
                     <td>
                         <label>Passord:</label>
                     </td>
                     <td>
-                        <input type="password" formControlName="passord">
+                        <input type="password" formControlName="passord" required>
                     </td>
                     <td *ngIf="this.Skjema.controls.passord.status=='INVALID'">
                         Mellom 6 og 15 siffer
@@ -27,7 +33,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <button type="submit" [disabled]="!Skjema.valid">Register</button>
+                        <button type="submit" [disabled]="!Skjema.valid">Logg inn</button>
                     </td>
                     <td>
                     </td>

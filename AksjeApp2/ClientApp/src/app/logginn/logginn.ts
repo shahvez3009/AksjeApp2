@@ -2,115 +2,77 @@
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Bruker } from "../Bruker";
-import { FormBuilder, FormGroup, Validators, FormControl } from "@angular/forms"; 
+import { FormBuilder, FormGroup, Validators, FormControl } from "@angular/forms";
 
 @Component({
     selector: "app-logginn",
     templateUrl: "./logginn.html",
     styleUrls: ['./logginn.css']
 })
-export class Logginn {}
-/*
 
-export class Logginn implements OnInit {
+export class Logginn {
+    Skjema: FormGroup;
+    valid;
+    invalidBruker: boolean; 
 
-    skjema: FormGroup;
+    constructor(
+        private fb: FormBuilder,
+        private http: HttpClient,
+        private router: Router) {
+        this.Skjema = fb.group(this.validering)
+     
+    }
 
-    laster = false;
-    success = false; 
+    validering = {
+        brukernavn: [
+            null,
+            Validators.compose([Validators.required, Validators.pattern("[0-9a-zA-ZæøåÆØÅ\ .-/<>!?#&()=]{2,40}")])
+        ],
+        passord: [
+            null,
+            Validators.compose([Validators.required, Validators.pattern("[0-9a-zA-ZæøåÆØÅ\ .-/<>!?#&()=]{5,16}")])
+        ]
+    };
 
 
-
-
-    constructor(private fb: FormBuilder) {
-        this.Skjema = fb.group({
-            brukernavn: ["", Validators.required],
-            passord: ["", Validators.pattern("[a-zA-ZæøåÆØÅ\.\-]{2,20}")]
-        });
+    ngOnInit() {
+        console.log(this.Skjema.valid);
     }
 
     onSubmit() {
-        console.log("Modellbasert skjema submitted:");
+
+        console.log("Modelbasert skjema submitted");
         console.log(this.Skjema);
         console.log(this.Skjema.value.brukernavn);
+        console.log(this.Skjema.value.passord);
         console.log(this.Skjema.touched);
-
-        this.laster = true; 
-
-        const skjemaVerdi = this.skjema.value;
-
-        try {
-            this.loggInn;
-            this.validerBrukernavn;
-            this.validerPassord; 
-        }
-        catch(error) {
-            console.log(error);
-        }
-
+        this.logginn();
     }
 
- 
-    loggInn() {
-        const brukernavnOK = validerBrukernavn($("#brukernavn").val());
-        const passordOK = validerPassord($("#passord").val());
 
-        if (brukernavnOK && passordOK) {
-            const bruker = {
-                brukernavn: $("#brukernavn").val(),
-                passord: $("#passord").val(),
-            };
-            $.post("Kunde/LoggInn", bruker, function (OK) {
-                if (OK) {
-                    window.location.href = "index.html";
-                } else {
-                    $("#feil").html("Feil brukernavn eller passord");
+
+    logginn() {
+
+        const send = new Bruker();
+
+        send.brukernavn = this.Skjema.value.brukernavn;
+        send.passord = this.Skjema.value.passord;
+
+        this.http.post("api/aksje/UserIn", send)
+            .subscribe(retur => {
+                this.valid = retur;
+                if (this.valid) {
+                    console.log("Du er logget inn");
+                    this.router.navigate(["/hjem"]);
                 }
-            }).fail(function () {
-                $("#feil").html("Feil på server - prøv igjen senere");
-            });
-        }
+                error => { this.invalidBruker = true }   
+            },
+            );
     }
-
-  
-
-  
-    validerBrukernavn(bnavn) {
-        const regexp = /^[a-zA-ZæøåÆØÅ\.\-]{2,20}$/;
-        const ok = regexp.test(bnavn);
-        if (!ok) {
-            $("ugyldigBrukernavn").html("Skriv et ordentlig brukernavn");
-            return false;
-        }
-        else {
-            $("#ugyldigBrukernavn").html("");
-            return true;
-        }
-    }
-
-
-    validerPassord(passord) {
-        const regexp = /^[a-zA-ZæøåÆØÅ\.\-]{2,20}$/;
-        const ok = regexp.test(passord);
-        if (!ok) {
-            $("ugyldigPassord").html("Skriv et ordentlig passord");
-            return false;
-        }
-        else {
-            $("#ugyldigPassord").html("");
-            return true;
-        }
-    }
-
+    
 }
 
-*/
 
-
-
-
-   
-  
-
+    
 
 
