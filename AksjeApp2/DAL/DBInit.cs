@@ -51,9 +51,8 @@ namespace AksjeApp2.Models
                 bruker.Passord = hash;
                 bruker.Salt = salt;
                 context.Brukere.Add(bruker);
-                
 
-                context.SaveChanges();
+				context.SaveChanges();
             }
         }
     }

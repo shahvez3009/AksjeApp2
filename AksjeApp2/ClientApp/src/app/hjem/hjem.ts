@@ -25,7 +25,7 @@ export class Hjem {
     hentAllInfo() {
         this.http.get<Aksje[]>("api/aksje/hentaksjer")
             .subscribe(aksjene => {
-                console.log(localStorage.getItem("status"));
+                console.log(localStorage.getItem("brukernavn"));
                 this.alleAksjer = aksjene;
                 this.laster = false;
                 console.log("hjem - hentAksjer");
