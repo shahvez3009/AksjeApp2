@@ -13,10 +13,6 @@
         public class AksjeControllerTest
         {
 
-            private readonly Mock<AksjeRepositoryInterface> mockRep = new Mock<AksjeRepositoryInterface>();
-            private readonly Mock<AksjeController> mockLog = new Mock<AksjeController>();
-
-
             [Fact]
             public async Task HentAksjerOK()
             {
@@ -53,7 +49,9 @@
                 aksjeliste.Add(aksje3);
 
 
-                mockRep.Setup(k => k.HentAksjer()).ReturnsAsync(aksjeliste);
+                Mock<AksjeRepositoryInterface> mockRep = new Mock<AksjeRepositoryInterface>();
+                Mock<AksjeController> mockLog = new Mock<AksjeController>();
+        mockRep.Setup(k => k.HentAksjer()).ReturnsAsync(aksjeliste);
 
                 var aksjeController = new AksjeController(mockRep.Object);
 
@@ -72,9 +70,9 @@
                 mock.Setup(k => k.HentAksjer()).ReturnsAsync(() => null);
 
                 var aksjeController = new AksjeController(mock.Object);
-                //List<Aksje> resultat = await aksjeController.HentAksjer();
+                var resultat = await aksjeController.HentAksjer() as OkObjectResult;
 
-                //Assert.Null(resultat);
+                Assert.Null(resultat);
             }
 
             [Fact]
@@ -235,5 +233,43 @@
 
                 Assert.Null(aksje);
             }
+
+            [Fact]
+            public async Task KjopIkkeNokSaldoOgLedige()
+        {
+
+        }//Ikke nok saldo eller nok ledige aksjer
+
+
+            [Fact]
+            public async Task KjopFeil()
+        {
+
+        }
+
+
+            [Fact]
+            public async Task SelgOK1()
+        {
+
+        } //Bruker selger kun deler og ikke alt han eier
+
+            [Fact]
+            public async Task SelgOK2()
+        {
+
+        } //Bruker selger alt han eier av aksjen
+
+            [Fact]
+            public async Task SelgFantIkkeAksje()
+        {
+
+        }
+
+            [Fact]
+            public async Task SelgFeil()
+        {
+
+        }
         }
     }
