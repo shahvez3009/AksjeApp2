@@ -1,6 +1,8 @@
 ﻿import { Component } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Router } from "@angular/router";
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { SelgModal } from './selgModal';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { PortfolioRad } from "../PortfolioRad";
 import { Aksje } from "../Aksje";
@@ -12,17 +14,17 @@ import { Aksje } from "../Aksje";
 
 export class Selg {
 	laster: boolean;
-	navn: string;
-	pris: number;
-	antall: number;
+	aksjenavn: string;
+	aksjepris: number;
+	portfolioantall: number;
 	aksjeId: number;
 	brukerId: number;
-	selgAntall: number;
 	skjema: FormGroup;
 
 	constructor(
 		private http: HttpClient,
 		private router: Router,
+		private modalService: NgbModal,
 		private fb: FormBuilder
 	) {
 		this.skjema = fb.group(this.validering);
@@ -45,9 +47,9 @@ export class Selg {
 	hentAllInfo() {
 		this.http.get<PortfolioRad>("api/aksje/hentetportfoliorad/" + Number(this.aksjeId))
 			.subscribe((portfolioRad) => {
-				this.navn = portfolioRad.aksjeNavn;
-				this.pris = portfolioRad.aksjePris;
-				this.antall = portfolioRad.antall;
+				this.aksjenavn = portfolioRad.aksjeNavn;
+				this.aksjepris = portfolioRad.aksjePris;
+				this.portfolioantall = portfolioRad.antall;
 				this.laster = false;
 				console.log("Hentet rad");
 			},
@@ -56,23 +58,35 @@ export class Selg {
 	}
 
 	onSubmit() {
-		this.bekreftSalg();
-		this.hentAllInfo();
-		this.router.navigate(['/portfolio']);
+		this.visModal();
 	}
 
-	bekreftSalg() {
-		const innPortfolio = new PortfolioRad();
-		innPortfolio.antall = Number(this.skjema.value.antall);
-		innPortfolio.aksjeId = this.aksjeId;
-		console.log(innPortfolio);
+	visModal() {
+		const modalRef = this.modalService.open(SelgModal);
 
+		modalRef.componentInstance.aksjenavn = this.aksjenavn;
+		modalRef.componentInstance.antall = Number(this.skjema.value.antall);
+		modalRef.componentInstance.portfolioantall = this.portfolioantall;
+		modalRef.componentInstance.aksjepris = this.aksjepris;
+		modalRef.componentInstance.sum = this.aksjepris * Number(this.skjema.value.antall);
 
-		this.http.post("api/aksje/selg/", innPortfolio)
-			.subscribe((retur) => {
-				console.log("Da har du solgt!");
-			},
-			(error) => console.log(error)
-		);
+		modalRef.result.then(retur => {
+			if (retur == "Bekreft") {
+				const innPortfolio = new PortfolioRad();
+
+				innPortfolio.antall = Number(this.skjema.value.antall);
+				innPortfolio.aksjeId = this.aksjeId;
+				console.log(innPortfolio);
+
+				this.http.post("api/aksje/selg/", innPortfolio)
+					.subscribe((retur) => {
+						console.log("Da har du solgt!");
+					},
+						(error) => console.log(error)
+				);
+				this.skjema.reset();
+				setTimeout(() => { this.hentAllInfo(); }, 200);
+			}
+		});
 	}
 }

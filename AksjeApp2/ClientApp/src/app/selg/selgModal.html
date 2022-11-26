@@ -1,0 +1,15 @@
+﻿<div class="modal-content">
+    <div class="modal-header">
+        <h4 class="modal-title">Fullfør Salg</h4>
+    </div>
+    <div class="modal-body">
+        Er du sikker på at du vil selge {{antall}} {{aksjenavn}} aksjer? <br>
+        Èn {{aksjenavn}} aksje koster {{aksjepris}}, og summen på denne transaksjonen blir {{sum}}.<br>
+        Du har {{portfolioantall}} {{aksjenavn}} aksjer i din portfolio.
+    </div>
+    <div class="modal-footer">
+        <!-- den første knappen vil bli "default" dvs. kjøres når "enter" trykkes -->
+        <button type="button" class="btn btn-success" (click)="selgmodal.close('Bekreft')">Bekreft</button>
+        <button type="button" class="btn btn-danger" (click)="selgmodal.close('Tilbake')">Tilbake</button>
+    </div>
+</div>

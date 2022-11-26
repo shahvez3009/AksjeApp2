@@ -18,10 +18,10 @@ export class Hjem {
 
     ngOnInit() {
         this.laster = true;
-        this.hentAlleAksjer();
+        this.hentAllInfo();
     }
 
-    hentAlleAksjer() {
+    hentAllInfo() {
         this.http.get<Aksje[]>("api/aksje/hentaksjer")
             .subscribe(aksjene => {
                 this.alleAksjer = aksjene;

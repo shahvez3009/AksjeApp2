@@ -1,6 +1,8 @@
 ﻿import { Component, OnInit } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { KjopModal } from './kjopModal';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { Aksje } from "../Aksje";
 import { Bruker } from "../Bruker";
@@ -14,9 +16,10 @@ import { PortfolioRad } from '../PortfolioRad';
 export class Kjop {
 	laster: boolean;
 	status: boolean;
-	navn: string;
-	pris: number;
-	ledige: number;
+	aksjenavn: string;
+	aksjepris: number;
+	aksjeledige: number;
+	aksjemax: number;
 	aksjeId: number;
 	brukerId: number;
 	skjema: FormGroup;
@@ -24,8 +27,9 @@ export class Kjop {
 	constructor(
 		private http: HttpClient,
 		private router: Router,
+		private modalService: NgbModal,
 		private fb: FormBuilder
-	){
+	) {
 		this.skjema = fb.group(this.validering);
 	}
 
@@ -57,42 +61,56 @@ export class Kjop {
 				console.log("kjopModal - hentEtPortfolioRad");
 			},
 				(error) => console.log(error)
-		);
+			);
 
 		this.http.get<Aksje>("api/aksje/hentenaksje/" + Number(this.aksjeId))
 			.subscribe(hentetAksje => {
 				console.log(hentetAksje);
-				this.navn = hentetAksje.navn;
-				this.pris = hentetAksje.pris;
-				this.ledige = hentetAksje.antallLedige;
+				this.aksjenavn = hentetAksje.navn;
+				this.aksjepris = hentetAksje.pris;
+				this.aksjeledige = hentetAksje.antallLedige;
+				this.aksjemax = hentetAksje.maxAntall;
 				this.laster = false;
 				console.log("kjopModal - hentEnAksje");
 			},
 				(error) => console.log(error)
-		);
+			);
 	}
 
 	onSubmit() {
-		this.bekreftKjop();
-		this.hentAllInfo();
-		this.router.navigate(['/portfolio']);
+		this.visModal();
 	}
 
-	bekreftKjop() {
-		const nyttKjop = new PortfolioRad();
+	visModal() {
+		const modalRef = this.modalService.open(KjopModal);
 
-		nyttKjop.antall = Number(this.skjema.value.antall);
-		nyttKjop.aksjeId = this.aksjeId;
-		nyttKjop.aksjeNavn = this.navn;
-		nyttKjop.aksjePris = this.pris;
-		nyttKjop.brukerId = this.brukerId;
-		console.log(nyttKjop);
+		modalRef.componentInstance.aksjenavn = this.aksjenavn;
+		modalRef.componentInstance.antall = Number(this.skjema.value.antall);
+		modalRef.componentInstance.aksjepris = this.aksjepris;
+		modalRef.componentInstance.sum = this.aksjepris * Number(this.skjema.value.antall);
+		modalRef.componentInstance.aksjeledige = this.aksjeledige;
+		modalRef.componentInstance.aksjemax = this.aksjemax;
 
-		this.http.post("api/aksje/kjop/", nyttKjop)
-			.subscribe(retur => {
-				console.log("Da har du kjøpt!");
-			},
-			error => console.log(error)
-		);
+		modalRef.result.then(retur => {
+			if (retur == "Bekreft") {
+				const nyttKjop = new PortfolioRad();
+
+				nyttKjop.antall = Number(this.skjema.value.antall);
+				nyttKjop.aksjeId = this.aksjeId;
+				nyttKjop.aksjeNavn = this.aksjenavn;
+				nyttKjop.aksjePris = this.aksjepris;
+				nyttKjop.brukerId = this.brukerId;
+				console.log(nyttKjop);
+
+				this.http.post("api/aksje/kjop/", nyttKjop)
+					.subscribe(retur => {
+						console.log("Da har du kjøpt!");
+					},
+						error => console.log(error)
+				);
+				this.skjema.reset();
+				setTimeout(() => { this.hentAllInfo(); }, 200);
+			}
+		});
 	}
 }
