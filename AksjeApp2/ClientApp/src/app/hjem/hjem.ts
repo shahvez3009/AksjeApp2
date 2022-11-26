@@ -2,6 +2,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Aksje } from '../Aksje';
+import { Local } from "protractor/built/driverProviders";
 
 @Component({
     templateUrl: "hjem.html"
@@ -20,16 +21,25 @@ export class Hjem {
         this.laster = true;
         this.hentAlleAksjer();
     }
-
+    
     hentAlleAksjer() {
         this.http.get<Aksje[]>("api/aksje/hentaksjer")
             .subscribe(aksjene => {
+                console.log(localStorage.getItem("status"));
                 this.alleAksjer = aksjene;
                 this.laster = false;
                 console.log("hjem - hentAksjer");
                 console.log(aksjene);
             },
-            (error) => console.log(error)
+                (error) => {
+                    if (error.status == 401) {
+                        this.router.navigate(["/logginn"])
+                    } else {
+                        console.log(error);
+                    }
+                     
+                } 
+                
         );
     }
 
