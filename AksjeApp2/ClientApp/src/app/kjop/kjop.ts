@@ -60,8 +60,15 @@ export class Kjop {
 				}
 				console.log("kjopModal - hentEtPortfolioRad");
 			},
-				(error) => console.log(error)
-			);
+				(error) => {
+					if (error.status == 401) {
+						this.router.navigate(["/logginn"])
+					} else {
+						console.log(error);
+					}
+
+				} 
+		);
 
 		this.http.get<Aksje>("api/aksje/hentenaksje/" + Number(this.aksjeId))
 			.subscribe(hentetAksje => {

@@ -29,7 +29,14 @@ export class Portfolio {
 				this.laster = false;
 				console.log("portfolio - hentPortfolio")
 			},
-			(error) => console.log(error)
+				(error) => {
+					if (error.status == 401) {
+						this.router.navigate(["/logginn"])
+					} else {
+						console.log(error);
+					}
+
+				} 
 		);
 	};
 }

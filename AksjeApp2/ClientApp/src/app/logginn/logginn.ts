@@ -63,6 +63,7 @@ export class Logginn {
             .subscribe(retur => {
                 this.valid = retur;
                 if (this.valid) {
+                    localStorage.setItem("brukernavn", send.brukernavn);
                     console.log("Du er logget inn");
                     this.router.navigate(["/hjem"]);
                 }

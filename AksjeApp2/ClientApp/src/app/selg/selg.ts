@@ -53,7 +53,14 @@ export class Selg {
 				this.laster = false;
 				console.log("Hentet rad");
 			},
-				(error) => console.log(error)
+				(error) => {
+					if (error.status == 401) {
+						this.router.navigate(["/logginn"])
+					} else {
+						console.log(error);
+					}
+
+				} 
 			);
 	}
 

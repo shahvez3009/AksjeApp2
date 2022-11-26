@@ -29,7 +29,14 @@ export class Transaksjonshistorikk {
 				this.laster = false;
 				console.log("transaksjon - hentTransaksjoner")
 			},
-				(error) => console.log(error)
+				(error) => {
+					if (error.status == 401) {
+						this.router.navigate(["/logginn"])
+					} else {
+						console.log(error);
+					}
+
+				} 
 			);
 	};
 }
