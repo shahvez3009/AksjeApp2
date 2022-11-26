@@ -123,6 +123,7 @@ namespace AksjeApp2.DAL
 			}
 		}
 		*/
+
 		public async Task<bool> Kjop(PortfolioRad innPortfolio)
 		{
 			try
@@ -287,8 +288,6 @@ namespace AksjeApp2.DAL
 			}
 		}
 
-
-		
         public static byte[] LagHash(string passord, byte[] salt)
         {
             return KeyDerivation.Pbkdf2(
@@ -378,11 +377,6 @@ namespace AksjeApp2.DAL
                 nyBrukerRad.telefonnummer = innBruker.telefonnummer;
 				nyBrukerRad.Saldo = 500000;
 				nyBrukerRad.Brukernavn = innBruker.Brukernavn;
-				//nyBrukerRad.Passord = innBruker.Passord;
-
-                //Skal vi sette en verdi på saldo her?
-                //nyBrukerRad.Saldo = innBruker.Saldo;
-
                 _db.Brukere.Add(nyBrukerRad);
                 await _db.SaveChangesAsync();
                 return true;
