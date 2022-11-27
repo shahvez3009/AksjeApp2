@@ -25,7 +25,11 @@ export class Portfolio {
 	}
 
 	hentAllInfo() {
-		this.http.get<PortfolioRad[]>("api/aksje/hentportfolio/" + this.brukernavn) 
+		if (this.brukernavn.length == 0) {
+
+			this.router.navigate(["/logginn"])
+		} else {
+			this.http.get<PortfolioRad[]>("api/aksje/hentportfolio/" + this.brukernavn) 
 			.subscribe(portfolioRadene => {
 				this.helePortfolio = portfolioRadene;
 				this.laster = false;
@@ -40,6 +44,8 @@ export class Portfolio {
 
 				} 
 		);
+		}
+		
 	};
 
 	loggUt() {
