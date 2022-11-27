@@ -39,6 +39,14 @@ export class Portfolio {
 				} 
 		);
 	};
+
+	loggUt() {
+		this.http.get("api/aksje/loggut").subscribe(retur => {
+			this.router.navigate(["/logginn"])
+		}
+		);
+
+	}
 }
 
 

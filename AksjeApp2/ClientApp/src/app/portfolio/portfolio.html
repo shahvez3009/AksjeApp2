@@ -4,27 +4,28 @@
 		<div class="col-md-12">
 			<div *ngIf="laster">Laster portfolio...</div>
 			<table class="table table-striped">
-			<thead>
-			<tr>
-				<th>Aksje</th>
-				<th>Pris per Aksje</th>
-				<th>Beholdning</th>
-				<th>Sum</th>
-				<th></th>
-				<th></th>
-			</tr>
-			</thead>
-			<tbody *ngFor="let portfolioRad of helePortfolio">
-				<tr>
-					<td>{{portfolioRad.aksjeNavn}}</td>
-					<td>{{portfolioRad.aksjePris}}</td>
-					<td>{{portfolioRad.antall}}</td>
-					<td>{{portfolioRad.aksjePris*portfolioRad.antall}}</td>
-					<td><button class="btn btn-success" routerLink="/kjop">Kjøp Mer</button></td>
-					<td><button class="btn btn-danger" routerLink="/selg">Selg</button></td>
-				</tr>
-			</tbody>
+				<thead>
+					<tr>
+						<th>Aksje</th>
+						<th>Pris per Aksje</th>
+						<th>Beholdning</th>
+						<th>Sum</th>
+						<th></th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody *ngFor="let portfolioRad of helePortfolio">
+					<tr>
+						<td>{{portfolioRad.aksjeNavn}}</td>
+						<td>{{portfolioRad.aksjePris}}</td>
+						<td>{{portfolioRad.antall}}</td>
+						<td>{{portfolioRad.aksjePris*portfolioRad.antall}}</td>
+						<td><button class="btn btn-success" routerLink="/kjop">Kjøp Mer</button></td>
+						<td><button class="btn btn-danger" routerLink="/selg">Selg</button></td>
+					</tr>
+				</tbody>
 			</table>
+			<span><button class="btn btn-primary" (click)="loggUt()">Logg ut</button></span>
 		</div>
 	</div>
 </div>
