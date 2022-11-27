@@ -44,10 +44,11 @@ export class Kjop {
 		this.laster = true;
 		this.aksjeId = 1;
 		this.brukernavn = localStorage.getItem("brukernavn");
-		this.hentAllInfo();
+		setTimeout(() => { this.hentAllInfo(); }, 200);
 	}
 
 	hentAllInfo() {
+		/*
 		this.http.get<PortfolioRad>("api/aksje/hentetportfoliorad/" + (this.brukernavn, this.aksjeId))
 			.subscribe(hentetRad => {
 				if (hentetRad.antall == 0) {
@@ -69,6 +70,7 @@ export class Kjop {
 
 				} 
 		);
+		*/
 
 		this.http.get<Aksje>("api/aksje/hentenaksje/" + this.aksjeId)
 			.subscribe(hentetAksje => {

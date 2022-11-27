@@ -20,8 +20,8 @@ export class Portfolio {
 	//Blir kjørt når vi kaller på denne komponenten  
 	ngOnInit() {
 		this.laster = true;
-		this.hentAllInfo();
 		this.brukernavn = localStorage.getItem("brukernavn");
+		setTimeout(() => { this.hentAllInfo(); }, 200);
 	}
 
 	hentAllInfo() {

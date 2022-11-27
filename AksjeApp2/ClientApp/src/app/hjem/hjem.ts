@@ -19,7 +19,7 @@ export class Hjem {
 
     ngOnInit() {
         this.laster = true;
-        this.hentAllInfo();
+        setTimeout(() => { this.hentAllInfo(); }, 200);
     }
 
     hentAllInfo() {

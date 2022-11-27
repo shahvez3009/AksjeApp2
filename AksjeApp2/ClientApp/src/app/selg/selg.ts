@@ -1,11 +1,12 @@
 ﻿import { Component } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
+import { HttpClientModule } from "@angular/common/http";
 import { Router } from "@angular/router";
+import { HttpParams } from "@angular/common/http";
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { SelgModal } from './selgModal';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { PortfolioRad } from "../PortfolioRad";
-import { Aksje } from "../Aksje";
 
 @Component({
 	templateUrl: "selg.html",
@@ -41,15 +42,16 @@ export class Selg {
 		this.laster = true;
 		this.aksjeId = 1;
 		this.brukernavn = localStorage.getItem("brukernavn");
-		this.hentAllInfo();
+		console.log(this.brukernavn);
+		setTimeout(() => { this.hentAllInfo(); }, 200);
 	}
 
-	hentAllInfo() {
-		this.http.get<PortfolioRad>("api/aksje/hentetportfoliorad/" + Number(this.aksjeId))
-			.subscribe((portfolioRad) => {
-				this.aksjenavn = portfolioRad.aksjeNavn;
-				this.aksjepris = portfolioRad.aksjePris;
-				this.portfolioantall = portfolioRad.antall;
+	hentAllInfo() {	
+		this.http.get<PortfolioRad>("api/aksje/hentetportfoliorad/" + this.brukernavn + "/" + this.aksjeId)
+			.subscribe(retur => {
+				this.aksjenavn = retur.aksjeNavn;
+				this.aksjepris = retur.aksjePris;
+				this.portfolioantall = retur.antall;
 				this.laster = false;
 				console.log("Hentet rad");
 			},

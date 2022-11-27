@@ -20,10 +20,11 @@ export class Transaksjonshistorikk {
 	//Blir kjørt når vi kaller på denne komponenten  
 	ngOnInit() {
 		this.laster = true;
-		this.hentTransaksjoner();
+		this.brukernavn = localStorage.getItem("brukernavn");
+		setTimeout(() => { this.hentAllInfo(); }, 200);
 	}
 
-	hentTransaksjoner() {
+	hentAllInfo() {
 		this.http.get<Transaksjon[]>("api/aksje/henttransaksjoner/" + this.brukernavn)
 			.subscribe(transaksjonene => {
 				this.alleTransaksjoner = transaksjonene;

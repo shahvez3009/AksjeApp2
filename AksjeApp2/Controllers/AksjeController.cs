@@ -72,8 +72,8 @@ namespace AksjeApp2.Controllers
 			return Ok();
 		}
 
-		[HttpGet]
-        public async Task<ActionResult> HentEnBruker(string brukernavn)
+		[HttpGet("{brukernavn}")]
+		public async Task<ActionResult> HentEnBruker(string brukernavn)
         {
 			
             if (string.IsNullOrEmpty(HttpContext.Session.GetString(_LoggetInn)))
@@ -91,7 +91,7 @@ namespace AksjeApp2.Controllers
             return Ok(brukeren);
         }
 
-		[HttpGet]
+		[HttpGet("{aksjeId}")]
 		public async Task<ActionResult> HentEnAksje(int aksjeId)
 		{
 			
@@ -110,7 +110,7 @@ namespace AksjeApp2.Controllers
             return Ok(aksjen);
 		}
 
-		[HttpGet]
+		[HttpGet("{brukernavn}/{aksjeId}")]
 		public async Task<ActionResult> HentEtPortfolioRad(string brukernavn, int aksjeId)
 		{
 			
@@ -147,7 +147,7 @@ namespace AksjeApp2.Controllers
             
         }
 
-		[HttpGet]
+		[HttpGet("{brukernavn}")]
 		public async Task<ActionResult> HentPortfolio(string brukernavn)
 		{
 			
@@ -163,7 +163,7 @@ namespace AksjeApp2.Controllers
 
 		}
 
-		[HttpGet]
+		[HttpGet("{brukernavn}")]
 		public async Task<ActionResult> HentTransaksjoner(string brukernavn)
 		{
 			
