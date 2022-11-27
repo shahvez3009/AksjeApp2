@@ -147,7 +147,7 @@ namespace AksjeApp2.Controllers
         }
 
 		[HttpGet]
-		public async Task<ActionResult> HentPortfolio()
+		public async Task<ActionResult> HentPortfolio(string brukernavn)
 		{
 			
 			if (string.IsNullOrEmpty(HttpContext.Session.GetString(_LoggetInn)))
@@ -156,14 +156,14 @@ namespace AksjeApp2.Controllers
 			}
 			
 
-			List<PortfolioRad> allePortfolio = await _db.HentPortfolio();
+			List<PortfolioRad> allePortfolio = await _db.HentPortfolio(brukernavn);
             //_log.LogInformation("Portfolio har blitt hentet til 'portfolio.html'");
             return Ok(allePortfolio);
 
 		}
 
 		[HttpGet]
-		public async Task<ActionResult> HentTransaksjoner()
+		public async Task<ActionResult> HentTransaksjoner(string brukernavn)
 		{
 			
 			if (string.IsNullOrEmpty(HttpContext.Session.GetString(_LoggetInn)))
@@ -172,7 +172,7 @@ namespace AksjeApp2.Controllers
 			}
 			
 
-			List<Transaksjon> alleTransaksjoner = await _db.HentTransaksjoner();
+			List<Transaksjon> alleTransaksjoner = await _db.HentTransaksjoner(brukernavn);
             //_log.LogInformation("Transaksjonene har blitt hentet til 'Transaksjoner.html'");
             return Ok(alleTransaksjoner);
 		}

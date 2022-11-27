@@ -6,5 +6,5 @@
     aksjeId: number;
     akjseNavn: string;
     aksjePris: number;
-    brukerId: number;
+    brukernavn: string;
 }
