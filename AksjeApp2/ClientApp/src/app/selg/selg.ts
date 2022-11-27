@@ -18,7 +18,7 @@ export class Selg {
 	aksjepris: number;
 	portfolioantall: number;
 	aksjeId: number;
-	brukerId: number;
+	brukernavn: string;
 	skjema: FormGroup;
 
 	constructor(
@@ -40,7 +40,7 @@ export class Selg {
 	ngOnInit() {
 		this.laster = true;
 		this.aksjeId = 1;
-		this.brukerId = 1;
+		this.brukernavn = localStorage.getItem("brukernavn");
 		this.hentAllInfo();
 	}
 
@@ -83,6 +83,7 @@ export class Selg {
 
 				innPortfolio.antall = Number(this.skjema.value.antall);
 				innPortfolio.aksjeId = this.aksjeId;
+				innPortfolio.brukernavn = this.brukernavn;
 				console.log(innPortfolio);
 
 				this.http.post("api/aksje/selg/", innPortfolio)

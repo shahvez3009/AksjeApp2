@@ -14,7 +14,7 @@ namespace AksjeApp2.Models
         public int AksjePris { get; set; }
 
         //Fra Bruker
-        public int Brukernavn { get; set; }
+        public string Brukernavn { get; set; }
     }
 }
 

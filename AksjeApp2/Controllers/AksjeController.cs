@@ -33,26 +33,47 @@ namespace AksjeApp2.Controllers
 		}
 
 		[HttpPost]
-        public async Task<ActionResult> Selg(PortfolioRad innPortfolio)
-        {
-			
-            if (string.IsNullOrEmpty(HttpContext.Session.GetString(_LoggetInn)))
-            {
-                return Unauthorized();
-            }
-			
+		public async Task<ActionResult> Kjop(PortfolioRad innPortfolio)
+		{
 
-            bool returOk = await _db.Selg(innPortfolio);
-            if (!returOk) {
-                _log.LogInformation("Endringen kunne ikke utføres");
-                return NotFound();
-            }
-            //_log.LogInformation("Et salg har blitt gjort på aksje med id: " + aksjeId);
-            return Ok();
-        }
+			if (string.IsNullOrEmpty(HttpContext.Session.GetString(_LoggetInn)))
+			{
+				return Unauthorized();
+			}
+
+
+
+			bool returOk = await _db.Kjop(innPortfolio);
+			if (!returOk)
+			{
+				return BadRequest();
+			}
+			//_log.LogInformation("Et kjøp har blitt gjort på aksje med id: " + aksjeId);
+			return Ok();
+		}
 
 		[HttpPost]
-        public async Task<ActionResult> Kjop(PortfolioRad innPortfolio)
+		public async Task<ActionResult> Selg(PortfolioRad innPortfolio)
+		{
+
+			if (string.IsNullOrEmpty(HttpContext.Session.GetString(_LoggetInn)))
+			{
+				return Unauthorized();
+			}
+
+
+			bool returOk = await _db.Selg(innPortfolio);
+			if (!returOk)
+			{
+				_log.LogInformation("Endringen kunne ikke utføres");
+				return NotFound();
+			}
+			//_log.LogInformation("Et salg har blitt gjort på aksje med id: " + aksjeId);
+			return Ok();
+		}
+
+		[HttpGet]
+        public async Task<ActionResult> HentEnBruker(string brukernavn)
         {
 			
             if (string.IsNullOrEmpty(HttpContext.Session.GetString(_LoggetInn)))
@@ -61,27 +82,7 @@ namespace AksjeApp2.Controllers
             }
 			
 
-
-            bool returOk = await _db.Kjop(innPortfolio);
-            if (!returOk)
-            {
-                return BadRequest();
-            }
-			//_log.LogInformation("Et kjøp har blitt gjort på aksje med id: " + aksjeId);
-            return Ok();
-        }
-
-		[HttpGet("{aksjeId}")]
-        public async Task<ActionResult> HentEnBruker()
-        {
-			
-            if (string.IsNullOrEmpty(HttpContext.Session.GetString(_LoggetInn)))
-            {
-                return Unauthorized();
-            }
-			
-
-            Bruker brukeren = await _db.HentEnBruker();
+            Bruker brukeren = await _db.HentEnBruker(brukernavn);
             if (brukeren == null)
             {
                 return NotFound();
@@ -90,7 +91,7 @@ namespace AksjeApp2.Controllers
             return Ok(brukeren);
         }
 
-		[HttpGet("{aksjeId}")]
+		[HttpGet]
 		public async Task<ActionResult> HentEnAksje(int aksjeId)
 		{
 			
@@ -109,8 +110,8 @@ namespace AksjeApp2.Controllers
             return Ok(aksjen);
 		}
 
-		[HttpGet("{aksjeId}")]
-		public async Task<ActionResult> HentEtPortfolioRad(int aksjeId)
+		[HttpGet]
+		public async Task<ActionResult> HentEtPortfolioRad(string brukernavn, int aksjeId)
 		{
 			
 			if (string.IsNullOrEmpty(HttpContext.Session.GetString(_LoggetInn)))
@@ -119,7 +120,7 @@ namespace AksjeApp2.Controllers
 			}
 			
 
-			PortfolioRad portfolioRad = await _db.HentEtPortfolioRad(aksjeId);
+			PortfolioRad portfolioRad = await _db.HentEtPortfolioRad(brukernavn, aksjeId);
 			if (portfolioRad == null)
 			{
 				return NotFound();

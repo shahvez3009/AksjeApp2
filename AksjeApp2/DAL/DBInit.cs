@@ -52,6 +52,15 @@ namespace AksjeApp2.Models
                 bruker.Salt = salt;
                 context.Brukere.Add(bruker);
 
+				var bruker2 = new Brukere();
+				bruker2.Brukernavn = "Admin2";
+				var passord2 = "Test22";
+				byte[] salt2 = AksjeRepository.LagSalt();
+				byte[] hash2 = AksjeRepository.LagHash(passord2, salt2);
+				bruker2.Passord = hash2;
+				bruker2.Salt = salt2;
+				context.Brukere.Add(bruker2);
+
 				context.SaveChanges();
             }
         }

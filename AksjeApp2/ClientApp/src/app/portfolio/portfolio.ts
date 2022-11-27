@@ -10,6 +10,7 @@ import { PortfolioRad } from "../PortfolioRad";
 export class Portfolio {
 	laster: boolean;
 	helePortfolio: Array<PortfolioRad>;
+	brukernavn: string;
 
 	constructor(
 		private http: HttpClient,
@@ -20,10 +21,11 @@ export class Portfolio {
 	ngOnInit() {
 		this.laster = true;
 		this.hentAllInfo();
+		this.brukernavn = localStorage.getItem("brukernavn");
 	}
 
 	hentAllInfo() {
-		this.http.get<PortfolioRad[]>("api/aksje/hentportfolio") 
+		this.http.get<PortfolioRad[]>("api/aksje/hentportfolio/" + this.brukernavn) 
 			.subscribe(portfolioRadene => {
 				this.helePortfolio = portfolioRadene;
 				this.laster = false;

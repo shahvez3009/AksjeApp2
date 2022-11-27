@@ -21,7 +21,7 @@ export class Kjop {
 	aksjeledige: number;
 	aksjemax: number;
 	aksjeId: number;
-	brukerId: number;
+	brukernavn: string;
 	skjema: FormGroup;
 
 	constructor(
@@ -43,12 +43,12 @@ export class Kjop {
 	ngOnInit() {
 		this.laster = true;
 		this.aksjeId = 1;
-		this.brukerId = 1;
+		this.brukernavn = localStorage.getItem("brukernavn");
 		this.hentAllInfo();
 	}
 
 	hentAllInfo() {
-		this.http.get<PortfolioRad>("api/aksje/hentetportfoliorad/" + Number(this.aksjeId))
+		this.http.get<PortfolioRad>("api/aksje/hentetportfoliorad/" + (this.brukernavn, this.aksjeId))
 			.subscribe(hentetRad => {
 				if (hentetRad.antall == 0) {
 					this.status = false;
@@ -70,7 +70,7 @@ export class Kjop {
 				} 
 		);
 
-		this.http.get<Aksje>("api/aksje/hentenaksje/" + Number(this.aksjeId))
+		this.http.get<Aksje>("api/aksje/hentenaksje/" + this.aksjeId)
 			.subscribe(hentetAksje => {
 				console.log(hentetAksje);
 				this.aksjenavn = hentetAksje.navn;
@@ -104,9 +104,7 @@ export class Kjop {
 
 				nyttKjop.antall = Number(this.skjema.value.antall);
 				nyttKjop.aksjeId = this.aksjeId;
-				nyttKjop.aksjeNavn = this.aksjenavn;
-				nyttKjop.aksjePris = this.aksjepris;
-				nyttKjop.brukerId = this.brukerId;
+				nyttKjop.brukernavn = this.brukernavn;
 				console.log(nyttKjop);
 
 				this.http.post("api/aksje/kjop/", nyttKjop)

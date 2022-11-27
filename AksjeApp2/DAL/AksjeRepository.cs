@@ -57,9 +57,10 @@ namespace AksjeApp2.DAL
 		{
 			try
 			{
-				PortfolioRader[] etPortfolioRad = _db.PortfolioRader.Where(p => p.Aksje.Id == innPortfolio.AksjeId && p.Bruker.Id == 1).ToArray();
-				Brukere enBruker = await _db.Brukere.FindAsync(innPortfolio.BrukerId);
+				PortfolioRader[] etPortfolioRad = _db.PortfolioRader.Where(p => p.Bruker.Brukernavn == innPortfolio.Brukernavn || p.Aksje.Id == innPortfolio.AksjeId).ToArray();
+				Brukere enBruker = _db.Brukere.First(p => p.Brukernavn == innPortfolio.Brukernavn);
 				Aksjer enAksje = await _db.Aksjer.FindAsync(innPortfolio.AksjeId);
+
 				if (enBruker.Saldo >= innPortfolio.AksjeId * innPortfolio.Antall && enAksje.AntallLedige >= innPortfolio.Antall && innPortfolio.Antall >= 1)
 				{
 					if (etPortfolioRad.Length == 1)
@@ -168,7 +169,7 @@ namespace AksjeApp2.DAL
 					AksjeId = enAksje.Id,
 					AksjeNavn = enAksje.Navn,
 					AksjePris = enAksje.Pris,
-					Brukernavn = enBruker.Id
+					Brukernavn = enBruker.Brukernavn
 				};
 				return hentetPortfolioRad;
 			}
@@ -181,7 +182,7 @@ namespace AksjeApp2.DAL
 					AksjeId = enAksje.Id,
 					AksjeNavn = enAksje.Navn,
 					AksjePris = enAksje.Pris,
-					Brukernavn = enBruker.Id
+					Brukernavn = enBruker.Brukernavn
 				};
 				return nyPortfolioRad;
 			}
@@ -221,7 +222,7 @@ namespace AksjeApp2.DAL
 					AksjeId = p.Aksje.Id,
 					AksjeNavn = p.Aksje.Navn,
 					AksjePris = p.Aksje.Pris,
-					Brukernavn = p.Bruker.Id
+					Brukernavn = p.Bruker.Brukernavn
 				}).ToList();
 				return helePortfolio;
 			}
@@ -247,7 +248,7 @@ namespace AksjeApp2.DAL
 					AksjeId = p.Aksje.Id,
 					AksjeNavn = p.Aksje.Navn,
 					AksjePris = p.Aksje.Pris,
-					Brukernavn = p.Bruker.Id
+					Brukernavn = p.Bruker.Brukernavn
 				}).ToList();
 				return alleTransaksjoner;
 			}

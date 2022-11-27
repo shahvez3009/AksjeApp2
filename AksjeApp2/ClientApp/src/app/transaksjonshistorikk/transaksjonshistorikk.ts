@@ -10,6 +10,7 @@ import { Transaksjon } from "../Transaksjon";
 export class Transaksjonshistorikk {
 	laster: boolean;
 	alleTransaksjoner: Array<Transaksjon>;
+	brukernavn: string;
 
 	constructor(
 		private http: HttpClient,
@@ -23,7 +24,7 @@ export class Transaksjonshistorikk {
 	}
 
 	hentTransaksjoner() {
-		this.http.get<Transaksjon[]>("api/aksje/henttransaksjoner")
+		this.http.get<Transaksjon[]>("api/aksje/henttransaksjoner/" + this.brukernavn)
 			.subscribe(transaksjonene => {
 				this.alleTransaksjoner = transaksjonene;
 				this.laster = false;
