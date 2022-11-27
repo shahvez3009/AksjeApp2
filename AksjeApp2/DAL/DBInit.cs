@@ -16,25 +16,28 @@ namespace AksjeApp2.Models
                 context.Database.EnsureDeleted();
                 context.Database.EnsureCreated();
 
-				//Brukere
-				var bruker = new Brukere();
-				bruker.Brukernavn = "Admin";
+                var per = new Brukere { Fornavn = "Per", Etternavn = "Johansen", Saldo = 500000, Mail = "perjohansen@hotmail.com" };
+                //Brukere
+               
+				per.Brukernavn = "Admin";
 				var passord = "Test11";
 				byte[] salt = AksjeRepository.LagSalt();
 				byte[] hash = AksjeRepository.LagHash(passord, salt);
-				bruker.Passord = hash;
-				bruker.Salt = salt;
+				per.Passord = hash;
+				per.Salt = salt;
 
-				var bruker2 = new Brukere();
-				bruker2.Brukernavn = "Admin2";
+
+                var anders = new Brukere { Fornavn = "Anders", Etternavn = "Johansen", Saldo = 500000, Mail = "Anders@hotmail.com" };
+                //Bruker
+				anders.Brukernavn = "AdminL";
 				var passord2 = "Test22";
 				byte[] salt2 = AksjeRepository.LagSalt();
 				byte[] hash2 = AksjeRepository.LagHash(passord2, salt2);
-				bruker2.Passord = hash2;
-				bruker2.Salt = salt2;
+				anders.Passord = hash2;
+				anders.Salt = salt2;
 
-				context.Brukere.Add(bruker);
-				context.Brukere.Add(bruker2);
+				context.Brukere.Add(per);
+				context.Brukere.Add(anders);
 
 				//Aksjer
 				var microsoft = new Aksjer { Navn = "Microsoft", Pris = 300, AntallLedige = 1200, MaxAntall = 1200 };
@@ -51,11 +54,11 @@ namespace AksjeApp2.Models
 
                 //PortfolioRader
 
-                var rad1 = new PortfolioRader { Antall = 100, Bruker = bruker, Aksje = microsoft };
-				var rad2 = new PortfolioRader { Antall = 100, Bruker = bruker2, Aksje = apple };
+                var rad1 = new PortfolioRader { Antall = 100, Bruker = per, Aksje = microsoft };
+				var rad2 = new PortfolioRader { Antall = 100, Bruker = anders, Aksje = apple };
 
-                //context.PortfolioRader.Add(rad1);
-				//context.PortfolioRader.Add(rad2);
+                context.PortfolioRader.Add(rad1);
+				context.PortfolioRader.Add(rad2);
 
 				context.SaveChanges();
             }

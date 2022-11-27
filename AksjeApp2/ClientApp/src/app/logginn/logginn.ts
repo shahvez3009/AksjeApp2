@@ -68,7 +68,7 @@ export class Logginn {
                     console.log("Du er logget inn");
                     this.router.navigate(["/hjem"]);
                 }
-                error => { this.invalidBruker = true }   
+                error => { this.invalidBruker = true; console.log("Ikke logget inn"); }   
             },
             );
     }
