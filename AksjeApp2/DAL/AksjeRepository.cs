@@ -57,7 +57,7 @@ namespace AksjeApp2.DAL
 		{
 			try
 			{
-				PortfolioRader[] etPortfolioRad = _db.PortfolioRader.Where(p => p.Bruker.Brukernavn == innPortfolio.Brukernavn || p.Aksje.Id == innPortfolio.AksjeId).ToArray();
+				PortfolioRader[] etPortfolioRad = _db.PortfolioRader.Where(p => p.Bruker.Brukernavn == innPortfolio.Brukernavn && p.Aksje.Id == innPortfolio.AksjeId).ToArray();
 				Brukere enBruker = _db.Brukere.First(p => p.Brukernavn == innPortfolio.Brukernavn);
 				Aksjer enAksje = await _db.Aksjer.FindAsync(innPortfolio.AksjeId);
 
