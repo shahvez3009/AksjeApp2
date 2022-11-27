@@ -227,5 +227,10 @@ namespace AksjeApp2.Controllers
             return Ok();
         }
 
+        [HttpGet]		
+		public void Loggut() {
+            HttpContext.Session.SetString(_LoggetInn, "");
+        }
+
     }
 }

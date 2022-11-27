@@ -39,4 +39,13 @@ export class Transaksjonshistorikk {
 				} 
 			);
 	};
+
+
+	loggUt() {
+		this.http.get("api/aksje/loggut").subscribe(retur => {
+			this.router.navigate(["/logginn"])
+		}
+		);
+
+	}
 }
