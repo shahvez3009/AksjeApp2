@@ -37,6 +37,7 @@ export class Logginn {
 
     ngOnInit() {
         console.log(this.Skjema.valid);
+        localStorage.setItem("brukernavn", "");
     }
 
     onSubmit() {
