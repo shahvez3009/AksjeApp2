@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Bruker } from "../Bruker";
 import { FormBuilder, FormGroup, Validators, FormControl } from "@angular/forms";
+import { SharedService } from "../shared/shared.service";
 
 @Component({
     selector: "app-logginn",
@@ -41,12 +42,6 @@ export class Logginn {
     }
 
     onSubmit() {
-
-        console.log("Modelbasert skjema submitted");
-        console.log(this.Skjema);
-        console.log(this.Skjema.value.brukernavn);
-        console.log(this.Skjema.value.passord);
-        console.log(this.Skjema.touched);
         this.logginn();
     }
 

@@ -7,6 +7,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { SelgModal } from './selgModal';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { PortfolioRad } from "../PortfolioRad";
+import { SharedService } from "../shared/shared.service";
 
 @Component({
 	templateUrl: "selg.html",
@@ -21,12 +22,14 @@ export class Selg {
 	aksjeId: number;
 	brukernavn: string;
 	skjema: FormGroup;
+	hentetAksje: number;
 
 	constructor(
 		private http: HttpClient,
 		private router: Router,
 		private modalService: NgbModal,
-		private fb: FormBuilder
+		private fb: FormBuilder,
+		private shared: SharedService
 	) {
 		this.skjema = fb.group(this.validering);
 	}
@@ -39,6 +42,8 @@ export class Selg {
 	}
 
 	ngOnInit() {
+		this.hentetAksje = this.shared.getAksjeId();
+		console.log(this.hentetAksje);
 		this.laster = true;
 		this.aksjeId = 1;
 		this.brukernavn = localStorage.getItem("brukernavn");
