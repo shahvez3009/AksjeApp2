@@ -96,7 +96,7 @@ namespace AksjeApp2.Controllers
 		}
 
 		[HttpGet("{brukernavn}")]
-		public ActionResult HentPortfolio(string brukernavn)
+		public async Task<ActionResult> HentPortfolio(string brukernavn)
 		{
 
 			if (string.IsNullOrEmpty(HttpContext.Session.GetString(_LoggetInn)))
@@ -105,12 +105,12 @@ namespace AksjeApp2.Controllers
 				return Unauthorized("Bruker er ikke logget inn.");
 			}
 
-			List<PortfolioRad> allePortfolio = _db.HentPortfolio(brukernavn);
+			List<PortfolioRad> allePortfolio = await _db.HentPortfolio(brukernavn);
 			return Ok(allePortfolio);
 		}
 
 		[HttpGet("{brukernavn}")]
-		public ActionResult HentTransaksjoner(string brukernavn)
+		public async Task<ActionResult> HentTransaksjoner(string brukernavn)
 		{
 
 			if (string.IsNullOrEmpty(HttpContext.Session.GetString(_LoggetInn)))
@@ -119,7 +119,7 @@ namespace AksjeApp2.Controllers
 				return Unauthorized("Bruker er ikke logget inn.");
 			}
 
-			List<Transaksjon> alleTransaksjoner = _db.HentTransaksjoner(brukernavn);
+			List<Transaksjon> alleTransaksjoner = await _db.HentTransaksjoner(brukernavn);
 			return Ok(alleTransaksjoner);
 		}
 
@@ -143,7 +143,7 @@ namespace AksjeApp2.Controllers
 		}
 
 		[HttpGet("{brukernavn}")]
-		public ActionResult HentEnBruker(string brukernavn)
+		public async Task<ActionResult> HentEnBruker(string brukernavn)
         {
 			
             if (string.IsNullOrEmpty(HttpContext.Session.GetString(_LoggetInn)))
@@ -152,7 +152,7 @@ namespace AksjeApp2.Controllers
 				return Unauthorized("Bruker er ikke logget inn.");
             }
 
-            Bruker brukeren = _db.HentEnBruker(brukernavn);
+            Bruker brukeren = await _db.HentEnBruker(brukernavn);
             if (brukeren == null)
             {
 				_log.LogInformation("HentEnBruker - Error 404: Not Found");

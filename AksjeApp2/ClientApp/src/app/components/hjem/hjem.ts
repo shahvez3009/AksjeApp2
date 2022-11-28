@@ -28,6 +28,8 @@ export class Hjem {
     ngOnInit() {
         this.laster = true;
         this.brukernavn = this.shared.getBrukernavn();
+
+
         setTimeout(() => { this.hentAllInfo(); }, 200);
     }
 

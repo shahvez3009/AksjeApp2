@@ -166,11 +166,11 @@ namespace AksjeApp2.DAL
 			}
 		}
 
-		public List<PortfolioRad> HentPortfolio(string brukernavn)
+		public async Task<List<PortfolioRad>> HentPortfolio(string brukernavn)
 		{
 			try
 			{
-				Brukere enBruker = _db.Brukere.First(p => p.Brukernavn == brukernavn);
+				Brukere enBruker = await _db.Brukere.FirstAsync(p => p.Brukernavn == brukernavn);
 				PortfolioRader[] hentPortfolio = _db.PortfolioRader.Where(p => p.Bruker == enBruker).ToArray();
 
 				List<PortfolioRad> helePortfolio = hentPortfolio.Select(p => new PortfolioRad
@@ -190,11 +190,11 @@ namespace AksjeApp2.DAL
 			}
 		}
 
-		public List<Transaksjon> HentTransaksjoner(string brukernavn)
+		public async Task<List<Transaksjon>> HentTransaksjoner(string brukernavn)
 		{
 			try
 			{
-				Brukere enBruker = _db.Brukere.First(p => p.Brukernavn == brukernavn);
+				Brukere enBruker = await _db.Brukere.FirstAsync(p => p.Brukernavn == brukernavn);
 				Transaksjoner[] hentTransaksjoner = _db.Transaksjoner.Where(p => p.Bruker == enBruker).ToArray();
 
 				List<Transaksjon> alleTransaksjoner = hentTransaksjoner.Select(p => new Transaksjon
@@ -250,9 +250,9 @@ namespace AksjeApp2.DAL
 			}
 		}
 
-		public Bruker HentEnBruker(string brukernavn)
+		public async Task<Bruker> HentEnBruker(string brukernavn)
 		{
-			Brukere enBruker = _db.Brukere.First(p => p.Brukernavn == brukernavn);
+			Brukere enBruker = await _db.Brukere.FirstAsync(p => p.Brukernavn == brukernavn);
 			var hentetBruker = new Bruker()
 			{
 				Id = enBruker.Id,

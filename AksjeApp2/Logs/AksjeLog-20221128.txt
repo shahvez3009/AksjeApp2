@@ -148,3 +148,27 @@
 2022-11-28T21:09:31.2246240+01:00  [INF] Content root path: "/Users/enesergin/Desktop/Webapplikasjoner/AksjeApp2/AksjeApp2" (b5d60022)
 2022-11-28T21:09:51.2192020+01:00  [ERR] (node:28148) [DEP0111] DeprecationWarning: Access to process.binding('http_parser') is deprecated.
  (1bbfad27)
+2022-11-28T21:11:48.8724580+01:00  [INF] Now listening on: "https://localhost:5001" (d826f4b8)
+2022-11-28T21:11:48.8797050+01:00  [INF] Now listening on: "http://localhost:5000" (d826f4b8)
+2022-11-28T21:11:48.8866110+01:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2022-11-28T21:11:48.8866950+01:00  [INF] Hosting environment: "Development" (c3307c92)
+2022-11-28T21:11:48.8867770+01:00  [INF] Content root path: "/Users/enesergin/Desktop/Webapplikasjoner/AksjeApp2/AksjeApp2" (b5d60022)
+2022-11-28T21:12:09.1246460+01:00  [ERR] (node:28333) [DEP0111] DeprecationWarning: Access to process.binding('http_parser') is deprecated.
+ (4203f113)
+2022-11-28T21:12:09.1258880+01:00  [ERR] (Use `node --trace-deprecation ...` to show where the warning was created)
+ (567f389e)
+2022-11-28T21:13:54.8399070+01:00  [ERR] ERROR in app/shared/shared.service.ts:31:5 - error TS1003: Identifier expected.
+
+31     }
+       ~
+
+ (d1978c62)
+2022-11-28T21:25:20.3321230+01:00  [INF] Now listening on: "https://localhost:5001" (d826f4b8)
+2022-11-28T21:25:20.3385160+01:00  [INF] Now listening on: "http://localhost:5000" (d826f4b8)
+2022-11-28T21:25:20.3398520+01:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2022-11-28T21:25:20.3400710+01:00  [INF] Hosting environment: "Development" (c3307c92)
+2022-11-28T21:25:20.3401630+01:00  [INF] Content root path: "/Users/enesergin/Desktop/Webapplikasjoner/AksjeApp2/AksjeApp2" (b5d60022)
+2022-11-28T21:25:41.7400460+01:00  [ERR] (node:28499) [DEP0111] DeprecationWarning: Access to process.binding('http_parser') is deprecated.
+ (a9bb59b0)
+2022-11-28T21:25:41.7415080+01:00  [ERR] (Use `node --trace-deprecation ...` to show where the warning was created)
+ (567f389e)
