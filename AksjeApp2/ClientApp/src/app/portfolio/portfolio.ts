@@ -36,7 +36,6 @@ export class Portfolio {
 			.subscribe(portfolioRadene => {
 				this.helePortfolio = portfolioRadene;
 				this.laster = false;
-				console.log("portfolio - hentPortfolio")
 			},
 				(error) => {
 					if (error.status == 401) {
@@ -53,7 +52,6 @@ export class Portfolio {
 				this.laster = false;
 				this.fornavnEtternavn = bruker.fornavn + " " + bruker.etternavn;
 				this.saldo = bruker.saldo;
-				console.log(bruker);
 			},
 				(error) => {
 					if (error.status == 401) {

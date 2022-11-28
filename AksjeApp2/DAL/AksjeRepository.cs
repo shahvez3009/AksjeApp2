@@ -26,6 +26,7 @@ namespace AksjeApp2.DAL
             _log = log; 
 
         }*/
+
 		public AksjeRepository(AksjeContext db)
 		{
 			_db = db;

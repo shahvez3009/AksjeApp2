@@ -35,7 +35,6 @@ export class Transaksjonshistorikk {
 			.subscribe(transaksjonene => {
 				this.alleTransaksjoner = transaksjonene;
 				this.laster = false;
-				console.log("transaksjon - hentTransaksjoner")
 			},
 				(error) => {
 					if (error.status == 401) {
@@ -51,7 +50,6 @@ export class Transaksjonshistorikk {
 				this.laster = false;
 				this.fornavnEtternavn = bruker.fornavn + " " + bruker.etternavn;
 				this.saldo = bruker.saldo;
-				console.log(bruker);
 			},
 				(error) => {
 					if (error.status == 401) {

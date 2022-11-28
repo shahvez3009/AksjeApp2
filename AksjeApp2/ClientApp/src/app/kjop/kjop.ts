@@ -44,7 +44,7 @@ export class Kjop {
 	validering = {
 		id: [""],
 		antall: [
-			null, Validators.compose([Validators.required, Validators.pattern("[0-9]{2}")])
+			null, Validators.compose([Validators.required, Validators.pattern("[1-9][0-9]*")])
 		]
 	}
 
@@ -59,13 +59,11 @@ export class Kjop {
 	
 		this.http.get<Aksje>("api/aksje/hentenaksje/" + this.aksjeId)
 			.subscribe(hentetAksje => {
-				console.log(hentetAksje);
+				this.laster = false;
 				this.aksjenavn = hentetAksje.navn;
 				this.aksjepris = hentetAksje.pris;
 				this.aksjeledige = hentetAksje.antallLedige;
 				this.aksjemax = hentetAksje.maxAntall;
-				this.laster = false;
-				console.log("kjopModal - hentEnAksje");
 			},
 				(error) => console.log(error)
 		);
@@ -75,7 +73,6 @@ export class Kjop {
 				this.laster = false;
 				this.fornavnEtternavn = bruker.fornavn + " " + bruker.etternavn;
 				this.saldo = bruker.saldo;
-				console.log(bruker);
 			},
 				(error) => {
 					if (error.status == 401) {
@@ -109,13 +106,9 @@ export class Kjop {
 				innPortfolio.brukernavn = this.brukernavn;
 				innPortfolio.aksjeId = this.aksjeId;
 				innPortfolio.antall = Number(this.skjema.value.antall);
-				console.log(innPortfolio);
 
 				this.http.post("api/aksje/kjop/", innPortfolio)
-					.subscribe(retur => {
-						console.log("Da har du kjøpt!");
-					},
-						error => console.log(error)
+					.subscribe(retur => {}, error => console.log(error)
 				);
 				this.skjema.reset();
 				setTimeout(() => { this.hentAllInfo(); }, 200);

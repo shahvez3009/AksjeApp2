@@ -34,10 +34,8 @@ export class Hjem {
     hentAllInfo() {
         this.http.get<Aksje[]>("api/aksje/hentaksjer")
             .subscribe(aksjene => {
-                this.alleAksjer = aksjene;
                 this.laster = false;
-                console.log("hjem - hentAksjer");
-                console.log(aksjene);
+                this.alleAksjer = aksjene;
             },
                 (error) => {
                     if (error.status == 401) {
@@ -53,7 +51,6 @@ export class Hjem {
                 this.laster = false;
                 this.fornavnEtternavn = bruker.fornavn + " " + bruker.etternavn;
                 this.saldo = bruker.saldo;
-                console.log(bruker);
             },
                 (error) => {
                     if (error.status == 401) {

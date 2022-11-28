@@ -39,7 +39,6 @@ export class Logginn {
 
 
     ngOnInit() {
-        console.log(this.Skjema.valid);
         this.shared.setBrukernavn("");
     }
 
@@ -55,14 +54,12 @@ export class Logginn {
 
         send.brukernavn = this.Skjema.value.brukernavn;
         send.passord = this.Skjema.value.passord;
-        console.log(send);
 
         this.http.post("api/aksje/UserIn", send)
             .subscribe(retur => {
                 this.valid = retur;
                 if (this.valid) {
                     this.shared.setBrukernavn(send.brukernavn);
-                    console.log("Du er logget inn");
                     this.router.navigate(["/hjem"]);
                 }
                 error => { this.invalidBruker = true; console.log("Ikke logget inn"); }   

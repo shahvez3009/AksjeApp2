@@ -41,7 +41,7 @@ export class Selg {
 	validering = {
 		id: [""],
 		antall: [
-			null, Validators.compose([Validators.required, Validators.pattern("[0-9]{2}")])
+			null, Validators.compose([Validators.required, Validators.pattern("[1-9][0-9]*")])
 		]
 	}
 
@@ -59,7 +59,6 @@ export class Selg {
 				this.aksjepris = retur.aksjePris;
 				this.portfolioantall = retur.antall;
 				this.laster = false;
-				console.log("Hentet rad");
 			},
 				(error) => {
 					if (error.status == 401) {
@@ -75,7 +74,6 @@ export class Selg {
 				this.laster = false;
 				this.fornavnEtternavn = bruker.fornavn + " " + bruker.etternavn;
 				this.saldo = bruker.saldo;
-				console.log(bruker);
 			},
 				(error) => {
 					if (error.status == 401) {
@@ -107,14 +105,9 @@ export class Selg {
 				innPortfolio.brukernavn = this.brukernavn;
 				innPortfolio.aksjeId = this.aksjeId;
 				innPortfolio.antall = Number(this.skjema.value.antall);
-				console.log(innPortfolio);
 
 				this.http.post("api/aksje/selg/", innPortfolio)
-					.subscribe((retur) => {
-						console.log("Da har du solgt!");
-					},
-						(error) => console.log(error)
-				);
+					.subscribe((retur) => {}, (error) => console.log(error));
 				this.skjema.reset();
 				setTimeout(() => { this.hentAllInfo(); }, 200);
 			}
