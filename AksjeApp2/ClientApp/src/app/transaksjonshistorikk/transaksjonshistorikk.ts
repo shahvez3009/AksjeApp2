@@ -1,8 +1,10 @@
 ﻿import { Component, OnInit } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { Transaksjon } from "../Transaksjon";
 import { SharedService } from "../shared/shared.service";
+
+import { Transaksjon } from "../Transaksjon";
+import { Bruker } from '../Bruker';
 
 @Component({
 	templateUrl: "transaksjonshistorikk.html"
@@ -12,6 +14,8 @@ export class Transaksjonshistorikk {
 	laster: boolean;
 	alleTransaksjoner: Array<Transaksjon>;
 	brukernavn: string;
+	fornavnEtternavn: string;
+	saldo: number;
 
 	constructor(
 		private http: HttpClient,
@@ -39,7 +43,22 @@ export class Transaksjonshistorikk {
 					} else {
 						console.log(error);
 					}
+				}
+		);
 
+		this.http.get<Bruker>("api/aksje/hentenbruker/" + this.brukernavn)
+			.subscribe(bruker => {
+				this.laster = false;
+				this.fornavnEtternavn = bruker.fornavn + " " + bruker.etternavn;
+				this.saldo = bruker.saldo;
+				console.log(bruker);
+			},
+				(error) => {
+					if (error.status == 401) {
+						this.router.navigate(["/logginn"])
+					} else {
+						console.log(error);
+					}
 				}
 		);
 	};

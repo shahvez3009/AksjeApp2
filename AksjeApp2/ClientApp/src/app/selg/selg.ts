@@ -1,13 +1,14 @@
 ﻿import { Component } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { HttpClientModule } from "@angular/common/http";
 import { Router } from "@angular/router";
-import { HttpParams } from "@angular/common/http";
+import { SharedService } from "../shared/shared.service";
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { SelgModal } from './selgModal';
-import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+
 import { PortfolioRad } from "../PortfolioRad";
-import { SharedService } from "../shared/shared.service";
+import { Bruker } from '../Bruker';
 
 @Component({
 	templateUrl: "selg.html",
@@ -21,6 +22,8 @@ export class Selg {
 	portfolioantall: number;
 
 	brukernavn: string;
+	fornavnEtternavn: string;
+	saldo: number;
 	aksjeId: number;
 
 	skjema: FormGroup;
@@ -65,6 +68,22 @@ export class Selg {
 						console.log(error);
 					}
 				} 
+		);
+
+		this.http.get<Bruker>("api/aksje/hentenbruker/" + this.brukernavn)
+			.subscribe(bruker => {
+				this.laster = false;
+				this.fornavnEtternavn = bruker.fornavn + " " + bruker.etternavn;
+				this.saldo = bruker.saldo;
+				console.log(bruker);
+			},
+				(error) => {
+					if (error.status == 401) {
+						this.router.navigate(["/logginn"])
+					} else {
+						console.log(error);
+					}
+				}
 		);
 	}
 

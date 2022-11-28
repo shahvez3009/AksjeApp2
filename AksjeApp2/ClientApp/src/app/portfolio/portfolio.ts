@@ -1,8 +1,10 @@
 ﻿import { Component, OnInit } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { PortfolioRad } from "../PortfolioRad";
 import { SharedService } from "../shared/shared.service";
+
+import { PortfolioRad } from "../PortfolioRad";
+import { Bruker } from '../Bruker';
 
 
 @Component({
@@ -14,6 +16,8 @@ export class Portfolio {
 	helePortfolio: Array<PortfolioRad>;
 
 	brukernavn: string;
+	fornavnEtternavn: string;
+	saldo: number;
 
 	constructor(
 		private http: HttpClient,
@@ -41,6 +45,22 @@ export class Portfolio {
 						console.log(error);
 					}
 
+				}
+		);
+
+		this.http.get<Bruker>("api/aksje/hentenbruker/" + this.brukernavn)
+			.subscribe(bruker => {
+				this.laster = false;
+				this.fornavnEtternavn = bruker.fornavn + " " + bruker.etternavn;
+				this.saldo = bruker.saldo;
+				console.log(bruker);
+			},
+				(error) => {
+					if (error.status == 401) {
+						this.router.navigate(["/logginn"])
+					} else {
+						console.log(error);
+					}
 				}
 		);
 	};

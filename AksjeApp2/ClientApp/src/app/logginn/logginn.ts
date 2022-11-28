@@ -1,9 +1,10 @@
 ﻿import { Component, OnInit } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { Bruker } from "../Bruker";
-import { FormBuilder, FormGroup, Validators, FormControl } from "@angular/forms";
 import { SharedService } from "../shared/shared.service";
+import { FormBuilder, FormGroup, Validators, FormControl } from "@angular/forms";
+
+import { Bruker } from "../Bruker";
 
 @Component({
     selector: "app-logginn",

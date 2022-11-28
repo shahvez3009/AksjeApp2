@@ -1,8 +1,10 @@
 ﻿import { Component, OnInit } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { Aksje } from '../Aksje';
 import { SharedService } from "../shared/shared.service";
+
+import { Aksje } from '../Aksje';
+import { Bruker } from '../Bruker';
 
 
 @Component({
@@ -13,6 +15,10 @@ export class Hjem {
     laster: boolean;
     alleAksjer: Array<Aksje>;
 
+    brukernavn: string;
+    fornavnEtternavn: string;
+    saldo: number;
+
     constructor(
         private http: HttpClient,
         private router: Router,
@@ -21,6 +27,7 @@ export class Hjem {
 
     ngOnInit() {
         this.laster = true;
+        this.brukernavn = this.shared.getBrukernavn();
         setTimeout(() => { this.hentAllInfo(); }, 200);
     }
 
@@ -39,6 +46,22 @@ export class Hjem {
                         console.log(error);
                     }
                 } 
+        );
+
+        this.http.get<Bruker>("api/aksje/hentenbruker/" + this.brukernavn)
+            .subscribe(bruker => {
+                this.laster = false;
+                this.fornavnEtternavn = bruker.fornavn + " " + bruker.etternavn;
+                this.saldo = bruker.saldo;
+                console.log(bruker);
+            },
+                (error) => {
+                    if (error.status == 401) {
+                        this.router.navigate(["/logginn"])
+                    } else {
+                        console.log(error);
+                    }
+                }
         );
     }
 

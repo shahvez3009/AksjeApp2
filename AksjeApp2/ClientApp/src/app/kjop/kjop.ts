@@ -1,12 +1,15 @@
 ﻿import { Component, OnInit } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { SharedService } from "../shared/shared.service";
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { KjopModal } from './kjopModal';
-import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+
 import { Aksje } from "../Aksje";
 import { PortfolioRad } from '../PortfolioRad';
-import { SharedService } from "../shared/shared.service";
+import { Bruker } from '../Bruker';
 
 @Component({
 	templateUrl: "kjop.html",
@@ -22,6 +25,8 @@ export class Kjop {
 	aksjemax: number;
 
 	brukernavn: string;
+	fornavnEtternavn: string;
+	saldo: number;
 	aksjeId: number;
 
 	skjema: FormGroup;
@@ -63,7 +68,23 @@ export class Kjop {
 				console.log("kjopModal - hentEnAksje");
 			},
 				(error) => console.log(error)
-			);
+		);
+
+		this.http.get<Bruker>("api/aksje/hentenbruker/" + this.brukernavn)
+			.subscribe(bruker => {
+				this.laster = false;
+				this.fornavnEtternavn = bruker.fornavn + " " + bruker.etternavn;
+				this.saldo = bruker.saldo;
+				console.log(bruker);
+			},
+				(error) => {
+					if (error.status == 401) {
+						this.router.navigate(["/logginn"])
+					} else {
+						console.log(error);
+					}
+				}
+		);
 	}
 
 	onSubmit() {
