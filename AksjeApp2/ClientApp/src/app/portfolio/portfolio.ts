@@ -13,6 +13,7 @@ export class Portfolio {
 	laster: boolean;
 	helePortfolio: Array<PortfolioRad>;
 	brukernavn: string;
+	aksje: number;
 
 	constructor(
 		private http: HttpClient,
