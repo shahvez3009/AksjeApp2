@@ -52,8 +52,8 @@ namespace AksjeApp2.DAL
 		{
 			try
 			{
-				PortfolioRader[] etPortfolioRad = _db.PortfolioRader.Where(p => p.Bruker.Brukernavn == innPortfolio.Brukernavn && p.Aksje.Id == innPortfolio.AksjeId).ToArray();
-				Brukere enBruker = _db.Brukere.First(p => p.Brukernavn == innPortfolio.Brukernavn);
+				PortfolioRader[] etPortfolioRad = await _db.PortfolioRader.Where(p => p.Bruker.Brukernavn == innPortfolio.Brukernavn && p.Aksje.Id == innPortfolio.AksjeId).ToArrayAsync();
+				Brukere enBruker = await _db.Brukere.FirstAsync(p => p.Brukernavn == innPortfolio.Brukernavn);
 				Aksjer enAksje = await _db.Aksjer.FindAsync(innPortfolio.AksjeId);
 
 				if (enBruker.Saldo >= innPortfolio.AksjeId * innPortfolio.Antall && enAksje.AntallLedige >= innPortfolio.Antall && innPortfolio.Antall >= 1)
@@ -90,7 +90,7 @@ namespace AksjeApp2.DAL
 		{
 			try
 			{
-				PortfolioRader etPortfolioRad = _db.PortfolioRader.First(p => p.Aksje.Id == innPortfolio.AksjeId && p.Bruker.Brukernavn == innPortfolio.Brukernavn);
+				PortfolioRader etPortfolioRad = await _db.PortfolioRader.FirstAsync(p => p.Aksje.Id == innPortfolio.AksjeId && p.Bruker.Brukernavn == innPortfolio.Brukernavn);
 				// Sjekker om antallet brukeren prøver å selge er mindre enn det brukeren eier. Hvis dette er sann vil den utføre transaksjonen
 				if (etPortfolioRad.Antall > innPortfolio.Antall && innPortfolio.Antall != 0)
 				{
@@ -171,8 +171,8 @@ namespace AksjeApp2.DAL
 			try
 			{
 				Brukere enBruker = await _db.Brukere.FirstAsync(p => p.Brukernavn == brukernavn);
-				PortfolioRader[] hentPortfolio = _db.PortfolioRader.Where(p => p.Bruker == enBruker).ToArray();
-
+				PortfolioRader[] hentPortfolio = await _db.PortfolioRader.Where(p => p.Bruker == enBruker).ToArrayAsync();
+				
 				List<PortfolioRad> helePortfolio = hentPortfolio.Select(p => new PortfolioRad
 				{
 					Id = p.Id,
@@ -195,7 +195,7 @@ namespace AksjeApp2.DAL
 			try
 			{
 				Brukere enBruker = await _db.Brukere.FirstAsync(p => p.Brukernavn == brukernavn);
-				Transaksjoner[] hentTransaksjoner = _db.Transaksjoner.Where(p => p.Bruker == enBruker).ToArray();
+				Transaksjoner[] hentTransaksjoner = await _db.Transaksjoner.Where(p => p.Bruker == enBruker).ToArrayAsync();
 
 				List<Transaksjon> alleTransaksjoner = hentTransaksjoner.Select(p => new Transaksjon
 				{
@@ -218,12 +218,12 @@ namespace AksjeApp2.DAL
 
 		public async Task<PortfolioRad> HentEtPortfolioRad(string brukernavn, int aksjeId)
 		{
-			Brukere enBruker = _db.Brukere.First(p => p.Brukernavn == brukernavn);
+			Brukere enBruker = await _db.Brukere.FirstAsync(p => p.Brukernavn == brukernavn);
 			Aksjer enAksje = await _db.Aksjer.FindAsync(aksjeId);
 
 			try
 			{
-				PortfolioRader etPortfolioRad = _db.PortfolioRader.First(p => p.Bruker.Id == enBruker.Id && p.Aksje.Id == enAksje.Id);
+				PortfolioRader etPortfolioRad = await _db.PortfolioRader.FirstAsync(p => p.Bruker.Id == enBruker.Id && p.Aksje.Id == enAksje.Id);
 				var hentetPortfolioRad = new PortfolioRad()
 				{
 					Id = etPortfolioRad.Id,

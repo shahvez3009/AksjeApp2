@@ -46,8 +46,6 @@ export class Logginn {
         this.logginn();
     }
 
-
-
     logginn() {
 
         const send = new Bruker();
