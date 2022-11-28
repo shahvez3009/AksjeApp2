@@ -129,30 +129,56 @@ namespace AksjeApp2.DAL
 			}
 		}
 
-		public async Task<bool> LagreBruker(Bruker innBruker)
+		public async Task<int> LagreBruker(Bruker innBruker)
 		{
 			//Må skjekke om det allerede fins en bruker med sammen Mail eller MobilNummer
-			try
-			{
-				var nyBrukerRad = new Brukere();
 
-				//var brukerNavnFinsALlerede = _db.Brukere.First(p => p.Brukernavn == innBruker.Brukernavn);
+            try
+            {
 
-				nyBrukerRad.Fornavn = innBruker.Fornavn;
-				nyBrukerRad.Etternavn = innBruker.Etternavn;
-				nyBrukerRad.Mail = innBruker.Mail;
-				nyBrukerRad.telefonnummer = innBruker.telefonnummer;
-				nyBrukerRad.Saldo = 500000;
-				nyBrukerRad.Brukernavn = innBruker.Brukernavn;
-				_db.Brukere.Add(nyBrukerRad);
-				await _db.SaveChangesAsync();
-				return true;
-			}
-			catch
-			{
-				return false;
-			}
-		}
+                //Må skjekke om det allerede fins en bruker med gitt brukernavn
+
+                Brukere[] opptattBrukernavn = _db.Brukere.Where(p => p.Brukernavn.ToLower() == innBruker.Brukernavn.ToLower()).ToArray();
+                if (opptattBrukernavn.Length == 1)
+                {
+                    return 2;
+                }
+
+                Brukere[] opptattMail = _db.Brukere.Where(p => p.Mail.ToLower() == innBruker.Mail.ToLower()).ToArray();
+                if (opptattMail.Length == 1)
+                {
+                    return 3;
+                }
+
+
+                var nyBrukerRad = new Brukere();
+
+                nyBrukerRad.Fornavn = innBruker.Fornavn;
+                nyBrukerRad.Etternavn = innBruker.Etternavn;
+                nyBrukerRad.Mail = innBruker.Mail;
+                nyBrukerRad.Telefonnummer = innBruker.Telefonnummer;
+                nyBrukerRad.Saldo = 500000;
+                nyBrukerRad.Brukernavn = innBruker.Brukernavn.ToLower();
+
+                //Hashing og lagring av passord
+                byte[] salt = LagSalt();
+                byte[] hash = LagHash(innBruker.Passord, salt);
+                nyBrukerRad.Passord = hash;
+                nyBrukerRad.Salt = salt;
+
+                //Skal vi sette en verdi på saldo her?
+                //nyBrukerRad.Saldo = innBruker.Saldo;
+
+                _db.Brukere.Add(nyBrukerRad);
+                await _db.SaveChangesAsync();
+                return 0;
+            }
+            catch
+            {
+                return 1;
+            }
+        }
+
 
 		//Brukes for henting av alle Aksjer i "markedet"
 		public async Task<List<Aksje>> HentAksjer()
@@ -274,7 +300,7 @@ namespace AksjeApp2.DAL
 				Etternavn = enBruker.Etternavn,
 				Saldo = enBruker.Saldo,
 				Mail = enBruker.Mail,
-                telefonnummer = enBruker.telefonnummer
+				Telefonnummer = enBruker.Telefonnummer
 			};
 			return hentetBruker;
 		}

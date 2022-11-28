@@ -56,7 +56,7 @@ namespace AksjeApp2.Controllers
 			if (string.IsNullOrEmpty(HttpContext.Session.GetString(_LoggetInn)))
 			{
 				_log.LogInformation("Selg - Error 401: Unauthorized access");
-				return Unauthorized("Bruker er ikke logget inn.");
+				return Unauthorized();
 			}
 
 			bool returOk = await _db.Selg(innPortfolio);
@@ -68,26 +68,38 @@ namespace AksjeApp2.Controllers
 			return Ok();
 		}
 
-		[HttpPost]
-		public async Task<ActionResult> LagreBruker(Bruker innBruker)
-		{
-			bool returOk = await _db.LagreBruker(innBruker);
-			if (!returOk)
-			{
-				_log.LogInformation("LagreBruker - Error 400: Bad Request");
-				return BadRequest("Bruker ble ikke lagret.");
-			}
-			return Ok();
-		}
+        [HttpPost]
+        public async Task<ActionResult> LagreBruker(Bruker innBruker)
+        {
+            if (ModelState.IsValid)
+            {
+                int statusKode = await _db.LagreBruker(innBruker);
+                if (statusKode == 2)
+                {
+                    //MÅ LOGGE DET I LOGGEN
+                    return BadRequest("Brukernavnet er opptatt");
+                }
+                else if (statusKode == 3)
+                {
+                    //MÅ LOGGE DET I LOGGEN
+                    return BadRequest("Mailen er opptatt");
+                }
+                //_log.LogInformation("En bruker har blitt lagt");
+                return Ok();
+            }
+            //LOGGE I LOGGEN AT DET VAR FEIL I INPUTVALIDERING
+            return BadRequest("Feil i inputvalidering");
 
-		[HttpGet]
+        }
+
+        [HttpGet]
 		public async Task<ActionResult> HentAksjer()
 		{
 
 			if (string.IsNullOrEmpty(HttpContext.Session.GetString(_LoggetInn)))
 			{
 				_log.LogInformation("HentAksjer - Error 401: Unauthorized access");
-				return Unauthorized("Bruker er ikke logget inn.");
+				return Unauthorized();
 			}
 
 			List<Aksje> alleAksjer = await _db.HentAksjer();

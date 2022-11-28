@@ -10,7 +10,7 @@ namespace AksjeApp2.DAL
     {
 		Task<bool> Kjop(PortfolioRad innPortfolio);
 		Task<bool> Selg(PortfolioRad innPortfolio);
-		Task<bool> LagreBruker(Bruker innBruker);
+		Task<int> LagreBruker(Bruker innBruker);
 		Task<List<Aksje>> HentAksjer();
 		Task<List<PortfolioRad>> HentPortfolio(string brukernavn);
 		Task<List<Transaksjon>> HentTransaksjoner(string brukernavn);

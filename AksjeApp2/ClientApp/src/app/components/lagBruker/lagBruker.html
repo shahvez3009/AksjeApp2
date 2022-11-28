@@ -5,29 +5,64 @@
             <div class="form-group">
                 <label>Fornavn</label>
                 <input class="form-control" formControlName="fornavn" />
+                <div class="alert alert-danger"
+                     *ngIf="!skjema.get('fornavn').valid && skjema.get('fornavn').touched">
+                    Fornavnet må inneholde to tegn
+                </div>
             </div>
             <div class="form-group">
                 <label>Etternavn</label>
                 <input class="form-control" formControlName="etternavn" />
+                <div class="alert alert-danger"
+                     *ngIf="!skjema.get('etternavn').valid && skjema.get('etternavn').touched">
+                    Etternavnet må inneholde to tegn
+                </div>
             </div>
             <div class="form-group">
                 <label>Mail</label>
                 <input class="form-control" formControlName="mail" />
+                <div class="alert alert-danger"
+                     *ngIf="!skjema.get('mail').valid && skjema.get('mail').touched">
+                    Ugyldig mail
+                </div>
             </div>
             <div class="form-group">
                 <label>Mobilnummer</label>
-                <input class="form-control" formControlName="mobilnummer" />
+                <input class="form-control" formControlName="telefonnummer" />
+                <div class="alert alert-danger"
+                     *ngIf="!skjema.get('telefonnummer').valid && skjema.get('telefonnummer').touched">
+                    Telefon nummeret må inneholde 8 tegn
+                </div>
             </div>
             <div class="form-group">
                 <label>Velg et brukernavn</label>
                 <input class="form-control" formControlName="brukernavn" />
+                <div class="alert alert-danger"
+                     *ngIf="!skjema.get('brukernavn').valid && skjema.get('brukernavn').touched">
+                    Brukernavnet må inneholde to tegn
+                </div>
             </div>
             <div class="form-group">
-                <label>Velg et passord</label>
-                <input class="form-control" formControlName="passord" />
+                <label ty>Velg et passord</label>
+                <input class="form-control" type="password" formControlName="passord" />
+                <div class="alert alert-danger"
+                     *ngIf="!skjema.get('passord').valid && skjema.get('passord').touched">
+                    Passordet må inneholde minst et tall og en stor bokstav
+                </div>
             </div>
             <div class="form-group">
-                <button type="submit">Registrer</button>
+                <label ty>Bekreft passord</label>
+                <input class="form-control" type="password" formControlName="bekreftPassord" />
+                <div class="alert alert-danger"
+                     *ngIf="!skjema.get('passord') != skjema.get('bekreftPassord') && skjema.get('bekreftPassord').touched">
+                    Passordene matcher ikke
+                </div>
+            </div>
+            <div>
+                <p>{{tilbakemelding}}</p>
+            </div>
+            <div class="form-group">
+                <button type="submit" [disabled]="!skjema.valid">Registrer</button>
                 <button class="btn btn-default" routerLink="/logginn">Tilbake</button>
             </div>
         </form>
