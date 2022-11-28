@@ -1,10 +1,10 @@
 ﻿import { Component, OnInit } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { SharedService } from "../shared/shared.service";
+import { SharedService } from "../../shared/shared.service";
 
-import { Aksje } from '../Aksje';
-import { Bruker } from '../Bruker';
+import { Aksje } from '../../Models/Aksje';
+import { Bruker } from '../../Models/Bruker';
 
 
 @Component({

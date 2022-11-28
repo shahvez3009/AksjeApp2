@@ -1,10 +1,10 @@
 ﻿import { Component, OnInit } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { SharedService } from "../shared/shared.service";
+import { SharedService } from "../../shared/shared.service";
 import { FormBuilder, FormGroup, Validators, FormControl } from "@angular/forms";
 
-import { Bruker } from "../Bruker";
+import { Bruker } from "../../Models/Bruker";
 
 @Component({
     selector: "app-logginn",
@@ -55,7 +55,7 @@ export class Logginn {
         send.brukernavn = this.Skjema.value.brukernavn;
         send.passord = this.Skjema.value.passord;
 
-        this.http.post("api/aksje/UserIn", send)
+        this.http.post("api/aksje/LoggInn", send)
             .subscribe(retur => {
                 this.valid = retur;
                 if (this.valid) {
@@ -64,9 +64,8 @@ export class Logginn {
                 }
                 error => { this.invalidBruker = true; console.log("Ikke logget inn"); }   
             },
-            );
+        );
     }
-    
 }
 
 

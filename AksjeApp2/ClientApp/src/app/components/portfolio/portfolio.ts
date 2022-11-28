@@ -1,18 +1,19 @@
 ﻿import { Component, OnInit } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { SharedService } from "../shared/shared.service";
+import { SharedService } from "../../shared/shared.service";
 
-import { Transaksjon } from "../Transaksjon";
-import { Bruker } from '../Bruker';
+import { PortfolioRad } from "../../Models/PortfolioRad";
+import { Bruker } from '../../Models/Bruker';
+
 
 @Component({
-	templateUrl: "transaksjonshistorikk.html"
+	templateUrl: "portfolio.html"
 })
 
-export class Transaksjonshistorikk {
+export class Portfolio {
 	laster: boolean;
-	alleTransaksjoner: Array<Transaksjon>;
+	helePortfolio: Array<PortfolioRad>;
 
 	brukernavn: string;
 	fornavnEtternavn: string;
@@ -22,9 +23,8 @@ export class Transaksjonshistorikk {
 		private http: HttpClient,
 		private router: Router,
 		private shared: SharedService
-	) { }
+	){}
 
-	//Blir kjørt når vi kaller på denne komponenten  
 	ngOnInit() {
 		this.laster = true;
 		this.brukernavn = this.shared.getBrukernavn();
@@ -32,9 +32,9 @@ export class Transaksjonshistorikk {
 	}
 
 	hentAllInfo() {
-		this.http.get<Transaksjon[]>("api/aksje/henttransaksjoner/" + this.brukernavn)
-			.subscribe(transaksjonene => {
-				this.alleTransaksjoner = transaksjonene;
+		this.http.get<PortfolioRad[]>("api/aksje/hentportfolio/" + this.brukernavn)
+			.subscribe(portfolioRadene => {
+				this.helePortfolio = portfolioRadene;
 				this.laster = false;
 			},
 				(error) => {
@@ -43,6 +43,7 @@ export class Transaksjonshistorikk {
 					} else {
 						console.log(error);
 					}
+
 				}
 		);
 
@@ -62,6 +63,15 @@ export class Transaksjonshistorikk {
 		);
 	};
 
+	tilKjop(aksjeId) {
+		this.shared.setAksjeId(aksjeId);
+		this.router.navigate(["/kjop"]);
+	}
+
+	tilSelg(aksjeId) {
+		this.shared.setAksjeId(aksjeId);
+		this.router.navigate(["/selg"]);
+	}
 	loggUt() {
 		this.http.get("api/aksje/loggut").subscribe(retur => {
 			this.router.navigate(["/logginn"])
@@ -70,3 +80,8 @@ export class Transaksjonshistorikk {
 
 	}
 }
+
+
+
+
+

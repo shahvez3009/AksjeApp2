@@ -47,7 +47,7 @@ namespace AksjeApp2.Controllers
 				_log.LogInformation("LagreBruker - Error 400: Bad Request");
 				return BadRequest("Kjøpet ble ikke gjennomført.");
 			}
-			return Ok("Kjop: Kjøpet ble gjennomført.");
+			return Ok();
 		}
 
 		[HttpPost]
@@ -65,7 +65,81 @@ namespace AksjeApp2.Controllers
 				_log.LogInformation("Selg - Error 404: Not Found");
 				return BadRequest("Salget ble ikke gjennomført.");
 			}
-			return Ok("Selg: Salget ble gjennomført.");
+			return Ok();
+		}
+
+		[HttpPost]
+		public async Task<ActionResult> LagreBruker(Bruker innBruker)
+		{
+			bool returOk = await _db.LagreBruker(innBruker);
+			if (!returOk)
+			{
+				_log.LogInformation("LagreBruker - Error 400: Bad Request");
+				return BadRequest("Bruker ble ikke lagret.");
+			}
+			return Ok();
+		}
+
+		[HttpGet]
+		public async Task<ActionResult> HentAksjer()
+		{
+
+			if (string.IsNullOrEmpty(HttpContext.Session.GetString(_LoggetInn)))
+			{
+				_log.LogInformation("HentAksjer - Error 401: Unauthorized access");
+				return Unauthorized("Bruker er ikke logget inn.");
+			}
+
+			List<Aksje> alleAksjer = await _db.HentAksjer();
+			return Ok(alleAksjer);
+
+		}
+
+		[HttpGet("{brukernavn}")]
+		public ActionResult HentPortfolio(string brukernavn)
+		{
+
+			if (string.IsNullOrEmpty(HttpContext.Session.GetString(_LoggetInn)))
+			{
+				_log.LogInformation("HentPortfolio - Error 401: Unauthorized access");
+				return Unauthorized("Bruker er ikke logget inn.");
+			}
+
+			List<PortfolioRad> allePortfolio = _db.HentPortfolio(brukernavn);
+			return Ok(allePortfolio);
+		}
+
+		[HttpGet("{brukernavn}")]
+		public ActionResult HentTransaksjoner(string brukernavn)
+		{
+
+			if (string.IsNullOrEmpty(HttpContext.Session.GetString(_LoggetInn)))
+			{
+				_log.LogInformation("HentTransaksjoner - Error 401: Unauthorized access");
+				return Unauthorized("Bruker er ikke logget inn.");
+			}
+
+			List<Transaksjon> alleTransaksjoner = _db.HentTransaksjoner(brukernavn);
+			return Ok(alleTransaksjoner);
+		}
+
+		[HttpGet("{brukernavn}/{aksjeId}")]
+		public async Task<ActionResult> HentEtPortfolioRad(string brukernavn, int aksjeId)
+		{
+
+			if (string.IsNullOrEmpty(HttpContext.Session.GetString(_LoggetInn)))
+			{
+				_log.LogInformation("HentEtPortfolioRad - Error 401: Unauthorized access");
+				return Unauthorized("Bruker er ikke logget inn.");
+			}
+
+			PortfolioRad portfolioRad = await _db.HentEtPortfolioRad(brukernavn, aksjeId);
+			if (portfolioRad == null)
+			{
+				_log.LogInformation("HentEtPortfolioRad - Error 404: Not Found");
+				return NotFound();
+			}
+			return Ok(portfolioRad);
 		}
 
 		[HttpGet("{brukernavn}")]
@@ -106,71 +180,9 @@ namespace AksjeApp2.Controllers
             return Ok(aksjen);
 		}
 
-		[HttpGet("{brukernavn}/{aksjeId}")]
-		public async Task<ActionResult> HentEtPortfolioRad(string brukernavn, int aksjeId)
-		{
-			
-			if (string.IsNullOrEmpty(HttpContext.Session.GetString(_LoggetInn)))
-			{
-				_log.LogInformation("HentEtPortfolioRad - Error 401: Unauthorized access");
-				return Unauthorized("Bruker er ikke logget inn.");
-			}
-			
-			PortfolioRad portfolioRad = await _db.HentEtPortfolioRad(brukernavn, aksjeId);
-			if (portfolioRad == null)
-			{
-				_log.LogInformation("HentEtPortfolioRad - Error 404: Not Found");
-				return NotFound();
-			}
-            return Ok(portfolioRad);
-		}
-
-		[HttpGet]
-		public async Task<ActionResult> HentAksjer()
-		{
-			
-			if (string.IsNullOrEmpty(HttpContext.Session.GetString(_LoggetInn)))
-			{
-				_log.LogInformation("HentAksjer - Error 401: Unauthorized access");
-				return Unauthorized("Bruker er ikke logget inn.");
-			}
-			
-			List<Aksje> alleAksjer = await _db.HentAksjer();
-            return Ok(alleAksjer);
-            
-        }
-
-		[HttpGet("{brukernavn}")]
-		public ActionResult HentPortfolio(string brukernavn)
-		{
-			
-			if (string.IsNullOrEmpty(HttpContext.Session.GetString(_LoggetInn)))
-			{
-				_log.LogInformation("HentPortfolio - Error 401: Unauthorized access");
-				return Unauthorized("Bruker er ikke logget inn.");
-			}
-			
-			List<PortfolioRad> allePortfolio = _db.HentPortfolio(brukernavn);
-            return Ok(allePortfolio);
-		}
-
-		[HttpGet("{brukernavn}")]
-		public ActionResult HentTransaksjoner(string brukernavn)
-		{
-			
-			if (string.IsNullOrEmpty(HttpContext.Session.GetString(_LoggetInn)))
-			{
-				_log.LogInformation("HentTransaksjoner - Error 401: Unauthorized access");
-				return Unauthorized("Bruker er ikke logget inn.");
-			}
-			
-			List<Transaksjon> alleTransaksjoner = _db.HentTransaksjoner(brukernavn);
-            return Ok(alleTransaksjoner);
-		}
-
 		[HttpPost]
-		public async Task<ActionResult> UserIn(Bruker user) {
-			bool returnOk = await _db.UserIn(user);
+		public async Task<ActionResult> LoggInn(Bruker innBruker) {
+			bool returnOk = await _db.LoggInn(innBruker);
 			if (!returnOk) {
 				HttpContext.Session.SetString(_LoggetInn, "");
 				return Ok(returnOk);
@@ -180,17 +192,6 @@ namespace AksjeApp2.Controllers
                 return Ok(returnOk);
 			}
 		}
-
-        [HttpPost]
-        public async Task<ActionResult> LagreBruker(Bruker innBruker)
-        {
-            bool returOk = await _db.LagreBruker(innBruker);
-            if (!returOk){
-				_log.LogInformation("LagreBruker - Error 400: Bad Request");
-				return BadRequest("Bruker ble ikke lagret.");
-            }
-            return Ok("LagreBruker: Bruker lagret.");
-        }
 
         [HttpGet]		
 		public void Loggut() {

@@ -1,19 +1,18 @@
 ﻿import { Component, OnInit } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { SharedService } from "../shared/shared.service";
+import { SharedService } from "../../shared/shared.service";
 
-import { PortfolioRad } from "../PortfolioRad";
-import { Bruker } from '../Bruker';
-
+import { Transaksjon } from "../../Models/Transaksjon";
+import { Bruker } from '../../Models/Bruker';
 
 @Component({
-	templateUrl: "portfolio.html"
+	templateUrl: "transaksjonshistorikk.html"
 })
 
-export class Portfolio {
+export class Transaksjonshistorikk {
 	laster: boolean;
-	helePortfolio: Array<PortfolioRad>;
+	alleTransaksjoner: Array<Transaksjon>;
 
 	brukernavn: string;
 	fornavnEtternavn: string;
@@ -23,8 +22,9 @@ export class Portfolio {
 		private http: HttpClient,
 		private router: Router,
 		private shared: SharedService
-	){}
+	) { }
 
+	//Blir kjørt når vi kaller på denne komponenten  
 	ngOnInit() {
 		this.laster = true;
 		this.brukernavn = this.shared.getBrukernavn();
@@ -32,9 +32,9 @@ export class Portfolio {
 	}
 
 	hentAllInfo() {
-		this.http.get<PortfolioRad[]>("api/aksje/hentportfolio/" + this.brukernavn)
-			.subscribe(portfolioRadene => {
-				this.helePortfolio = portfolioRadene;
+		this.http.get<Transaksjon[]>("api/aksje/henttransaksjoner/" + this.brukernavn)
+			.subscribe(transaksjonene => {
+				this.alleTransaksjoner = transaksjonene;
 				this.laster = false;
 			},
 				(error) => {
@@ -43,7 +43,6 @@ export class Portfolio {
 					} else {
 						console.log(error);
 					}
-
 				}
 		);
 
@@ -63,15 +62,6 @@ export class Portfolio {
 		);
 	};
 
-	tilKjop(aksjeId) {
-		this.shared.setAksjeId(aksjeId);
-		this.router.navigate(["/kjop"]);
-	}
-
-	tilSelg(aksjeId) {
-		this.shared.setAksjeId(aksjeId);
-		this.router.navigate(["/selg"]);
-	}
 	loggUt() {
 		this.http.get("api/aksje/loggut").subscribe(retur => {
 			this.router.navigate(["/logginn"])
@@ -80,8 +70,3 @@ export class Portfolio {
 
 	}
 }
-
-
-
-
-

@@ -25,8 +25,6 @@
     <!-- Don't publish the SPA source files, but do show them in the project files list -->
     <Content Remove="$(SpaRoot)**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
-    <None Remove="ClientApp\src\app\lagBruker\lagBruker.ts" />
-    <None Remove="ClientApp\src\app\portfolio\portfolio.ts" />
     <None Remove="ClientApp\src\app\portfolio\" />
     <None Remove="Controllers\" />
     <None Remove="Microsoft.EntityFrameworkCore" />
@@ -35,22 +33,46 @@
     <None Remove="Microsoft.Data.Sqlite.Core" />
     <Content Remove="wwwroot\" />
     <None Remove="ClientApp\src\app\transaksjon\transaksjon.ts" />
-    <None Remove="ClientApp\src\app\meny\meny.html" />
     <None Remove="ClientApp\src\app\selgModal\selgModal.ts" />
+    <None Remove="ClientApp\src\app\Models\" />
+    <None Remove="ClientApp\src\app\components\" />
+    <None Remove="ClientApp\src\app\components\hjem\" />
+    <None Remove="ClientApp\src\app\components\kjop\" />
+    <None Remove="ClientApp\src\app\components\lagBruker\lagBruker.ts" />
+    <None Remove="ClientApp\src\app\components\lagBruker\" />
+    <None Remove="ClientApp\src\app\components\logginn\" />
+    <None Remove="ClientApp\src\app\components\meny\meny.html" />
+    <None Remove="ClientApp\src\app\components\meny\" />
+    <None Remove="ClientApp\src\app\components\portfolio\portfolio.ts" />
+    <None Remove="ClientApp\src\app\components\portfolio\" />
+    <None Remove="ClientApp\src\app\components\selg\selg.ts" />
+    <None Remove="ClientApp\src\app\components\selg\" />
+    <None Remove="ClientApp\src\app\components\transaksjonshistorikk\transaksjonshistorikk.ts" />
+    <None Remove="ClientApp\src\app\components\transaksjonshistorikk\" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Controllers\" />
     <Folder Include="Logs\" />
     <Folder Include="wwwroot\" />
+    <Folder Include="ClientApp\src\app\Models\" />
+    <Folder Include="ClientApp\src\app\components\" />
+    <Folder Include="ClientApp\src\app\components\hjem\" />
+    <Folder Include="ClientApp\src\app\components\kjop\" />
+    <Folder Include="ClientApp\src\app\components\lagBruker\" />
+    <Folder Include="ClientApp\src\app\components\logginn\" />
+    <Folder Include="ClientApp\src\app\components\meny\" />
+    <Folder Include="ClientApp\src\app\components\portfolio\" />
+    <Folder Include="ClientApp\src\app\components\selg\" />
+    <Folder Include="ClientApp\src\app\components\transaksjonshistorikk\" />
   </ItemGroup>
 
   <ItemGroup>
-    <TypeScriptCompile Include="ClientApp\src\app\portfolio\portfolio.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\lagBruker\lagBruker.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\transaksjonshistorikk\transaksjonshistorikk.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\meny\meny.html" />
-    <TypeScriptCompile Include="ClientApp\src\app\selg\selg.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\components\lagBruker\lagBruker.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\components\meny\meny.html" />
+    <TypeScriptCompile Include="ClientApp\src\app\components\portfolio\portfolio.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\components\selg\selg.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\components\transaksjonshistorikk\transaksjonshistorikk.ts" />
   </ItemGroup>
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
     <!-- Ensure Node.js is installed -->

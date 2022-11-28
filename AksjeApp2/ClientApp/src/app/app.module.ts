@@ -5,16 +5,16 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from "@angular/forms"; 
 
 import { AppComponent } from './app.component';
-import { Meny } from './meny/meny';
-import { Hjem } from './hjem/hjem';
-import { Portfolio } from './portfolio/portfolio';
-import { Transaksjonshistorikk } from './transaksjonshistorikk/transaksjonshistorikk';
-import { Kjop } from './kjop/kjop';
-import { KjopModal } from './kjop/kjopModal';
-import { Selg } from './selg/selg';
-import { SelgModal } from './selg/selgModal';
-import { Logginn } from './logginn/logginn';
-import { LagBruker } from './lagBruker/lagBruker';
+import { Meny } from './components/meny/meny';
+import { Hjem } from './components/hjem/hjem';
+import { Portfolio } from './components/portfolio/portfolio';
+import { Transaksjonshistorikk } from './components/transaksjonshistorikk/transaksjonshistorikk';
+import { Kjop } from './components/kjop/kjop';
+import { KjopModal } from './components/kjop/kjopModal';
+import { Selg } from './components/selg/selg';
+import { SelgModal } from './components/selg/selgModal';
+import { Logginn } from './components/logginn/logginn';
+import { LagBruker } from './components/lagBruker/lagBruker';
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 
 import { AppRoutingModule } from './app-routing.module';

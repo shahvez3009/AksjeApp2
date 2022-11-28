@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 
-import { Bruker } from "../Bruker";
+import { Bruker } from "../../Models/Bruker";
 
 @Component({
     templateUrl: './lagbruker.html'

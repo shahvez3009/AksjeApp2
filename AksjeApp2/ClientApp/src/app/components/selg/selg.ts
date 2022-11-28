@@ -1,14 +1,14 @@
 ﻿import { Component, OnInit } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Router } from "@angular/router";
-import { SharedService } from "../shared/shared.service";
+import { SharedService } from "../../shared/shared.service";
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { SelgModal } from './selgModal';
 
-import { PortfolioRad } from "../PortfolioRad";
-import { Bruker } from '../Bruker';
+import { PortfolioRad } from "../../Models/PortfolioRad";
+import { Bruker } from '../../Models/Bruker';
 
 @Component({
 	templateUrl: "selg.html",

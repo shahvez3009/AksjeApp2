@@ -120,66 +120,29 @@ namespace AksjeApp2.DAL
 			}
 		}
 
-		public Bruker HentEnBruker(string brukernavn)
+		public async Task<bool> LagreBruker(Bruker innBruker)
 		{
-			Brukere enBruker = _db.Brukere.First(p => p.Brukernavn == brukernavn);
-			var hentetBruker = new Bruker()
-			{
-				Id = enBruker.Id,
-				Fornavn = enBruker.Fornavn,
-				Etternavn = enBruker.Etternavn,
-				Saldo = enBruker.Saldo,
-				Mail = enBruker.Mail,
-                telefonnummer = enBruker.telefonnummer
-			};
-			return hentetBruker;
-		}
-
-		public async Task<Aksje> HentEnAksje(int aksjeId)
-		{
-			Aksjer enAksje = await _db.Aksjer.FindAsync(aksjeId);
-			var hentetAksje = new Aksje()
-			{
-				Id = enAksje.Id,
-				Navn = enAksje.Navn,
-				Pris = enAksje.Pris,
-				MaxAntall = enAksje.MaxAntall,
-				AntallLedige = enAksje.AntallLedige
-			};
-			return hentetAksje;
-		}
-
-		public async Task<PortfolioRad> HentEtPortfolioRad(string brukernavn, int aksjeId)
-		{
-			Brukere enBruker = _db.Brukere.First(p => p.Brukernavn == brukernavn);
-			Aksjer enAksje = await _db.Aksjer.FindAsync(aksjeId);
+			//Må skjekke om det allerede fins en bruker med sammen Mail eller MobilNummer
 
 			try
 			{
-				PortfolioRader etPortfolioRad = _db.PortfolioRader.First(p => p.Bruker.Id == enBruker.Id && p.Aksje.Id == enAksje.Id);
-				var hentetPortfolioRad = new PortfolioRad()
-				{
-					Id = etPortfolioRad.Id,
-					Antall = etPortfolioRad.Antall,
-					AksjeId = enAksje.Id,
-					AksjeNavn = enAksje.Navn,
-					AksjePris = enAksje.Pris,
-					Brukernavn = enBruker.Brukernavn
-				};
-				return hentetPortfolioRad;
+				var nyBrukerRad = new Brukere();
+
+				//var brukerNavnFinsALlerede = _db.Brukere.First(p => p.Brukernavn == innBruker.Brukernavn);
+
+				nyBrukerRad.Fornavn = innBruker.Fornavn;
+				nyBrukerRad.Etternavn = innBruker.Etternavn;
+				nyBrukerRad.Mail = innBruker.Mail;
+				nyBrukerRad.telefonnummer = innBruker.telefonnummer;
+				nyBrukerRad.Saldo = 500000;
+				nyBrukerRad.Brukernavn = innBruker.Brukernavn;
+				_db.Brukere.Add(nyBrukerRad);
+				await _db.SaveChangesAsync();
+				return true;
 			}
 			catch
-			{ 
-				var nyPortfolioRad = new PortfolioRad()
-				{
-					Id = 99999,
-					Antall = 0,
-					AksjeId = enAksje.Id,
-					AksjeNavn = enAksje.Navn,
-					AksjePris = enAksje.Pris,
-					Brukernavn = enBruker.Brukernavn
-				};
-				return nyPortfolioRad;
+			{
+				return false;
 			}
 		}
 
@@ -253,6 +216,69 @@ namespace AksjeApp2.DAL
 			}
 		}
 
+		public async Task<PortfolioRad> HentEtPortfolioRad(string brukernavn, int aksjeId)
+		{
+			Brukere enBruker = _db.Brukere.First(p => p.Brukernavn == brukernavn);
+			Aksjer enAksje = await _db.Aksjer.FindAsync(aksjeId);
+
+			try
+			{
+				PortfolioRader etPortfolioRad = _db.PortfolioRader.First(p => p.Bruker.Id == enBruker.Id && p.Aksje.Id == enAksje.Id);
+				var hentetPortfolioRad = new PortfolioRad()
+				{
+					Id = etPortfolioRad.Id,
+					Antall = etPortfolioRad.Antall,
+					AksjeId = enAksje.Id,
+					AksjeNavn = enAksje.Navn,
+					AksjePris = enAksje.Pris,
+					Brukernavn = enBruker.Brukernavn
+				};
+				return hentetPortfolioRad;
+			}
+			catch
+			{
+				var nyPortfolioRad = new PortfolioRad()
+				{
+					Id = 99999,
+					Antall = 0,
+					AksjeId = enAksje.Id,
+					AksjeNavn = enAksje.Navn,
+					AksjePris = enAksje.Pris,
+					Brukernavn = enBruker.Brukernavn
+				};
+				return nyPortfolioRad;
+			}
+		}
+
+		public Bruker HentEnBruker(string brukernavn)
+		{
+			Brukere enBruker = _db.Brukere.First(p => p.Brukernavn == brukernavn);
+			var hentetBruker = new Bruker()
+			{
+				Id = enBruker.Id,
+				Fornavn = enBruker.Fornavn,
+				Etternavn = enBruker.Etternavn,
+				Saldo = enBruker.Saldo,
+				Mail = enBruker.Mail,
+                telefonnummer = enBruker.telefonnummer
+			};
+			return hentetBruker;
+		}
+
+		public async Task<Aksje> HentEnAksje(int aksjeId)
+		{
+			Aksjer enAksje = await _db.Aksjer.FindAsync(aksjeId);
+			var hentetAksje = new Aksje()
+			{
+				Id = enAksje.Id,
+				Navn = enAksje.Navn,
+				Pris = enAksje.Pris,
+				MaxAntall = enAksje.MaxAntall,
+				AntallLedige = enAksje.AntallLedige
+			};
+			return hentetAksje;
+		}
+
 		public static byte[] LagHash(string passord, byte[] salt)
         {
             return KeyDerivation.Pbkdf2(
@@ -270,89 +296,29 @@ namespace AksjeApp2.DAL
             csp.GetBytes(salt);
             return salt;
         }
-		/*
-	   public async Task<bool> LoggInn(User bruker)
-	   {
-		   try
-		   {
-			   Brukere funnetBruker = await _db.Brukere.FirstOrDefaultAsync(b => b.Brukernavn == bruker.BrukernavnSend);
-			   // sjekk passordet
-			   byte[] hash = LagHash(bruker.BrukernavnSend, funnetBruker.Salt);
-			   bool ok = hash.SequenceEqual(funnetBruker.Passord);
-			   if (ok)
-			   {
-				   return true;
-			   }
-			   return false;
-		   }
-		   catch 
-		   {
-			 //  _log.LogInformation(e.Message);
-			   return false;
-		   }
-	   }
-	   */
 
-		public async Task<bool> UserIn(Bruker user)
+		public async Task<bool> LoggInn(Bruker innBruker)
 		{
 			try
 			{
-				Brukere funnetUser = await _db.Brukere.FirstOrDefaultAsync(b => b.Brukernavn == user.Brukernavn);
-				Console.WriteLine("1");
-				Console.WriteLine(funnetUser.ToString());
-				byte[] hash = LagHash(user.Passord, funnetUser.Salt);
-				Console.WriteLine("2");
-				Console.WriteLine(hash.ToString());
+				Brukere funnetUser = await _db.Brukere.FirstOrDefaultAsync(b => b.Brukernavn == innBruker.Brukernavn);
+				byte[] hash = LagHash(innBruker.Passord, funnetUser.Salt);
 				bool ok = hash.SequenceEqual(funnetUser.Passord);
-				Console.WriteLine(ok.ToString());
-				Console.WriteLine("3");
 				if (ok)
 				{
-					Console.WriteLine("4");
 					return true;
-
 				}
 				else
 				{
-					Console.WriteLine("5");
 					return false;
-
 				}
 
 			}
 			catch (Exception)
 			{
-				Console.WriteLine("6");
 				return false;
 			}
 
 		}
-
-		public async Task<bool> LagreBruker(Bruker innBruker)
-        {
-            //Må skjekke om det allerede fins en bruker med sammen Mail eller MobilNummer
-
-            try
-            {
-                var nyBrukerRad = new Brukere();
-
-                //var brukerNavnFinsALlerede = _db.Brukere.First(p => p.Brukernavn == innBruker.Brukernavn);
-
-                nyBrukerRad.Fornavn = innBruker.Fornavn;
-                nyBrukerRad.Etternavn = innBruker.Etternavn;
-                nyBrukerRad.Mail = innBruker.Mail;
-                nyBrukerRad.telefonnummer = innBruker.telefonnummer;
-				nyBrukerRad.Saldo = 500000;
-				nyBrukerRad.Brukernavn = innBruker.Brukernavn;
-                _db.Brukere.Add(nyBrukerRad);
-                await _db.SaveChangesAsync();
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
-        }
-
     }
 }
