@@ -51,30 +51,7 @@ export class Kjop {
 	}
 
 	hentAllInfo() {
-		/*
-		this.http.get<PortfolioRad>("api/aksje/hentetportfoliorad/" + (this.brukernavn, this.aksjeId))
-			.subscribe(hentetRad => {
-				if (hentetRad.antall == 0) {
-					this.status = false;
-					console.log(this.status);
-				}
-				else {
-					this.status = true;
-					console.log(this.status);
-				}
-				console.log("kjopModal - hentEtPortfolioRad");
-			},
-				(error) => {
-					if (error.status == 401) {
-						this.router.navigate(["/logginn"])
-					} else {
-						console.log(error);
-					}
-
-				} 
-		);
-		*/
-
+	
 		this.http.get<Aksje>("api/aksje/hentenaksje/" + this.aksjeId)
 			.subscribe(hentetAksje => {
 				console.log(hentetAksje);

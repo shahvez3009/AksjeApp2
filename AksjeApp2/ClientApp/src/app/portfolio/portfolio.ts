@@ -21,7 +21,6 @@ export class Portfolio {
 		private shared: SharedService
 	){}
 
-	//Blir kjørt når vi kaller på denne komponenten  
 	ngOnInit() {
 		this.laster = true;
 		this.brukernavn = this.shared.getBrukernavn();
@@ -29,11 +28,7 @@ export class Portfolio {
 	}
 
 	hentAllInfo() {
-		if (this.brukernavn.length == 0) {
-			this.router.navigate(["/logginn"])
-		}
-		else {
-			this.http.get<PortfolioRad[]>("api/aksje/hentportfolio/" + this.brukernavn) 
+		this.http.get<PortfolioRad[]>("api/aksje/hentportfolio/" + this.brukernavn)
 			.subscribe(portfolioRadene => {
 				this.helePortfolio = portfolioRadene;
 				this.laster = false;
@@ -46,10 +41,8 @@ export class Portfolio {
 						console.log(error);
 					}
 
-				} 
+				}
 		);
-		}
-		
 	};
 
 	tilKjop(aksjeId) {

@@ -16,15 +16,15 @@
 					<li class="nav-item"
 						[routerLinkActive]="['link-active']"
 						[routerLinkActiveOptions]="{ exact: true }">
-						<a class="nav-link text-dark" [routerLink]="['/hjem']">Home</a>
+						<a class="nav-link text-dark" (click)="visNettside('hjem')">Hjem</a>
 					</li>
 					<li class="nav-item"
 						[routerLinkActive]="['link-active']">
-						<a class="nav-link text-dark" [routerLink]="['/portfolio']">Portfolio</a>
+						<a class="nav-link text-dark" (click)="visNettside('portfolio')">Portfolio</a>
 					</li>
 					<li class="nav-item"
 						[routerLinkActive]="['link-active']">
-						<a class="nav-link text-dark" [routerLink]="['/transaksjonshistorikk']">Transaksjoner</a>
+						<a class="nav-link text-dark" (click)="visNettside('transaksjonshistorikk')">Transaksjoner</a>
 					</li>
 				</ul>
 			</div>
