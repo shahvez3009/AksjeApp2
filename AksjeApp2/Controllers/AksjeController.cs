@@ -41,8 +41,6 @@ namespace AksjeApp2.Controllers
 				return Unauthorized();
 			}
 
-
-
 			bool returOk = await _db.Kjop(innPortfolio);
 			if (!returOk)
 			{
