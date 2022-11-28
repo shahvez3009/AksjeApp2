@@ -62,7 +62,14 @@ export class Kjop {
 				this.laster = false;
 				console.log("kjopModal - hentEnAksje");
 			},
-				(error) => console.log(error)
+				(error) => {
+					if (error.status == 401) {
+						this.router.navigate(["/logginn"])
+					} else {
+						console.log(error);
+					}
+
+				}
 			);
 	}
 
