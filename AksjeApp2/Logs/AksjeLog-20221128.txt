@@ -238,3 +238,192 @@ app/components/portfolio/portfolio.ts:88:1 - error TS1005: '}' expected.
  (e4170494)
 2022-11-28T21:37:49.5824120+01:00  [ERR] (Use `node --trace-deprecation ...` to show where the warning was created)
  (567f389e)
+2022-11-28T22:45:30.9087360+01:00  [INF] Now listening on: "https://localhost:5001" (d826f4b8)
+2022-11-28T22:45:30.9706320+01:00  [INF] Now listening on: "http://localhost:5000" (d826f4b8)
+2022-11-28T22:45:31.0506630+01:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2022-11-28T22:45:31.0778490+01:00  [INF] Hosting environment: "Development" (c3307c92)
+2022-11-28T22:45:31.1046140+01:00  [INF] Content root path: "/Users/tintun/Documents/GitHub/AksjeApp2/AksjeApp2" (b5d60022)
+2022-11-28T22:45:36.4475240+01:00  [ERR] (node:15738) [DEP0111] DeprecationWarning: Access to process.binding('http_parser') is deprecated.
+ (1e216ad3)
+2022-11-28T22:45:36.5082590+01:00  [ERR] (Use `node --trace-deprecation ...` to show where the warning was created)
+ (567f389e)
+2022-11-28T22:45:37.8826080+01:00  [ERR] ERROR in app/components/hjem/hjem.ts:56:1 - error TS1185: Merge conflict marker encountered.
+
+56 <<<<<<< Updated upstream:AksjeApp2/ClientApp/src/app/components/hjem/hjem.ts
+   ~~~~~~~
+app/components/hjem/hjem.ts:57:1 - error TS1185: Merge conflict marker encountered.
+
+57 =======
+   ~~~~~~~
+app/components/hjem/hjem.ts:60:1 - error TS1185: Merge conflict marker encountered.
+
+60 >>>>>>> Stashed changes:AksjeApp2/ClientApp/src/app/hjem/hjem.ts
+   ~~~~~~~
+app/components/logginn/logginn.ts:6:1 - error TS1185: Merge conflict marker encountered.
+
+6 <<<<<<< Updated upstream:AksjeApp2/ClientApp/src/app/components/logginn/logginn.ts
+  ~~~~~~~
+app/components/logginn/logginn.ts:9:1 - error TS1185: Merge conflict marker encountered.
+
+9 =======
+  ~~~~~~~
+app/components/logginn/logginn.ts:11:1 - error TS1185: Merge conflict marker encountered.
+
+11 >>>>>>> Stashed changes:AksjeApp2/ClientApp/src/app/logginn/logginn.ts
+   ~~~~~~~
+app/components/logginn/logginn.ts:71:1 - error TS1185: Merge conflict marker encountered.
+
+71 <<<<<<< Updated upstream:AksjeApp2/ClientApp/src/app/components/logginn/logginn.ts
+   ~~~~~~~
+app/components/logginn/logginn.ts:72:1 - error TS1185: Merge conflict marker encountered.
+
+72 =======
+   ~~~~~~~
+app/components/logginn/logginn.ts:75:1 - error TS1185: Merge conflict marker encountered.
+
+75 >>>>>>> Stashed changes:AksjeApp2/ClientApp/src/app/logginn/logginn.ts
+ (946e4444)
+2022-11-28T22:54:53.6253580+01:00  [INF] Now listening on: "https://localhost:5001" (d826f4b8)
+2022-11-28T22:54:53.7429900+01:00  [INF] Now listening on: "http://localhost:5000" (d826f4b8)
+2022-11-28T22:54:53.9433110+01:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2022-11-28T22:54:53.9461040+01:00  [INF] Hosting environment: "Development" (c3307c92)
+2022-11-28T22:54:53.9726690+01:00  [INF] Content root path: "/Users/tintun/Documents/GitHub/AksjeApp2/AksjeApp2" (b5d60022)
+2022-11-28T22:54:58.9449170+01:00  [ERR] (node:17787) [DEP0111] DeprecationWarning: Access to process.binding('http_parser') is deprecated.
+ (f3726d6d)
+2022-11-28T22:54:59.0011530+01:00  [ERR] (Use `node --trace-deprecation ...` to show where the warning was created)
+ (567f389e)
+2022-11-28T22:55:00.4599010+01:00  [ERR] ERROR in app/components/hjem/hjem.ts:56:1 - error TS1185: Merge conflict marker encountered.
+
+56 <<<<<<< Updated upstream:AksjeApp2/ClientApp/src/app/components/hjem/hjem.ts
+   ~~~~~~~
+app/components/hjem/hjem.ts:57:1 - error TS1185: Merge conflict marker encountered.
+
+57 =======
+   ~~~~~~~
+app/components/hjem/hjem.ts:60:1 - error TS1185: Merge conflict marker encountered.
+
+60 >>>>>>> Stashed changes:AksjeApp2/ClientApp/src/app/hjem/hjem.ts
+   ~~~~~~~
+app/components/logginn/logginn.ts:6:1 - error TS1185: Merge conflict marker encountered.
+
+6 <<<<<<< Updated upstream:AksjeApp2/ClientApp/src/app/components/logginn/logginn.ts
+  ~~~~~~~
+app/components/logginn/logginn.ts:9:1 - error TS1185: Merge conflict marker encountered.
+
+9 =======
+  ~~~~~~~
+app/components/logginn/logginn.ts:11:1 - error TS1185: Merge conflict marker encountered.
+
+11 >>>>>>> Stashed changes:AksjeApp2/ClientApp/src/app/logginn/logginn.ts
+   ~~~~~~~
+app/components/logginn/logginn.ts:71:1 - error TS1185: Merge conflict marker encountered.
+
+71 <<<<<<< Updated upstream:AksjeApp2/ClientApp/src/app/components/logginn/logginn.ts
+   ~~~~~~~
+app/components/logginn/logginn.ts:72:1 - error TS1185: Merge conflict marker encountered.
+
+72 =======
+   ~~~~~~~
+app/components/logginn/logginn.ts:75:1 - error TS1185: Merge conflict marker encountered.
+
+75 >>>>>>> Stashed changes:AksjeApp2/ClientApp/src/app/logginn/logginn.ts
+ (946e4444)
+2022-11-28T22:56:38.2803140+01:00  [INF] Now listening on: "https://localhost:5001" (d826f4b8)
+2022-11-28T22:56:38.3906130+01:00  [INF] Now listening on: "http://localhost:5000" (d826f4b8)
+2022-11-28T22:56:38.4212420+01:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2022-11-28T22:56:38.4495230+01:00  [INF] Hosting environment: "Development" (c3307c92)
+2022-11-28T22:56:38.4758820+01:00  [INF] Content root path: "/Users/tintun/Documents/GitHub/AksjeApp2/AksjeApp2" (b5d60022)
+2022-11-28T22:56:43.3116590+01:00  [ERR] (node:17917) [DEP0111] DeprecationWarning: Access to process.binding('http_parser') is deprecated.
+ (310bd920)
+2022-11-28T22:56:43.3937850+01:00  [ERR] (Use `node --trace-deprecation ...` to show where the warning was created)
+ (567f389e)
+2022-11-28T22:56:44.8539960+01:00  [ERR] ERROR in app/components/hjem/hjem.ts:56:1 - error TS1185: Merge conflict marker encountered.
+
+56 <<<<<<< Updated upstream:AksjeApp2/ClientApp/src/app/components/hjem/hjem.ts
+   ~~~~~~~
+app/components/hjem/hjem.ts:57:1 - error TS1185: Merge conflict marker encountered.
+
+57 =======
+   ~~~~~~~
+app/components/hjem/hjem.ts:60:1 - error TS1185: Merge conflict marker encountered.
+
+60 >>>>>>> Stashed changes:AksjeApp2/ClientApp/src/app/hjem/hjem.ts
+   ~~~~~~~
+app/components/logginn/logginn.ts:6:1 - error TS1185: Merge conflict marker encountered.
+
+6 <<<<<<< Updated upstream:AksjeApp2/ClientApp/src/app/components/logginn/logginn.ts
+  ~~~~~~~
+app/components/logginn/logginn.ts:9:1 - error TS1185: Merge conflict marker encountered.
+
+9 =======
+  ~~~~~~~
+app/components/logginn/logginn.ts:11:1 - error TS1185: Merge conflict marker encountered.
+
+11 >>>>>>> Stashed changes:AksjeApp2/ClientApp/src/app/logginn/logginn.ts
+   ~~~~~~~
+app/components/logginn/logginn.ts:71:1 - error TS1185: Merge conflict marker encountered.
+
+71 <<<<<<< Updated upstream:AksjeApp2/ClientApp/src/app/components/logginn/logginn.ts
+   ~~~~~~~
+app/components/logginn/logginn.ts:72:1 - error TS1185: Merge conflict marker encountered.
+
+72 =======
+   ~~~~~~~
+app/components/logginn/logginn.ts:75:1 - error TS1185: Merge conflict marker encountered.
+
+75 >>>>>>> Stashed changes:AksjeApp2/ClientApp/src/app/logginn/logginn.ts
+ (946e4444)
+2022-11-28T23:00:17.5466880+01:00  [ERR]    ~~~~~~~
+
+
+ (354c4151)
+2022-11-28T23:01:44.9412400+01:00  [ERR] ERROR in app/components/hjem/hjem.ts:56:1 - error TS1185: Merge conflict marker encountered.
+
+56 <<<<<<< Updated upstream:AksjeApp2/ClientApp/src/app/components/hjem/hjem.ts
+   ~~~~~~~
+app/components/hjem/hjem.ts:57:1 - error TS1185: Merge conflict marker encountered.
+
+57 =======
+   ~~~~~~~
+app/components/hjem/hjem.ts:60:1 - error TS1185: Merge conflict marker encountered.
+
+60 >>>>>>> Stashed changes:AksjeApp2/ClientApp/src/app/hjem/hjem.ts
+   ~~~~~~~
+app/components/logginn/logginn.ts:6:1 - error TS1185: Merge conflict marker encountered.
+
+6 <<<<<<< Updated upstream:AksjeApp2/ClientApp/src/app/components/logginn/logginn.ts
+  ~~~~~~~
+app/components/logginn/logginn.ts:9:1 - error TS1185: Merge conflict marker encountered.
+
+9 =======
+  ~~~~~~~
+app/components/logginn/logginn.ts:11:1 - error TS1185: Merge conflict marker encountered.
+
+11 >>>>>>> Stashed changes:AksjeApp2/ClientApp/src/app/logginn/logginn.ts
+   ~~~~~~~
+
+
+ (9d344613)
+2022-11-28T23:01:44.9994510+01:00  [ERR] ERROR in app/components/hjem/hjem.ts:56:1 - error TS1185: Merge conflict marker encountered.
+
+56 <<<<<<< Updated upstream:AksjeApp2/ClientApp/src/app/components/hjem/hjem.ts
+   ~~~~~~~
+app/components/hjem/hjem.ts:57:1 - error TS1185: Merge conflict marker encountered.
+
+57 =======
+   ~~~~~~~
+app/components/hjem/hjem.ts:60:1 - error TS1185: Merge conflict marker encountered.
+
+60 >>>>>>> Stashed changes:AksjeApp2/ClientApp/src/app/hjem/hjem.ts
+   ~~~~~~~
+
+ (c5971056)
+2022-11-28T23:02:38.8915810+01:00  [INF] Now listening on: "https://localhost:5001" (d826f4b8)
+2022-11-28T23:02:38.9513570+01:00  [INF] Now listening on: "http://localhost:5000" (d826f4b8)
+2022-11-28T23:02:38.9797500+01:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2022-11-28T23:02:39.0065290+01:00  [INF] Hosting environment: "Development" (c3307c92)
+2022-11-28T23:02:39.0328400+01:00  [INF] Content root path: "/Users/tintun/Documents/GitHub/AksjeApp2/AksjeApp2" (b5d60022)
+2022-11-28T23:02:46.5108770+01:00  [ERR] (node:18056) [DEP0111] DeprecationWarning: Access to process.binding('http_parser') is deprecated.
+ (5f859930)
+2022-11-28T23:02:46.5953690+01:00  [ERR] (Use `node --trace-deprecation ...` to show where the warning was created)
+ (567f389e)

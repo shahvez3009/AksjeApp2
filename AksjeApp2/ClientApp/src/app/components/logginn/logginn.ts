@@ -3,8 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { SharedService } from "../../shared/shared.service";
 import { FormBuilder, FormGroup, Validators, FormControl } from "@angular/forms";
-
 import { Bruker } from "../../Models/Bruker";
+
 
 @Component({
     selector: "app-logginn",

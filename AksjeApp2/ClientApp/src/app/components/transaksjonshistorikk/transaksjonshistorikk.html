@@ -1,8 +1,7 @@
 ﻿<div class="container">
-    <h2>Transaksjonshistorikk</h2>
-    <div>
         <div class="col-md-12">
-            <div *ngIf="laster">Laster transaksjoner...</div>
+            <h1>Transaksjonshistorikk</h1>
+            <div class="loading" *ngIf="laster">Laster transaksjoner...</div>
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -27,5 +26,4 @@
             </table>
             <span><button class="btn btn-primary" (click)="loggUt()">Logg ut</button></span>
         </div>
-    </div>
 </div>

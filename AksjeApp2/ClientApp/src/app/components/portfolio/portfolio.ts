@@ -8,7 +8,8 @@ import { Bruker } from '../../Models/Bruker';
 
 
 @Component({
-	templateUrl: "portfolio.html"
+	templateUrl: "portfolio.html",
+	styleUrls: ['./portfolio.css']
 })
 
 export class Portfolio {

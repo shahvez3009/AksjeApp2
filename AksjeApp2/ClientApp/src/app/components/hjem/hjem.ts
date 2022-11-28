@@ -8,7 +8,8 @@ import { Bruker } from '../../Models/Bruker';
 
 
 @Component({
-    templateUrl: "hjem.html"
+    templateUrl: "hjem.html",
+    styleUrls: ['./hjem.css']
 })
 
 export class Hjem {
@@ -52,6 +53,9 @@ export class Hjem {
                 this.laster = false;
                 this.fornavnEtternavn = bruker.fornavn + " " + bruker.etternavn;
                 this.saldo = bruker.saldo;
+                console.log(bruker);
+                console.log(bruker.saldo)
+
             },
                 (error) => {
                     if (error.status == 401) {
@@ -68,3 +72,4 @@ export class Hjem {
         this.router.navigate(["/kjop"]);
     }
 }
+

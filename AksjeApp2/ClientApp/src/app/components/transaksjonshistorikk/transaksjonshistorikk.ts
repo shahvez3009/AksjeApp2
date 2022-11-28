@@ -7,7 +7,8 @@ import { Transaksjon } from "../../Models/Transaksjon";
 import { Bruker } from '../../Models/Bruker';
 
 @Component({
-	templateUrl: "transaksjonshistorikk.html"
+	templateUrl: "transaksjonshistorikk.html",
+	styleUrls: ['./transaksjonshistorikk.css']
 })
 
 export class Transaksjonshistorikk {

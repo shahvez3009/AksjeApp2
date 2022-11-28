@@ -6,7 +6,8 @@ import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Bruker } from "../../Models/Bruker";
 
 @Component({
-    templateUrl: './lagbruker.html'
+    templateUrl: './lagbruker.html',
+    styleUrls: ['./lagbruker.css']
 })
 export class LagBruker {
     skjema: FormGroup;

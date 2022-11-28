@@ -1,8 +1,7 @@
 ﻿<div class="container">
-	<h2>Portfolio</h2>
-	<div>
 		<div class="col-md-12">
-			<div *ngIf="laster">Laster portfolio...</div>
+			<h1>Portfolio</h1>
+			<div class="loading" *ngIf="laster">Laster portfolio...</div>
 			<table class="table table-striped">
 				<thead>
 					<tr>
@@ -20,12 +19,11 @@
 						<td>{{portfolioRad.aksjePris}}</td>
 						<td>{{portfolioRad.antall}}</td>
 						<td>{{portfolioRad.aksjePris*portfolioRad.antall}}</td>
-						<td><button class="btn btn-success"(click)="tilKjop(portfolioRad.aksjeId)">Kjøp Mer</button></td>
+						<td><button class="btn btn-success" (click)="tilKjop(portfolioRad.aksjeId)">Kjøp Mer</button></td>
 						<td><button class="btn btn-danger" (click)="tilSelg(portfolioRad.aksjeId)">Selg</button></td>
 					</tr>
 				</tbody>
 			</table>
 			<span><button class="btn btn-primary" (click)="loggUt()">Logg ut</button></span>
 		</div>
-	</div>
 </div>

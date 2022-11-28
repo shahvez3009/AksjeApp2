@@ -1,7 +1,6 @@
 ﻿<div class="container-fluid">
-	<div>
-		<div>
-	<div *ngIf="laster">Laster Aksjer...</div>
+	<h1>Marked</h1>
+	<div class="loading" *ngIf="laster">Laster Aksjer...</div>
 	<table class='table table-striped'>
 		<thead>
 			<tr>
@@ -21,7 +20,14 @@
 				<td><button class="btn btn-success" (click)="tilKjop(aksje.id)" routerLink="/kjop">Kjøp</button></td>
 			</tr>
 		</tbody>
-		</table>
+	</table>
+	<div class="profile">
+		<div>
+			<img src="../assets/hashbulla.png" />
+		</div>
+		<div>
+			<p>Hasbulla Magomedov</p>
+			<p>Saldo: {{saldo}} </p>
 		</div>
 	</div>
 </div>
