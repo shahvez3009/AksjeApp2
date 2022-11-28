@@ -74,12 +74,8 @@ namespace AksjeApp2.Controllers
 			
             if (string.IsNullOrEmpty(HttpContext.Session.GetString(_LoggetInn)))
             {
-<<<<<<< Updated upstream
 				_log.LogInformation("HentEnBruker - Error 401: Unauthorized access");
 				return Unauthorized("Bruker er ikke logget inn.");
-=======
-                return Unauthorized("");
->>>>>>> Stashed changes
             }
 
             Bruker brukeren = _db.HentEnBruker(brukernavn);
@@ -97,12 +93,8 @@ namespace AksjeApp2.Controllers
 			
 			if (string.IsNullOrEmpty(HttpContext.Session.GetString(_LoggetInn)))
 			{
-<<<<<<< Updated upstream
 				_log.LogInformation("HentEnAksje - Error 401: Unauthorized access");
 				return Unauthorized("Bruker er ikke logget inn.");
-=======
-				return Unauthorized("");
->>>>>>> Stashed changes
 			}
 			
 			Aksje aksjen = await _db.HentEnAksje(aksjeId);
@@ -120,12 +112,8 @@ namespace AksjeApp2.Controllers
 			
 			if (string.IsNullOrEmpty(HttpContext.Session.GetString(_LoggetInn)))
 			{
-<<<<<<< Updated upstream
 				_log.LogInformation("HentEtPortfolioRad - Error 401: Unauthorized access");
 				return Unauthorized("Bruker er ikke logget inn.");
-=======
-				return Unauthorized("");
->>>>>>> Stashed changes
 			}
 			
 			PortfolioRad portfolioRad = await _db.HentEtPortfolioRad(brukernavn, aksjeId);
@@ -143,12 +131,8 @@ namespace AksjeApp2.Controllers
 			
 			if (string.IsNullOrEmpty(HttpContext.Session.GetString(_LoggetInn)))
 			{
-<<<<<<< Updated upstream
 				_log.LogInformation("HentAksjer - Error 401: Unauthorized access");
 				return Unauthorized("Bruker er ikke logget inn.");
-=======
-				return Unauthorized("");
->>>>>>> Stashed changes
 			}
 			
 			List<Aksje> alleAksjer = await _db.HentAksjer();
@@ -162,12 +146,8 @@ namespace AksjeApp2.Controllers
 			
 			if (string.IsNullOrEmpty(HttpContext.Session.GetString(_LoggetInn)))
 			{
-<<<<<<< Updated upstream
 				_log.LogInformation("HentPortfolio - Error 401: Unauthorized access");
 				return Unauthorized("Bruker er ikke logget inn.");
-=======
-				return Unauthorized("");
->>>>>>> Stashed changes
 			}
 			
 			List<PortfolioRad> allePortfolio = _db.HentPortfolio(brukernavn);
@@ -180,12 +160,8 @@ namespace AksjeApp2.Controllers
 			
 			if (string.IsNullOrEmpty(HttpContext.Session.GetString(_LoggetInn)))
 			{
-<<<<<<< Updated upstream
 				_log.LogInformation("HentTransaksjoner - Error 401: Unauthorized access");
 				return Unauthorized("Bruker er ikke logget inn.");
-=======
-				return Unauthorized("");
->>>>>>> Stashed changes
 			}
 			
 			List<Transaksjon> alleTransaksjoner = _db.HentTransaksjoner(brukernavn);
