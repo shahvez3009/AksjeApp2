@@ -26,7 +26,7 @@ namespace AksjeApp2.DAL
             _log = log; 
         }
 
-		//Hjelpefunksjon for Kjop og Selg. 
+		//Hjelpefunksjon for Kjop og Selg. Lager en ny rad i Transaksjoner-tabell dersom det skjer et kjøp eller salg.
 		public async Task<bool> lagTransaksjon(string status, PortfolioRader portfolio, int antall)
 		{
 			try
@@ -48,6 +48,10 @@ namespace AksjeApp2.DAL
 			}
 		}
 
+		//Brukes for kjøp av aksjer.
+		//En PortfolioRad blir sendt fra http.post i kjøp som ligger i frontend.
+		//innPortfolio inneholder 3 verdier (brukernavn, aksjeId, antall).
+		//Lager en ny, eller endrer eksisterende rad, i PortfolioRader (innsendt bruker eier innsendt antall av innsendt aksje)
 		public async Task<bool> Kjop(PortfolioRad innPortfolio)
 		{
 			try
@@ -56,13 +60,16 @@ namespace AksjeApp2.DAL
 				Brukere enBruker = await _db.Brukere.FirstAsync(p => p.Brukernavn == innPortfolio.Brukernavn);
 				Aksjer enAksje = await _db.Aksjer.FindAsync(innPortfolio.AksjeId);
 
-				if (enBruker.Saldo >= innPortfolio.AksjeId * innPortfolio.Antall && enAksje.AntallLedige >= innPortfolio.Antall && innPortfolio.Antall >= 1)
+				//Bruker må ha råd, det må være nok ledige av Aksjen som blir kjøpt og antallet som blir kjøpt må være minst 1
+				if (enBruker.Saldo >= enAksje.Pris * innPortfolio.Antall && enAksje.AntallLedige >= innPortfolio.Antall && innPortfolio.Antall >= 1)
 				{
+					//Dersom innsendt Bruker allerede eier innsendt Aksje
 					if (etPortfolioRad.Length == 1)
 					{
 						etPortfolioRad[0].Antall += innPortfolio.Antall;
 						await lagTransaksjon("Kjøp", etPortfolioRad[0], innPortfolio.Antall);
 					}
+					//Dersom innsendt Bruker ikke eier innsendt Aksje
 					else
 					{
 						var nyPortfolio = new PortfolioRader();
@@ -86,12 +93,14 @@ namespace AksjeApp2.DAL
 			}
 		}
 
+		//Brukes for salg av aksjer.
+		//Samme logikk som kjøp av aksjer, bare for salg.
 		public async Task<bool> Selg(PortfolioRad innPortfolio)
 		{
 			try
 			{
 				PortfolioRader etPortfolioRad = await _db.PortfolioRader.FirstAsync(p => p.Aksje.Id == innPortfolio.AksjeId && p.Bruker.Brukernavn == innPortfolio.Brukernavn);
-				// Sjekker om antallet brukeren prøver å selge er mindre enn det brukeren eier. Hvis dette er sann vil den utføre transaksjonen
+				//Dersom innsendt Bruker ikke selger alle aksjene av innsendt Aksje
 				if (etPortfolioRad.Antall > innPortfolio.Antall && innPortfolio.Antall != 0)
 				{
 					etPortfolioRad.Bruker.Saldo += innPortfolio.Antall * etPortfolioRad.Aksje.Pris;
@@ -101,7 +110,7 @@ namespace AksjeApp2.DAL
 					await lagTransaksjon("Salg", etPortfolioRad, innPortfolio.Antall);
 					return true;
 				}
-				// Sjekker om brukeren vil selge alle aksjene den eier. Hvis dette er sann vil den slette aksje beholdningen fra portføljen.
+				//Dersom innsendt Bruker selger alle aksjene av innsendt Aksje
 				if (etPortfolioRad.Antall == innPortfolio.Antall && innPortfolio.Antall != 0)
 				{
 					etPortfolioRad.Bruker.Saldo += innPortfolio.Antall * etPortfolioRad.Aksje.Pris;
@@ -123,7 +132,6 @@ namespace AksjeApp2.DAL
 		public async Task<bool> LagreBruker(Bruker innBruker)
 		{
 			//Må skjekke om det allerede fins en bruker med sammen Mail eller MobilNummer
-
 			try
 			{
 				var nyBrukerRad = new Brukere();
@@ -146,6 +154,7 @@ namespace AksjeApp2.DAL
 			}
 		}
 
+		//Brukes for henting av alle Aksjer i "markedet"
 		public async Task<List<Aksje>> HentAksjer()
 		{
 			try
@@ -166,6 +175,7 @@ namespace AksjeApp2.DAL
 			}
 		}
 
+		//Brukes for henting av alle PortfolioRader til en innsendt Bruker
 		public async Task<List<PortfolioRad>> HentPortfolio(string brukernavn)
 		{
 			try
@@ -190,6 +200,7 @@ namespace AksjeApp2.DAL
 			}
 		}
 
+		//Brukes for henting av alle Transaksjoner til en innsendt Bruker
 		public async Task<List<Transaksjon>> HentTransaksjoner(string brukernavn)
 		{
 			try
@@ -216,6 +227,8 @@ namespace AksjeApp2.DAL
 			}
 		}
 
+		//Brukes for henting av en spesifikk PortfolioRad med innsendt brukernavn og innsendt aksjeId
+		//Brukes for selg component i frontend
 		public async Task<PortfolioRad> HentEtPortfolioRad(string brukernavn, int aksjeId)
 		{
 			Brukere enBruker = await _db.Brukere.FirstAsync(p => p.Brukernavn == brukernavn);
@@ -250,6 +263,7 @@ namespace AksjeApp2.DAL
 			}
 		}
 
+		//Brukes for henting av all Bruker info for spesifikk Bruker
 		public async Task<Bruker> HentEnBruker(string brukernavn)
 		{
 			Brukere enBruker = await _db.Brukere.FirstAsync(p => p.Brukernavn == brukernavn);
@@ -265,6 +279,7 @@ namespace AksjeApp2.DAL
 			return hentetBruker;
 		}
 
+		//Brukes for henting av all Aksje info for spesifikk Aksje
 		public async Task<Aksje> HentEnAksje(int aksjeId)
 		{
 			Aksjer enAksje = await _db.Aksjer.FindAsync(aksjeId);
