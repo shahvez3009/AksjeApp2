@@ -13,6 +13,7 @@ import { Bruker } from '../Bruker';
 export class Transaksjonshistorikk {
 	laster: boolean;
 	alleTransaksjoner: Array<Transaksjon>;
+
 	brukernavn: string;
 	fornavnEtternavn: string;
 	saldo: number;

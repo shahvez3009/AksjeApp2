@@ -18,21 +18,15 @@ namespace AksjeApp2.DAL
 	{
 		private readonly AksjeContext _db;
 
-        //private ILogger<AksjeRepository> _log;
+        private ILogger<AksjeRepository> _log;
 
-        /*public AksjeRepository(AksjeContext db, ILogger<AksjeRepository> log)
+        public AksjeRepository(AksjeContext db, ILogger<AksjeRepository> log)
         {
             _db = db;
             _log = log; 
+        }
 
-        }*/
-
-		public AksjeRepository(AksjeContext db)
-		{
-			_db = db;
-		}
-
-		// denne funksjonen calles på av kjøp og selg funksjonene
+		//Hjelpefunksjon for Kjop og Selg. 
 		public async Task<bool> lagTransaksjon(string status, PortfolioRader portfolio, int antall)
 		{
 			try
@@ -276,63 +270,65 @@ namespace AksjeApp2.DAL
             csp.GetBytes(salt);
             return salt;
         }
-		 /*
-        public async Task<bool> LoggInn(User bruker)
-        {
-            try
-            {
-                Brukere funnetBruker = await _db.Brukere.FirstOrDefaultAsync(b => b.Brukernavn == bruker.BrukernavnSend);
-                // sjekk passordet
-                byte[] hash = LagHash(bruker.BrukernavnSend, funnetBruker.Salt);
-                bool ok = hash.SequenceEqual(funnetBruker.Passord);
-                if (ok)
-                {
-                    return true;
-                }
-                return false;
-            }
-            catch 
-            {
-              //  _log.LogInformation(e.Message);
-                return false;
-            }
-        }
-		*/
+		/*
+	   public async Task<bool> LoggInn(User bruker)
+	   {
+		   try
+		   {
+			   Brukere funnetBruker = await _db.Brukere.FirstOrDefaultAsync(b => b.Brukernavn == bruker.BrukernavnSend);
+			   // sjekk passordet
+			   byte[] hash = LagHash(bruker.BrukernavnSend, funnetBruker.Salt);
+			   bool ok = hash.SequenceEqual(funnetBruker.Passord);
+			   if (ok)
+			   {
+				   return true;
+			   }
+			   return false;
+		   }
+		   catch 
+		   {
+			 //  _log.LogInformation(e.Message);
+			   return false;
+		   }
+	   }
+	   */
 
 		public async Task<bool> UserIn(Bruker user)
-        {
+		{
 			try
 			{
 				Brukere funnetUser = await _db.Brukere.FirstOrDefaultAsync(b => b.Brukernavn == user.Brukernavn);
 				Console.WriteLine("1");
-                Console.WriteLine(funnetUser.ToString());
-                byte[] hash = LagHash(user.Passord, funnetUser.Salt);
-                Console.WriteLine("2");
+				Console.WriteLine(funnetUser.ToString());
+				byte[] hash = LagHash(user.Passord, funnetUser.Salt);
+				Console.WriteLine("2");
 				Console.WriteLine(hash.ToString());
-                bool ok = hash.SequenceEqual(funnetUser.Passord);
+				bool ok = hash.SequenceEqual(funnetUser.Passord);
 				Console.WriteLine(ok.ToString());
-                Console.WriteLine("3");
-                if (ok)
+				Console.WriteLine("3");
+				if (ok)
 				{
 					Console.WriteLine("4");
 					return true;
-                    
-                }
-				else {
+
+				}
+				else
+				{
 					Console.WriteLine("5");
 					return false;
-                  
-                }
-				
+
+				}
+
 			}
-			catch (Exception) {
-                Console.WriteLine("6");
-                return false;
+			catch (Exception)
+			{
+				Console.WriteLine("6");
+				return false;
 			}
 
-        }
+		}
 
-        public async Task<bool> LagreBruker(Bruker innBruker)
+		public async Task<bool> LagreBruker(Bruker innBruker)
         {
             //Må skjekke om det allerede fins en bruker med sammen Mail eller MobilNummer
 

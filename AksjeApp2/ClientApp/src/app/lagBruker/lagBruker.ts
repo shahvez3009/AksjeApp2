@@ -51,7 +51,6 @@ export class LagBruker {
         nyBruker.telefonnummer = this.skjema.value.telefonnummer;
         nyBruker.brukernavn = this.skjema.value.brukernavn;
         nyBruker.passord = this.skjema.value.passord;
-
         
         this.http.post("api/aksje/lagrebruker/", nyBruker)
             .subscribe(retur => {
