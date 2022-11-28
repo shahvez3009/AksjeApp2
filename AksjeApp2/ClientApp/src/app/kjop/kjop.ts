@@ -46,7 +46,6 @@ export class Kjop {
 		this.hentetAksje = this.shared.getAksjeId();
 		console.log(this.hentetAksje);
 		this.laster = true;
-		this.aksjeId = 1;
 		this.brukernavn = localStorage.getItem("brukernavn");
 		setTimeout(() => { this.hentAllInfo(); }, 200);
 	}
@@ -76,7 +75,7 @@ export class Kjop {
 		);
 		*/
 
-		this.http.get<Aksje>("api/aksje/hentenaksje/" + this.aksjeId)
+		this.http.get<Aksje>("api/aksje/hentenaksje/" + this.hentetAksje)
 			.subscribe(hentetAksje => {
 				console.log(hentetAksje);
 				this.aksjenavn = hentetAksje.navn;
@@ -110,7 +109,7 @@ export class Kjop {
 
 				let innPortfolio = new PortfolioRad();
 				innPortfolio.brukernavn = this.brukernavn;
-				innPortfolio.aksjeId = this.aksjeId;
+				innPortfolio.aksjeId = this.hentetAksje;
 				innPortfolio.antall = Number(this.skjema.value.antall);
 				console.log(innPortfolio);
 

@@ -51,8 +51,8 @@ export class Selg {
 		setTimeout(() => { this.hentAllInfo(); }, 200);
 	}
 
-	hentAllInfo() {	
-		this.http.get<PortfolioRad>("api/aksje/hentetportfoliorad/" + this.brukernavn + "/" + this.aksjeId)
+	hentAllInfo() {
+		this.http.get<PortfolioRad>("api/aksje/hentetportfoliorad/" + this.brukernavn + "/" + Number(this.hentetAksje))
 			.subscribe(retur => {
 				this.aksjenavn = retur.aksjeNavn;
 				this.aksjepris = retur.aksjePris;
@@ -86,10 +86,10 @@ export class Selg {
 
 		modalRef.result.then(retur => {
 			if (retur == "Bekreft") {
-
+				console.log(this.hentetAksje);
 				let innPortfolio = new PortfolioRad();
 				innPortfolio.brukernavn = this.brukernavn;
-				innPortfolio.aksjeId = this.aksjeId;
+				innPortfolio.aksjeId = Number(this.hentetAksje);
 				innPortfolio.antall = Number(this.skjema.value.antall);
 				console.log(innPortfolio);
 
