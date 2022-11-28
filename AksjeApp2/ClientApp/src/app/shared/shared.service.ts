@@ -4,15 +4,23 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class SharedService {
-    aksjeId: number; 
+    aksjeId: number;
+    brukernavn: string;
     constructor() { }
 
     setAksjeId(data) {
         this.aksjeId = data;
-
     }
 
     getAksjeId() {
         return this.aksjeId;
+    }
+
+    setBrukernavn(data) {
+        this.brukernavn = data;
+    }
+
+    getBrukernavn() {
+        return this.brukernavn;
     }
 }

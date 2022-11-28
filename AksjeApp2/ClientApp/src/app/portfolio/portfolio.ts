@@ -12,8 +12,8 @@ import { SharedService } from "../shared/shared.service";
 export class Portfolio {
 	laster: boolean;
 	helePortfolio: Array<PortfolioRad>;
+
 	brukernavn: string;
-	aksje: number;
 
 	constructor(
 		private http: HttpClient,
@@ -24,15 +24,15 @@ export class Portfolio {
 	//Blir kjørt når vi kaller på denne komponenten  
 	ngOnInit() {
 		this.laster = true;
-		this.brukernavn = localStorage.getItem("brukernavn");
+		this.brukernavn = this.shared.getBrukernavn();
 		setTimeout(() => { this.hentAllInfo(); }, 200);
 	}
 
 	hentAllInfo() {
 		if (this.brukernavn.length == 0) {
-
 			this.router.navigate(["/logginn"])
-		} else {
+		}
+		else {
 			this.http.get<PortfolioRad[]>("api/aksje/hentportfolio/" + this.brukernavn) 
 			.subscribe(portfolioRadene => {
 				this.helePortfolio = portfolioRadene;
@@ -53,14 +53,12 @@ export class Portfolio {
 	};
 
 	tilKjop(aksjeId) {
-		this.aksje = aksjeId;
-		this.shared.setAksjeId(this.aksje);
+		this.shared.setAksjeId(aksjeId);
 		this.router.navigate(["/kjop"]);
 	}
 
 	tilSelg(aksjeId) {
-		this.aksje = aksjeId;
-		this.shared.setAksjeId(this.aksje);
+		this.shared.setAksjeId(aksjeId);
 		this.router.navigate(["/selg"]);
 	}
 	loggUt() {

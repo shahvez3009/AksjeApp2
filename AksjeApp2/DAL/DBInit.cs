@@ -57,8 +57,8 @@ namespace AksjeApp2.Models
                 var rad1 = new PortfolioRader { Antall = 100, Bruker = per, Aksje = microsoft };
 				var rad2 = new PortfolioRader { Antall = 100, Bruker = anders, Aksje = apple };
 
-                context.PortfolioRader.Add(rad1);
-				context.PortfolioRader.Add(rad2);
+                //context.PortfolioRader.Add(rad1);
+				//context.PortfolioRader.Add(rad2);
 
 				context.SaveChanges();
             }

@@ -2,6 +2,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Transaksjon } from "../Transaksjon";
+import { SharedService } from "../shared/shared.service";
 
 @Component({
 	templateUrl: "transaksjonshistorikk.html"
@@ -14,19 +15,19 @@ export class Transaksjonshistorikk {
 
 	constructor(
 		private http: HttpClient,
-		private router: Router
+		private router: Router,
+		private shared: SharedService
 	) { }
 
 	//Blir kjørt når vi kaller på denne komponenten  
 	ngOnInit() {
 		this.laster = true;
-		this.brukernavn = localStorage.getItem("brukernavn");
+		this.brukernavn = this.shared.getBrukernavn();
 		setTimeout(() => { this.hentAllInfo(); }, 200);
 	}
 
 	hentAllInfo() {
 		if (this.brukernavn.length == 0) {
-		
 			this.router.navigate(["/logginn"])
 		}
 		else {this.http.get<Transaksjon[]>("api/aksje/henttransaksjoner/" + this.brukernavn)

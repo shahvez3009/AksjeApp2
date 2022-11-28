@@ -20,10 +20,11 @@ export class Kjop {
 	aksjepris: number;
 	aksjeledige: number;
 	aksjemax: number;
-	aksjeId: number;
+
 	brukernavn: string;
+	aksjeId: number;
+
 	skjema: FormGroup;
-	hentetAksje: number;
 
 	constructor(
 		private http: HttpClient,
@@ -43,10 +44,9 @@ export class Kjop {
 	}
 
 	ngOnInit() {
-		this.hentetAksje = this.shared.getAksjeId();
-		console.log(this.hentetAksje);
 		this.laster = true;
-		this.brukernavn = localStorage.getItem("brukernavn");
+		this.brukernavn = this.shared.getBrukernavn();
+		this.aksjeId = this.shared.getAksjeId();
 		setTimeout(() => { this.hentAllInfo(); }, 200);
 	}
 
@@ -75,7 +75,7 @@ export class Kjop {
 		);
 		*/
 
-		this.http.get<Aksje>("api/aksje/hentenaksje/" + this.hentetAksje)
+		this.http.get<Aksje>("api/aksje/hentenaksje/" + this.aksjeId)
 			.subscribe(hentetAksje => {
 				console.log(hentetAksje);
 				this.aksjenavn = hentetAksje.navn;
@@ -109,7 +109,7 @@ export class Kjop {
 
 				let innPortfolio = new PortfolioRad();
 				innPortfolio.brukernavn = this.brukernavn;
-				innPortfolio.aksjeId = this.hentetAksje;
+				innPortfolio.aksjeId = this.aksjeId;
 				innPortfolio.antall = Number(this.skjema.value.antall);
 				console.log(innPortfolio);
 
@@ -118,7 +118,7 @@ export class Kjop {
 						console.log("Da har du kjøpt!");
 					},
 						error => console.log(error)
-		);
+				);
 				this.skjema.reset();
 				setTimeout(() => { this.hentAllInfo(); }, 200);
 			}

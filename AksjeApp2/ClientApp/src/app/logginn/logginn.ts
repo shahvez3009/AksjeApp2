@@ -19,9 +19,10 @@ export class Logginn {
     constructor(
         private fb: FormBuilder,
         private http: HttpClient,
-        private router: Router) {
+        private router: Router,
+        private shared: SharedService
+    ){
         this.Skjema = fb.group(this.validering)
-     
     }
 
     validering = {
@@ -38,7 +39,7 @@ export class Logginn {
 
     ngOnInit() {
         console.log(this.Skjema.valid);
-        localStorage.setItem("brukernavn", "");
+        this.shared.setBrukernavn("");
     }
 
     onSubmit() {
@@ -59,7 +60,7 @@ export class Logginn {
             .subscribe(retur => {
                 this.valid = retur;
                 if (this.valid) {
-                    localStorage.setItem("brukernavn", send.brukernavn);
+                    this.shared.setBrukernavn(send.brukernavn);
                     console.log("Du er logget inn");
                     this.router.navigate(["/hjem"]);
                 }

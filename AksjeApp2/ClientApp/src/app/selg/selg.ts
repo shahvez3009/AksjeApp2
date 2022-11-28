@@ -19,10 +19,11 @@ export class Selg {
 	aksjenavn: string;
 	aksjepris: number;
 	portfolioantall: number;
-	aksjeId: number;
+
 	brukernavn: string;
+	aksjeId: number;
+
 	skjema: FormGroup;
-	hentetAksje: number;
 
 	constructor(
 		private http: HttpClient,
@@ -42,17 +43,14 @@ export class Selg {
 	}
 
 	ngOnInit() {
-		this.hentetAksje = this.shared.getAksjeId();
-		console.log(this.hentetAksje);
 		this.laster = true;
-		this.aksjeId = 1;
-		this.brukernavn = localStorage.getItem("brukernavn");
-		console.log(this.brukernavn);
+		this.brukernavn = this.shared.getBrukernavn();
+		this.aksjeId = this.shared.getAksjeId();
 		setTimeout(() => { this.hentAllInfo(); }, 200);
 	}
 
 	hentAllInfo() {
-		this.http.get<PortfolioRad>("api/aksje/hentetportfoliorad/" + this.brukernavn + "/" + Number(this.hentetAksje))
+		this.http.get<PortfolioRad>("api/aksje/hentetportfoliorad/" + this.brukernavn + "/" + this.aksjeId)
 			.subscribe(retur => {
 				this.aksjenavn = retur.aksjeNavn;
 				this.aksjepris = retur.aksjePris;
@@ -66,9 +64,8 @@ export class Selg {
 					} else {
 						console.log(error);
 					}
-
 				} 
-			);
+		);
 	}
 
 	onSubmit() {
@@ -86,10 +83,10 @@ export class Selg {
 
 		modalRef.result.then(retur => {
 			if (retur == "Bekreft") {
-				console.log(this.hentetAksje);
+
 				let innPortfolio = new PortfolioRad();
 				innPortfolio.brukernavn = this.brukernavn;
-				innPortfolio.aksjeId = Number(this.hentetAksje);
+				innPortfolio.aksjeId = this.aksjeId;
 				innPortfolio.antall = Number(this.skjema.value.antall);
 				console.log(innPortfolio);
 
