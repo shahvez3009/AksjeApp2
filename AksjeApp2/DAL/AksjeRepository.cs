@@ -95,7 +95,7 @@ namespace AksjeApp2.DAL
 		{
 			try
 			{
-				PortfolioRader etPortfolioRad = _db.PortfolioRader.First(p => p.Aksje.Id == innPortfolio.AksjeId);
+				PortfolioRader etPortfolioRad = _db.PortfolioRader.First(p => p.Aksje.Id == innPortfolio.AksjeId && p.Bruker.Brukernavn == innPortfolio.Brukernavn);
 				// Sjekker om antallet brukeren prøver å selge er mindre enn det brukeren eier. Hvis dette er sann vil den utføre transaksjonen
 				if (etPortfolioRad.Antall > innPortfolio.Antall && innPortfolio.Antall != 0)
 				{
@@ -125,7 +125,7 @@ namespace AksjeApp2.DAL
 			}
 		}
 
-		public async Task<Bruker> HentEnBruker(string brukernavn)
+		public Bruker HentEnBruker(string brukernavn)
 		{
 			Brukere enBruker = _db.Brukere.First(p => p.Brukernavn == brukernavn);
 			var hentetBruker = new Bruker()
@@ -161,7 +161,7 @@ namespace AksjeApp2.DAL
 
 			try
 			{
-				PortfolioRader etPortfolioRad = _db.PortfolioRader.First(p => p.Bruker.Id == enBruker.Id || p.Aksje.Id == enAksje.Id);
+				PortfolioRader etPortfolioRad = _db.PortfolioRader.First(p => p.Bruker.Id == enBruker.Id && p.Aksje.Id == enAksje.Id);
 				var hentetPortfolioRad = new PortfolioRad()
 				{
 					Id = etPortfolioRad.Id,
@@ -208,7 +208,7 @@ namespace AksjeApp2.DAL
 			}
 		}
 
-		public async Task<List<PortfolioRad>> HentPortfolio(string brukernavn)
+		public List<PortfolioRad> HentPortfolio(string brukernavn)
 		{
 			try
 			{
@@ -232,7 +232,7 @@ namespace AksjeApp2.DAL
 			}
 		}
 
-		public async Task<List<Transaksjon>> HentTransaksjoner(string brukernavn)
+		public List<Transaksjon> HentTransaksjoner(string brukernavn)
 		{
 			try
 			{

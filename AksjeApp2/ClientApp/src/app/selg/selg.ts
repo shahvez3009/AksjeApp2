@@ -81,11 +81,11 @@ export class Selg {
 
 		modalRef.result.then(retur => {
 			if (retur == "Bekreft") {
-				const innPortfolio = new PortfolioRad();
 
-				innPortfolio.antall = Number(this.skjema.value.antall);
-				innPortfolio.aksjeId = this.aksjeId;
+				let innPortfolio = new PortfolioRad();
 				innPortfolio.brukernavn = this.brukernavn;
+				innPortfolio.aksjeId = this.aksjeId;
+				innPortfolio.antall = Number(this.skjema.value.antall);
 				console.log(innPortfolio);
 
 				this.http.post("api/aksje/selg/", innPortfolio)

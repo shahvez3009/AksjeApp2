@@ -5,7 +5,6 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { KjopModal } from './kjopModal';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { Aksje } from "../Aksje";
-import { Bruker } from "../Bruker";
 import { PortfolioRad } from '../PortfolioRad';
 
 @Component({
@@ -101,20 +100,21 @@ export class Kjop {
 		modalRef.componentInstance.aksjemax = this.aksjemax;
 
 		modalRef.result.then(retur => {
+
 			if (retur == "Bekreft") {
-				const nyttKjop = new PortfolioRad();
 
-				nyttKjop.antall = Number(this.skjema.value.antall);
-				nyttKjop.aksjeId = this.aksjeId;
-				nyttKjop.brukernavn = this.brukernavn;
-				console.log(nyttKjop);
+				let innPortfolio = new PortfolioRad();
+				innPortfolio.brukernavn = this.brukernavn;
+				innPortfolio.aksjeId = this.aksjeId;
+				innPortfolio.antall = Number(this.skjema.value.antall);
+				console.log(innPortfolio);
 
-				this.http.post("api/aksje/kjop/", nyttKjop)
+				this.http.post("api/aksje/kjop/", innPortfolio)
 					.subscribe(retur => {
 						console.log("Da har du kjøpt!");
 					},
 						error => console.log(error)
-				);
+		);
 				this.skjema.reset();
 				setTimeout(() => { this.hentAllInfo(); }, 200);
 			}
