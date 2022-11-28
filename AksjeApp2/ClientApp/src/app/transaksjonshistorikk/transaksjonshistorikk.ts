@@ -25,7 +25,11 @@ export class Transaksjonshistorikk {
 	}
 
 	hentAllInfo() {
-		this.http.get<Transaksjon[]>("api/aksje/henttransaksjoner/" + this.brukernavn)
+		if (this.brukernavn.length == 0) {
+		
+			this.router.navigate(["/logginn"])
+		}
+		else {this.http.get<Transaksjon[]>("api/aksje/henttransaksjoner/" + this.brukernavn)
 			.subscribe(transaksjonene => {
 				this.alleTransaksjoner = transaksjonene;
 				this.laster = false;
@@ -40,6 +44,8 @@ export class Transaksjonshistorikk {
 
 				} 
 			);
+		}
+		
 	};
 
 

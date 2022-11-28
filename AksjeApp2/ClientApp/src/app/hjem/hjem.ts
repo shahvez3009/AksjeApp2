@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Aksje } from '../Aksje';
 import { Local } from "protractor/built/driverProviders";
+import { SharedService } from "../shared/shared.service";
+
 
 @Component({
     templateUrl: "hjem.html"
@@ -11,10 +13,12 @@ import { Local } from "protractor/built/driverProviders";
 export class Hjem {
     laster: boolean;
     alleAksjer: Array<Aksje>;
+    aksje: number;
 
     constructor(
         private http: HttpClient,
-        private router: Router
+        private router: Router,
+        private shared: SharedService
     ){}
 
     ngOnInit() {
@@ -43,4 +47,10 @@ export class Hjem {
         );
     }
 
+
+    tilKjop(aksjeId) {
+        this.aksje = aksjeId;
+        this.shared.setAksjeId(this.aksje);
+        this.router.navigate(["/kjop"]);
+    }
 }

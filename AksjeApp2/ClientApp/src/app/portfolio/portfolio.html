@@ -20,8 +20,8 @@
 						<td>{{portfolioRad.aksjePris}}</td>
 						<td>{{portfolioRad.antall}}</td>
 						<td>{{portfolioRad.aksjePris*portfolioRad.antall}}</td>
-						<td><button class="btn btn-success" routerLink="/kjop">Kjøp Mer</button></td>
-						<td><button class="btn btn-danger" routerLink="/selg">Selg</button></td>
+						<td><button class="btn btn-success"(click)="tilKjop(portfolioRad.aksjeId)">Kjøp Mer</button></td>
+						<td><button class="btn btn-danger" (click)="tilSelg(portfolioRad.aksjeId)">Selg</button></td>
 					</tr>
 				</tbody>
 			</table>
