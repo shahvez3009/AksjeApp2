@@ -169,19 +169,9 @@ namespace AksjeApp2Test
                 AntallLedige = 100
             };
 
-            var aksje3 = new Aksje
-            {
-                Id = 52,
-                Navn = "Apple",
-                Pris = 200,
-                MaxAntall = 800,
-                AntallLedige = 200
-            };
-
             var aksjeliste = new List<Aksje>();
             aksjeliste.Add(aksje1);
             aksjeliste.Add(aksje2);
-            aksjeliste.Add(aksje3);
 
             mockRep.Setup(k => k.HentAksjer()).ReturnsAsync(aksjeliste);
 
