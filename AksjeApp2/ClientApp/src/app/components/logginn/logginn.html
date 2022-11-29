@@ -92,13 +92,10 @@
                                     <label for="password">Passord</label>
                                 </div>
                                 <input type="password" formControlName="passord">
-                                <div>
-                                    <p class="errorMsg" *ngIf="this.Skjema.controls.passord.status=='INVALID'">Mellom 6 og 15 siffer</p>
+                                <div class="alert alert-danger"
+                                     *ngIf="!skjema.get('passord').valid && skjema.get('passord').touched">
+                                    Passordet må inneholde minst to tall, en stor bokstav og minst åtte tegn
                                 </div>
-                            </div>
-                            <div *ngIf="invalidBruker"class="alert alert-warning">
-                              <p>   Feil Brukernavn eller Passord
-                             </p>
                             </div>
 
                             <div class="field padding-bottom--24">

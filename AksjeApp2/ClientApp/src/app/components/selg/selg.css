@@ -1,4 +1,68 @@
-﻿* {
+﻿.ordre-container {
+    height: 80vh;
+    width: 100%;
+    padding: 5rem;
+    border-radius: 25px;
+    background-color: #1E1E1E;
+    color: white;
+    display: flex;
+}
+
+
+.aksjeinfo {
+    flex-basis: 50%;
+    flex-direction: column;
+    justify-content: flex-end;
+    margin: 2rem;
+}
+
+    .aksjeinfo h3, h4 {
+        margin: 1rem;
+    }
+
+.profile {
+    display: flex;
+    color: white;
+}
+
+    .profile p {
+        color: white;
+        margin: 0.5rem;
+    }
+
+
+
+.bekreftelse {
+    margin: 2rem;
+}
+
+
+.line {
+    background-color: white;
+    height: 90%;
+    width: 1px;
+}
+
+
+label {
+    margin-top: 2rem;
+}
+
+.orderBtn {
+    background-color: white;
+    color: black;
+    width: 10vh;
+    height: 4vh;
+    border-radius: 5px;
+    border: none;
+}
+
+
+
+
+
+
+/** {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -6,45 +70,45 @@
 
 body {
 
-}
+}*/
 
 
 
 /* Skjemaet til kjøpe knappen */
-.bekreft {
+/*.bekreft {
     margin: 4rem;
     border: 1px solid #1232A8;
     height: 50vh;
     border-radius: 10px;
     padding: 4vh;
     box-shadow: #1232A8 0px 5px 15px;
-}
+}*/
 
 
 /*Boksene med pris, navn, etc..*/
-.form {
+/*.form {
     box-shadow: #1232A8 0px 5px 15px;
     height: 50vh;
     border-radius: 10px;
     background: #1232A8;
-}
+}*/
 
 
 /*Boksene med pris, navn, etc..*/
-.list-group-flush .list-group-item {
+/*.list-group-flush .list-group-item {
     margin: 4vh;
     border-top: 80px;
     border-radius: 10px;
-}
+}*/
 
 /* Kjøpe knappen */
-#reg {
+/*#reg {
     border-radius: 20px;
     box-shadow: lightgrey 0px 5px 15px;
-    background: #1232A8; /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #1232A8, #1232A8); /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #1232A8, #1232A8); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-}
+    background: #1232A8;*/ /* fallback for old browsers */
+    /*background: -webkit-linear-gradient(to right, #1232A8, #1232A8);*/ /* Chrome 10-25, Safari 5.1-6 */
+    /*background: linear-gradient(to right, #1232A8, #1232A8);*/ /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+/*}
 
 #bekreft_ordre {
     color: white;
@@ -52,8 +116,8 @@ body {
     height: 5vh;
     border-radius: 20px;
     box-shadow: lightgrey 0px 5px 15px;
-    background: #1232A8; /* fallback for old browsers */
-    align-items: center;
+    background: #1232A8;*/ /* fallback for old browsers */
+    /*align-items: center;
     justify-content: center;
     display: flex;
     text-decoration: none;
@@ -70,4 +134,4 @@ a {
     text-decoration: none;
     color: white;
     width: 100%;
-}
+}*/

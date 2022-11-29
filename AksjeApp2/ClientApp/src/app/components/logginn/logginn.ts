@@ -34,14 +34,14 @@ export class Logginn {
       null,
       Validators.compose([
         Validators.required,
-        Validators.pattern("[0-9a-zA-ZæøåÆØÅ .-/<>!?#&()=]{2,40}"),
+          Validators.pattern("[0-9a-zA-ZøæåØÆÅ\\-. ]{2,30}"),
       ]),
     ],
     passord: [
       null,
       Validators.compose([
         Validators.required,
-        Validators.pattern("[0-9a-zA-ZæøåÆØÅ .-/<>!?#&()=]{5,16}"),
+          Validators.pattern(/^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.{8,})/),
       ]),
     ],
   };
