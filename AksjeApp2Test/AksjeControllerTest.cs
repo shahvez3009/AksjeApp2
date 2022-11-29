@@ -79,43 +79,71 @@ namespace AksjeApp2Test
         {
 
             //Assert
-            mockRep.Setup(k => k.LagreBruker(It.IsAny<Bruker>())).ReturnsAsync(true);
+            mockRep.Setup(k => k.LagreBruker(It.IsAny<Bruker>())).ReturnsAsync(1);
 
             var aksjeController = new AksjeController(mockRep.Object, mockLog.Object);
 
-            //Logget inn 
-
-            mockHttpSession[_loggetInn] = _loggetInn;
-            mockHttpContext.Setup(s => s.Session).Returns(mockHttpSession);
-            aksjeController.ControllerContext.HttpContext = mockHttpContext.Object;
+            //Act
 
             var resultat = await aksjeController.LagreBruker(It.IsAny<Bruker>()) as OkObjectResult;
 
             //Assert
             Assert.Equal((int)HttpStatusCode.OK, resultat.StatusCode);
-            Assert.Equal("Bruker ble lagret", resultat.Value);
+            Assert.Equal("Bruker ble lagret.", resultat.Value);
 
         }
 
         [Fact]
-        public async Task LagreBrukerIkkeLoggetInn()
+        public async Task LagreBrukerOpptattBrukernavn()
         {
             //Assert
-            mockRep.Setup(k => k.LagreBruker(It.IsAny<Bruker>())).ReturnsAsync(false);
+            mockRep.Setup(k => k.LagreBruker(It.IsAny<Bruker>())).ReturnsAsync(2);
 
             var aksjeController = new AksjeController(mockRep.Object, mockLog.Object);
 
-            //Logger ikke inn 
 
-            mockHttpSession[_loggetInn] = _ikkeloggetInn;
-            mockHttpContext.Setup(s => s.Session).Returns(mockHttpSession);
-            aksjeController.ControllerContext.HttpContext = mockHttpContext.Object;
-
+            //Act
             var resultat = await aksjeController.LagreBruker(It.IsAny<Bruker>()) as BadRequestObjectResult;
 
             //Assert
             Assert.Equal((int)HttpStatusCode.BadRequest, resultat.StatusCode);
-            Assert.Equal("Bruker ble ikke lagret.", resultat.Value);
+            Assert.Equal("Brukernavnet er opptatt", resultat.Value);
+        }
+
+        [Fact]
+        public async Task LagreBrukerOpptattMail()
+        {
+            //Assert
+            mockRep.Setup(k => k.LagreBruker(It.IsAny<Bruker>())).ReturnsAsync(3);
+
+            var aksjeController = new AksjeController(mockRep.Object, mockLog.Object);
+
+
+            //Act
+            var resultat = await aksjeController.LagreBruker(It.IsAny<Bruker>()) as BadRequestObjectResult;
+
+            //Assert
+            Assert.Equal((int)HttpStatusCode.BadRequest, resultat.StatusCode);
+            Assert.Equal("Mailen er opptatt", resultat.Value);
+        }
+
+        [Fact]
+        public async Task LagreBrukerFeil()
+        {
+
+            //Assert
+            mockRep.Setup(k => k.LagreBruker(It.IsAny<Bruker>())).ReturnsAsync(1);
+
+            var aksjeController = new AksjeController(mockRep.Object, mockLog.Object);
+
+            aksjeController.ModelState.AddModelError("Brukernavn", "Feil i inputvalidering");
+
+            //Act
+            var resultat = await aksjeController.LagreBruker(It.IsAny<Bruker>()) as BadRequestObjectResult;
+
+            //Assert
+            Assert.Equal((int)HttpStatusCode.BadRequest, resultat.StatusCode);
+            Assert.Equal("Feil i inputvalidering", resultat.Value);
         }
 
         [Fact]
@@ -614,18 +642,6 @@ namespace AksjeApp2Test
                 Brukernavn = "perhansen"
             };
 
-            var transaksjon2 = new Transaksjon
-            {
-                Id = 2,
-                Status = "Kjøp",
-                DatoTid = "30.11.2022, 11:32:37",
-                Antall = 40,
-                AksjeId = 1,
-                AksjeNavn = "Microsoft",
-                AksjePris = 400,
-                Brukernavn = "perhansen"
-            };
-
             var brukerInn = new Bruker
             {
                 Id = 1,
@@ -636,30 +652,29 @@ namespace AksjeApp2Test
 
             var transaksjonsliste = new List<Transaksjon>();
             transaksjonsliste.Add(transaksjon1);
-            transaksjonsliste.Add(transaksjon2);
 
 
-
+            var status = transaksjon1.Status;
             var brukernavn = brukerInn.Brukernavn;
 
-            mockRep.Setup(k => k.HentTransaksjoner(It.IsAny<string>())).ReturnsAsync(transaksjonsliste);
+            mockRep.Setup(k => k.HentTransaksjoner(brukernavn, status)).ReturnsAsync(transaksjonsliste);
 
             var aksjeController = new AksjeController(mockRep.Object, mockLog.Object);
 
             //Logget inn 
 
-            mockHttpSession[_loggetInn] = _ikkeloggetInn;
+            mockHttpSession[_loggetInn] = _loggetInn;
             mockHttpContext.Setup(s => s.Session).Returns(mockHttpSession);
             aksjeController.ControllerContext.HttpContext = mockHttpContext.Object;
 
             //Act
 
-            var resultat = await aksjeController.HentTransaksjoner(brukernavn) as UnauthorizedObjectResult;
+            var resultat = await aksjeController.HentTransaksjoner(brukernavn, status) as OkObjectResult;
 
             //Assert
 
-            Assert.Equal((int)HttpStatusCode.Unauthorized, resultat.StatusCode);
-            Assert.Equal("Bruker er ikke logget inn.", resultat.Value);
+            Assert.Equal((int)HttpStatusCode.OK, resultat.StatusCode);
+            Assert.Equal<List<Transaksjon>>((List<Transaksjon>)resultat.Value, transaksjonsliste);
         }
 
         [Fact]
@@ -667,7 +682,7 @@ namespace AksjeApp2Test
         {
             //Arrange
 
-            mockRep.Setup(k => k.HentTransaksjoner(It.IsAny<string>())).ReturnsAsync(It.IsAny<List<Transaksjon>>());
+            mockRep.Setup(k => k.HentTransaksjoner(It.IsAny<string>(), It.IsAny<string>())).ReturnsAsync(It.IsAny<List<Transaksjon>>());
 
             var aksjeController = new AksjeController(mockRep.Object, mockLog.Object);
 
@@ -679,7 +694,7 @@ namespace AksjeApp2Test
 
             //Act
 
-            var resultat = await aksjeController.HentTransaksjoner(It.IsAny<string>()) as UnauthorizedObjectResult;
+            var resultat = await aksjeController.HentTransaksjoner(It.IsAny<string>(), It.IsAny<string>()) as UnauthorizedObjectResult;
 
             //Assert
 

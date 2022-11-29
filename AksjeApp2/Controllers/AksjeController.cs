@@ -56,7 +56,7 @@ namespace AksjeApp2.Controllers
 			if (string.IsNullOrEmpty(HttpContext.Session.GetString(_LoggetInn)))
 			{
 				_log.LogInformation("Selg - Error 401: Unauthorized access");
-				return Unauthorized();
+				return Unauthorized("Bruker er ikke logget inn.");
 			}
 
 			bool returOk = await _db.Selg(innPortfolio);
@@ -84,7 +84,7 @@ namespace AksjeApp2.Controllers
 					_log.LogInformation("LagreBruker - Error 400: Bad Request");
 					return BadRequest("Mailen er opptatt");
                 }
-                return Ok();
+                return Ok("Bruker ble lagret.");
             }
 			_log.LogInformation("LagreBruker - Error 400: Bad Request");
 			return BadRequest("Feil i inputvalidering");
@@ -97,7 +97,7 @@ namespace AksjeApp2.Controllers
 			if (string.IsNullOrEmpty(HttpContext.Session.GetString(_LoggetInn)))
 			{
 				_log.LogInformation("HentAksjer - Error 401: Unauthorized access");
-				return Unauthorized();
+				return Unauthorized("Bruker er ikke logget inn.");
 			}
 
 			List<Aksje> alleAksjer = await _db.HentAksjer();
