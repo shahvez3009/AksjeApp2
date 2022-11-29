@@ -5,7 +5,7 @@
         <div class="aksjeinfo">
             <h3 class="form-item" id="aksjeNavn">{{aksjenavn}}</h3>
             <h4 class="form-item" id="aksjePris">Aksjepris: {{aksjepris}} NOK</h4>
-            <h4 class="form-item" id="portfolioAntall">Antall ledige aksjer: {{portfolioantall}}</h4>
+            <h4 class="form-item" id="portfolioAntall">Antall {{aksjenavn}} aksjer i din Portfolio: {{portfolioantall}}</h4>
         </div>
         <div class="line"></div>
         <div class="bekreftelse">
@@ -16,7 +16,7 @@
                             <img src="../assets/hashbulla.png" />
                         </div>
                         <div>
-                            <p>({{brukernavn}}) {{fornavnEtternavn}}</p>
+                            <p>(<i>{{brukernavn}}</i>) {{fornavnEtternavn}}</p>
                             <p>Saldo: {{saldo}} </p>
                         </div>
                     </div>

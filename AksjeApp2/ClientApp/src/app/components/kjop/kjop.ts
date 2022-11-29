@@ -6,6 +6,7 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
 
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { KjopModal } from './kjopModal';
+import { BeskjedModal } from '../beskjedModal/beskjedModal';
 
 import { Aksje } from "../../Models/Aksje";
 import { PortfolioRad } from '../../Models/PortfolioRad';
@@ -91,30 +92,40 @@ export class Kjop {
 	}
 
 	visModal() {
-		const modalRef = this.modalService.open(KjopModal);
+		if ((this.aksjepris * Number(this.skjema.value.antall)) > this.saldo) {
+			const modalRef = this.modalService.open(BeskjedModal);
 
-		modalRef.componentInstance.aksjenavn = this.aksjenavn;
-		modalRef.componentInstance.antall = Number(this.skjema.value.antall);
-		modalRef.componentInstance.aksjepris = this.aksjepris;
-		modalRef.componentInstance.sum = this.aksjepris * Number(this.skjema.value.antall);
-		modalRef.componentInstance.aksjeledige = this.aksjeledige;
-		modalRef.componentInstance.aksjemax = this.aksjemax;
+			modalRef.componentInstance.beskjed = "Summen for transaksjonen du prøver å utføre er: " + (this.aksjepris * Number(this.skjema.value.antall)) + " NOK";
+			modalRef.componentInstance.beskjed2 = "Din saldo er: " + this.saldo + " NOK";
+			modalRef.componentInstance.beskjed3 = "Du har ikke råd til denne transaksjonen :(";
+		}
 
-		modalRef.result.then(retur => {
+		else {
+			const modalRef = this.modalService.open(KjopModal);
 
-			if (retur == "Bekreft") {
+			modalRef.componentInstance.aksjenavn = this.aksjenavn;
+			modalRef.componentInstance.antall = Number(this.skjema.value.antall);
+			modalRef.componentInstance.aksjepris = this.aksjepris;
+			modalRef.componentInstance.sum = this.aksjepris * Number(this.skjema.value.antall);
+			modalRef.componentInstance.aksjeledige = this.aksjeledige;
+			modalRef.componentInstance.aksjemax = this.aksjemax;
 
-				let innPortfolio = new PortfolioRad();
-				innPortfolio.brukernavn = this.brukernavn;
-				innPortfolio.aksjeId = this.aksjeId;
-				innPortfolio.antall = Number(this.skjema.value.antall);
+			modalRef.result.then(retur => {
 
-				this.http.post("api/aksje/kjop/", innPortfolio)
-					.subscribe(retur => {}, error => console.log(error)
-				);
-				this.skjema.reset();
-				setTimeout(() => { this.hentAllInfo(); }, 200);
-			}
-		});
+				if (retur == "Bekreft") {
+
+					let innPortfolio = new PortfolioRad();
+					innPortfolio.brukernavn = this.brukernavn;
+					innPortfolio.aksjeId = this.aksjeId;
+					innPortfolio.antall = Number(this.skjema.value.antall);
+
+					this.http.post("api/aksje/kjop/", innPortfolio)
+						.subscribe(retur => { }, error => console.log(error)
+						);
+					this.skjema.reset();
+					setTimeout(() => { this.hentAllInfo(); }, 200);
+				}
+			});
+		}
 	}
 }

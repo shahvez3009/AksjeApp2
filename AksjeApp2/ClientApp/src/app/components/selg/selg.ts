@@ -6,6 +6,7 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
 
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { SelgModal } from './selgModal';
+import { BeskjedModal } from '../beskjedModal/beskjedModal';
 
 import { PortfolioRad } from "../../Models/PortfolioRad";
 import { Bruker } from '../../Models/Bruker';
@@ -91,27 +92,36 @@ export class Selg {
 	}
 
 	visModal() {
-		const modalRef = this.modalService.open(SelgModal);
+		if (Number(this.skjema.value.antall) > this.portfolioantall) {
+			const modalRef = this.modalService.open(BeskjedModal);
 
-		modalRef.componentInstance.aksjenavn = this.aksjenavn;
-		modalRef.componentInstance.antall = Number(this.skjema.value.antall);
-		modalRef.componentInstance.portfolioantall = this.portfolioantall;
-		modalRef.componentInstance.aksjepris = this.aksjepris;
-		modalRef.componentInstance.sum = this.aksjepris * Number(this.skjema.value.antall);
+			modalRef.componentInstance.beskjed = "Du har prøvd å selge " + Number(this.skjema.value.antall) + " " + this.aksjenavn + " aksjer.";
+			modalRef.componentInstance.beskjed2 = "I ditt portfolio har du " + this.portfolioantall + " " + this.aksjenavn + " aksjer.";
+			modalRef.componentInstance.beskjed3 = "Du kan ikke selge flere aksjer enn det du eier!";
+		}
+		else {
+			const modalRef = this.modalService.open(SelgModal);
 
-		modalRef.result.then(retur => {
-			if (retur == "Bekreft") {
+			modalRef.componentInstance.aksjenavn = this.aksjenavn;
+			modalRef.componentInstance.antall = Number(this.skjema.value.antall);
+			modalRef.componentInstance.portfolioantall = this.portfolioantall;
+			modalRef.componentInstance.aksjepris = this.aksjepris;
+			modalRef.componentInstance.sum = this.aksjepris * Number(this.skjema.value.antall);
 
-				let innPortfolio = new PortfolioRad();
-				innPortfolio.brukernavn = this.brukernavn;
-				innPortfolio.aksjeId = this.aksjeId;
-				innPortfolio.antall = Number(this.skjema.value.antall);
+			modalRef.result.then(retur => {
+				if (retur == "Bekreft") {
 
-				this.http.post("api/aksje/selg/", innPortfolio)
-					.subscribe((retur) => {}, (error) => console.log(error));
-				this.skjema.reset();
-				setTimeout(() => { this.hentAllInfo(); }, 200);
-			}
-		});
+					let innPortfolio = new PortfolioRad();
+					innPortfolio.brukernavn = this.brukernavn;
+					innPortfolio.aksjeId = this.aksjeId;
+					innPortfolio.antall = Number(this.skjema.value.antall);
+
+					this.http.post("api/aksje/selg/", innPortfolio)
+						.subscribe((retur) => { }, (error) => console.log(error));
+					this.skjema.reset();
+					setTimeout(() => { this.hentAllInfo(); }, 200);
+				}
+			});
+		}
 	}
 }

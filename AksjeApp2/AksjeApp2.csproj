@@ -49,6 +49,7 @@
     <None Remove="ClientApp\src\app\components\selg\" />
     <None Remove="ClientApp\src\app\components\transaksjonshistorikk\transaksjonshistorikk.ts" />
     <None Remove="ClientApp\src\app\components\transaksjonshistorikk\" />
+    <None Remove="ClientApp\src\app\components\beskjedModal\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -65,6 +66,7 @@
     <Folder Include="ClientApp\src\app\components\portfolio\" />
     <Folder Include="ClientApp\src\app\components\selg\" />
     <Folder Include="ClientApp\src\app\components\transaksjonshistorikk\" />
+    <Folder Include="ClientApp\src\app\components\beskjedModal\" />
   </ItemGroup>
 
   <ItemGroup>
