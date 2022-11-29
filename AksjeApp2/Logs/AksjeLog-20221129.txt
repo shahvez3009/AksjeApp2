@@ -1784,3 +1784,46 @@ System.InvalidOperationException: Enumerator failed to MoveNextAsync.
    at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
    at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
    at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2022-11-29T14:36:40.0246890+01:00  [INF] Now listening on: "https://localhost:5001" (d826f4b8)
+2022-11-29T14:36:40.0313460+01:00  [INF] Now listening on: "http://localhost:5000" (d826f4b8)
+2022-11-29T14:36:40.0343300+01:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2022-11-29T14:36:40.0369160+01:00  [INF] Hosting environment: "Development" (c3307c92)
+2022-11-29T14:36:40.0395250+01:00  [INF] Content root path: "/Users/C5353890/Library/CloudStorage/OneDrive-OsloMet/Tredje år/Webapplikasjoner/mappe uten navn/AksjeApp2/AksjeApp2" (b5d60022)
+2022-11-29T14:36:49.1466430+01:00  [ERR] (node:56400) [DEP0111] DeprecationWarning: Access to process.binding('http_parser') is deprecated.
+ (9d46d2ba)
+2022-11-29T14:36:49.1502280+01:00  [ERR] (Use `node --trace-deprecation ...` to show where the warning was created)
+ (567f389e)
+2022-11-29T14:36:50.4542440+01:00  [ERR] ERROR in app/app.module.ts:18:27 - error TS2307: Cannot find module '@ng-bootstrap/ng-bootstrap'.
+
+18 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
+                             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+app/components/kjop/kjop.ts:7:26 - error TS2307: Cannot find module '@ng-bootstrap/ng-bootstrap'.
+
+7 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+app/components/kjop/kjopModal.ts:2:32 - error TS2307: Cannot find module '@ng-bootstrap/ng-bootstrap'.
+
+2 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+                                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+app/components/selg/selg.ts:7:26 - error TS2307: Cannot find module '@ng-bootstrap/ng-bootstrap'.
+
+7 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+app/components/selg/selgModal.ts:2:32 - error TS2307: Cannot find module '@ng-bootstrap/ng-bootstrap'.
+
+2 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+                                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+ (b777011f)
+2022-11-29T14:45:14.9484490+01:00  [INF] Now listening on: "https://localhost:5001" (d826f4b8)
+2022-11-29T14:45:14.9546500+01:00  [INF] Now listening on: "http://localhost:5000" (d826f4b8)
+2022-11-29T14:45:14.9573790+01:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2022-11-29T14:45:14.9598580+01:00  [INF] Hosting environment: "Development" (c3307c92)
+2022-11-29T14:45:14.9623560+01:00  [INF] Content root path: "/Users/C5353890/Library/CloudStorage/OneDrive-OsloMet/Tredje år/Webapplikasjoner/mappe uten navn/AksjeApp2/AksjeApp2" (b5d60022)
+2022-11-29T14:45:23.2443800+01:00  [ERR] (node:56658) [DEP0111] DeprecationWarning: Access to process.binding('http_parser') is deprecated.
+ (230d3ee6)
+2022-11-29T14:45:23.2479130+01:00  [ERR] (Use `node --trace-deprecation ...` to show where the warning was created)
+ (567f389e)
+2022-11-29T14:48:52.2360140+01:00 0HMMI1VOT95D7:00000018 [INF] LagreBruker - Error 400: Bad Request (addcd8b3)
+2022-11-29T14:50:40.5133390+01:00 0HMMI1VOT95D8:0000000D [INF] HentPortfolio - Error 401: Unauthorized access (3e2d9c88)
+2022-11-29T14:50:40.6677120+01:00 0HMMI1VOT95D7:00000026 [INF] HentEnBruker - Error 401: Unauthorized access (83075f96)
