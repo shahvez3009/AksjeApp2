@@ -160,12 +160,16 @@
                                 <input class="form-control" type="password" formControlName="passord" />
                                 <div class="alert alert-danger"
                                      *ngIf="!skjema.get('passord').valid && skjema.get('passord').touched">
-                                    Passordet må inneholde minst et tall og en stor bokstav
+                                    Passordet må inneholde minst to tall og en stor bokstav
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label ty>Bekreft passord</label>
                                 <input class="form-control" type="password" formControlName="bekreftPassord" />
+                                <div class="alert alert-danger"
+                                     *ngIf="!skjema.get('bekreftPassord').valid && skjema.get('bekreftPassord').touched">
+                                    Passordet må inneholde minst to tall og en stor bokstav
+                                </div>
                             </div>
                             <div>
                                 <p>{{tilbakemelding}}</p>

@@ -49,7 +49,12 @@ export class Selg {
 		this.laster = true;
 		this.brukernavn = this.shared.getBrukernavn();
 		this.aksjeId = this.shared.getAksjeId();
-		setTimeout(() => { this.hentAllInfo(); }, 200);
+		if (this.aksjeId == 0) {
+			this.router.navigate(["/hjem"]);
+		}
+		else {
+			setTimeout(() => { this.hentAllInfo(); }, 200);
+		}
 	}
 
 	hentAllInfo() {
@@ -63,7 +68,9 @@ export class Selg {
 				(error) => {
 					if (error.status == 401) {
 						this.router.navigate(["/logginn"])
-					} else {
+					} else if (error.status == 500) {
+						this.router.navigate(["/hjem"])
+					}else {
 						console.log(error);
 					}
 				} 
@@ -78,7 +85,9 @@ export class Selg {
 				(error) => {
 					if (error.status == 401) {
 						this.router.navigate(["/logginn"])
-					} else {
+					} else if (error.status == 500) {
+						this.router.navigate(["/hjem"])
+					}else {
 						console.log(error);
 					}
 				}
