@@ -544,7 +544,6 @@ namespace AksjeApp2Test
             var Portfolio = new List<PortfolioRad>();
             Portfolio.Add(portfoliorad1);
             Portfolio.Add(portfoliorad2);
-            Portfolio.Add(portfoliorad3);
 
 
             var brukernavn = brukerInn.Brukernavn;
