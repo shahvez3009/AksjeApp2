@@ -85,7 +85,10 @@
                             <div class="field padding-bottom--24">
                                 <label for="uname">Brukernavn</label>
                                 <input type="text" formControlName="brukernavn">
-                                <p class="errorMsg" *ngIf="this.Skjema.controls.brukernavn.status=='INVALID'">Obligatorisk</p>
+                                <div class="alert alert-danger"
+                                     *ngIf="!Skjema.get('brukernavn').valid && Skjema.get('brukernavn').touched">
+                                    Brukernavnet må inneholde minst to tegn
+                                </div>
                             </div>
                             <div class="field padding-bottom--24">
                                 <div class="grid--50-50">
@@ -93,9 +96,13 @@
                                 </div>
                                 <input type="password" formControlName="passord">
                                 <div class="alert alert-danger"
-                                     *ngIf="!skjema.get('passord').valid && skjema.get('passord').touched">
+                                     *ngIf="!Skjema.get('passord').valid && Skjema.get('passord').touched">
                                     Passordet må inneholde minst to tall, en stor bokstav og minst åtte tegn
                                 </div>
+                            </div>
+                            <div class="alert alert-danger"
+                                 *ngIf="invalidBruker">
+                                Passordet eller Brukernavnet er feil
                             </div>
 
                             <div class="field padding-bottom--24">

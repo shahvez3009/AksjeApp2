@@ -16,19 +16,19 @@
     margin: 2rem;
 }
 
-    .aksjeinfo h3, h4 {
-        margin: 1rem;
-    }
+.aksjeinfo h3, h4 {
+    margin: 1rem;
+ }
 
 .profile {
     display: flex;
     color: white;
 }
 
-    .profile p {
-        color: white;
-        margin: 0.5rem;
-    }
+.profile p {
+    color: white;
+    margin: 0.5rem;
+}
 
 
 
@@ -38,7 +38,7 @@
 
 
 .line {
-    background-color: white;
+    background-color: red;
     height: 90%;
     width: 1px;
 }
@@ -55,6 +55,7 @@ label {
     height: 4vh;
     border-radius: 5px;
     border: none;
+    margin-right: 1rem; 
 }
 
 

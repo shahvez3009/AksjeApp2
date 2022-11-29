@@ -45,7 +45,7 @@
                                 <input class="form-control" formControlName="fornavn" />
                                 <div class="alert alert-danger"
                                      *ngIf="!skjema.get('fornavn').valid && skjema.get('fornavn').touched">
-                                    Fornavnet må inneholde to tegn
+                                    Fornavnet må inneholde minst to tegn
                                 </div>
                             </div>
                             <div class="form-group">
@@ -53,7 +53,7 @@
                                 <input class="form-control" formControlName="etternavn" />
                                 <div class="alert alert-danger"
                                      *ngIf="!skjema.get('etternavn').valid && skjema.get('etternavn').touched">
-                                    Etternavnet må inneholde to tegn
+                                    Etternavnet må inneholde minst to tegn
                                 </div>
                             </div>
                             <div class="form-group">
@@ -69,7 +69,7 @@
                                 <input class="form-control" formControlName="telefonnummer" />
                                 <div class="alert alert-danger"
                                      *ngIf="!skjema.get('telefonnummer').valid && skjema.get('telefonnummer').touched">
-                                    Telefon nummeret må inneholde 8 tegn
+                                    Telefon nummeret må inneholde nøyaktig 8 tall
                                 </div>
                             </div>
                             <div class="form-group">
@@ -77,7 +77,7 @@
                                 <input class="form-control" formControlName="brukernavn" />
                                 <div class="alert alert-danger"
                                      *ngIf="!skjema.get('brukernavn').valid && skjema.get('brukernavn').touched">
-                                    Brukernavnet må inneholde to tegn
+                                    Brukernavnet må inneholde minst to tegn
                                 </div>
                             </div>
                             <div class="form-group">

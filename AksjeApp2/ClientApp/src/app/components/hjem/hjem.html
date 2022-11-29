@@ -1,33 +1,38 @@
 ﻿<div class="container-fluid">
-	<h1>Marked</h1>
-	<div class="loading" *ngIf="laster">Laster Aksjer...</div>
-	<table class='table table-striped'>
-		<thead>
-			<tr>
-				<th>Aksje</th>
-				<th>Pris</th>
-				<th>Antall Aksjer</th>
-				<th>Ledige Aksjer</th>
-				<th></th>
-			</tr>
-		</thead>
-		<tbody *ngFor="let aksje of alleAksjer">
-			<tr>
-				<td>{{aksje.navn}}</td>
-				<td>{{aksje.pris}}</td>
-				<td>{{aksje.maxAntall}}</td>
-				<td>{{aksje.antallLedige}}</td>
-				<td><button class="btn btn-success" (click)="tilKjop(aksje.id)" routerLink="/kjop">Kjøp</button></td>
-			</tr>
-		</tbody>
-	</table>
-	<div class="profile">
-		<div>
-			<img src="../assets/hashbulla.png" />
-		</div>
-		<div>
-			<p>({{brukernavn}}) {{fornavnEtternavn}}</p>
-			<p>Saldo: {{saldo}} </p>
+	<div class="headers">
+		<h1>Marked</h1>
+		<div class="profile">
+			<div>
+				<img src="../assets/hashbulla.png" />
+			</div>
+			<div>
+				<p>({{brukernavn}}) {{fornavnEtternavn}}</p>
+				<p>Saldo: {{saldo}} </p>
+			</div>
 		</div>
 	</div>
+	<div class="loading" *ngIf="laster">Laster Aksjer...</div>
+	<div class="table-wrapper">
+		<table class='table table-striped'>
+			<thead>
+				<tr>
+					<th>Aksje</th>
+					<th>Pris</th>
+					<th>Antall Aksjer</th>
+					<th>Ledige Aksjer</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody *ngFor="let aksje of alleAksjer">
+				<tr>
+					<td>{{aksje.navn}}</td>
+					<td>{{aksje.pris}}</td>
+					<td>{{aksje.maxAntall}}</td>
+					<td>{{aksje.antallLedige}}</td>
+					<td><button class="btn btn-success" (click)="tilKjop(aksje.id)" routerLink="/kjop">Kjøp</button></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
 </div>
+

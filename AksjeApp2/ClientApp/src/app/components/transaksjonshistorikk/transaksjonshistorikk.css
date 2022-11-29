@@ -15,3 +15,17 @@ td {
 	color: black;
 	background-color: white;
 }
+
+.table-wrapper {
+	height: 80vh;
+	overflow: scroll;
+}
+
+.headers {
+	display: flex;
+	margin: 1rem 0rem;
+}
+
+.headers .toggles {
+	margin-left: 42rem;
+}

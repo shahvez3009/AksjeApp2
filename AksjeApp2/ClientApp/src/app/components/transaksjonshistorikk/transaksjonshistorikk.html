@@ -1,38 +1,44 @@
 ﻿<div class="container-fluid">
-    <h1>Transaksjonshistorikk</h1>
-    <div class="loading" *ngIf="laster">Laster transaksjoner...</div>
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>Dato/Tid</th>
-                <th>Status</th>
-                <th>Aksje</th>
-                <th>Pris</th>
-                <th>Antall Aksjer</th>
-                <th>Sum</th>
-            </tr>
-        </thead>
-        <tbody *ngFor="let transaksjon of alleTransaksjoner">
-            <tr>
-                <td>{{transaksjon.datoTid}}</td>
-                <td>{{transaksjon.status}}</td>
-                <td>{{transaksjon.aksjeNavn}}</td>
-                <td>{{transaksjon.aksjePris}}</td>
-                <td>{{transaksjon.antall}}</td>
-                <td>{{transaksjon.antall*transaksjon.aksjePris}}</td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="headers">
+        <h1>Transaksjonshistorikk</h1>
+        <div class="btn-group btn-group-toggle toggles" data-toggle="buttons">
+            <label class="btn btn-dark btn-sm">
+                <input type="radio" name="options" id="option1" (click)="hentAllInfo('Alle')" autocomplete="off"> Alle
+            </label>
+            <label class="btn btn-dark btn-sm">
+                <input type="radio" name="options" id="option2" (click)="hentAllInfo('Kjøp')" autocomplete="off"> Kjøp
+            </label>
+            <label class="btn btn-dark btn-sm">
+                <input type="radio" name="options" id="option3" (click)="hentAllInfo('Salg')" autocomplete="off"> Salg
+            </label>
+        </div>
+    </div>
 
-    <div class="btn-group btn-group-toggle" data-toggle="buttons">
-        <label class="btn btn-dark btn-sm">
-            <input type="radio" name="options" id="option1" (click)="hentAllInfo('Alle')" autocomplete="off"> Alle
-        </label>
-        <label class="btn btn-dark btn-sm">
-            <input type="radio" name="options" id="option2" (click)="hentAllInfo('Kjøp')" autocomplete="off"> Kjøp
-        </label>
-        <label class="btn btn-dark btn-sm">
-            <input type="radio" name="options" id="option3" (click)="hentAllInfo('Salg')" autocomplete="off"> Salg
-        </label>
+    <div class="loading" *ngIf="laster">Laster transaksjoner...</div>
+    <div class="table-wrapper">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Dato/Tid</th>
+                    <th>Status</th>
+                    <th>Aksje</th>
+                    <th>Pris</th>
+                    <th>Antall Aksjer</th>
+                    <th>Sum</th>
+                </tr>
+            </thead>
+            <tbody *ngFor="let transaksjon of alleTransaksjoner">
+                <tr>
+                    <td>{{transaksjon.datoTid}}</td>
+                    <td>{{transaksjon.status}}</td>
+                    <td>{{transaksjon.aksjeNavn}}</td>
+                    <td>{{transaksjon.aksjePris}}</td>
+                    <td>{{transaksjon.antall}}</td>
+                    <td>{{transaksjon.antall*transaksjon.aksjePris}}</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </div>
+
+

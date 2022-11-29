@@ -19,3 +19,8 @@ body {
     background-color: white;
 }
 
+
+
+.modal-content {
+    border-radius: 25px; 
+}
