@@ -84,11 +84,11 @@ export class Kjop {
 				this.fornavnEtternavn = bruker.fornavn + " " + bruker.etternavn;
 				this.saldo = bruker.saldo;
 			},
+
 				(error) => {
 					if (error.status == 401) {
 						this.router.navigate(["/logginn"])
-					} else if (error.status == 500)
-					{
+					} else if (error.status == 500) {
 						this.router.navigate(["/hjem"])
 					}
 					else {

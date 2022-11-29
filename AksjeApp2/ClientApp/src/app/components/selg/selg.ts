@@ -46,15 +46,14 @@ export class Selg {
 	}
 
 	ngOnInit() {
+		this.laster = true;
 		this.brukernavn = this.shared.getBrukernavn();
 		this.aksjeId = this.shared.getAksjeId();
 		if (this.aksjeId == 0) {
 			this.router.navigate(["/hjem"]);
 		}
 		else {
-			this.laster = true;
-
-		setTimeout(() => { this.hentAllInfo(); }, 200);
+			setTimeout(() => { this.hentAllInfo(); }, 200);
 		}
 	}
 
@@ -71,7 +70,7 @@ export class Selg {
 						this.router.navigate(["/logginn"])
 					} else if (error.status == 500) {
 						this.router.navigate(["/hjem"])
-					} else {
+					}else {
 						console.log(error);
 					}
 				} 
@@ -86,8 +85,7 @@ export class Selg {
 				(error) => {
 					if (error.status == 401) {
 						this.router.navigate(["/logginn"])
-					}
-					else if (error.status == 500) {
+					} else if (error.status == 500) {
 						this.router.navigate(["/hjem"])
 					}else {
 						console.log(error);
