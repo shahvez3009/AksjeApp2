@@ -1,42 +1,35 @@
-﻿
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col text-center">
-                <!--Denne skal være tom-->
-            </div>
-            <div class="col-7 text-center">
-                <h1>KJØP AKSJER</h1>
-            </div>
-            <div class="col">
-                <p class="text-right innloggetBruker"></p>
-                <p class="text-right" id="brukerSaldo"></p>
-            </div>
+﻿<div class="container">
+    <h1>Kjøpsordre</h1>
+    <div class="ordre-container">
+        <div class="aksjeinfo">
+            <h3 class="form-item" id="aksjeNavn">{{aksjenavn}}</h3>
+            <h4 class="form-item" id="aksjePris">Aksjepris: {{aksjepris}} NOK</h4>
+            <h4 class="form-item" id="portfolioAntall">Antall ledige aksjer: {{aksjeledige}}</h4>
         </div>
-        <div class="row">
-            <div class="col text-center">
-                <h2>AKSJEINFO</h2>
-                <ul class="list-group list-group-flush form">
-                    <li class="list-group-item form-item" id="aksjeNavn">{{aksjenavn}}</li>
-                    <li class="list-group-item form-item" id="aksjePris">{{aksjepris}}</li>
-                    <li class="list-group-item form-item" id="portfolioAntall">{{aksjeledige}}</li>
-                </ul>
-            </div>
-            <div class="col text-center">
-                <div class="form-group bekreft">
-                    <form [formGroup]="skjema" (ngSubmit)="onSubmit()">
-                        <div class="form-group">
-                            <label>Antall</label>
-                            <input class="form-control" formControlName="antall" />
-                            <p class="alert alert-warning" [hidden]="skjema.controls.antall.valid || (skjema.controls.antall.pristine && !submitted)">
-                                Antall må være heltall, minimum 1!
-                            </p>
+        <div class="line"></div>
+        <div class="bekreftelse">
+            <form [formGroup]="skjema" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                    <div class="profile">
+                        <div>
+                            <img src="../assets/hashbulla.png" />
                         </div>
-                        <div class="form-group">
-                            <button class="btn btn-primary" type="submit" [disabled]="!skjema.valid">Kjøp</button>
+                        <div>
+                            <p>({{brukernavn}}) {{fornavnEtternavn}}</p>
+                            <p>Saldo: {{saldo}} </p>
                         </div>
-                    </form>
+                    </div>
+                    <label>Vennligst skriv ned ønsket antall</label>
+                    <input class="form-control" formControlName="antall" />
+                    <p class="alert alert-warning" [hidden]="skjema.controls.antall.valid || (skjema.controls.antall.pristine && !submitted)">
+                        Antall må være heltall, minimum 1!
+                    </p>
                 </div>
-            </div>
+                <div class="form-group">
+                    <button class="orderBtn" type="submit" [disabled]="!skjema.valid">Kjøp</button>
+                </div>
+            </form>
         </div>
     </div>
+</div>
 
