@@ -99,7 +99,7 @@ namespace AksjeApp2.Controllers
 					_log.LogInformation("LagreBruker - Error 400: Bad Request");
 					return BadRequest("Mailen er opptatt");
                 }
-                return Ok("Bruker ble lagret.");
+                return Ok(statusKode);
             }
 			_log.LogInformation("LagreBruker - Feil i inputvalidering");
 			return BadRequest("Feil i inputvalidering");
