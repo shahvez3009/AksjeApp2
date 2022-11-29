@@ -3142,3 +3142,12 @@ System.InvalidOperationException: Enumerator failed to MoveNextAsync.
  (a357ae5a)
 2022-11-29T17:38:56.6595640+01:00  [ERR] (Use `node --trace-deprecation ...` to show where the warning was created)
  (567f389e)
+2022-11-29T17:43:24.8707660+01:00  [INF] Now listening on: "https://localhost:5001" (d826f4b8)
+2022-11-29T17:43:24.8853870+01:00  [INF] Now listening on: "http://localhost:5000" (d826f4b8)
+2022-11-29T17:43:24.8858960+01:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2022-11-29T17:43:24.8859680+01:00  [INF] Hosting environment: "Development" (c3307c92)
+2022-11-29T17:43:24.8860020+01:00  [INF] Content root path: "/Users/enesergin/Desktop/Webapplikasjoner/AksjeApp2/AksjeApp2" (b5d60022)
+2022-11-29T17:43:47.7432290+01:00  [ERR] (node:38130) [DEP0111] DeprecationWarning: Access to process.binding('http_parser') is deprecated.
+ (202f6108)
+2022-11-29T17:43:47.7445830+01:00  [ERR] (Use `node --trace-deprecation ...` to show where the warning was created)
+ (567f389e)

@@ -32,7 +32,7 @@ namespace AksjeApp2.Models
 				var admin2 = new Brukere();
 				admin2.Fornavn = "Line";
 				admin2.Etternavn = "Johansen";
-				admin2.Saldo = 400000;
+				admin2.Saldo = 500000;
 				admin2.Mail = "linejohansen@hotmail.com";
 				admin2.Brukernavn = "admin2";
 				var passord2 = "Passord123";
