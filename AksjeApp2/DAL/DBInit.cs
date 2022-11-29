@@ -19,7 +19,7 @@ namespace AksjeApp2.Models
                 var per = new Brukere { Fornavn = "Per", Etternavn = "Johansen", Saldo = 500000, Mail = "perjohansen@hotmail.com" };
                 //Brukere
                
-				per.Brukernavn = "Admin";
+				per.Brukernavn = "admin";
 				var passord = "Test11";
 				byte[] salt = AksjeRepository.LagSalt();
 				byte[] hash = AksjeRepository.LagHash(passord, salt);
@@ -29,7 +29,7 @@ namespace AksjeApp2.Models
 
                 var anders = new Brukere { Fornavn = "Anders", Etternavn = "Johansen", Saldo = 500000, Mail = "Anders@hotmail.com" };
                 //Bruker
-				anders.Brukernavn = "AdminL";
+				anders.Brukernavn = "adminL";
 				var passord2 = "Test22";
 				byte[] salt2 = AksjeRepository.LagSalt();
 				byte[] hash2 = AksjeRepository.LagHash(passord2, salt2);
