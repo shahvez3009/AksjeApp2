@@ -77,7 +77,7 @@ namespace AksjeApp2Test
         }
 
         [Fact]
-        public async Task LagreBrukerLoggetInn()
+        public async Task LagreBrukerOK()
         {
 
             //Assert
@@ -742,7 +742,6 @@ namespace AksjeApp2Test
         [Fact]
         public async Task SelgLoggetInn()
         {
-
             //Arrange
             mockRep.Setup(k => k.Selg(It.IsAny<PortfolioRad>())).ReturnsAsync(true);
 
