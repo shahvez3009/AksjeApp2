@@ -3025,3 +3025,33 @@ System.InvalidOperationException: Enumerator failed to MoveNextAsync.
 2022-11-29T14:48:52.2360140+01:00 0HMMI1VOT95D7:00000018 [INF] LagreBruker - Error 400: Bad Request (addcd8b3)
 2022-11-29T14:50:40.5133390+01:00 0HMMI1VOT95D8:0000000D [INF] HentPortfolio - Error 401: Unauthorized access (3e2d9c88)
 2022-11-29T14:50:40.6677120+01:00 0HMMI1VOT95D7:00000026 [INF] HentEnBruker - Error 401: Unauthorized access (83075f96)
+2022-11-29T16:07:17.7699400+01:00  [INF] Now listening on: "https://localhost:5001" (d826f4b8)
+2022-11-29T16:07:17.7778340+01:00  [INF] Now listening on: "http://localhost:5000" (d826f4b8)
+2022-11-29T16:07:17.7783270+01:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2022-11-29T16:07:17.7784410+01:00  [INF] Hosting environment: "Development" (c3307c92)
+2022-11-29T16:07:17.7784920+01:00  [INF] Content root path: "/Users/enesergin/Desktop/Webapplikasjoner/AksjeApp2/AksjeApp2" (b5d60022)
+2022-11-29T16:07:39.3930970+01:00  [ERR] (node:36628) [DEP0111] DeprecationWarning: Access to process.binding('http_parser') is deprecated.
+ (fb426bb2)
+2022-11-29T16:07:39.3941190+01:00  [ERR] (Use `node --trace-deprecation ...` to show where the warning was created)
+ (567f389e)
+2022-11-29T16:08:30.6523490+01:00 0HMMI3DK1BNRK:00000004 [ERR] An unhandled exception has occurred while executing the request. (48a46595)
+System.InvalidOperationException: Enumerator failed to MoveNextAsync.
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at AksjeApp2.DAL.AksjeRepository.HentEnBruker(String brukernavn) in /Users/enesergin/Desktop/Webapplikasjoner/AksjeApp2/AksjeApp2/DAL/AksjeRepository.cs:line 309
+   at AksjeApp2.Controllers.AksjeController.HentEnBruker(String brukernavn) in /Users/enesergin/Desktop/Webapplikasjoner/AksjeApp2/AksjeApp2/Controllers/AksjeController.cs:line 165
+   at lambda_method(Closure , Object )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutorAwaitable.Awaiter.GetResult()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)

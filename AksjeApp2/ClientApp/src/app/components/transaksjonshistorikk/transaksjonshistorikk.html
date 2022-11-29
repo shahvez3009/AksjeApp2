@@ -24,9 +24,15 @@
         </tbody>
     </table>
 
-    <div>
-        <button class="btn btn-dark btn-sm" (click)="hentAllInfo('Alle')">Alle</button>
-        <button class="btn btn-dark btn-sm" (click)="hentAllInfo('Kjøp')">Kjøp</button>
-        <button class="btn btn-dark btn-sm" (click)="hentAllInfo('Salg')">Salg</button>
+    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+        <label class="btn btn-dark btn-sm">
+            <input type="radio" name="options" id="option1" (click)="hentAllInfo('Alle')" autocomplete="off"> Alle
+        </label>
+        <label class="btn btn-dark btn-sm">
+            <input type="radio" name="options" id="option2" (click)="hentAllInfo('Kjøp')" autocomplete="off"> Kjøp
+        </label>
+        <label class="btn btn-dark btn-sm">
+            <input type="radio" name="options" id="option3" (click)="hentAllInfo('Salg')" autocomplete="off"> Salg
+        </label>
     </div>
 </div>
