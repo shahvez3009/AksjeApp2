@@ -52,7 +52,6 @@ namespace AksjeApp2Test
             //Assert
             Assert.Equal((int)HttpStatusCode.OK, resultat.StatusCode);
             Assert.True((bool)resultat.Value);
-
         }
 
         [Fact]
@@ -778,6 +777,24 @@ namespace AksjeApp2Test
             //Assert
             Assert.Equal((int)HttpStatusCode.BadRequest, resultat.StatusCode);
             Assert.Equal("Salget ble ikke gjennomført.", resultat.Value);
+        }
+
+        [Fact]
+        public void LoggUt()
+        {
+            var aksjeController = new AksjeController(mockRep.Object, mockLog.Object);
+
+            //Logger inn
+            mockHttpSession[_loggetInn] = _loggetInn;
+            mockHttpContext.Setup(s => s.Session).Returns(mockHttpSession);
+            aksjeController.ControllerContext.HttpContext = mockHttpContext.Object;
+
+            //Act
+            aksjeController.Loggut();
+
+            //Assert
+            Assert.Equal("", mockHttpSession[_loggetInn]);
+
         }
     }
 }
