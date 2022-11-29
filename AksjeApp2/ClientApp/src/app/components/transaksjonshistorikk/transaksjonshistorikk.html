@@ -1,18 +1,22 @@
 ﻿<div class="container-fluid">
-    <div class="headers">
-        <h1>Transaksjonshistorikk</h1>
-        <div class="btn-group btn-group-toggle toggles" data-toggle="buttons">
-            <label class="btn btn-dark btn-sm">
-                <input type="radio" name="options" id="option1" (click)="hentAllInfo('Alle')" autocomplete="off"> Alle
-            </label>
-            <label class="btn btn-dark btn-sm">
-                <input type="radio" name="options" id="option2" (click)="hentAllInfo('Kjøp')" autocomplete="off"> Kjøp
-            </label>
-            <label class="btn btn-dark btn-sm">
-                <input type="radio" name="options" id="option3" (click)="hentAllInfo('Salg')" autocomplete="off"> Salg
-            </label>
+    <div class="row">
+        <div class="col"><h1>Transaksjonshistorikk</h1></div>
+        <div class="col">
+            <div class="btn-group btn-group-toggle float-right" data-toggle="buttons">
+                <label class="btn btn-dark btn-sm">
+                    <input type="radio" name="options" id="option1" (click)="hentAllInfo('Alle')" autocomplete="off"> Alle
+                </label>
+                <label class="btn btn-dark btn-sm">
+                    <input type="radio" name="options" id="option2" (click)="hentAllInfo('Kjøp')" autocomplete="off"> Kjøp
+                </label>
+                <label class="btn btn-dark btn-sm">
+                    <input type="radio" name="options" id="option3" (click)="hentAllInfo('Salg')" autocomplete="off"> Salg
+                </label>
+            </div>
         </div>
     </div>
+
+
 
     <div class="loading" *ngIf="laster">Laster transaksjoner...</div>
     <div class="table-wrapper">
@@ -40,5 +44,6 @@
         </table>
     </div>
 </div>
+
 
 

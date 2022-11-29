@@ -15,3 +15,17 @@ td {
     color: black;
     background-color: white;
 }
+
+.profile {
+    display: flex;
+}
+
+.profile p {
+   color: black;
+   margin: 0.5rem;
+}
+
+img {
+    height: 8vh;
+    width: 8vh; 
+}

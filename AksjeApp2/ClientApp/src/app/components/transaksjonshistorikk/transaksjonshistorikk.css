@@ -21,11 +21,3 @@ td {
 	overflow: scroll;
 }
 
-.headers {
-	display: flex;
-	margin: 1rem 0rem;
-}
-
-.headers .toggles {
-	margin-left: 42rem;
-}

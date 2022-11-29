@@ -3,14 +3,6 @@
     color: white;
 }
 
-.headers {
-    display: flex;
-    margin: 1rem 0rem;
-}
-
-.headers .profile {
-    margin-left: 42rem; 
-}
 
 td {
     color: black;
@@ -20,14 +12,6 @@ td {
     color: black;
 }
 
-.profile {
-    display: flex;
-}
-
-.profile p {
-    color: black;
-    margin: 0.5rem;
-}
 
 .table td {
     color: black;
@@ -38,3 +22,5 @@ td {
     height: 60vh;
     overflow: scroll; 
 }
+
+

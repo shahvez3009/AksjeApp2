@@ -1,5 +1,25 @@
 ﻿<div class="container-fluid">
-	<h1>Portfolio</h1>
+	
+
+	<div class="row">
+		<div class="col">
+			<h1>Portfolio</h1>
+		</div>
+		<div class="col">
+			<div class="profile float-right">
+				<div>
+					<img src="../assets/hashbulla.png" />
+				</div>
+
+				<div>
+					<p>({{brukernavn}}) {{fornavnEtternavn}}</p>
+					<p>Saldo: {{saldo}} </p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
 	<div class="loading" *ngIf="laster">Laster portfolio...</div>
 	<table class="table table-striped">
 		<thead>

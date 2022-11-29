@@ -10,7 +10,7 @@
 					aria-label="Toggle navigation"
 					[attr.aria-expanded]="isExpanded"
 					(click)="toggle()">
-				<span class="navbar-toggler-icon"></span>
+				<span class="navbar-toggler-icon bg-dark rounded"></span>
 			</button>
 			<div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse" [ngClass]="{ show: isExpanded }">
 				<ul class="navbar-nav flex-grow">
@@ -27,9 +27,9 @@
 						[routerLinkActive]="['link-active']">
 						<a class="nav-link text-dark" routerLink="/transaksjonshistorikk">Transaksjoner</a>
 					</li>
-					<li class="nav-item"
+					<li class="nav-item bg-dark rounded"
 						[routerLinkActive]="['link-active']">
-						<a class="nav-link text-dark" (click)="loggUt()">Logg ut</a>
+						<a class="nav-link text-light" (click)="loggUt()">Logg ut</a>
 					</li>
 				</ul>
 			</div>
