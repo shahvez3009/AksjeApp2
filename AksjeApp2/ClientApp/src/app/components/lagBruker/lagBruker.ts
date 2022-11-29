@@ -39,7 +39,7 @@ export class LagBruker {
             null, Validators.compose([Validators.required, Validators.pattern(/^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.{8,})/)])
         ],
         bekreftPassord: [
-            null, Validators.compose([Validators.required, Validators.pattern("[0-9a-zA-ZøæåØÆÅ\ .,-/<>!?#%&()=]{6,}")])
+            null, Validators.compose([Validators.required, Validators.pattern(/^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.{8,})/)])
         ]
     }
 
