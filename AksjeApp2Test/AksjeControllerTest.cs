@@ -533,16 +533,6 @@ namespace AksjeApp2Test
                 Brukernavn = "perhansen"
             };
 
-            var portfoliorad3 = new PortfolioRad
-            {
-                Id = 3,
-                Antall = 80,
-                AksjeId = 3,
-                AksjeNavn = "Apple",
-                AksjePris = 750,
-                Brukernavn = "perhansen"
-            };
-
             var brukerInn = new Bruker
             {
                 Id = 1,
