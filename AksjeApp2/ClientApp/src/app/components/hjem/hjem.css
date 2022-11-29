@@ -24,7 +24,3 @@ td {
     color: black;
     background-color: white;
 }
-
-.toggle:active {
-    filter: invert();
-}
