@@ -39,13 +39,10 @@ export class Portfolio {
 				this.laster = false;
 			},
 				(error) => {
-					if (error.status == 401) {
-						this.router.navigate(["/logginn"])
-					} else {
-						console.log(error);
-					}
-
-				}
+					if (error.status == 401) { this.router.navigate(["/logginn"]) }
+					else if (error.status == 500) { this.shared.loggUt(); }
+					else { console.log(error); }
+				} 
 		);
 
 		this.http.get<Bruker>("api/aksje/hentenbruker/" + this.brukernavn)
@@ -55,12 +52,10 @@ export class Portfolio {
 				this.saldo = bruker.saldo;
 			},
 				(error) => {
-					if (error.status == 401) {
-						this.router.navigate(["/logginn"])
-					} else {
-						console.log(error);
-					}
-				}
+					if (error.status == 401) { this.router.navigate(["/logginn"]) }
+					else if (error.status == 500) { this.shared.loggUt(); }
+					else { console.log(error); }
+				} 
 		);
 	};
 
@@ -73,12 +68,9 @@ export class Portfolio {
 		this.shared.setAksjeId(aksjeId);
 		this.router.navigate(["/selg"]);
 	}
-	loggUt() {
-		this.http.get("api/aksje/loggut").subscribe(retur => {
-			this.router.navigate(["/logginn"])
-		}
-		);
 
+	loggUt() {
+		this.shared.loggUt();
 	}
 }
 

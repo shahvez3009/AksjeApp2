@@ -96,13 +96,18 @@
                                     <p class="errorMsg" *ngIf="this.Skjema.controls.passord.status=='INVALID'">Mellom 6 og 15 siffer</p>
                                 </div>
                             </div>
+                            <div *ngIf="invalidBruker"class="alert alert-warning">
+                              <p>   Feil Brukernavn eller Passord
+                             </p>
+                            </div>
+
                             <div class="field padding-bottom--24">
                                 <div>
                                     <button class="login-btn" type="submit" [disabled]="!Skjema.valid">Logg inn</button>
-                                </div>  
+                                </div>
                             </div>
                             <div class="field">
-                                <a class="ssolink"  [routerLink]="['/lagBruker']" >Har du ikke konto? Registrer deg her</a>
+                                <a class="ssolink" [routerLink]="['/lagBruker']">Har du ikke konto? Registrer deg her</a>
                             </div>
                         </form>
                     </div>

@@ -39,12 +39,10 @@ export class Transaksjonshistorikk {
 				this.laster = false;
 			},
 				(error) => {
-					if (error.status == 401) {
-						this.router.navigate(["/logginn"])
-					} else {
-						console.log(error);
-					}
-				}
+					if (error.status == 401) { this.router.navigate(["/logginn"]) }
+					else if (error.status == 500) { this.shared.loggUt(); }
+					else { console.log(error); }
+				} 
 		);
 
 		this.http.get<Bruker>("api/aksje/hentenbruker/" + this.brukernavn)
@@ -54,12 +52,10 @@ export class Transaksjonshistorikk {
 				this.saldo = bruker.saldo;
 			},
 				(error) => {
-					if (error.status == 401) {
-						this.router.navigate(["/logginn"])
-					} else {
-						console.log(error);
-					}
-				}
+					if (error.status == 401) { this.router.navigate(["/logginn"]) }
+					else if (error.status == 500) { this.shared.loggUt(); }
+					else { console.log(error); }
+				} 
 		);
 	};
 

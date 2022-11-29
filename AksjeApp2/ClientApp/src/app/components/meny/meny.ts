@@ -40,5 +40,9 @@ export class Meny {
 			}
 		}
 	}
+
+	loggUt() {
+		this.shared.loggUt();
+	}
 }
 
