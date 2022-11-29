@@ -58,8 +58,8 @@ export class Logginn {
 
     this.http.post("api/aksje/LoggInn", send).subscribe((retur) => {
       this.valid = retur;
-      if (this.valid) {
-        this.shared.setBrukernavn(send.brukernavn);
+        if (this.valid) {
+            this.shared.setBrukernavn(send.brukernavn.toLowerCase());
         this.router.navigate(["/hjem"]);
       }
       (error) => {
