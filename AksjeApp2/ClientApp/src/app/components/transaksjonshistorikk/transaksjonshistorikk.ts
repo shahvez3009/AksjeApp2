@@ -33,7 +33,7 @@ export class Transaksjonshistorikk {
 	}
 
 	hentAllInfo() {
-		this.http.get<Transaksjon[]>("api/aksje/henttransaksjoner/" + this.brukernavn)
+		this.http.get<Transaksjon[]>("api/aksje/henttransaksjoner/" + this.brukernavn + "/" + "Alle")
 			.subscribe(transaksjonene => {
 				this.alleTransaksjoner = transaksjonene;
 				this.laster = false;

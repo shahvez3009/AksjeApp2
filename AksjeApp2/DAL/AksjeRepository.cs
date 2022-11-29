@@ -56,7 +56,8 @@ namespace AksjeApp2.DAL
 		{
 			try
 			{
-				PortfolioRader[] etPortfolioRad = await _db.PortfolioRader.Where(p => p.Bruker.Brukernavn == innPortfolio.Brukernavn && p.Aksje.Id == innPortfolio.AksjeId).ToArrayAsync();
+				PortfolioRader[] etPortfolioRad = await _db.PortfolioRader.Where(
+					p => p.Bruker.Brukernavn == innPortfolio.Brukernavn && p.Aksje.Id == innPortfolio.AksjeId).ToArrayAsync();
 				Brukere enBruker = await _db.Brukere.FirstAsync(p => p.Brukernavn == innPortfolio.Brukernavn);
 				Aksjer enAksje = await _db.Aksjer.FindAsync(innPortfolio.AksjeId);
 
@@ -99,7 +100,8 @@ namespace AksjeApp2.DAL
 		{
 			try
 			{
-				PortfolioRader etPortfolioRad = await _db.PortfolioRader.FirstAsync(p => p.Aksje.Id == innPortfolio.AksjeId && p.Bruker.Brukernavn == innPortfolio.Brukernavn);
+				PortfolioRader etPortfolioRad = await _db.PortfolioRader.FirstAsync(
+					p => p.Aksje.Id == innPortfolio.AksjeId && p.Bruker.Brukernavn == innPortfolio.Brukernavn);
 				//Dersom innsendt Bruker ikke selger alle aksjene av innsendt Aksje
 				if (etPortfolioRad.Antall > innPortfolio.Antall && innPortfolio.Antall != 0)
 				{
@@ -227,13 +229,25 @@ namespace AksjeApp2.DAL
 		}
 
 		//Brukes for henting av alle Transaksjoner til en innsendt Bruker
-		public async Task<List<Transaksjon>> HentTransaksjoner(string brukernavn)
+		public async Task<List<Transaksjon>> HentTransaksjoner(string brukernavn, string status)
 		{
 			try
 			{
 				Brukere enBruker = await _db.Brukere.FirstAsync(p => p.Brukernavn == brukernavn);
-				Transaksjoner[] hentTransaksjoner = await _db.Transaksjoner.Where(p => p.Bruker == enBruker).ToArrayAsync();
+				Transaksjoner[] hentTransaksjoner;
 
+				if (status == "Kjøp")
+				{
+					hentTransaksjoner = await _db.Transaksjoner.Where(p => p.Bruker == enBruker && p.Status == status).ToArrayAsync();
+				}
+				else if (status == "Selg")
+				{
+					hentTransaksjoner = await _db.Transaksjoner.Where(p => p.Bruker == enBruker && p.Status == status).ToArrayAsync();
+				}
+				else
+				{
+					hentTransaksjoner = await _db.Transaksjoner.Where(p => p.Bruker == enBruker).ToArrayAsync();
+				}
 				List<Transaksjon> alleTransaksjoner = hentTransaksjoner.Select(p => new Transaksjon
 				{
 					Id = p.Id,

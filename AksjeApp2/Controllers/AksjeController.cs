@@ -119,8 +119,8 @@ namespace AksjeApp2.Controllers
 			return Ok(allePortfolio);
 		}
 
-		[HttpGet("{brukernavn}")]
-		public async Task<ActionResult> HentTransaksjoner(string brukernavn)
+		[HttpGet("{brukernavn}/{status}")]
+		public async Task<ActionResult> HentTransaksjoner(string brukernavn, string status)
 		{
 
 			if (string.IsNullOrEmpty(HttpContext.Session.GetString(_LoggetInn)))
@@ -129,7 +129,7 @@ namespace AksjeApp2.Controllers
 				return Unauthorized("Bruker er ikke logget inn.");
 			}
 
-			List<Transaksjon> alleTransaksjoner = await _db.HentTransaksjoner(brukernavn);
+			List<Transaksjon> alleTransaksjoner = await _db.HentTransaksjoner(brukernavn, status);
 			return Ok(alleTransaksjoner);
 		}
 

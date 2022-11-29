@@ -13,7 +13,7 @@ namespace AksjeApp2.DAL
 		Task<int> LagreBruker(Bruker innBruker);
 		Task<List<Aksje>> HentAksjer();
 		Task<List<PortfolioRad>> HentPortfolio(string brukernavn);
-		Task<List<Transaksjon>> HentTransaksjoner(string brukernavn);
+		Task<List<Transaksjon>> HentTransaksjoner(string brukernavn, string status);
 		Task<PortfolioRad> HentEtPortfolioRad(string brukernavn, int aksjeId);
 		Task<Bruker> HentEnBruker(string brukernavn);
 		Task<Aksje> HentEnAksje(int aksjeId);
