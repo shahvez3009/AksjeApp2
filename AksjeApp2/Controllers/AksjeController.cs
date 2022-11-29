@@ -68,7 +68,6 @@ namespace AksjeApp2.Controllers
 			return Ok("Salget ble gjennomført.");
 		}
 
-<<<<<<< Updated upstream
         [HttpPost]
         public async Task<ActionResult> LagreBruker(Bruker innBruker)
         {
@@ -90,20 +89,6 @@ namespace AksjeApp2.Controllers
             }
             //LOGGE I LOGGEN AT DET VAR FEIL I INPUTVALIDERING
             return BadRequest("Feil i inputvalidering");
-=======
-		[HttpPost]
-		public async Task<ActionResult> LagreBruker(Bruker innBruker)
-		{
-			bool returOk = await _db.LagreBruker(innBruker);
-			if (!returOk)
-			{
-				_log.LogInformation("LagreBruker - Error 400: Bad Request");
-				return BadRequest("Bruker ble ikke lagret.");
-			}
-			return Ok("Bruker ble lagret");
-		}
->>>>>>> Stashed changes
-
         }
 
         [HttpGet]

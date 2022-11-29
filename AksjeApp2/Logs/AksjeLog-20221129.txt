@@ -62,3 +62,33 @@
 2022-11-29T12:24:37.4011230+01:00  [ERR] (Use `node --trace-deprecation ...` to show where the warning was created)
  (567f389e)
 2022-11-29T12:25:08.1197220+01:00 0HMMHVGVR7A21:00000009 [INF] HentAksjer - Error 401: Unauthorized access (9a6b1d5b)
+2022-11-29T12:33:54.0176340+01:00  [INF] Now listening on: "https://localhost:5001" (d826f4b8)
+2022-11-29T12:33:54.0258950+01:00  [INF] Now listening on: "http://localhost:5000" (d826f4b8)
+2022-11-29T12:33:54.0263160+01:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2022-11-29T12:33:54.0263740+01:00  [INF] Hosting environment: "Development" (c3307c92)
+2022-11-29T12:33:54.0264080+01:00  [INF] Content root path: "/Users/enesergin/Desktop/Webapplikasjoner/AksjeApp2/AksjeApp2" (b5d60022)
+2022-11-29T12:34:15.4029530+01:00  [ERR] (node:31077) [DEP0111] DeprecationWarning: Access to process.binding('http_parser') is deprecated.
+ (bf0bcf1e)
+2022-11-29T12:34:15.4044320+01:00  [ERR] (Use `node --trace-deprecation ...` to show where the warning was created)
+ (567f389e)
+2022-11-29T12:34:56.4801710+01:00 0HMMHVMC6IU0E:00000004 [ERR] An unhandled exception has occurred while executing the request. (48a46595)
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at AksjeApp2.DAL.AksjeRepository.HentEnAksje(Int32 aksjeId) in /Users/enesergin/Desktop/Webapplikasjoner/AksjeApp2/AksjeApp2/DAL/AksjeRepository.cs:line 312
+   at AksjeApp2.Controllers.AksjeController.HentEnAksje(Int32 aksjeId) in /Users/enesergin/Desktop/Webapplikasjoner/AksjeApp2/AksjeApp2/Controllers/AksjeController.cs:line 185
+   at lambda_method(Closure , Object )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutorAwaitable.Awaiter.GetResult()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2022-11-29T12:35:15.1731750+01:00 0HMMHVMC6IU0E:0000000B [INF] HentEnAksje - Error 401: Unauthorized access (cb88c33e)
+2022-11-29T12:35:20.5350690+01:00 0HMMHVMC6IU0E:0000000D [INF] HentAksjer - Error 401: Unauthorized access (9a6b1d5b)
