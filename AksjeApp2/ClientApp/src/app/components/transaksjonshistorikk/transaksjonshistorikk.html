@@ -1,29 +1,27 @@
-﻿<div class="container">
-        <div class="col-md-12">
-            <h1>Transaksjonshistorikk</h1>
-            <div class="loading" *ngIf="laster">Laster transaksjoner...</div>
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>Status</th>
-                        <th>Dato/Tid</th>
-                        <th>Aksje</th>
-                        <th>Pris</th>
-                        <th>Antall Aksjer</th>
-                        <th>Sum</th>
-                    </tr>
-                </thead>
-                <tbody *ngFor="let transaksjon of alleTransaksjoner">
-                    <tr>
-                        <td>{{transaksjon.status}}</td>
-                        <td>{{transaksjon.datoTid}}</td>
-                        <td>{{transaksjon.aksjeNavn}}</td>
-                        <td>{{transaksjon.aksjePris}}</td>
-                        <td>{{transaksjon.antall}}</td>
-                        <td>{{transaksjon.antall*transaksjon.aksjePris}}</td>
-                    </tr>
-                </tbody>
-            </table>
-            <span><button class="btn btn-primary" (click)="loggUt()">Logg ut</button></span>
-        </div>
+﻿<div class="container-fluid">
+    <h1>Transaksjonshistorikk</h1>
+    <div class="loading" *ngIf="laster">Laster transaksjoner...</div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Status</th>
+                <th>Dato/Tid</th>
+                <th>Aksje</th>
+                <th>Pris</th>
+                <th>Antall Aksjer</th>
+                <th>Sum</th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let transaksjon of alleTransaksjoner">
+            <tr>
+                <td>{{transaksjon.status}}</td>
+                <td>{{transaksjon.datoTid}}</td>
+                <td>{{transaksjon.aksjeNavn}}</td>
+                <td>{{transaksjon.aksjePris}}</td>
+                <td>{{transaksjon.antall}}</td>
+                <td>{{transaksjon.antall*transaksjon.aksjePris}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <span><button class="btn btn-primary" (click)="loggUt()">Logg ut</button></span>
 </div>

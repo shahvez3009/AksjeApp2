@@ -1,12 +1,21 @@
-﻿
-
-h1, .loading {
+﻿thead {
+    background-color: #1E1E1E;
     color: white;
 }
 
+td {
+    color: black;
+}
 
+.loading, h1 {
+    color: black;
+}
 
-thead {
-    background-color: #1E1E1E;
-    color: white;
+.table td {
+    color: black;
+    background-color: white;
+}
+
+.toggle:active {
+    filter: invert();
 }
