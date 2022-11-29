@@ -1,43 +1,4 @@
-﻿<!--
-<div>
-    <h1>Logg inn hos JustInvest</h1>
-    <div class="wrapper">
-        <form [formGroup]="Skjema" (ngSubmit)="onSubmit()">
-            <table>
-                <tr>
-                    <td>
-                        <label>Brukernavn:</label>
-                    </td>
-                    <td>
-                        <input type="text" formControlName="brukernavn">
-                        <p class="errorMsg" *ngIf="this.Skjema.controls.brukernavn.status=='INVALID'">Obligatorisk</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label>Passord:</label>
-                    </td>
-                    <td>
-                        <input type="password" formControlName="passord" required>
-                        <p class="errorMsg" *ngIf="this.Skjema.controls.passord.status=='INVALID'">Mellom 6 og 15 siffer</p>
-                    </td>
-                </tr>
-                <tr >
-                    <td class="btnWrapper">
-                        <button type="submit" [disabled]="!Skjema.valid">Logg inn</button>
-                        <button [routerLink]="['/lagBruker']">Registrer</button>
-                    </td>
-                </tr>
-            </table>
-        </form>
-        <div class="img-wrapper">
-            <div>
-                <img src="../assets/stocks.png"/>
-            </div>
-        </div>
-    </div>
-</div>
--->
+﻿
 
 <div class="login-root">
     <div class="box-root flex-flex flex-direction--column" style="min-height: 100vh;flex-grow: 1;">
