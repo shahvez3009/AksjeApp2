@@ -1,5 +1,4 @@
-﻿
-thead {
+﻿thead {
     background-color: #1E1E1E;
     color: white;
 }
@@ -16,18 +15,15 @@ td {
     display: flex;
 }
 
-    .profile p {
-        color: black;
-        margin: 0.5rem;
-    }
+.profile p {
+    color: black;
+    margin: 0.5rem;
+}
 
 .table td {
     color: black;
     background-color: white;
 }
-
-
-
 
 .toggle:active {
     filter: invert();

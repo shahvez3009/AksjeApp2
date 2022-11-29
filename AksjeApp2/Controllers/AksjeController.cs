@@ -44,10 +44,10 @@ namespace AksjeApp2.Controllers
 			bool returOk = await _db.Kjop(innPortfolio);
 			if (!returOk)
 			{
-				_log.LogInformation("LagreBruker - Error 400: Bad Request");
+				_log.LogInformation("Kjop - Error 400: Bad Request");
 				return BadRequest("Kjøpet ble ikke gjennomført.");
 			}
-			return Ok();
+			return Ok("Kjøpet ble gjennomført.");
 		}
 
 		[HttpPost]
@@ -65,7 +65,7 @@ namespace AksjeApp2.Controllers
 				_log.LogInformation("Selg - Error 404: Not Found");
 				return BadRequest("Salget ble ikke gjennomført.");
 			}
-			return Ok();
+			return Ok("Salget ble gjennomført.");
 		}
 
         [HttpPost]
@@ -76,20 +76,18 @@ namespace AksjeApp2.Controllers
                 int statusKode = await _db.LagreBruker(innBruker);
                 if (statusKode == 2)
                 {
-                    //MÅ LOGGE DET I LOGGEN
-                    return BadRequest("Brukernavnet er opptatt");
+					_log.LogInformation("LagreBruker - Error 400: Bad Request");
+					return BadRequest("Brukernavnet er opptatt");
                 }
                 else if (statusKode == 3)
                 {
-                    //MÅ LOGGE DET I LOGGEN
-                    return BadRequest("Mailen er opptatt");
+					_log.LogInformation("LagreBruker - Error 400: Bad Request");
+					return BadRequest("Mailen er opptatt");
                 }
-                //_log.LogInformation("En bruker har blitt lagt");
                 return Ok();
             }
-            //LOGGE I LOGGEN AT DET VAR FEIL I INPUTVALIDERING
-            return BadRequest("Feil i inputvalidering");
-
+			_log.LogInformation("LagreBruker - Error 400: Bad Request");
+			return BadRequest("Feil i inputvalidering");
         }
 
         [HttpGet]
@@ -149,7 +147,7 @@ namespace AksjeApp2.Controllers
 			if (portfolioRad == null)
 			{
 				_log.LogInformation("HentEtPortfolioRad - Error 404: Not Found");
-				return NotFound();
+				return NotFound("PortfolioRad ikke funnet.");
 			}
 			return Ok(portfolioRad);
 		}

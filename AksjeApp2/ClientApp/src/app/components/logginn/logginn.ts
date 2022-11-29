@@ -1,67 +1,71 @@
 ﻿import { Component, OnInit } from "@angular/core";
-import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
+import { HttpClient } from "@angular/common/http";
+import { Router } from "@angular/router";
 import { SharedService } from "../../shared/shared.service";
-import { FormBuilder, FormGroup, Validators, FormControl } from "@angular/forms";
+import {
+  FormBuilder,
+  FormGroup,
+  Validators,
+  FormControl,
+} from "@angular/forms";
 import { Bruker } from "../../Models/Bruker";
 
-
 @Component({
-    selector: "app-logginn",
-    templateUrl: "./logginn.html",
-    styleUrls: ['./logginn.css']
+  selector: "app-logginn",
+  templateUrl: "./logginn.html",
+  styleUrls: ["./logginn.css"],
 })
-
 export class Logginn {
-    Skjema: FormGroup;
-    valid;
-    invalidBruker: boolean; 
+  Skjema: FormGroup;
+  valid;
+  invalidBruker: boolean;
 
-    constructor(
-        private fb: FormBuilder,
-        private http: HttpClient,
-        private router: Router,
-        private shared: SharedService
-    ){
-        this.Skjema = fb.group(this.validering)
-    }
+  constructor(
+    private fb: FormBuilder,
+    private http: HttpClient,
+    private router: Router,
+    private shared: SharedService
+  ) {
+    this.Skjema = fb.group(this.validering);
+  }
 
-    validering = {
-        brukernavn: [
-            null,
-            Validators.compose([Validators.required, Validators.pattern("[0-9a-zA-ZæøåÆØÅ\ .-/<>!?#&()=]{2,40}")])
-        ],
-        passord: [
-            null,
-            Validators.compose([Validators.required, Validators.pattern("[0-9a-zA-ZæøåÆØÅ\ .-/<>!?#&()=]{5,16}")])
-        ]
-    };
+  validering = {
+    brukernavn: [
+      null,
+      Validators.compose([
+        Validators.required,
+        Validators.pattern("[0-9a-zA-ZæøåÆØÅ .-/<>!?#&()=]{2,40}"),
+      ]),
+    ],
+    passord: [
+      null,
+      Validators.compose([
+        Validators.required,
+        Validators.pattern("[0-9a-zA-ZæøåÆØÅ .-/<>!?#&()=]{5,16}"),
+      ]),
+    ],
+  };
 
-    onSubmit() {
-        this.logginn();
-    }
+  onSubmit() {
+    this.logginn();
+  }
 
-    logginn() {
+  logginn() {
+    const send = new Bruker();
 
-        const send = new Bruker();
+    send.brukernavn = this.Skjema.value.brukernavn;
+    send.passord = this.Skjema.value.passord;
 
-        send.brukernavn = this.Skjema.value.brukernavn;
-        send.passord = this.Skjema.value.passord;
-
-        this.http.post("api/aksje/LoggInn", send)
-            .subscribe(retur => {
-                this.valid = retur;
-                if (this.valid) {
-                    this.shared.setBrukernavn(send.brukernavn);
-                    this.router.navigate(["/hjem"]);
-                }
-                error => { this.invalidBruker = true; console.log("Ikke logget inn"); }   
-            },
-        );
-    }
+    this.http.post("api/aksje/LoggInn", send).subscribe((retur) => {
+      this.valid = retur;
+      if (this.valid) {
+        this.shared.setBrukernavn(send.brukernavn);
+        this.router.navigate(["/hjem"]);
+      }
+      (error) => {
+        this.invalidBruker = true;
+        console.log("Ikke logget inn");
+      };
+    });
+  }
 }
-
-
-    
-
-
