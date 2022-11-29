@@ -25,15 +25,14 @@ export class Transaksjonshistorikk {
 		private shared: SharedService
 	) { }
 
-	//Blir kjørt når vi kaller på denne komponenten  
 	ngOnInit() {
 		this.laster = true;
 		this.brukernavn = this.shared.getBrukernavn();
-		setTimeout(() => { this.hentAllInfo(); }, 200);
+		setTimeout(() => { this.hentAllInfo("Alle"); }, 200);
 	}
 
-	hentAllInfo() {
-		this.http.get<Transaksjon[]>("api/aksje/henttransaksjoner/" + this.brukernavn + "/" + "Alle")
+	hentAllInfo(status) {
+		this.http.get<Transaksjon[]>("api/aksje/henttransaksjoner/" + this.brukernavn + "/" + status)
 			.subscribe(transaksjonene => {
 				this.alleTransaksjoner = transaksjonene;
 				this.laster = false;

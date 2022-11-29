@@ -2747,3 +2747,276 @@ System.InvalidOperationException: Enumerator failed to MoveNextAsync.
    at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
    at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
    at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2022-11-29T15:09:19.4642460+01:00  [INF] Now listening on: "https://localhost:5001" (d826f4b8)
+2022-11-29T15:09:19.4790470+01:00  [INF] Now listening on: "http://localhost:5000" (d826f4b8)
+2022-11-29T15:09:19.4794320+01:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2022-11-29T15:09:19.4795210+01:00  [INF] Hosting environment: "Development" (c3307c92)
+2022-11-29T15:09:19.4795530+01:00  [INF] Content root path: "/Users/enesergin/Desktop/Webapplikasjoner/AksjeApp2/AksjeApp2" (b5d60022)
+2022-11-29T15:09:39.8073660+01:00  [ERR] (node:35705) [DEP0111] DeprecationWarning: Access to process.binding('http_parser') is deprecated.
+ (77665265)
+2022-11-29T15:09:39.8087320+01:00  [ERR] (Use `node --trace-deprecation ...` to show where the warning was created)
+ (567f389e)
+2022-11-29T15:17:29.7647180+01:00  [ERR]     ERROR in src/app/components/transaksjonshistorikk/transaksjonshistorikk.ts(32,22): error TS2554: Expected 1 arguments, but got 0.
+    
+ (1e781579)
+2022-11-29T15:17:49.3799980+01:00  [ERR]     ERROR in src/app/components/transaksjonshistorikk/transaksjonshistorikk.ts(33,22): error TS2554: Expected 1 arguments, but got 0.
+    
+ (121b2b94)
+2022-11-29T15:24:41.3166590+01:00  [INF] Now listening on: "https://localhost:5001" (d826f4b8)
+2022-11-29T15:24:41.3752890+01:00  [INF] Now listening on: "http://localhost:5000" (d826f4b8)
+2022-11-29T15:24:41.3787030+01:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2022-11-29T15:24:41.3787750+01:00  [INF] Hosting environment: "Development" (c3307c92)
+2022-11-29T15:24:41.3788500+01:00  [INF] Content root path: "/Users/enesergin/Desktop/Webapplikasjoner/AksjeApp2/AksjeApp2" (b5d60022)
+2022-11-29T15:25:01.7102060+01:00  [ERR] (node:35858) [DEP0111] DeprecationWarning: Access to process.binding('http_parser') is deprecated.
+ (14f83eb9)
+2022-11-29T15:25:01.7112840+01:00  [ERR] (Use `node --trace-deprecation ...` to show where the warning was created)
+ (567f389e)
+2022-11-29T15:27:12.2779400+01:00  [INF] Now listening on: "https://localhost:5001" (d826f4b8)
+2022-11-29T15:27:12.2959920+01:00  [INF] Now listening on: "http://localhost:5000" (d826f4b8)
+2022-11-29T15:27:12.2964680+01:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2022-11-29T15:27:12.2965460+01:00  [INF] Hosting environment: "Development" (c3307c92)
+2022-11-29T15:27:12.2965830+01:00  [INF] Content root path: "/Users/enesergin/Desktop/Webapplikasjoner/AksjeApp2/AksjeApp2" (b5d60022)
+2022-11-29T15:27:32.3318020+01:00  [ERR] (node:35886) [DEP0111] DeprecationWarning: Access to process.binding('http_parser') is deprecated.
+ (02a846b0)
+2022-11-29T15:27:32.3328520+01:00  [ERR] (Use `node --trace-deprecation ...` to show where the warning was created)
+ (567f389e)
+2022-11-29T15:28:55.6610670+01:00 0HMMI2N7462KR:00000018 [ERR] An unhandled exception has occurred while executing the request. (48a46595)
+System.InvalidOperationException: Enumerator failed to MoveNextAsync.
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at AksjeApp2.DAL.AksjeRepository.HentEnBruker(String brukernavn) in /Users/enesergin/Desktop/Webapplikasjoner/AksjeApp2/AksjeApp2/DAL/AksjeRepository.cs:line 309
+   at AksjeApp2.Controllers.AksjeController.HentEnBruker(String brukernavn) in /Users/enesergin/Desktop/Webapplikasjoner/AksjeApp2/AksjeApp2/Controllers/AksjeController.cs:line 165
+   at lambda_method(Closure , Object )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutorAwaitable.Awaiter.GetResult()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2022-11-29T15:29:48.9158510+01:00 0HMMI2N7462KP:00000017 [ERR] An unhandled exception has occurred while executing the request. (48a46595)
+System.InvalidOperationException: Enumerator failed to MoveNextAsync.
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at AksjeApp2.DAL.AksjeRepository.HentEnBruker(String brukernavn) in /Users/enesergin/Desktop/Webapplikasjoner/AksjeApp2/AksjeApp2/DAL/AksjeRepository.cs:line 309
+   at AksjeApp2.Controllers.AksjeController.HentEnBruker(String brukernavn) in /Users/enesergin/Desktop/Webapplikasjoner/AksjeApp2/AksjeApp2/Controllers/AksjeController.cs:line 165
+   at lambda_method(Closure , Object )
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2022-11-29T15:30:44.1355310+01:00 0HMMI2N7462KR:0000002A [ERR] An unhandled exception has occurred while executing the request. (48a46595)
+System.InvalidOperationException: Enumerator failed to MoveNextAsync.
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at AksjeApp2.DAL.AksjeRepository.HentEnBruker(String brukernavn) in /Users/enesergin/Desktop/Webapplikasjoner/AksjeApp2/AksjeApp2/DAL/AksjeRepository.cs:line 309
+   at AksjeApp2.Controllers.AksjeController.HentEnBruker(String brukernavn) in /Users/enesergin/Desktop/Webapplikasjoner/AksjeApp2/AksjeApp2/Controllers/AksjeController.cs:line 165
+   at lambda_method(Closure , Object )
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2022-11-29T15:32:32.3969790+01:00  [INF] Now listening on: "https://localhost:5001" (d826f4b8)
+2022-11-29T15:32:32.6447490+01:00  [INF] Now listening on: "http://localhost:5000" (d826f4b8)
+2022-11-29T15:32:32.6452000+01:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2022-11-29T15:32:32.6452850+01:00  [INF] Hosting environment: "Development" (c3307c92)
+2022-11-29T15:32:32.6463480+01:00  [INF] Content root path: "/Users/enesergin/Desktop/Webapplikasjoner/AksjeApp2/AksjeApp2" (b5d60022)
+2022-11-29T15:32:57.3793190+01:00  [ERR] (node:35962) [DEP0111] DeprecationWarning: Access to process.binding('http_parser') is deprecated.
+ (66a053ec)
+2022-11-29T15:32:57.3804930+01:00  [ERR] (Use `node --trace-deprecation ...` to show where the warning was created)
+ (567f389e)
+2022-11-29T15:36:12.8204670+01:00  [ERR]     ERROR in src/app/components/transaksjonshistorikk/transaksjonshistorikk.ts(37,4): error TS2304: Cannot find name 'selg'.
+    
+ (63c07a99)
+2022-11-29T15:39:34.1553640+01:00  [ERR]     ERROR in src/app/components/transaksjonshistorikk/transaksjonshistorikk.ts(38,7): error TS2304: Cannot find name 'form'.
+    src/app/components/transaksjonshistorikk/transaksjonshistorikk.ts(38,14): error TS2304: Cannot find name 'form'.
+    src/app/components/transaksjonshistorikk/transaksjonshistorikk.ts(41,4): error TS2304: Cannot find name 'selg'.
+    src/app/components/transaksjonshistorikk/transaksjonshistorikk.ts(42,4): error TS2304: Cannot find name 'ce'.
+    
+    
+ (b9116c8f)
+2022-11-29T15:39:34.1558490+01:00  [ERR]     ERROR in src/app/components/transaksjonshistorikk/transaksjonshistorikk.ts(39,7): error TS2304: Cannot find name 'form'.
+    src/app/components/transaksjonshistorikk/transaksjonshistorikk.ts(39,14): error TS2304: Cannot find name 'form'.
+    src/app/components/transaksjonshistorikk/transaksjonshistorikk.ts(42,4): error TS2304: Cannot find name 'selg'.
+    src/app/components/transaksjonshistorikk/transaksjonshistorikk.ts(43,4): error TS2304: Cannot find name 'ce'.
+    
+ (fbf769c7)
+2022-11-29T15:41:18.8872940+01:00  [ERR]     ERROR in src/app/components/transaksjonshistorikk/transaksjonshistorikk.ts(36,35): error TS2339: Property 'checked' does not exist on type 'HTMLElement'.
+    src/app/components/transaksjonshistorikk/transaksjonshistorikk.ts(37,35): error TS2339: Property 'checked' does not exist on type 'HTMLElement'.
+    src/app/components/transaksjonshistorikk/transaksjonshistorikk.ts(38,35): error TS2339: Property 'checked' does not exist on type 'HTMLElement'.
+    src/app/components/transaksjonshistorikk/transaksjonshistorikk.ts(41,4): error TS2304: Cannot find name 'selg'.
+    src/app/components/transaksjonshistorikk/transaksjonshistorikk.ts(42,4): error TS2304: Cannot find name 'ce'.
+    
+ (0f564363)
+2022-11-29T15:42:17.8372960+01:00  [ERR]     ERROR in src/app/components/transaksjonshistorikk/transaksjonshistorikk.ts(37,36): error TS2339: Property 'checked' does not exist on type 'HTMLElement'.
+    src/app/components/transaksjonshistorikk/transaksjonshistorikk.ts(38,36): error TS2339: Property 'checked' does not exist on type 'HTMLElement'.
+    src/app/components/transaksjonshistorikk/transaksjonshistorikk.ts(41,35): error TS2339: Property 'checked' does not exist on type 'HTMLElement'.
+    src/app/components/transaksjonshistorikk/transaksjonshistorikk.ts(42,35): error TS2339: Property 'checked' does not exist on type 'HTMLElement'.
+    src/app/components/transaksjonshistorikk/transaksjonshistorikk.ts(43,35): error TS2339: Property 'checked' does not exist on type 'HTMLElement'.
+    src/app/components/transaksjonshistorikk/transaksjonshistorikk.ts(46,4): error TS2304: Cannot find name 'selg'.
+    src/app/components/transaksjonshistorikk/transaksjonshistorikk.ts(47,4): error TS2304: Cannot find name 'ce'.
+    
+    
+ (cefa092d)
+2022-11-29T15:42:33.8194160+01:00  [ERR]     ERROR in src/app/components/transaksjonshistorikk/transaksjonshistorikk.ts(37,36): error TS2339: Property 'checked' does not exist on type 'HTMLElement'.
+    src/app/components/transaksjonshistorikk/transaksjonshistorikk.ts(38,36): error TS2339: Property 'checked' does not exist on type 'HTMLElement'.
+    src/app/components/transaksjonshistorikk/transaksjonshistorikk.ts(44,35): error TS2339: Property 'checked' does not exist on type 'HTMLElement'.
+    src/app/components/transaksjonshistorikk/transaksjonshistorikk.ts(45,35): error TS2339: Property 'checked' does not exist on type 'HTMLElement'.
+    src/app/components/transaksjonshistorikk/transaksjonshistorikk.ts(46,35): error TS2339: Property 'checked' does not exist on type 'HTMLElement'.
+    src/app/components/transaksjonshistorikk/transaksjonshistorikk.ts(49,4): error TS2304: Cannot find name 'selg'.
+    src/app/components/transaksjonshistorikk/transaksjonshistorikk.ts(50,4): error TS2304: Cannot find name 'ce'.
+    
+    
+ (3a37b97d)
+2022-11-29T15:42:33.8199950+01:00  [ERR]     ERROR in src/app/components/transaksjonshistorikk/transaksjonshistorikk.ts(37,36): error TS2339: Property 'checked' does not exist on type 'HTMLElement'.
+    src/app/components/transaksjonshistorikk/transaksjonshistorikk.ts(38,36): error TS2339: Property 'checked' does not exist on type 'HTMLElement'.
+    src/app/components/transaksjonshistorikk/transaksjonshistorikk.ts(41,36): error TS2339: Property 'checked' does not exist on type 'HTMLElement'.
+    src/app/components/transaksjonshistorikk/transaksjonshistorikk.ts(42,36): error TS2339: Property 'checked' does not exist on type 'HTMLElement'.
+    src/app/components/transaksjonshistorikk/transaksjonshistorikk.ts(45,35): error TS2339: Property 'checked' does not exist on type 'HTMLElement'.
+    src/app/components/transaksjonshistorikk/transaksjonshistorikk.ts(46,35): error TS2339: Property 'checked' does not exist on type 'HTMLElement'.
+    src/app/components/transaksjonshistorikk/transaksjonshistorikk.ts(47,35): error TS2339: Property 'checked' does not exist on type 'HTMLElement'.
+    src/app/components/transaksjonshistorikk/transaksjonshistorikk.ts(50,4): error TS2304: Cannot find name 'selg'.
+    src/app/components/transaksjonshistorikk/transaksjonshistorikk.ts(51,4): error TS2304: Cannot find name 'ce'.
+    
+ (026b48b0)
+2022-11-29T15:42:47.1085960+01:00  [ERR]     ERROR in src/app/components/transaksjonshistorikk/transaksjonshistorikk.ts(37,36): error TS2339: Property 'checked' does not exist on type 'HTMLElement'.
+    src/app/components/transaksjonshistorikk/transaksjonshistorikk.ts(38,36): error TS2339: Property 'checked' does not exist on type 'HTMLElement'.
+    src/app/components/transaksjonshistorikk/transaksjonshistorikk.ts(41,36): error TS2339: Property 'checked' does not exist on type 'HTMLElement'.
+    src/app/components/transaksjonshistorikk/transaksjonshistorikk.ts(42,36): error TS2339: Property 'checked' does not exist on type 'HTMLElement'.
+    src/app/components/transaksjonshistorikk/transaksjonshistorikk.ts(45,36): error TS2339: Property 'checked' does not exist on type 'HTMLElement'.
+    src/app/components/transaksjonshistorikk/transaksjonshistorikk.ts(46,36): error TS2339: Property 'checked' does not exist on type 'HTMLElement'.
+    src/app/components/transaksjonshistorikk/transaksjonshistorikk.ts(50,4): error TS2304: Cannot find name 'selg'.
+    src/app/components/transaksjonshistorikk/transaksjonshistorikk.ts(51,4): error TS2304: Cannot find name 'ce'.
+    
+ (ac542189)
+2022-11-29T15:42:55.7907320+01:00  [INF] Now listening on: "https://localhost:5001" (d826f4b8)
+2022-11-29T15:42:55.7982840+01:00  [INF] Now listening on: "http://localhost:5000" (d826f4b8)
+2022-11-29T15:42:55.7988570+01:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2022-11-29T15:42:55.7989410+01:00  [INF] Hosting environment: "Development" (c3307c92)
+2022-11-29T15:42:55.7996340+01:00  [INF] Content root path: "/Users/enesergin/Desktop/Webapplikasjoner/AksjeApp2/AksjeApp2" (b5d60022)
+2022-11-29T15:43:17.9811920+01:00  [ERR] (node:36050) [DEP0111] DeprecationWarning: Access to process.binding('http_parser') is deprecated.
+ (324ed6dd)
+2022-11-29T15:43:17.9834250+01:00  [ERR] (Use `node --trace-deprecation ...` to show where the warning was created)
+ (567f389e)
+2022-11-29T15:43:38.6849710+01:00  [INF] Now listening on: "https://localhost:5001" (d826f4b8)
+2022-11-29T15:43:38.6933230+01:00  [INF] Now listening on: "http://localhost:5000" (d826f4b8)
+2022-11-29T15:43:38.6937000+01:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2022-11-29T15:43:38.6937550+01:00  [INF] Hosting environment: "Development" (c3307c92)
+2022-11-29T15:43:38.6937930+01:00  [INF] Content root path: "/Users/enesergin/Desktop/Webapplikasjoner/AksjeApp2/AksjeApp2" (b5d60022)
+2022-11-29T15:43:48.7881770+01:00  [ERR] (node:36061) [DEP0111] DeprecationWarning: Access to process.binding('http_parser') is deprecated.
+ (236f0671)
+2022-11-29T15:43:48.7894620+01:00  [ERR] (Use `node --trace-deprecation ...` to show where the warning was created)
+ (567f389e)
+2022-11-29T15:44:40.5961750+01:00  [ERR] ERROR in app/components/transaksjonshistorikk/transaksjonshistorikk.ts:37:36 - error TS2339: Property 'checked' does not exist on type 'HTMLElement'.
+
+37  		document.getElementById('alle').checked = false;
+    		                                ~~~~~~~
+app/components/transaksjonshistorikk/transaksjonshistorikk.ts:38:36 - error TS2339: Property 'checked' does not exist on type 'HTMLElement'.
+
+38  		document.getElementById('selg').checked = false;
+    		                                ~~~~~~~
+app/components/transaksjonshistorikk/transaksjonshistorikk.ts:41:36 - error TS2339: Property 'checked' does not exist on type 'HTMLElement'.
+
+41  		document.getElementById('alle').checked = false;
+    		                                ~~~~~~~
+app/components/transaksjonshistorikk/transaksjonshistorikk.ts:42:36 - error TS2339: Property 'checked' does not exist on type 'HTMLElement'.
+
+42  		document.getElementById('kjop').checked = false;
+    		                                ~~~~~~~
+app/components/transaksjonshistorikk/transaksjonshistorikk.ts:45:36 - error TS2339: Property 'checked' does not exist on type 'HTMLElement'.
+
+45  		document.getElementById('kjop').checked = false;
+    		                                ~~~~~~~
+app/components/transaksjonshistorikk/transaksjonshistorikk.ts:46:36 - error TS2339: Property 'checked' does not exist on type 'HTMLElement'.
+
+46  		document.getElementById('selg').checked = false;
+    		                                ~~~~~~~
+app/components/transaksjonshistorikk/transaksjonshistorikk.ts:50:4 - error TS2304: Cannot find name 'selg'.
+
+50  		selg.checked = false;
+    		~~~~
+app/components/transaksjonshistorikk/transaksjonshistorikk.ts:51:4 - error TS2304: Cannot find name 'ce'.
+
+51  		ce
+    		~~
+
+    
+ (98265570)
+2022-11-29T15:44:40.5977560+01:00  [ERR]     ERROR in src/app/components/transaksjonshistorikk/transaksjonshistorikk.ts(38,4): error TS2304: Cannot find name 'selg'.
+    src/app/components/transaksjonshistorikk/transaksjonshistorikk.ts(39,4): error TS2304: Cannot find name 'ce'.
+    
+ (4c5b101a)
+2022-11-29T15:49:09.9120950+01:00 0HMMI30D3V0BQ:00000002 [ERR] An unhandled exception has occurred while executing the request. (48a46595)
+System.InvalidOperationException: Enumerator failed to MoveNextAsync.
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at AksjeApp2.DAL.AksjeRepository.HentEnBruker(String brukernavn) in /Users/enesergin/Desktop/Webapplikasjoner/AksjeApp2/AksjeApp2/DAL/AksjeRepository.cs:line 309
+   at AksjeApp2.Controllers.AksjeController.HentEnBruker(String brukernavn) in /Users/enesergin/Desktop/Webapplikasjoner/AksjeApp2/AksjeApp2/Controllers/AksjeController.cs:line 165
+   at lambda_method(Closure , Object )
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2022-11-29T15:50:42.4375230+01:00  [INF] Now listening on: "https://localhost:5001" (d826f4b8)
+2022-11-29T15:50:42.4465480+01:00  [INF] Now listening on: "http://localhost:5000" (d826f4b8)
+2022-11-29T15:50:42.4469180+01:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2022-11-29T15:50:42.4469830+01:00  [INF] Hosting environment: "Development" (c3307c92)
+2022-11-29T15:50:42.4470210+01:00  [INF] Content root path: "/Users/enesergin/Desktop/Webapplikasjoner/AksjeApp2/AksjeApp2" (b5d60022)
+2022-11-29T15:50:55.5925710+01:00  [ERR] (node:36104) [DEP0111] DeprecationWarning: Access to process.binding('http_parser') is deprecated.
+ (5f5ee770)
+2022-11-29T15:50:55.5938950+01:00  [ERR] (Use `node --trace-deprecation ...` to show where the warning was created)
+ (567f389e)
+2022-11-29T15:53:55.6921240+01:00 0HMMI34BCS78O:00000002 [ERR] An unhandled exception has occurred while executing the request. (48a46595)
+System.InvalidOperationException: Enumerator failed to MoveNextAsync.
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at AksjeApp2.DAL.AksjeRepository.HentEnBruker(String brukernavn) in /Users/enesergin/Desktop/Webapplikasjoner/AksjeApp2/AksjeApp2/DAL/AksjeRepository.cs:line 309
+   at AksjeApp2.Controllers.AksjeController.HentEnBruker(String brukernavn) in /Users/enesergin/Desktop/Webapplikasjoner/AksjeApp2/AksjeApp2/Controllers/AksjeController.cs:line 165
+   at lambda_method(Closure , Object )
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)

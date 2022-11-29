@@ -240,7 +240,7 @@ namespace AksjeApp2.DAL
 				{
 					hentTransaksjoner = await _db.Transaksjoner.Where(p => p.Bruker == enBruker && p.Status == status).ToArrayAsync();
 				}
-				else if (status == "Selg")
+				else if (status == "Salg")
 				{
 					hentTransaksjoner = await _db.Transaksjoner.Where(p => p.Bruker == enBruker && p.Status == status).ToArrayAsync();
 				}
