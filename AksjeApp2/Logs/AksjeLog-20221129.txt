@@ -6995,3 +6995,12 @@ System.InvalidOperationException: Enumerator failed to MoveNextAsync.
    at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
    at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
    at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2022-11-29T22:31:00.6953290+01:00  [INF] Now listening on: "https://localhost:5001" (d826f4b8)
+2022-11-29T22:31:00.7318440+01:00  [INF] Now listening on: "http://localhost:5000" (d826f4b8)
+2022-11-29T22:31:00.7610850+01:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2022-11-29T22:31:00.7874140+01:00  [INF] Hosting environment: "Development" (c3307c92)
+2022-11-29T22:31:00.8151170+01:00  [INF] Content root path: "/Users/tintun/Documents/GitHub/AksjeApp2/AksjeApp2" (b5d60022)
+2022-11-29T22:31:08.8622170+01:00  [ERR] (node:4867) [DEP0111] DeprecationWarning: Access to process.binding('http_parser') is deprecated.
+ (7cea99cd)
+2022-11-29T22:31:08.8929650+01:00  [ERR] (Use `node --trace-deprecation ...` to show where the warning was created)
+ (567f389e)
