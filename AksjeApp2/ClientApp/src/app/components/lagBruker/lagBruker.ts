@@ -12,6 +12,8 @@ import { Bruker } from "../../Models/Bruker";
 export class LagBruker {
     skjema: FormGroup;
     tilbakemelding: string;
+    passord: string;
+    bekreftpassord: string;
 
 
     //Husk å endre, sånn at det blir riktig validering
@@ -45,7 +47,7 @@ export class LagBruker {
         this.skjema = fb.group(this.validering);
     }
 
-    Submit() {
+    onSubmit(){
         if (this.skjema.value.passord == this.skjema.value.bekreftPassord) {
             this.lagreBruker();
         }
