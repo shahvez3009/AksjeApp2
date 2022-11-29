@@ -41,6 +41,7 @@ namespace AksjeApp2Test
 
             var aksjeController = new AksjeController(mockRep.Object, mockLog.Object);
 
+            //Logger inn
             mockHttpSession[_loggetInn] = _loggetInn;
             mockHttpContext.Setup(s => s.Session).Returns(mockHttpSession);
             aksjeController.ControllerContext.HttpContext = mockHttpContext.Object;
@@ -62,6 +63,7 @@ namespace AksjeApp2Test
 
             var aksjeController = new AksjeController(mockRep.Object, mockLog.Object);
 
+            //Logger inn
             mockHttpSession[_loggetInn] = _loggetInn;
             mockHttpContext.Setup(s => s.Session).Returns(mockHttpSession);
             aksjeController.ControllerContext.HttpContext = mockHttpContext.Object;
@@ -84,7 +86,6 @@ namespace AksjeApp2Test
             var aksjeController = new AksjeController(mockRep.Object, mockLog.Object);
 
             //Act
-
             var resultat = await aksjeController.LagreBruker(It.IsAny<Bruker>()) as OkObjectResult;
 
             //Assert
@@ -101,7 +102,6 @@ namespace AksjeApp2Test
 
             var aksjeController = new AksjeController(mockRep.Object, mockLog.Object);
 
-
             //Act
             var resultat = await aksjeController.LagreBruker(It.IsAny<Bruker>()) as BadRequestObjectResult;
 
@@ -117,7 +117,6 @@ namespace AksjeApp2Test
             mockRep.Setup(k => k.LagreBruker(It.IsAny<Bruker>())).ReturnsAsync(3);
 
             var aksjeController = new AksjeController(mockRep.Object, mockLog.Object);
-
 
             //Act
             var resultat = await aksjeController.LagreBruker(It.IsAny<Bruker>()) as BadRequestObjectResult;
@@ -189,17 +188,14 @@ namespace AksjeApp2Test
             var aksjeController = new AksjeController(mockRep.Object, mockLog.Object);
 
             //Logget inn 
-
             mockHttpSession[_loggetInn] = _loggetInn;
             mockHttpContext.Setup(s => s.Session).Returns(mockHttpSession);
             aksjeController.ControllerContext.HttpContext = mockHttpContext.Object;
 
             //Act
-
             var result = await aksjeController.HentAksjer() as OkObjectResult;
 
             //Assert
-
             Assert.Equal((int)HttpStatusCode.OK, result.StatusCode);
             Assert.Equal<List<Aksje>>((List<Aksje>)result.Value, aksjeliste);
 
@@ -210,23 +206,19 @@ namespace AksjeApp2Test
         {
 
             //Arrange
-
             mockRep.Setup(k => k.HentAksjer()).ReturnsAsync(It.IsAny<List<Aksje>>());
 
             var aksjeController = new AksjeController(mockRep.Object, mockLog.Object);
 
             //Logger ikke inn
-
             mockHttpSession[_loggetInn] = _ikkeloggetInn;
             mockHttpContext.Setup(s => s.Session).Returns(mockHttpSession);
             aksjeController.ControllerContext.HttpContext = mockHttpContext.Object;
 
             //Act
-
             var resultat = await aksjeController.HentAksjer() as UnauthorizedObjectResult;
 
             //Assert
-
             Assert.Equal((int)HttpStatusCode.Unauthorized, resultat.StatusCode);
             Assert.Equal("Bruker er ikke logget inn.", resultat.Value);
         }
@@ -236,7 +228,6 @@ namespace AksjeApp2Test
         {
 
             //Arrange
-
             var brukerInn = new Bruker
             {
                 Fornavn = "Per",
@@ -257,23 +248,19 @@ namespace AksjeApp2Test
 
             string brukernavn = brukerInn.Brukernavn;
 
-
             mockRep.Setup(k => k.HentEtPortfolioRad(brukernavn, 3)).ReturnsAsync(heleportfolio1);
 
             var aksjeController = new AksjeController(mockRep.Object, mockLog.Object);
 
             //Logget inn
-
             mockHttpSession[_loggetInn] = _loggetInn;
             mockHttpContext.Setup(s => s.Session).Returns(mockHttpSession);
             aksjeController.ControllerContext.HttpContext = mockHttpContext.Object;
 
             //Act
-
             var resultat = await aksjeController.HentEtPortfolioRad(brukernavn, 3) as OkObjectResult;
 
             //Assert
-
             Assert.Equal((int)HttpStatusCode.OK, resultat.StatusCode);
             Assert.Equal(resultat.Value, heleportfolio1);
 
@@ -283,7 +270,6 @@ namespace AksjeApp2Test
         public async Task HentPortfolioRadLoggetInnFeil()
         {
             //Arrange
-
             var brukerInn = new Bruker
             {
                 Fornavn = "Per",
@@ -304,10 +290,10 @@ namespace AksjeApp2Test
 
             string brukernavn = brukerInn.Brukernavn;
 
-
             mockRep.Setup(k => k.HentEtPortfolioRad(brukernavn, 3)).ReturnsAsync(heleportfolio1);
 
             var aksjeController = new AksjeController(mockRep.Object, mockLog.Object);
+
             //Logget inn
             mockHttpSession[_loggetInn] = _loggetInn;
             mockHttpContext.Setup(s => s.Session).Returns(mockHttpSession);
@@ -325,7 +311,6 @@ namespace AksjeApp2Test
         public async Task HentPortfolioRadIkkeLoggetInn()
         {
             //Arrange
-
             var brukerInn = new Bruker
             {
                 Fornavn = "Per",
@@ -351,17 +336,14 @@ namespace AksjeApp2Test
             var aksjeController = new AksjeController(mockRep.Object, mockLog.Object);
 
             //Logger ikke inn
-
             mockHttpSession[_loggetInn] = _ikkeloggetInn;
             mockHttpContext.Setup(s => s.Session).Returns(mockHttpSession);
             aksjeController.ControllerContext.HttpContext = mockHttpContext.Object;
 
             //Act
-
             var resultat = await aksjeController.HentEtPortfolioRad(brukernavn, 3) as UnauthorizedObjectResult;
 
             //Assert
-
             Assert.Equal((int)HttpStatusCode.Unauthorized, resultat.StatusCode);
             Assert.Equal("Bruker er ikke logget inn.", resultat.Value);
         }
@@ -370,7 +352,6 @@ namespace AksjeApp2Test
         public async Task HentEnBrukerLoggetInn()
         {
             //Arrange
-
             var brukerInn = new Bruker
             {
                 Fornavn = "Per",
@@ -381,23 +362,19 @@ namespace AksjeApp2Test
 
             string brukernavn = brukerInn.Brukernavn;
 
-
             mockRep.Setup(k => k.HentEnBruker(brukernavn)).ReturnsAsync(brukerInn);
 
             var aksjeController = new AksjeController(mockRep.Object, mockLog.Object);
 
             //Logget inn
-
             mockHttpSession[_loggetInn] = _loggetInn;
             mockHttpContext.Setup(s => s.Session).Returns(mockHttpSession);
             aksjeController.ControllerContext.HttpContext = mockHttpContext.Object;
 
             //Act
-
             var resultat = await aksjeController.HentEnBruker(brukernavn) as OkObjectResult;
 
             //Assert
-
             Assert.Equal((int)HttpStatusCode.OK, resultat.StatusCode);
             Assert.Equal(resultat.Value, brukerInn);
         }
@@ -442,17 +419,14 @@ namespace AksjeApp2Test
             var aksjeController = new AksjeController(mockRep.Object, mockLog.Object);
 
             //Logger ikke inn
-
             mockHttpSession[_loggetInn] = _ikkeloggetInn;
             mockHttpContext.Setup(s => s.Session).Returns(mockHttpSession);
             aksjeController.ControllerContext.HttpContext = mockHttpContext.Object;
 
             //Act
-
             var resultat = await aksjeController.HentEnBruker(brukernavn) as UnauthorizedObjectResult;
 
             //Assert
-
             Assert.Equal((int)HttpStatusCode.Unauthorized, resultat.StatusCode);
             Assert.Equal("Bruker er ikke logget inn.", resultat.Value);
         }
@@ -461,7 +435,6 @@ namespace AksjeApp2Test
         public async Task HentEnAksjeLoggetInn()
         {
             //Arrange
-
             var aksjeInn = new Aksje
             {
                 Id = 1,
@@ -479,17 +452,14 @@ namespace AksjeApp2Test
             var aksjeController = new AksjeController(mockRep.Object, mockLog.Object);
 
             //Logget inn
-
             mockHttpSession[_loggetInn] = _loggetInn;
             mockHttpContext.Setup(s => s.Session).Returns(mockHttpSession);
             aksjeController.ControllerContext.HttpContext = mockHttpContext.Object;
 
             //Act
-
             var resultat = await aksjeController.HentEnAksje(Id) as OkObjectResult;
 
             //Assert
-
             Assert.Equal((int)HttpStatusCode.OK, resultat.StatusCode);
             Assert.Equal(resultat.Value, aksjeInn);
 
@@ -520,7 +490,6 @@ namespace AksjeApp2Test
         {
 
             //Arrange
-
             var aksjeInn = new Aksje
             {
                 Id = 1,
@@ -537,18 +506,15 @@ namespace AksjeApp2Test
 
             var aksjeController = new AksjeController(mockRep.Object, mockLog.Object);
 
-            //Logget inn
-
+            //Logget ikke inn
             mockHttpSession[_loggetInn] = _ikkeloggetInn;
             mockHttpContext.Setup(s => s.Session).Returns(mockHttpSession);
             aksjeController.ControllerContext.HttpContext = mockHttpContext.Object;
 
             //Act
-
             var resultat = await aksjeController.HentEnAksje(Id) as UnauthorizedObjectResult;
 
             //Assert
-
             Assert.Equal((int)HttpStatusCode.Unauthorized, resultat.StatusCode);
             Assert.Equal("Bruker er ikke logget inn.", resultat.Value);
         }
@@ -556,9 +522,7 @@ namespace AksjeApp2Test
         [Fact]
         public async Task HentPortfolioLoggetInn()
         {
-
             //Arrange
-
             var portfoliorad1 = new PortfolioRad
             {
                 Id = 1,
@@ -610,17 +574,14 @@ namespace AksjeApp2Test
             var aksjeController = new AksjeController(mockRep.Object, mockLog.Object);
 
             //Logget inn 
-
             mockHttpSession[_loggetInn] = _loggetInn;
             mockHttpContext.Setup(s => s.Session).Returns(mockHttpSession);
             aksjeController.ControllerContext.HttpContext = mockHttpContext.Object;
 
             //Act
-
             var resultat = await aksjeController.HentPortfolio(brukernavn) as OkObjectResult;
 
             //Assert
-
             Assert.Equal((int)HttpStatusCode.OK, resultat.StatusCode);
             Assert.Equal<List<PortfolioRad>>((List<PortfolioRad>)resultat.Value, Portfolio);
         }
@@ -629,7 +590,6 @@ namespace AksjeApp2Test
         public async Task HentTransaksjonerLoggetInn()
         {
             //Arrange
-
             var transaksjon1 = new Transaksjon
             {
                 Id = 1,
@@ -653,7 +613,6 @@ namespace AksjeApp2Test
             var transaksjonsliste = new List<Transaksjon>();
             transaksjonsliste.Add(transaksjon1);
 
-
             var status = transaksjon1.Status;
             var brukernavn = brukerInn.Brukernavn;
 
@@ -662,17 +621,14 @@ namespace AksjeApp2Test
             var aksjeController = new AksjeController(mockRep.Object, mockLog.Object);
 
             //Logget inn 
-
             mockHttpSession[_loggetInn] = _loggetInn;
             mockHttpContext.Setup(s => s.Session).Returns(mockHttpSession);
             aksjeController.ControllerContext.HttpContext = mockHttpContext.Object;
 
             //Act
-
             var resultat = await aksjeController.HentTransaksjoner(brukernavn, status) as OkObjectResult;
 
             //Assert
-
             Assert.Equal((int)HttpStatusCode.OK, resultat.StatusCode);
             Assert.Equal<List<Transaksjon>>((List<Transaksjon>)resultat.Value, transaksjonsliste);
         }
@@ -681,23 +637,19 @@ namespace AksjeApp2Test
         public async Task HentTransaksjonerIkkeLoggetInn()
         {
             //Arrange
-
             mockRep.Setup(k => k.HentTransaksjoner(It.IsAny<string>(), It.IsAny<string>())).ReturnsAsync(It.IsAny<List<Transaksjon>>());
 
             var aksjeController = new AksjeController(mockRep.Object, mockLog.Object);
 
             //Logger ikke inn
-
             mockHttpSession[_loggetInn] = _ikkeloggetInn;
             mockHttpContext.Setup(s => s.Session).Returns(mockHttpSession);
             aksjeController.ControllerContext.HttpContext = mockHttpContext.Object;
 
             //Act
-
             var resultat = await aksjeController.HentTransaksjoner(It.IsAny<string>(), It.IsAny<string>()) as UnauthorizedObjectResult;
 
             //Assert
-
             Assert.Equal((int)HttpStatusCode.Unauthorized, resultat.StatusCode);
             Assert.Equal("Bruker er ikke logget inn.", resultat.Value);
         }
@@ -706,24 +658,19 @@ namespace AksjeApp2Test
         public async Task HentPortfolioIkkeLoggetInn()
         {
             //Arrange
-
-
             mockRep.Setup(k => k.HentPortfolio(It.IsAny<string>())).ReturnsAsync(It.IsAny<List<PortfolioRad>>());
 
             var aksjeController = new AksjeController(mockRep.Object, mockLog.Object);
 
             //Logger ikke inn
-
             mockHttpSession[_loggetInn] = _ikkeloggetInn;
             mockHttpContext.Setup(s => s.Session).Returns(mockHttpSession);
             aksjeController.ControllerContext.HttpContext = mockHttpContext.Object;
 
             //Act
-
             var resultat = await aksjeController.HentPortfolio(It.IsAny<string>()) as UnauthorizedObjectResult;
 
             //Assert
-
             Assert.Equal((int)HttpStatusCode.Unauthorized, resultat.StatusCode);
             Assert.Equal("Bruker er ikke logget inn.", resultat.Value);
         }
@@ -742,9 +689,8 @@ namespace AksjeApp2Test
             mockHttpContext.Setup(s => s.Session).Returns(mockHttpSession);
             aksjeController.ControllerContext.HttpContext = mockHttpContext.Object;
 
-
+            //Act
             var resultat = await aksjeController.Kjop(It.IsAny<PortfolioRad>()) as OkObjectResult;
-
 
             //Assert
             Assert.Equal((int)HttpStatusCode.OK, resultat.StatusCode);
@@ -759,7 +705,7 @@ namespace AksjeApp2Test
             mockRep.Setup(k => k.Kjop(It.IsAny<PortfolioRad>())).ReturnsAsync(true);
             var aksjeController = new AksjeController(mockRep.Object, mockLog.Object);
 
-            //Logger inn
+            //Logger ikke inn
             mockHttpSession[_loggetInn] = _ikkeloggetInn;
             mockHttpContext.Setup(s => s.Session).Returns(mockHttpSession);
             aksjeController.ControllerContext.HttpContext = mockHttpContext.Object;
@@ -802,15 +748,13 @@ namespace AksjeApp2Test
 
             var aksjeController = new AksjeController(mockRep.Object, mockLog.Object);
 
-
             //Logger inn
             mockHttpSession[_loggetInn] = _loggetInn;
             mockHttpContext.Setup(s => s.Session).Returns(mockHttpSession);
             aksjeController.ControllerContext.HttpContext = mockHttpContext.Object;
 
-
+            //Act
             var resultat = await aksjeController.Selg(It.IsAny<PortfolioRad>()) as OkObjectResult;
-
 
             //Assert
             Assert.Equal((int)HttpStatusCode.OK, resultat.StatusCode);
@@ -825,7 +769,7 @@ namespace AksjeApp2Test
             mockRep.Setup(k => k.Selg(It.IsAny<PortfolioRad>())).ReturnsAsync(true);
             var aksjeController = new AksjeController(mockRep.Object, mockLog.Object);
 
-            //Logger inn
+            //Logger ikke inn
             mockHttpSession[_loggetInn] = _ikkeloggetInn;
             mockHttpContext.Setup(s => s.Session).Returns(mockHttpSession);
             aksjeController.ControllerContext.HttpContext = mockHttpContext.Object;
