@@ -65,7 +65,17 @@ export class Kjop {
 				this.aksjeledige = hentetAksje.antallLedige;
 				this.aksjemax = hentetAksje.maxAntall;
 			},
-				(error) => console.log(error)
+
+				(error) => {
+					if (error.status == 401) {
+						this.router.navigate(["/logginn"])
+					} else if (error.status == 500) {
+						this.router.navigate(["/hjem"])
+					}
+					else {
+						console.log(error);
+					}
+				}
 		);
 
 		this.http.get<Bruker>("api/aksje/hentenbruker/" + this.brukernavn)
@@ -77,7 +87,11 @@ export class Kjop {
 				(error) => {
 					if (error.status == 401) {
 						this.router.navigate(["/logginn"])
-					} else {
+					} else if (error.status == 500)
+					{
+						this.router.navigate(["/hjem"])
+					}
+					else {
 						console.log(error);
 					}
 				}
