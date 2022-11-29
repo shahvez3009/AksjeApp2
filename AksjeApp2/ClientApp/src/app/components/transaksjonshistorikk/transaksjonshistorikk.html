@@ -4,8 +4,8 @@
     <table class="table table-striped">
         <thead>
             <tr>
-                <th>Status</th>
                 <th>Dato/Tid</th>
+                <th>Status</th>
                 <th>Aksje</th>
                 <th>Pris</th>
                 <th>Antall Aksjer</th>
@@ -14,8 +14,8 @@
         </thead>
         <tbody *ngFor="let transaksjon of alleTransaksjoner">
             <tr>
-                <td>{{transaksjon.status}}</td>
                 <td>{{transaksjon.datoTid}}</td>
+                <td>{{transaksjon.status}}</td>
                 <td>{{transaksjon.aksjeNavn}}</td>
                 <td>{{transaksjon.aksjePris}}</td>
                 <td>{{transaksjon.antall}}</td>
