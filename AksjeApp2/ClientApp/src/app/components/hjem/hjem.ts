@@ -40,11 +40,9 @@ export class Hjem {
                 this.alleAksjer = aksjene;
             },
                 (error) => {
-                    if (error.status == 401) {
-                        this.router.navigate(["/logginn"])
-                    } else {
-                        console.log(error);
-                    }
+                    if (error.status == 401) { this.router.navigate(["/logginn"]) }
+                    else if (error.status == 500) { this.shared.loggUt(); }
+                    else { console.log(error); }
                 } 
         );
 
@@ -53,17 +51,12 @@ export class Hjem {
                 this.laster = false;
                 this.fornavnEtternavn = bruker.fornavn + " " + bruker.etternavn;
                 this.saldo = bruker.saldo;
-                console.log(bruker);
-                console.log(bruker.saldo)
-
             },
                 (error) => {
-                    if (error.status == 401) {
-                        this.router.navigate(["/logginn"])
-                    } else {
-                        console.log(error);
-                    }
-                }
+                    if (error.status == 401) { this.router.navigate(["/logginn"]) }
+                    else if (error.status == 500) { this.shared.loggUt(); }
+                    else { console.log(error); }
+                } 
         );
     }
 
