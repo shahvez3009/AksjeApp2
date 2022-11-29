@@ -35,38 +35,53 @@ namespace AksjeApp2.Controllers
 		[HttpPost]
 		public async Task<ActionResult> Kjop(PortfolioRad innPortfolio)
 		{
-			if (string.IsNullOrEmpty(HttpContext.Session.GetString(_LoggetInn)))
+			if(ModelState.IsValid)
 			{
-				_log.LogInformation("Kjop - Error 401: Unauthorized access");
-				return Unauthorized("Bruker er ikke logget inn.");
-			}
+                if (string.IsNullOrEmpty(HttpContext.Session.GetString(_LoggetInn)))
+                {
+                    _log.LogInformation("Kjop - Error 401: Unauthorized access");
+                    return Unauthorized("Bruker er ikke logget inn.");
+                }
 
-			bool returOk = await _db.Kjop(innPortfolio);
-			if (!returOk)
-			{
-				_log.LogInformation("Kjop - Error 400: Bad Request");
-				return BadRequest("Kjøpet ble ikke gjennomført.");
-			}
-			return Ok("Kjøpet ble gjennomført.");
-		}
+                bool returOk = await _db.Kjop(innPortfolio);
+                if (!returOk)
+                {
+                    _log.LogInformation("Kjop - Error 400: Bad Request");
+                    return BadRequest("Kjøpet ble ikke gjennomført.");
+                }
+                return Ok("Kjøpet ble gjennomført.");
+            }
+
+            _log.LogInformation("kjop - Feil i inputvalidering");
+            return BadRequest("Feil i inputvalidering");
+
+        }
 
 		[HttpPost]
 		public async Task<ActionResult> Selg(PortfolioRad innPortfolio)
 		{
-			if (string.IsNullOrEmpty(HttpContext.Session.GetString(_LoggetInn)))
-			{
-				_log.LogInformation("Selg - Error 401: Unauthorized access");
-				return Unauthorized("Bruker er ikke logget inn.");
-			}
 
-			bool returOk = await _db.Selg(innPortfolio);
-			if (!returOk)
+			if(ModelState.IsValid)
 			{
-				_log.LogInformation("Selg - Error 404: Not Found");
-				return BadRequest("Salget ble ikke gjennomført.");
-			}
-			return Ok("Salget ble gjennomført.");
-		}
+                if (string.IsNullOrEmpty(HttpContext.Session.GetString(_LoggetInn)))
+                {
+                    _log.LogInformation("Selg - Error 401: Unauthorized access");
+                    return Unauthorized("Bruker er ikke logget inn.");
+                }
+
+                bool returOk = await _db.Selg(innPortfolio);
+                if (!returOk)
+                {
+                    _log.LogInformation("Selg - Error 404: Not Found");
+                    return BadRequest("Salget ble ikke gjennomført.");
+                }
+                return Ok("Salget ble gjennomført.");
+            }
+
+            _log.LogInformation("Selg - Feil i inputvalidering");
+            return BadRequest("Feil i inputvalidering");
+
+        }
 
         [HttpPost]
         public async Task<ActionResult> LagreBruker(Bruker innBruker)
@@ -86,7 +101,7 @@ namespace AksjeApp2.Controllers
                 }
                 return Ok("Bruker ble lagret.");
             }
-			_log.LogInformation("LagreBruker - Error 400: Bad Request");
+			_log.LogInformation("LagreBruker - Feil i inputvalidering");
 			return BadRequest("Feil i inputvalidering");
         }
 
