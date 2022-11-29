@@ -37,11 +37,6 @@ export class Logginn {
         ]
     };
 
-
-    ngOnInit() {
-        this.shared.setBrukernavn("");
-    }
-
     onSubmit() {
         this.logginn();
     }

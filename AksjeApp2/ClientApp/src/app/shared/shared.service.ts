@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class SharedService {
     aksjeId: number = 0;
-    brukernavn: string= " ";
+    brukernavn: string= "$";
    
     constructor() { }
 
