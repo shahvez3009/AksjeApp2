@@ -71,5 +71,7 @@ export class Hjem {
         this.shared.setAksjeId(aksjeId);
         this.router.navigate(["/kjop"]);
     }
+
 }
+
 

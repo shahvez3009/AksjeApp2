@@ -136,7 +136,7 @@ namespace AksjeApp2.DAL
             try
             {
 
-                //Må skjekke om det allerede fins en bruker med gitt brukernavn
+                //Må skjekke om det allerede finnes en bruker med gitt brukernavn
 
                 Brukere[] opptattBrukernavn = _db.Brukere.Where(p => p.Brukernavn.ToLower() == innBruker.Brukernavn.ToLower()).ToArray();
                 if (opptattBrukernavn.Length == 1)
@@ -342,7 +342,7 @@ namespace AksjeApp2.DAL
 		{
 			try
 			{
-				Brukere funnetUser = await _db.Brukere.FirstOrDefaultAsync(b => b.Brukernavn == innBruker.Brukernavn);
+				Brukere funnetUser = await _db.Brukere.FirstOrDefaultAsync(b => b.Brukernavn.ToLower() == innBruker.Brukernavn.ToLower());
 				byte[] hash = LagHash(innBruker.Passord, funnetUser.Salt);
 				bool ok = hash.SequenceEqual(funnetUser.Passord);
 				if (ok)
