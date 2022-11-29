@@ -80,7 +80,7 @@ namespace AksjeApp2Test
         {
 
             //Assert
-            mockRep.Setup(k => k.LagreBruker(It.IsAny<Bruker>())).ReturnsAsync(1);
+            mockRep.Setup(k => k.LagreBruker(It.IsAny<Bruker>())).ReturnsAsync(0);
 
             var aksjeController = new AksjeController(mockRep.Object, mockLog.Object);
 
@@ -89,7 +89,7 @@ namespace AksjeApp2Test
 
             //Assert
             Assert.Equal((int)HttpStatusCode.OK, resultat.StatusCode);
-            Assert.Equal("Bruker ble lagret.", resultat.Value);
+            Assert.Equal(0, resultat.Value);
 
         }
 
