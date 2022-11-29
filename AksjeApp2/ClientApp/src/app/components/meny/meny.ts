@@ -24,22 +24,6 @@ export class Meny {
 	toggle() {
 		this.isExpanded = !this.isExpanded;
 	}
-	
-	visNettside(nettside) {
-		this.brukernavn = this.shared.getBrukernavn();
-
-		if (this.brukernavn.length != 0) {
-			if (nettside == "hjem") {
-				this.router.navigate(["/hjem"]);
-			}
-			if (nettside == "portfolio") {
-				this.router.navigate(["/portfolio"]);
-			}
-			if (nettside == "transaksjonshistorikk") {
-				this.router.navigate(["/transaksjonshistorikk"]);
-			}
-		}
-	}
 
 	loggUt() {
 		this.shared.loggUt();

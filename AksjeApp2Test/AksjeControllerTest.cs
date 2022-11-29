@@ -77,7 +77,7 @@ namespace AksjeApp2Test
         }
 
         [Fact]
-        public async Task LagreBrukerLoggetInn()
+        public async Task LagreBrukerOK()
         {
 
             //Assert
@@ -169,19 +169,9 @@ namespace AksjeApp2Test
                 AntallLedige = 100
             };
 
-            var aksje3 = new Aksje
-            {
-                Id = 52,
-                Navn = "Apple",
-                Pris = 200,
-                MaxAntall = 800,
-                AntallLedige = 200
-            };
-
             var aksjeliste = new List<Aksje>();
             aksjeliste.Add(aksje1);
             aksjeliste.Add(aksje2);
-            aksjeliste.Add(aksje3);
 
             mockRep.Setup(k => k.HentAksjer()).ReturnsAsync(aksjeliste);
 
@@ -543,16 +533,6 @@ namespace AksjeApp2Test
                 Brukernavn = "perhansen"
             };
 
-            var portfoliorad3 = new PortfolioRad
-            {
-                Id = 3,
-                Antall = 80,
-                AksjeId = 3,
-                AksjeNavn = "Apple",
-                AksjePris = 750,
-                Brukernavn = "perhansen"
-            };
-
             var brukerInn = new Bruker
             {
                 Id = 1,
@@ -564,7 +544,6 @@ namespace AksjeApp2Test
             var Portfolio = new List<PortfolioRad>();
             Portfolio.Add(portfoliorad1);
             Portfolio.Add(portfoliorad2);
-            Portfolio.Add(portfoliorad3);
 
 
             var brukernavn = brukerInn.Brukernavn;
@@ -742,7 +721,6 @@ namespace AksjeApp2Test
         [Fact]
         public async Task SelgLoggetInn()
         {
-
             //Arrange
             mockRep.Setup(k => k.Selg(It.IsAny<PortfolioRad>())).ReturnsAsync(true);
 
