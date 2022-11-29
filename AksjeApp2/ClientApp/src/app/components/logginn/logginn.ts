@@ -56,12 +56,18 @@ export class Logginn {
     send.brukernavn = this.Skjema.value.brukernavn;
     send.passord = this.Skjema.value.passord;
 
-    this.http.post("api/aksje/LoggInn", send).subscribe((retur) => {
-      this.valid = retur;
-      if (this.valid) {
+      this.http.post("api/aksje/LoggInn", send).subscribe((retur) => {
+          console.log("Ikke Valid")
+          this.valid = retur;
+          console.log(this.valid);
+        if (this.valid) {
+            console.log("Valid")
           this.shared.setBrukernavn(send.brukernavn.toLowerCase());
-        this.router.navigate(["/hjem"]);
-      }
+            this.router.navigate(["/hjem"]);
+        }
+          if (!this.valid) {
+              this.invalidBruker = true;
+          }
       (error) => {
         this.invalidBruker = true;
         console.log("Ikke logget inn");
