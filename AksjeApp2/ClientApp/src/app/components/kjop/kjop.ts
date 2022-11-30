@@ -97,7 +97,7 @@ export class Kjop {
 
 			modalRef.componentInstance.beskjed = "Summen for transaksjonen du prøver å utføre er: " + (this.aksjepris * Number(this.skjema.value.antall)) + " NOK";
 			modalRef.componentInstance.beskjed2 = "Din saldo er: " + this.saldo + " NOK";
-			modalRef.componentInstance.beskjed3 = "Du har ikke råd til denne transaksjonen :(";
+			modalRef.componentInstance.beskjed3 = "Du har ikke råd til denne transaksjonen!";
 		}
 
 		else {

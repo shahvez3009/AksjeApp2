@@ -11,9 +11,9 @@ import {
 import { Bruker } from "../../Models/Bruker";
 
 @Component({
-  selector: "app-logginn",
-  templateUrl: "./logginn.html",
-  styleUrls: ["./logginn.css"],
+	selector: "app-logginn",
+	templateUrl: "./logginn.html",
+	styleUrls: ["./logginn.css"],
 })
 export class Logginn {
   Skjema: FormGroup;
@@ -21,57 +21,54 @@ export class Logginn {
   invalidBruker: boolean;
 
   constructor(
-    private fb: FormBuilder,
-    private http: HttpClient,
-    private router: Router,
-    private shared: SharedService
+	private fb: FormBuilder,
+	private http: HttpClient,
+	private router: Router,
+	private shared: SharedService
   ) {
-    this.Skjema = fb.group(this.validering);
+	this.Skjema = fb.group(this.validering);
   }
 
   validering = {
-    brukernavn: [
-      null,
-      Validators.compose([
-        Validators.required,
-          Validators.pattern("[0-9a-zA-ZøæåØÆÅ\\-. ]{2,30}"),
-      ]),
-    ],
-    passord: [
-      null,
-      Validators.compose([
-        Validators.required,
-          Validators.pattern(/^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.{8,})/),
-      ]),
-    ],
+	brukernavn: [
+	  null,
+	  Validators.compose([
+		Validators.required,
+		  Validators.pattern("[0-9a-zA-ZøæåØÆÅ\\-. ]{2,30}"),
+	  ]),
+	],
+	passord: [
+	  null,
+	  Validators.compose([
+		Validators.required,
+		  Validators.pattern(/^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.{8,})/),
+	  ]),
+	],
   };
 
   onSubmit() {
-    this.logginn();
+	this.logginn();
   }
 
   logginn() {
-    const send = new Bruker();
+	const send = new Bruker();
 
-    send.brukernavn = this.Skjema.value.brukernavn;
-    send.passord = this.Skjema.value.passord;
+	send.brukernavn = this.Skjema.value.brukernavn;
+	send.passord = this.Skjema.value.passord;
 
-      this.http.post("api/aksje/LoggInn", send).subscribe((retur) => {
-          console.log("Ikke Valid")
-          this.valid = retur;
-          console.log(this.valid);
-        if (this.valid) {
-            console.log("Valid")
-          this.shared.setBrukernavn(send.brukernavn.toLowerCase());
-            this.router.navigate(["/hjem"]);
-        }
-          if (!this.valid) {
-              this.invalidBruker = true;
-          }
-      (error) => {
-        this.invalidBruker = true;
-        console.log("Ikke logget inn");
-      };
-    });
+	  this.http.post("api/aksje/LoggInn", send).subscribe((retur) => {
+		  this.valid = retur;
+		if (this.valid) {
+		  this.shared.setBrukernavn(send.brukernavn.toLowerCase());
+			this.router.navigate(["/hjem"]);
+		}
+		  if (!this.valid) {
+			  this.invalidBruker = true;
+		  }
+	  (error) => {
+		this.invalidBruker = true;
+		console.log("Ikke logget inn");
+	  };
+	});
   }
 }
